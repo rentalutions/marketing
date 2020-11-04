@@ -1,20 +1,17 @@
-import React from "react"
-import { addDecorator } from "@storybook/react"
-import { ThemeProvider, createGlobalStyle } from "styled-components"
-import Base, { theme } from "@rent_avail/base"
+import { ThemeProvider } from "styled-components"
+import { Base, theme } from "@rent_avail/base"
 
-const ExtendedBase = createGlobalStyle`
-  body {
-    background: ${({ theme }) => theme.colors.ui_300};
-  }
-`
+export const parameters = {
+  actions: { argTypesRegex: "^on[A-Z].*" },
+}
 
-addDecorator((StoryComponent) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Base />
-      <ExtendedBase />
-      <StoryComponent />
-    </ThemeProvider>
-  )
-})
+export const decorators = [
+  (Story) => {
+    return (
+      <ThemeProvider theme={theme}>
+        <Base />
+        <Story />
+      </ThemeProvider>
+    )
+  },
+]

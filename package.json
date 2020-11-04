@@ -1,11 +1,13 @@
 {
+  "private": true,
   "name": "@rent_avail/marketing",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook -p 8080 -c .storybook -s ./public"
+    "storybook": "start-storybook -p 8008 --no-dll -s public",
+    "build-storybook": "build-storybook --no-dll"
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
@@ -24,20 +26,19 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-feather": "^2.0.8",
-    "styled-components": "^5.2.1",
-    "styled-system": "^5.1.5"
+    "react-is": "^17.0.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.5",
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
     "@storybook/react": "^6.0.28",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.11.1",
-    "prettier": "^2.1.2",
-    "react-is": "^17.0.1"
+    "prettier": "^2.1.2"
   },
   "license": "ISC",
   "prettier": {
