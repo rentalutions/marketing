@@ -1,28 +1,97 @@
 import { gql } from "@apollo/client"
-import { Box, Container } from "@rent_avail/layout"
+import { Box } from "@rent_avail/layout"
 import client from "../prismic.config"
+import { Heading } from "@rent_avail/typography"
+import { Hero } from "../components/Hero"
+import React from "react"
+import { useTheme } from "styled-components"
+import HomeSliceZone from "../components/slices/HomeSliceZone"
+import Head from "next/head"
 
 const HOMEPAGE_QUERY = gql`
   query {
-    homepage(uid: "home", lang: "en-us") {
-      hero
+    allHomepages {
+      edges {
+        node {
+          title
+          tagline
+          button_link {
+            ... on _ExternalLink {
+              url
+              target
+            }
+          }
+          button_text
+          image
+          body {
+            ... on HomepageBodyPitch_cards {
+              type
+              primary {
+                pitch_title
+                pitch_text
+                pitch_eyebrow
+              }
+              fields {
+                card_icon {
+                  ... on _ImageLink {
+                    url
+                  }
+                }
+                card_text
+                card_title
+              }
+            }
+            ... on HomepageBodyText {
+              type
+              primary {
+                text
+              }
+            }
+          }
+        }
+      }
     }
   }
 `
 
-export async function getStaticProps(ctx) {
-  const data = await client.query({ query: HOMEPAGE_QUERY })
+const getInitialProps = async (ctx) => {
+  const { data } = await client.query({
+    query: HOMEPAGE_QUERY,
+    fetchPolicy: "network-only",
+  })
   return {
-    props: { data },
+    data,
   }
 }
 
-export default function Home() {
+const Home = ({ data }) => {
+  const [{ node: homepage }] = data.allHomepages.edges
+  const { colors } = useTheme()
   return (
-    <Box as="main">
-      <Container sx={{ mt: "4rem" }}>
-        <Box as="h1">Hello World</Box>
-      </Container>
-    </Box>
+    <>
+      <Head>
+        <title>{homepage.title}</title>
+      </Head>
+      <Box as="main">
+        <Hero
+          color="ui_100"
+          bg="blue_500"
+          image={homepage.image.url}
+          title={<Heading as="h1">{homepage.title}</Heading>}
+          description={homepage.tagline}
+          secondaryLink={{
+            url: homepage.button_link.url,
+            text: homepage.button_text,
+            props: { color: "gold_500", textColor: colors.blue_500 },
+          }}
+        />
+        <HomeSliceZone slices={homepage.body} />
+        <Box height="12rem" bg="ui_300" />
+      </Box>
+    </>
   )
 }
+
+Home.getInitialProps = getInitialProps
+
+export default Home
