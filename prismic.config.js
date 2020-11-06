@@ -3,7 +3,7 @@ import { PrismicLink } from "apollo-link-prismic"
 
 const client = new ApolloClient({
   link: PrismicLink({
-    uri: "https://your-repository-name.prismic.io/graphql",
+    uri: `https://${process.env.PRISMIC_REPO_ID}.prismic.io/graphql`
   }),
   cache: new InMemoryCache(),
 })
