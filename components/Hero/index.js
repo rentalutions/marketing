@@ -55,7 +55,8 @@ function Hero({
               )}
               {secondaryLink && (
                 <Link href={secondaryLink.url}>
-                  <Button>{secondaryLink.text}</Button>
+                  {/** TODO: refactor the links to take component instead of "props"  */}
+                  <Button {...secondaryLink.props}>{secondaryLink.text}</Button>
                 </Link>
               )}
             </Stack>
