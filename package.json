@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook -p 8008 --no-dll -s public",
-    "build-storybook": "build-storybook --no-dll"
+    "build-storybook": "build-storybook --no-dll",
+    "schema": "node ./lib/get-schema.js"
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
@@ -38,6 +39,8 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.1",
     "prettier": "^2.1.2"
   },
   "license": "ISC",
