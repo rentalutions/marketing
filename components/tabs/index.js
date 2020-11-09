@@ -41,20 +41,12 @@ function useTabs({ defaultIndex, ...htmlProps }) {
       const exists = prevTabs.find((tab) => tab.element === element)
       if (exists) return prevTabs
       const index = prevTabs.findIndex((tabEl) => {
-        console.log(
-          "find index: ",
-          tabEl.element,
-          element,
-          exists,
-          tabEl.element.compareDocumentPosition(element)
-        )
         if (!tabEl.element || !element) return false
         return Boolean(
           tabEl.element.compareDocumentPosition(element) &
             Node.DOCUMENT_POSITION_PRECEDING
         )
       })
-      console.log("set tabs: ", exists, index, prevTabs, element)
       const newItem = { element, ...rest }
       if (index === -1) {
         return [...prevTabs, newItem]
@@ -63,7 +55,12 @@ function useTabs({ defaultIndex, ...htmlProps }) {
       }
     })
   }, [])
-  const deregisterTab = useCallback(() => {}, [])
+  const deregisterTab = useCallback(({ element }) => {
+    setTabs((prevTabs) => {
+      const index = prevTabs.findIndex((tab) => tab.element === element)
+      if (index) return [...prevTabs.splice(index, 1)]
+    })
+  }, [])
   return {
     htmlProps,
     tabElements: { tabs, registerTab, deregisterTab },
@@ -72,9 +69,15 @@ function useTabs({ defaultIndex, ...htmlProps }) {
   }
 }
 
-// function useTabsList(props) {
-//   const {} = useContext(TabsContext)
-// }
+/**
+ *
+ * useTabsList should be where key events are calculated. It's used to manage the tab buttons.
+ */
+
+function useTabsList(props) {
+  const { selectedIndex, setSelectedIndex } = useContext(TabsContext)
+  return { ...props }
+}
 
 function useTab({
   ref: outerRef,
