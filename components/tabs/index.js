@@ -32,7 +32,7 @@ function mergeRefs(...refs) {
 
 const TabsContext = createContext()
 
-function useTabs({ defaultIndex, ...htmlProps }) {
+function useTabs({ defaultIndex, searchParam, ...htmlProps }) {
   const [selectedIndex, setSelectedIndex] = useState(defaultIndex || 0)
   const [tabs, setTabs] = useState([])
   const registerTab = useCallback(({ element, ...rest }) => {
@@ -63,6 +63,7 @@ function useTabs({ defaultIndex, ...htmlProps }) {
   }, [])
   return {
     htmlProps,
+    searchParam,
     tabElements: { tabs, registerTab, deregisterTab },
     selectedIndex,
     setSelectedIndex,
@@ -71,7 +72,10 @@ function useTabs({ defaultIndex, ...htmlProps }) {
 
 /**
  *
- * useTabsList should be where key events are calculated. It's used to manage the tab buttons.
+ * useTabsList should be where key events are calculated.It's used to manage the
+ * tab buttons.
+ *
+ * @param props Props object for TabsList
  */
 
 function useTabsList(props) {
@@ -84,13 +88,17 @@ function useTab({
   index: indexProp,
   onClick = noop,
   onFocus = noop,
-  ...rest
+  param,
+  ...props
 }) {
   const innerRef = useRef(null)
 
-  const { tabElements, selectedIndex, setSelectedIndex } = useContext(
-    TabsContext
-  )
+  const {
+    tabElements,
+    selectedIndex,
+    setSelectedIndex,
+    searchParam,
+  } = useContext(TabsContext)
 
   const index =
     indexProp ??
@@ -108,6 +116,9 @@ function useTab({
 
   useLayoutEffect(() => {
     tabElements.registerTab({ element: innerRef.current })
+    if (searchParam === param) {
+      setSelectedIndex(index)
+    }
     return () => {
       if (innerRef.current) {
         tabElements.deregisterTab({ element: innerRef.current })
@@ -115,9 +126,11 @@ function useTab({
     }
   }, [innerRef.current])
   return {
-    ...rest,
+    ...props,
     as: "button",
-    isSelected,
+    role: "tab",
+    tabIndex: isSelected ? 0 : -1,
+    "aria-selected": isSelected,
     ref: mergeRefs(innerRef, outerRef),
     onClick: wrapEvent(handleClick, onClick),
     onFocus: wrapEvent(handleFocus, onFocus),
@@ -150,11 +163,11 @@ function useTabPanel(props) {
   }
 }
 
-export function Tabs({ param, animate = false, children, ...props }) {
+export function Tabs({ searchParam, animate = false, children, ...props }) {
   const params = new URLSearchParams(window.location.search)
   const { htmlProps, ...ctx } = useTabs({
     ...props,
-    defaultIndex: params.get(param),
+    searchParam: params.get(searchParam),
   })
   const context = useMemo(() => ctx, [ctx])
   return (
@@ -164,19 +177,49 @@ export function Tabs({ param, animate = false, children, ...props }) {
   )
 }
 
-export function TabList(props) {
-  return <Box {...props} />
+export function TabList({ sx = {}, ...props }) {
+  return (
+    <Box
+      {...props}
+      role="tablist"
+      as="nav"
+      sx={{
+        display: "flex",
+        flexWrap: "no-wrap",
+        overflowX: "auto",
+        "-webkit-overflow-scrolling": "touch",
+        "-ms-overflow-style": "-ms-autohiding-scrollbar",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+        ...sx,
+      }}
+    />
+  )
 }
 
 export const Tab = forwardRef(function Tab({ sx = {}, ...props }, ref) {
   const tabProps = useTab({ ...props, ref })
-  return <Box {...tabProps} sx={{ apperance: "none", ...sx }} />
+  return (
+    <Box
+      {...tabProps}
+      sx={{ apperance: "none", border: 0, flex: "0 0 auto", ...sx }}
+    />
+  )
 })
 
-export const TabPanels = forwardRef(function TabPanels(props, ref) {
-  const panelsProps = useTabPanels(props)
-  return <Box {...panelsProps} ref={ref} />
-})
+export function TabPanels(props) {
+  const { selectedIndex } = useContext(TabsContext)
+  const validChildren = Children.toArray(props.children).filter((child) =>
+    React.isValidElement(child)
+  )
+  const children = validChildren.map((child, idx) => {
+    return cloneElement(child, {
+      isSelected: idx === selectedIndex,
+    })
+  })
+  return children
+}
 
 export const TabPanel = forwardRef(function TabPanel(props, ref) {
   const panelProps = useTabPanel(props)

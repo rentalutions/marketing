@@ -9,10 +9,10 @@ export default {
 export function BasicUsage() {
   return (
     <Container>
-      <Tabs param="tab">
+      <Tabs searchParam="tab">
         <TabList>
           <Tab>Tab One</Tab>
-          <Tab>Tab Two</Tab>
+          <Tab param="one">Tab Two</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>Tab Panel One</TabPanel>
