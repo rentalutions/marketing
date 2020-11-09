@@ -1,5 +1,5 @@
 import React from "react"
-import { Hero } from "../Hero"
+import { Hero } from "../hero"
 import { Heading, Text } from "@rent_avail/typography"
 
 export default { title: "Hero" }

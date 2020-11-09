@@ -1,5 +1,5 @@
 import * as React from "react"
-import { MediaMentions } from "../MediaMentions"
+import { MediaMentions } from "../media-mentions"
 
 export default { title: "Media Mentions" }
 

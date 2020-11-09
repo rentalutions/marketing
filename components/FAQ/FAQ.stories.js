@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { FAQ } from "../FAQ"
+import { FAQ } from "."
 import { Text } from "@rent_avail/typography"
 
 export default { title: "FAQ" }
