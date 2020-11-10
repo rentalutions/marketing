@@ -9,7 +9,7 @@ import HomeSliceZone from "../components/slices/HomeSliceZone"
 import Head from "next/head"
 
 const HOMEPAGE_QUERY = gql`
-  query {
+  query getHomepage {
     allHomepages {
       edges {
         node {
@@ -65,7 +65,7 @@ const getInitialProps = async (ctx) => {
 }
 
 const Home = ({ data }) => {
-  const [{ node: homepage }] = data.allHomepages.edges
+  const homepage = data.allHomepages.edges[0].node
   const { colors } = useTheme()
   return (
     <>
