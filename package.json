@@ -8,10 +8,7 @@
     "start": "next start",
     "storybook": "start-storybook -p 8008 --no-dll -s public",
     "build-storybook": "build-storybook --no-dll",
-    "schema": "node ./lib/get-schema.mjs"
-  },
-  "engines": {
-    "node": ">=14"
+    "schema": "node ./lib/get-schema.js"
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
