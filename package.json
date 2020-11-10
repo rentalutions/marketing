@@ -16,9 +16,10 @@
   "dependencies": {
     "@apollo/client": "^3.2.5",
     "@rent_avail/base": "^0.4.4",
-    "@rent_avail/controls": "^0.2.10",
-    "@rent_avail/layout": "^0.3.6",
-    "@rent_avail/typography": "^0.1.14",
+    "@rent_avail/controls": "^0.2.11",
+    "@rent_avail/layout": "^0.3.7",
+    "@rent_avail/typography": "^0.1.15",
+    "@rent_avail/utils": "^0.2.7",
     "apollo-link-prismic": "^1.0.8",
     "clsx": "^1.1.1",
     "framer-motion": "^2.9.4",

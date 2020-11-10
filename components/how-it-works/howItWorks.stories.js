@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HowItWorks } from "../HowItWorks"
+import { HowItWorks } from "."
 import { Heading } from "@rent_avail/typography"
 
 export default { title: "How It Works" }

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { CallToAction } from "../CallToAction"
+import { CallToAction } from "."
 import { Text, Heading } from "@rent_avail/typography"
 
 export default { title: "Call To Action" }

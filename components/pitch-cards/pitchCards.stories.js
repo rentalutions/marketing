@@ -1,5 +1,5 @@
 import React from "react"
-import { PitchCards } from "../PitchCards"
+import { PitchCards } from "."
 
 export default { title: "Pitch Cards" }
 
