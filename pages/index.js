@@ -2,10 +2,10 @@ import { gql } from "@apollo/client"
 import { Box } from "@rent_avail/layout"
 import client from "../prismic.config"
 import { Heading } from "@rent_avail/typography"
-import { Hero } from "../components/Hero"
+import { Hero } from "../components/hero"
 import React from "react"
 import { useTheme } from "styled-components"
-import HomeSliceZone from "../components/slices/HomeSliceZone"
+import HomeSliceZone from "../components/slices/home-slice-zone"
 import Head from "next/head"
 
 const HOMEPAGE_QUERY = gql`

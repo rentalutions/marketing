@@ -1,6 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
-import { PitchCards } from "../../PitchCards"
+import { PitchCards } from "../../pitch-cards"
 
 const PitchCardsSlice = ({ slice }) => {
   const { pitch_title, pitch_text, pitch_eyebrow } = slice.primary

@@ -1,7 +1,7 @@
 import React from "react"
 import { Container } from "@rent_avail/layout"
-import PitchCardsSlice from "../PitchCardsSlice"
-import RichTextSlice from "../RichTextSlice"
+import PitchCardsSlice from "../pitch-cards-slice"
+import RichTextSlice from "../rich-text-slice"
 
 const HomeSliceZone = ({ slices }) => (
   <Container sx={{ mt: "4rem" }}>
