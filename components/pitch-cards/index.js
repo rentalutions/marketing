@@ -43,7 +43,7 @@ function PitchCard({ title = "", description = "", icon = "", ...props }) {
       <Heading as="h5" mb="2rem">
         {title}
       </Heading>
-      <Text>{description}</Text>
+      {description}
     </Col>
   )
 }

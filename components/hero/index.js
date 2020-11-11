@@ -16,7 +16,7 @@ const HeroWrapper = styled(Box)`
     width: 100%;
     height: 100%;
     background: ${({ theme, skewBg }) =>
-      skewBg ? skewBg : theme.colors.ui_100};
+      skewBg ? theme.colors[skewBg] || skewBg : theme.colors.ui_100};
     z-index: -1;
     transform: skewY(${({ skew }) => (skew === "right" ? 4 : -4)}deg);
     transform-origin: top ${({ skew }) => skew};
@@ -55,7 +55,8 @@ function Hero({
               )}
               {secondaryLink && (
                 <Link href={secondaryLink.url}>
-                  <Button>{secondaryLink.text}</Button>
+                  {/** TODO: refactor the links to take component instead of "props"  */}
+                  <Button {...secondaryLink.props}>{secondaryLink.text}</Button>
                 </Link>
               )}
             </Stack>
