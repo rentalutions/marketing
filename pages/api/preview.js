@@ -28,6 +28,14 @@ export default async function preview(req, res) {
     ref, // pass the ref to pages so that they can fetch the draft ref
   })
 
+  if (process.env.NODE_ENV === "development") {
+    const cookies = res.getHeader("Set-Cookie")
+    res.setHeader(
+      "Set-Cookie",
+      cookies.map((cookie) => cookie.replace("Secure;", ""))
+    )
+  }
+
   // Redirect the user to the share endpoint from same origin. This is
   // necessary due to a Chrome bug:
   // https://bugs.chromium.org/p/chromium/issues/detail?id=696204
