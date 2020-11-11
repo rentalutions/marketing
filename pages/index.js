@@ -54,10 +54,13 @@ const HOMEPAGE_QUERY = gql`
   }
 `
 
-const getInitialProps = async (ctx) => {
-  const { data } = await prismicQuery({ query: HOMEPAGE_QUERY, ctx })
+export const getStaticProps = async ({ preview = false, previewData = {} }) => {
+  const { data } = await prismicQuery({
+    query: HOMEPAGE_QUERY,
+    previewData,
+  })
   return {
-    data,
+    props: { data, preview },
   }
 }
 
@@ -88,7 +91,5 @@ const Home = ({ data }) => {
     </>
   )
 }
-
-Home.getInitialProps = getInitialProps
 
 export default Home
