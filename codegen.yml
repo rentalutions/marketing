@@ -1,0 +1,27 @@
+overwrite: true
+schema:
+  - "./schema/schema.graphql"
+documents:
+  - "./**/*.graphql"
+  - "./**/*.js"
+  - "./**/*.ts"
+  - "./**/*.tsx"
+  - "!./lib/generated"
+  - "!./node_modules"
+  - "!./.next"
+  - "!./out"
+
+generates:
+  ./lib/typings/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - add:
+          content: '/* eslint-disable */'
+  ./lib/typings/generated/possible-types.ts:
+    plugins:
+      - "fragment-matcher"
+      - add:
+          content: '/* eslint-disable */'
+    config:
+      apolloClientVersion: 3

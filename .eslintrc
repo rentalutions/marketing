@@ -15,6 +15,16 @@
     "semi": [1, "never"],
     "comma-dangle": [1, "only-multiline"],
     "consistent-return": [0],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "import/no-unresolved": [0],
     "import/no-extraneous-dependencies": [0],
     "import/prefer-default-export": [0],
@@ -24,5 +34,36 @@
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/jsx-props-no-spreading": [0],
     "jsx-a11y/anchor-is-valid": [0]
-  }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "extends": [
+        "airbnb-typescript",
+        "prettier/@typescript-eslint"
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "max-len": ["warn", 100, 2, {
+          "ignoreUrls": true,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true
+        }],
+        "import/prefer-default-export": [0],
+        "arrow-body-style": [1, "always"]
+      }
+    }
+  ]
 }

@@ -1,4 +1,3 @@
-import { gql } from "@apollo/client"
 import { Box } from "@rent_avail/layout"
 import { Heading } from "@rent_avail/typography"
 import React from "react"
@@ -6,61 +5,14 @@ import { useTheme } from "styled-components"
 import Head from "next/head"
 import HomeSliceZone from "../components/slices/home-slice-zone"
 import { Hero } from "../components/hero"
-import { prismicQuery } from "../prismic.config"
-
-const HOMEPAGE_QUERY = gql`
-  query getHomepage {
-    allHomepages {
-      edges {
-        node {
-          title
-          tagline
-          button_link {
-            ... on _ExternalLink {
-              url
-              target
-            }
-          }
-          button_text
-          image
-          body {
-            ... on HomepageBodyPitch_cards {
-              type
-              primary {
-                pitch_title
-                pitch_text
-                pitch_eyebrow
-              }
-              fields {
-                card_icon {
-                  ... on _ImageLink {
-                    url
-                  }
-                }
-                card_text
-                card_title
-              }
-            }
-            ... on HomepageBodyText {
-              type
-              primary {
-                text
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+import { getHomepage } from "../lib/api/homepage"
 
 export const getStaticProps = async ({ preview = false, previewData = {} }) => {
-  const { data } = await prismicQuery({
-    query: HOMEPAGE_QUERY,
-    previewData,
-  })
+  const result = await getHomepage({ previewData })
+  const { data } = result
   return {
     props: { data, preview },
+    revalidate: 1,
   }
 }
 
