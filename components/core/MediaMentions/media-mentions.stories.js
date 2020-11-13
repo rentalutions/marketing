@@ -1,7 +1,7 @@
 import * as React from "react"
-import { MediaMentions } from "../media-mentions"
+import { MediaMentions } from "."
 
-export default { title: "Media Mentions" }
+export default { title: "Components/Media Mentions" }
 
 export function Default() {
   return (

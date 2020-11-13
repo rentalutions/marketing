@@ -3,128 +3,10 @@ DateTime
 """
 scalar DateTime
 
-type Homepage implements _Document & _Linkable {
-  title: String
-  tagline: String
-  button_link: _Linkable
-  button_text: String
-  image: Json
-  body: [HomepageBody!]
-  _meta: Meta!
-  _linkType: String
-}
-
-union HomepageBody =
-    HomepageBodyPitch_cards
-  | HomepageBodyText
-  | HomepageBodySlice
-
-type HomepageBodyPitch_cards {
-  type: String
-  label: String
-  primary: HomepageBodyPitch_cardsPrimary
-  fields: [HomepageBodyPitch_cardsFields!]
-}
-
-type HomepageBodyPitch_cardsFields {
-  card_title: String
-  card_text: Json
-  card_icon: _Linkable
-}
-
-type HomepageBodyPitch_cardsPrimary {
-  pitch_title: String
-  pitch_text: Json
-  pitch_eyebrow: String
-}
-
-type HomepageBodySlice {
-  type: String
-  label: String
-}
-
-type HomepageBodyText {
-  type: String
-  label: String
-  primary: HomepageBodyTextPrimary
-}
-
-type HomepageBodyTextPrimary {
-  text: Json
-}
-
-"""
-A connection to a list of items.
-"""
-type HomepageConnectionConnection {
-  """
-  Information to aid in pagination.
-  """
-  pageInfo: PageInfo!
-
-  """
-  A list of edges.
-  """
-  edges: [HomepageConnectionEdge]
-  totalCount: Long!
-}
-
-"""
-An edge in a connection.
-"""
-type HomepageConnectionEdge {
-  """
-  The item at the end of the edge.
-  """
-  node: Homepage!
-
-  """
-  A cursor for use in pagination.
-  """
-  cursor: String!
-}
-
 """
 Raw JSON value
 """
 scalar Json
-
-type Menu implements _Document & _Linkable {
-  title: Json
-  _meta: Meta!
-  _linkType: String
-}
-
-"""
-A connection to a list of items.
-"""
-type MenuConnectionConnection {
-  """
-  Information to aid in pagination.
-  """
-  pageInfo: PageInfo!
-
-  """
-  A list of edges.
-  """
-  edges: [MenuConnectionEdge]
-  totalCount: Long!
-}
-
-"""
-An edge in a connection.
-"""
-type MenuConnectionEdge {
-  """
-  The item at the end of the edge.
-  """
-  node: Menu!
-
-  """
-  A cursor for use in pagination.
-  """
-  cursor: String!
-}
 
 type Meta {
   """
@@ -169,120 +51,194 @@ type Meta {
 }
 
 type Page implements _Document & _Linkable {
-  hero_text: Json
   body: [PageBody!]
+  meta_title: String
+  meta_description: String
+  social_cards: [PageSocial_cards!]
   _meta: Meta!
   _linkType: String
 }
 
 union PageBody =
-    PageBodyHighlight_section
-  | PageBodyBanner
-  | PageBodyBanner_look
-  | PageBodyEditorial_look
-  | PageBodyText_section
-  | PageBodyImage_slider
-  | PageBodyGallery
-  | PageBodyVideo
+    PageBodyAlternate_grid
+  | PageBodyCall_to_action
+  | PageBodyCards_carousel
+  | PageBodyCustomer_logos
+  | PageBodyFaq_section
+  | PageBodyImages_slider
+  | PageBodyPricing_table
+  | PageBodyTestimonials_slider
+  | PageBodyVideo_highlights
 
-type PageBodyBanner {
+type PageBodyAlternate_grid {
   type: String
   label: String
-  primary: PageBodyBannerPrimary
+  primary: PageBodyAlternate_gridPrimary
+  fields: [PageBodyAlternate_gridFields!]
 }
 
-type PageBodyBannerPrimary {
-  title: Json
-  link: _Linkable
-  image: Json
-}
-
-type PageBodyBanner_look {
-  type: String
-  label: String
-  primary: PageBodyBanner_lookPrimary
-}
-
-type PageBodyBanner_lookPrimary {
-  background_image: Json
-  quote: Json
-  quote_author: Json
-  quote_position: String
-  quote_style: String
-}
-
-type PageBodyEditorial_look {
-  type: String
-  label: String
-  primary: PageBodyEditorial_lookPrimary
-  fields: [PageBodyEditorial_lookFields!]
-}
-
-type PageBodyEditorial_lookFields {
-  look_link: Json
-}
-
-type PageBodyEditorial_lookPrimary {
-  title: Json
-  text: Json
-  image: Json
-  text_position: String
-}
-
-type PageBodyGallery {
-  type: String
-  label: String
-  fields: [PageBodyGalleryFields!]
-}
-
-type PageBodyGalleryFields {
-  image: Json
-  description: Json
-  link: _Linkable
-}
-
-type PageBodyHighlight_section {
-  type: String
-  label: String
-  primary: PageBodyHighlight_sectionPrimary
-}
-
-type PageBodyHighlight_sectionPrimary {
-  image: Json
+type PageBodyAlternate_gridFields {
+  optional_icon: Json
   title: Json
   description: Json
-  button_label: Json
+}
+
+type PageBodyAlternate_gridPrimary {
+  eyebrow_headline: Json
+  title: Json
+  description: Json
+  optional_image: Json
+  image_side: String
+}
+
+type PageBodyCall_to_action {
+  type: String
+  label: String
+  primary: PageBodyCall_to_actionPrimary
+}
+
+type PageBodyCall_to_actionPrimary {
+  icon_image: Json
+  title: Json
+  paragraph: Json
   button_link: _Linkable
+  button_label: String
 }
 
-type PageBodyImage_slider {
+type PageBodyCards_carousel {
   type: String
   label: String
-  fields: [PageBodyImage_sliderFields!]
+  primary: PageBodyCards_carouselPrimary
+  fields: [PageBodyCards_carouselFields!]
 }
 
-type PageBodyImage_sliderFields {
+type PageBodyCards_carouselFields {
   image: Json
+  title: Json
+  content: Json
+  additional_info: Json
 }
 
-type PageBodyText_section {
+type PageBodyCards_carouselPrimary {
+  eyebrow_headline: Json
+  title: Json
+  description: Json
+}
+
+type PageBodyCustomer_logos {
   type: String
   label: String
-  primary: PageBodyText_sectionPrimary
+  primary: PageBodyCustomer_logosPrimary
+  fields: [PageBodyCustomer_logosFields!]
 }
 
-type PageBodyText_sectionPrimary {
+type PageBodyCustomer_logosFields {
+  logo: Json
+  link: _Linkable
+}
+
+type PageBodyCustomer_logosPrimary {
+  eyebrow_headline: Json
+  call_to_action: Json
+  call_to_action_link: _Linkable
+}
+
+type PageBodyFaq_section {
+  type: String
+  label: String
+  primary: PageBodyFaq_sectionPrimary
+  fields: [PageBodyFaq_sectionFields!]
+}
+
+type PageBodyFaq_sectionFields {
+  title: Json
   text: Json
 }
 
-type PageBodyVideo {
-  type: String
-  label: String
-  primary: PageBodyVideoPrimary
+type PageBodyFaq_sectionPrimary {
+  eyebrow_headline: Json
+  title: Json
+  description: Json
+  optional_image: Json
 }
 
-type PageBodyVideoPrimary {
-  embed: Json
+type PageBodyImages_slider {
+  type: String
+  label: String
+  primary: PageBodyImages_sliderPrimary
+  fields: [PageBodyImages_sliderFields!]
+}
+
+type PageBodyImages_sliderFields {
+  image: Json
+  description: Json
+}
+
+type PageBodyImages_sliderPrimary {
+  eyebrow_headline: Json
+  title: Json
+  description: Json
+}
+
+type PageBodyPricing_table {
+  type: String
+  label: String
+  primary: PageBodyPricing_tablePrimary
+  fields: [PageBodyPricing_tableFields!]
+}
+
+type PageBodyPricing_tableFields {
+  plan_title: Json
+  price_option: Json
+  features: Json
+  call_to_action: _Linkable
+  call_to_action_text: Json
+}
+
+type PageBodyPricing_tablePrimary {
+  eyebrow_headline: Json
+  title: Json
+  description: Json
+}
+
+type PageBodyTestimonials_slider {
+  type: String
+  label: String
+  primary: PageBodyTestimonials_sliderPrimary
+  fields: [PageBodyTestimonials_sliderFields!]
+}
+
+type PageBodyTestimonials_sliderFields {
+  image: Json
+  testimonial: Json
+  person: String
+  title: String
+}
+
+type PageBodyTestimonials_sliderPrimary {
+  eyebrow_headline: Json
+  title: Json
+  paragraph: Json
+  button_link: _Linkable
+  button_label: String
+}
+
+type PageBodyVideo_highlights {
+  type: String
+  label: String
+  primary: PageBodyVideo_highlightsPrimary
+  fields: [PageBodyVideo_highlightsFields!]
+}
+
+type PageBodyVideo_highlightsFields {
+  video_title: Json
+  video_src: Json
+}
+
+type PageBodyVideo_highlightsPrimary {
+  eyebrow_headline: Json
+  title: Json
+  description: Json
 }
 
 """
@@ -341,42 +297,10 @@ type PageInfo {
   endCursor: String
 }
 
-type Product implements _Document & _Linkable {
-  title: Json
-  product_description: Json
-  _meta: Meta!
-  _linkType: String
-}
-
-"""
-A connection to a list of items.
-"""
-type ProductConnectionConnection {
-  """
-  Information to aid in pagination.
-  """
-  pageInfo: PageInfo!
-
-  """
-  A list of edges.
-  """
-  edges: [ProductConnectionEdge]
-  totalCount: Long!
-}
-
-"""
-An edge in a connection.
-"""
-type ProductConnectionEdge {
-  """
-  The item at the end of the edge.
-  """
-  node: Product!
-
-  """
-  A cursor for use in pagination.
-  """
-  cursor: String!
+type PageSocial_cards {
+  social_card_image: Json
+  social_card_title: String
+  social_card_description: String
 }
 
 type Query {
@@ -404,56 +328,6 @@ type Query {
     first: Int
     last: Int
   ): _DocumentConnection!
-  allHomepages(
-    sortBy: SortHomepagey
-    id: String
-    id_in: [String!]
-    uid: String
-    uid_in: [String!]
-    lang: String
-    tags: [String!]
-    tags_in: [String!]
-    type: String
-    type_in: [String!]
-    firstPublicationDate: DateTime
-    firstPublicationDate_after: DateTime
-    firstPublicationDate_before: DateTime
-    lastPublicationDate: DateTime
-    lastPublicationDate_after: DateTime
-    lastPublicationDate_before: DateTime
-    fulltext: String
-    similar: similar
-    where: WhereHomepage
-    before: String
-    after: String
-    first: Int
-    last: Int
-  ): HomepageConnectionConnection!
-  allMenus(
-    sortBy: SortMenuy
-    id: String
-    id_in: [String!]
-    uid: String
-    uid_in: [String!]
-    lang: String
-    tags: [String!]
-    tags_in: [String!]
-    type: String
-    type_in: [String!]
-    firstPublicationDate: DateTime
-    firstPublicationDate_after: DateTime
-    firstPublicationDate_before: DateTime
-    lastPublicationDate: DateTime
-    lastPublicationDate_after: DateTime
-    lastPublicationDate_before: DateTime
-    fulltext: String
-    similar: similar
-    where: WhereMenu
-    before: String
-    after: String
-    first: Int
-    last: Int
-  ): MenuConnectionConnection!
   page(uid: String!, lang: String!): Page
   allPages(
     sortBy: SortPagey
@@ -480,32 +354,6 @@ type Query {
     first: Int
     last: Int
   ): PageConnectionConnection!
-  product(uid: String!, lang: String!): Product
-  allProducts(
-    sortBy: SortProducty
-    id: String
-    id_in: [String!]
-    uid: String
-    uid_in: [String!]
-    lang: String
-    tags: [String!]
-    tags_in: [String!]
-    type: String
-    type_in: [String!]
-    firstPublicationDate: DateTime
-    firstPublicationDate_after: DateTime
-    firstPublicationDate_before: DateTime
-    lastPublicationDate: DateTime
-    lastPublicationDate_after: DateTime
-    lastPublicationDate_before: DateTime
-    fulltext: String
-    similar: similar
-    where: WhereProduct
-    before: String
-    after: String
-    first: Int
-    last: Int
-  ): ProductConnectionConnection!
 }
 
 type RelatedDocument {
@@ -537,86 +385,22 @@ enum SortDocumentsBy {
   meta_lastPublicationDate_DESC
 }
 
-enum SortHomepagey {
-  meta_firstPublicationDate_ASC
-  meta_firstPublicationDate_DESC
-  meta_lastPublicationDate_ASC
-  meta_lastPublicationDate_DESC
-  title_ASC
-  title_DESC
-  tagline_ASC
-  tagline_DESC
-  button_text_ASC
-  button_text_DESC
-}
-
-enum SortMenuy {
-  meta_firstPublicationDate_ASC
-  meta_firstPublicationDate_DESC
-  meta_lastPublicationDate_ASC
-  meta_lastPublicationDate_DESC
-  title_ASC
-  title_DESC
-}
-
 enum SortPagey {
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
-  hero_text_ASC
-  hero_text_DESC
-}
-
-enum SortProducty {
-  meta_firstPublicationDate_ASC
-  meta_firstPublicationDate_DESC
-  meta_lastPublicationDate_ASC
-  meta_lastPublicationDate_DESC
-  title_ASC
-  title_DESC
-  product_description_ASC
-  product_description_DESC
-}
-
-input WhereHomepage {
-  title: String
-  title_fulltext: String
-  tagline: String
-  tagline_fulltext: String
-
-  """
-  button_link
-  """
-  button_link: String
-  button_text: String
-  button_text_fulltext: String
-}
-
-input WhereMenu {
-  """
-  title
-  """
-  title_fulltext: String
+  meta_title_ASC
+  meta_title_DESC
+  meta_description_ASC
+  meta_description_DESC
 }
 
 input WherePage {
-  """
-  hero_text
-  """
-  hero_text_fulltext: String
-}
-
-input WhereProduct {
-  """
-  title
-  """
-  title_fulltext: String
-
-  """
-  product_description
-  """
-  product_description_fulltext: String
+  meta_title: String
+  meta_title_fulltext: String
+  meta_description: String
+  meta_description_fulltext: String
 }
 
 """

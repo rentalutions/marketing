@@ -18,7 +18,7 @@ const PreviewWarning = () => {
         fontSize="1.5rem"
         fontWeight="800"
         as="a"
-        href={`/api/exit-preview?redirectUrl=${router.pathname}`}
+        href={`/api/exit-preview?redirectUrl=${router.asPath}`}
       >
         Exit preview mode
       </Text>
