@@ -7,6 +7,7 @@ module.exports = {
       {
         alias: {
           components: "./components",
+          slices: "./slices",
           "@prismic-config": "./prismic.config.js",
         },
       },

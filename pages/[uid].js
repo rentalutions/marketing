@@ -1,11 +1,8 @@
 import React from "react"
-import SliceZone from "next-slicezone"
-import dynamic from "next/dynamic"
 import { useGetStaticProps, useGetStaticPaths } from "next-slicezone/hooks"
 import { prismicClient } from "@prismic-config"
-
-const resolver = ({ sliceName }) =>
-  dynamic(() => import(`../slices/${sliceName}/index.js`))
+import SliceZone from "components/prismic/SliceZone"
+import Head from "next/head"
 
 export const getStaticProps = async ({
   preview = null,
@@ -33,8 +30,19 @@ export const getStaticPaths = useGetStaticPaths({
   formatPath: ({ uid }) => ({ params: { uid } }),
 })
 
-const Page = ({ registry, slices }) => {
-  return <SliceZone resolver={resolver} registry={registry} slices={slices} />
+const Page = ({ slices, data }) => {
+  if (!data) {
+    return null
+  }
+  return (
+    <>
+      <Head>
+        <title>{data.meta_title}</title>
+        <meta name="description" content={data.meta_description} />
+      </Head>
+      <SliceZone slices={slices} />
+    </>
+  )
 }
 
 export default Page
