@@ -1,13 +1,23 @@
 import { prismicClient } from "@prismic-config"
 
-function linkResolver(doc) {
+const linkResolver = (doc) => {
   // Pretty URLs for known types
   if (doc.uid) {
     return `/${doc.uid}`
   }
 }
 
-export default async function preview(req, res) {
+export const fixCookies = (res) => {
+  const cookies = res.getHeader("Set-Cookie")
+  res.setHeader(
+    "Set-Cookie",
+    cookies.map((cookie) => {
+      return cookie.replace("Secure;", "").replace("SameSite=None", "")
+    })
+  )
+}
+
+const preview = async (req, res) => {
   const { token: ref, documentId } = req.query
 
   // Check the token parameter against the Prismic SDK
@@ -25,11 +35,7 @@ export default async function preview(req, res) {
   })
 
   if (process.env.NODE_ENV === "development") {
-    const cookies = res.getHeader("Set-Cookie")
-    res.setHeader(
-      "Set-Cookie",
-      cookies.map((cookie) => cookie.replace("Secure;", ""))
-    )
+    fixCookies(res)
   }
 
   // Redirect the user to the share endpoint from same origin. This is
@@ -43,3 +49,5 @@ export default async function preview(req, res) {
 
   res.end()
 }
+
+export default preview
