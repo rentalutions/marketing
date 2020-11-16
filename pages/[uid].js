@@ -20,6 +20,7 @@ export const getStaticProps = async ({
       previewData,
       ...hookResult.props,
     },
+    revalidate: 1,
   }
 }
 

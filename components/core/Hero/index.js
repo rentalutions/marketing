@@ -26,6 +26,7 @@ function Hero({
   description,
   title,
   image = null,
+  imagePosition = "right",
   primaryLink,
   secondaryLink,
   ...props
@@ -56,6 +57,7 @@ function Hero({
             src={image}
             span={[12, 6]}
             gridRow={["1", "auto"]}
+            order={imagePosition === "left" ? -1 : 1}
             maxWidth="100%"
           />
         )}

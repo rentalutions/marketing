@@ -25,7 +25,7 @@
             "label": "Description",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "paragraph"
+            "multi": "paragraph, preformatted, strong, em, hyperlink, list-item, o-list-item, rtl"
           },
           "type": "StructuredText"
         },
@@ -36,6 +36,10 @@
             "default_value": "ui_100",
             "options": [
               "ui_100",
+              "ui_300",
+              "ui_500",
+              "blue_100",
+              "blue_300",
               "blue_500"
             ]
           },
@@ -76,6 +80,18 @@
           },
           "type": "Image"
         },
+        "imagePosition": {
+          "config": {
+            "label": "Image position",
+            "placeholder": "",
+            "default_value": "",
+            "options": [
+              "right",
+              "left"
+            ]
+          },
+          "type": "Select"
+        },
         "primaryButtonText": {
           "config": {
             "label": "Primary button: Text",
@@ -105,17 +121,6 @@
             "allowTargetBlank": true
           },
           "type": "Link"
-        },
-        "primaryButtonLinkColor": {
-          "config": {
-            "label": "Primary button: Link color",
-            "placeholder": "",
-            "options": [
-              "ui_100",
-              "ui_900"
-            ]
-          },
-          "type": "Select"
         }
       },
       "items": {}

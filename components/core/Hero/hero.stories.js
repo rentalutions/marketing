@@ -71,3 +71,30 @@ export function WithBgColor() {
     />
   )
 }
+
+export function WithSwap() {
+  return (
+    <Hero
+      color="ui_100"
+      bg="gold_700"
+      image="https://avail-design-site.now.sh/images/building.svg"
+      imagePosition="left"
+      title={
+        <Heading as="h1">
+          Feel good about the way you manage your rentals.
+        </Heading>
+      }
+      description={
+        <Text>
+          Find tenants, view credit history, sign leases, and collect rent — on
+          any device, with tools built specifically for DIY landlords.
+        </Text>
+      }
+      primaryLink={
+        <Link href="https://avail.co/">
+          <Button variant="primary">Get Started</Button>
+        </Link>
+      }
+    />
+  )
+}
