@@ -2,7 +2,7 @@ import React from "react"
 import { ThemeProvider } from "styled-components"
 import { theme, Base } from "@rent_avail/base"
 import Head from "next/head"
-import PreviewWarning from "../components/preview-warning"
+import PreviewWarning from "components/prismic/PreviewWarning"
 
 export default function App({ Component, pageProps }) {
   const { preview } = pageProps

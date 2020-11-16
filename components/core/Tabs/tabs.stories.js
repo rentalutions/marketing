@@ -3,7 +3,7 @@ import { Container } from "@rent_avail/layout"
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "./index"
 
 export default {
-  title: "Tabs",
+  title: "Components/Tabs",
 }
 
 export function BasicUsage() {

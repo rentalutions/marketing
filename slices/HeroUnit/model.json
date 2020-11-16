@@ -1,0 +1,124 @@
+{
+  "id": "hero_unit",
+  "type": "SharedSlice",
+  "name": "HeroUnit",
+  "description": "HeroUnit",
+  "variations": [
+    {
+      "id": "default-slice",
+      "name": "Default slice",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "HeroUnit",
+      "primary": {
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "background": {
+          "config": {
+            "label": "Background color",
+            "placeholder": "",
+            "default_value": "ui_100",
+            "options": [
+              "ui_100",
+              "blue_500"
+            ]
+          },
+          "type": "Select"
+        },
+        "color": {
+          "config": {
+            "label": "Text color",
+            "placeholder": "",
+            "default_value": "",
+            "options": [
+              "ui_900",
+              "ui_700",
+              "ui_500",
+              "ui_300",
+              "ui_100"
+            ]
+          },
+          "type": "Select"
+        },
+        "skew": {
+          "config": {
+            "label": "Skew",
+            "placeholder": "",
+            "default_value": "right",
+            "options": [
+              "right",
+              "left"
+            ]
+          },
+          "type": "Select"
+        },
+        "image": {
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          },
+          "type": "Image"
+        },
+        "primaryButtonText": {
+          "config": {
+            "label": "Primary button: Text",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "primaryButtonLink": {
+          "config": {
+            "label": "Primary button: Link",
+            "placeholder": "",
+            "allowTargetBlank": true
+          },
+          "type": "Link"
+        },
+        "secondaryButtonText": {
+          "config": {
+            "label": "Secondary button: Text",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "secondaryButtonLink": {
+          "config": {
+            "label": "Secondary button: Link",
+            "placeholder": "",
+            "allowTargetBlank": true
+          },
+          "type": "Link"
+        },
+        "primaryButtonLinkColor": {
+          "config": {
+            "label": "Primary button: Link color",
+            "placeholder": "",
+            "options": [
+              "ui_100",
+              "ui_900"
+            ]
+          },
+          "type": "Select"
+        }
+      },
+      "items": {}
+    }
+  ]
+}

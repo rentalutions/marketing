@@ -1,13 +1,13 @@
 import * as React from "react"
-import { HowItWorks } from "."
 import { Heading } from "@rent_avail/typography"
+import { HowItWorks } from "."
 
-export default { title: "How It Works" }
+export default { title: "Components/How It Works" }
 
 const basicSections = [
   {
     copy: (
-      <React.Fragment>
+      <>
         <h3>Look at our amazing feature.</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
@@ -15,7 +15,7 @@ const basicSections = [
           saepe quo doloribus. Ab, odio corrupti! Ratione nulla dolor id
           veritatis tempora.
         </p>
-      </React.Fragment>
+      </>
     ),
     image: {
       url: "/feature-image.svg",
@@ -23,7 +23,7 @@ const basicSections = [
   },
   {
     copy: (
-      <React.Fragment>
+      <>
         <h3>Look at our amazing feature.</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
@@ -31,7 +31,7 @@ const basicSections = [
           saepe quo doloribus. Ab, odio corrupti! Ratione nulla dolor id
           veritatis tempora.
         </p>
-      </React.Fragment>
+      </>
     ),
     image: {
       url: "/feature-image.svg",

@@ -1,19 +1,19 @@
 import React, { Fragment } from "react"
-import { FAQ } from "."
 import { Text } from "@rent_avail/typography"
+import { FAQ } from "."
 
-export default { title: "FAQ" }
+export default { title: "Components/FAQ" }
 
 function Answer() {
   return (
-    <Fragment>
+    <>
       <Text>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
         possimus officiis tenetur, ex tempora repellat quibusdam, ab soluta
         neque incidunt magni earum architecto veritatis rerum optio consectetur
         adipisci minus dicta.
       </Text>
-    </Fragment>
+    </>
   )
 }
 

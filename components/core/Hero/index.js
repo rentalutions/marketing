@@ -1,9 +1,6 @@
 import React, { cloneElement } from "react"
 import styled from "styled-components"
-import Link from "next/link"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
-import { Heading } from "@rent_avail/typography"
-import { Button } from "@rent_avail/controls"
 
 const HeroWrapper = styled(Box)`
   position: relative;
@@ -48,17 +45,8 @@ function Hero({
           <Box mt="2rem">{description}</Box>
           {links && (
             <Stack wrapChildren direction={["row"]} mt="2rem">
-              {primaryLink && (
-                <Link href={primaryLink.url}>
-                  <Button variant="primary">{primaryLink.text}</Button>
-                </Link>
-              )}
-              {secondaryLink && (
-                <Link href={secondaryLink.url}>
-                  {/** TODO: refactor the links to take component instead of "props"  */}
-                  <Button {...secondaryLink.props}>{secondaryLink.text}</Button>
-                </Link>
-              )}
+              {primaryLink}
+              {secondaryLink}
             </Stack>
           )}
         </Col>

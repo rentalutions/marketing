@@ -1,7 +1,7 @@
 import React from "react"
 import { PitchCards } from "."
 
-export default { title: "Pitch Cards" }
+export default { title: "Components/Pitch Cards" }
 
 const sections = [
   {

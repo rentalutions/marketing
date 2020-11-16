@@ -1,7 +1,7 @@
 import React from "react"
 import { BigNumbers } from "."
 
-export default { title: "Social Proof" }
+export default { title: "Components/Social Proof" }
 
 export function BigNumbersDefault() {
   return (
