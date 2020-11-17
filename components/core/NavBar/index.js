@@ -36,6 +36,7 @@ const NavBar = ({ background = "ui_100", links = [] }) => {
             key={link.href}
             href={link.href}
             ml={index === splitIndex ? "auto" : "0"}
+            forwardedAs="a"
           >
             {link.text}
           </NavBarButton>
