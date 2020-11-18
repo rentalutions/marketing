@@ -11,7 +11,7 @@ export const getStaticProps = async ({
 }) => {
   const hookResult = await useGetStaticProps({
     client: prismicClient,
-    type: "page",
+    type: "info",
     uid: ({ params: p }) => p.uid,
   })({ preview, previewData, params })
   return {
@@ -26,7 +26,7 @@ export const getStaticProps = async ({
 
 export const getStaticPaths = useGetStaticPaths({
   client: prismicClient,
-  type: "page",
+  type: "info",
   fallback: true,
   formatPath: ({ uid }) => ({ params: { uid } }),
 })
