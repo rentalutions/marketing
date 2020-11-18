@@ -5,7 +5,7 @@ const withTM = require("next-transpile-modules")([
 ])
 
 module.exports = withPlugins([withTM], {
-  async rewrites() {
+  async redirects() {
     return [
       {
         source: "/",
