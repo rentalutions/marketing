@@ -1,0 +1,87 @@
+{
+  "id": "nav_bar",
+  "type": "SharedSlice",
+  "name": "NavBar",
+  "description": "NavBar",
+  "variations": [
+    {
+      "id": "default-slice",
+      "name": "Default slice",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "NavBar",
+      "primary": {
+        "sticky": {
+          "config": {
+            "label": "Sticky",
+            "placeholder": "",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          },
+          "type": "Boolean"
+        }
+      },
+      "items": {
+        "buttonText": {
+          "config": {
+            "label": "Button text",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "buttonLink": {
+          "config": {
+            "label": "Button link",
+            "placeholder": "",
+            "allowTargetBlank": true
+          },
+          "type": "Link"
+        },
+        "buttonHash": {
+          "config": {
+            "label": "Button hash (jump link)",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "primary": {
+          "config": {
+            "label": "Primary button",
+            "placeholder": "",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          },
+          "type": "Boolean"
+        },
+        "push": {
+          "config": {
+            "label": "Push to the end",
+            "placeholder": "",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          },
+          "type": "Boolean"
+        },
+        "breakpoint": {
+          "config": {
+            "label": "Show after breakpoint",
+            "placeholder": "",
+            "default_value": "all",
+            "options": [
+              "all",
+              "40rem",
+              "60rem",
+              "80rem",
+              "100rem",
+              "120rem"
+            ]
+          },
+          "type": "Select"
+        }
+      }
+    }
+  ]
+}
