@@ -1,13 +1,14 @@
 import * as React from "react"
-import styled from "styled-components"
 import { Container, Grid, Col, Box } from "@rent_avail/layout"
 import { Heading, Text } from "@rent_avail/typography"
+import Link from "next/link"
 
-function PitchCards({ sections, title, description, eyebrow, ...props }) {
-  const span = sections.length < 4 ? [12, 12 / sections.length] : [12, 6]
+function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
+  const cardSpan =
+    span || (sections.length < 4 ? [12, 12 / sections.length] : [12, 6])
   const headingContent = title || description || eyebrow
   return (
-    <Container {...props} as={Grid} gap="3rem">
+    <Container {...props} as={Grid} gap={["3rem 0", "3rem"]}>
       {headingContent && (
         <Col span={12}>
           {eyebrow && (
@@ -15,35 +16,48 @@ function PitchCards({ sections, title, description, eyebrow, ...props }) {
               {eyebrow}
             </Text>
           )}
-          {title && (
-            <Heading as="h2" mb="1rem">
-              {title}
-            </Heading>
-          )}
+          {title && title}
           {description && description}
         </Col>
       )}
-      {sections.map(({ title, icon, description }) => (
+      {/* eslint-disable-next-line no-shadow */}
+      {sections.map(({ title, icon, description, link }) => (
         <PitchCard
           key={title}
           title={title}
           icon={icon}
           description={description}
-          span={span}
+          link={link}
+          span={cardSpan}
         />
       ))}
     </Container>
   )
 }
 
-function PitchCard({ title = "", description = "", icon = "", ...props }) {
+function PitchCard({
+  title = "",
+  description = "",
+  icon = "",
+  link,
+  ...props
+}) {
   return (
     <Col {...props}>
-      {icon && <Box as="img" src={icon} width="6rem" />}
+      {icon && <Box as="img" src={icon} width="10rem" />}
       <Heading as="h5" mb="2rem">
         {title}
       </Heading>
-      {description}
+      {description && description}
+      {link && (
+        <Box mt="1.5rem">
+          <Link href={link.url} passHref>
+            <Text as="a" color="blue_700">
+              {link.text}
+            </Text>
+          </Link>
+        </Box>
+      )}
     </Col>
   )
 }
