@@ -1,6 +1,6 @@
 import React from "react"
 import { Flex } from "@rent_avail/layout"
-import { HeroUnit, NavBar } from "slices"
+import { HeroUnit, NavBar, PitchCards } from "slices"
 import { Text } from "@rent_avail/typography"
 import { useTheme } from "styled-components"
 
@@ -16,6 +16,8 @@ const SliceZone = ({ slices }) => {
         return <HeroUnit key={key} slice={slice} />
       case "nav_bar":
         return <NavBar key={key} slice={slice} />
+      case "pitch_cards":
+        return <PitchCards key={key} slice={slice} />
       default:
         return (
           <Flex

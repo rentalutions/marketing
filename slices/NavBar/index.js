@@ -1,7 +1,9 @@
 import React from "react"
 import NavBar from "components/core/NavBar"
+import { useTheme } from "styled-components"
 
 const NavBarSlice = ({ slice }) => {
+  const { colors } = useTheme()
   const {
     primary: { sticky },
   } = slice
@@ -14,7 +16,13 @@ const NavBarSlice = ({ slice }) => {
       breakpoint,
     })
   )
-  return <NavBar links={links} sticky={sticky} />
+  return (
+    <NavBar
+      links={links}
+      sticky={sticky}
+      borderBottom={sticky ? `1px solid ${colors.ui_500}` : "none"}
+    />
+  )
 }
 
 export default NavBarSlice
