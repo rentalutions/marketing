@@ -6,6 +6,10 @@ const matchAs = (type) => {
 }
 
 const Heading = ({ render, ...props }) => {
+  if (!render || !render.type) {
+    console.warn("Empty render prop for < Heading />")
+    return null
+  }
   return (
     <AvailHeading {...props} as={matchAs(render.type)}>
       {render.text}
