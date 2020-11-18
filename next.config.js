@@ -10,6 +10,7 @@ module.exports = withPlugins([withTM], {
       {
         source: "/",
         destination: "/info/listings",
+        permanent: false,
       },
     ]
   },
