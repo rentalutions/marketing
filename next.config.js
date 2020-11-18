@@ -9,7 +9,7 @@ module.exports = withPlugins([withTM], {
     return [
       {
         source: "/",
-        destination: "/homepage",
+        destination: "/info/listings",
       },
     ]
   },
