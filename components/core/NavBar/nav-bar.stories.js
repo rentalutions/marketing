@@ -23,7 +23,7 @@ export function Default() {
   return (
     <React.Fragment>
       <NavBar links={links} sticky />
-      <Container maxWidth="40rem">
+      <Container maxWidth="96rem">
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae
           elit sit amet quam iaculis dignissim. Ut malesuada, risus non mollis

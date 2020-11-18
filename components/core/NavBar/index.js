@@ -36,7 +36,8 @@ const NavBar = ({
       <Container p={["1rem", "2rem"]} maxWidth={containerWidth}>
         <Flex>
           <Box as="a" href="https://avail.co" mr="2rem">
-            <img
+            <Box
+              as="img"
               src="/icons/icon-100.png"
               aria-label="Avail"
               alt="Avail"

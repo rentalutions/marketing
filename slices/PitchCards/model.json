@@ -1,0 +1,83 @@
+{
+  "id": "pitch_cards",
+  "type": "SharedSlice",
+  "name": "PitchCards",
+  "description": "PitchCards",
+  "variations": [
+    {
+      "id": "default-slice",
+      "name": "Default slice",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "PitchCards",
+      "primary": {
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item"
+          },
+          "type": "StructuredText"
+        },
+        "hash": {
+          "config": {
+            "label": "Jump link hash",
+            "placeholder": ""
+          },
+          "type": "Text"
+        }
+      },
+      "items": {
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item"
+          },
+          "type": "StructuredText"
+        },
+        "icon": {
+          "config": {
+            "label": "Icon",
+            "constraint": {},
+            "thumbnails": []
+          },
+          "type": "Image"
+        },
+        "linkText": {
+          "config": {
+            "label": "Link text",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "linkUrl": {
+          "config": {
+            "label": "Link URL",
+            "placeholder": "",
+            "allowTargetBlank": true
+          },
+          "type": "Link"
+        }
+      }
+    }
+  ]
+}

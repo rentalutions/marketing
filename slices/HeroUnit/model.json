@@ -25,7 +25,7 @@
             "label": "Description",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph, preformatted, strong, em, hyperlink, list-item, o-list-item, rtl"
+            "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item"
           },
           "type": "StructuredText"
         },

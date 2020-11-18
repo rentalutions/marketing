@@ -29,6 +29,7 @@ function Hero({
   imagePosition = "right",
   primaryLink,
   secondaryLink,
+  containerWidth,
   ...props
 }) {
   const links = primaryLink || secondaryLink
@@ -40,6 +41,7 @@ function Hero({
         minHeight="calc(90vh - 14rem)"
         alignItems="center"
         gap={["2rem", "4rem"]}
+        {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
         <Col span={image ? [12, 6] : [12]}>
           {cloneElement(title, { fontSize: image ? "4rem" : "5rem" })}

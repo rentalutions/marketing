@@ -78,6 +78,7 @@ const HeroUnit = ({ slice }) => {
           </Link>
         )
       }
+      containerWidth="96rem"
     />
   )
 }
