@@ -5,6 +5,7 @@ import RichText from "prismic-reactjs/src/Component"
 import Heading from "components/prismic/Heading"
 import { Hero } from "components/core/Hero"
 import { useTheme } from "styled-components"
+import { availContainerWidth } from "lib/config"
 
 const HeroUnit = ({ slice }) => {
   const {
@@ -78,7 +79,7 @@ const HeroUnit = ({ slice }) => {
           </Link>
         )
       }
-      containerWidth="96rem"
+      containerWidth={availContainerWidth}
     />
   )
 }

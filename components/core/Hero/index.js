@@ -40,10 +40,10 @@ function Hero({
         as={Grid}
         minHeight="calc(90vh - 14rem)"
         alignItems="center"
-        gap={["2rem", "4rem"]}
+        gap={["2rem", "2rem", "4rem"]}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
-        <Col span={image ? [12, 6] : [12]}>
+        <Col span={image ? [12, 12, 6] : [12]}>
           {cloneElement(title, { fontSize: image ? "4rem" : "5rem" })}
           <Box mt="2rem">{description}</Box>
           {links && (
@@ -55,13 +55,12 @@ function Hero({
         </Col>
         {image && (
           <Col
-            as="img"
-            src={image}
-            span={[12, 6]}
+            span={[12, 12, 6]}
             gridRow={["1", "auto"]}
             order={imagePosition === "left" ? -1 : 1}
-            maxWidth="100%"
-          />
+          >
+            <Box as="img" src={image} maxWidth={["100%"]} />
+          </Col>
         )}
       </Container>
     </HeroWrapper>
