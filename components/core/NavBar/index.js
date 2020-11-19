@@ -1,7 +1,13 @@
 import React, { useMemo } from "react"
 import { Box, Container, Flex } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
-import styled, { useTheme } from "styled-components"
+import styled, { createGlobalStyle, useTheme } from "styled-components"
+
+const GlobalStyle = createGlobalStyle`
+  :root {
+    scroll-padding-top: ${({ sticky }) => (sticky ? "8rem" : "0")};
+  }
+`
 
 const NavBarButton = styled(Button)`
   border: none;
@@ -33,6 +39,7 @@ const NavBar = ({
       zIndex="1"
       {...props}
     >
+      <GlobalStyle sticky />
       <Container p={["1rem", "2rem"]} maxWidth={containerWidth}>
         <Flex>
           <Box as="a" href="https://avail.co" mr="2rem">
