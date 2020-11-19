@@ -3,16 +3,16 @@ import { ThemeProvider } from "styled-components"
 import { theme, Base } from "@rent_avail/base"
 import Head from "next/head"
 import PreviewWarning from "components/prismic/PreviewWarning"
+import { breakpoints } from "lib/config"
 
 export default function App({ Component, pageProps }) {
-  const overriddenTheme = {
+  const marketingTheme = {
     ...theme,
-    breakpoints: ["30rem", "45rem", "60rem", "75rem", "90rem"],
-    // breakpoints: ["480px", "720px", "960px", "1200px", "1440px"],
+    breakpoints: [...breakpoints],
   }
   const { preview } = pageProps
   return (
-    <ThemeProvider theme={overriddenTheme}>
+    <ThemeProvider theme={marketingTheme}>
       <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&display=swap"
