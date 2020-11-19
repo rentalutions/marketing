@@ -72,11 +72,11 @@
             "default_value": "all",
             "options": [
               "all",
-              "30em",
-              "45em",
-              "60em",
-              "75em",
-              "90em"
+              "480px",
+              "720px",
+              "960px",
+              "1200px",
+              "1440px"
             ]
           },
           "type": "Select"
