@@ -3,6 +3,7 @@ import { useGetStaticProps, useGetStaticPaths } from "next-slicezone/hooks"
 import { prismicClient } from "@prismic-config"
 import SliceZone from "components/prismic/SliceZone"
 import Head from "next/head"
+import Footer from "components/avail/Footer"
 
 export const getStaticProps = async ({
   preview = null,
@@ -36,13 +37,14 @@ const Page = ({ slices, data }) => {
     return null
   }
   return (
-    <>
+    <React.Fragment>
       <Head>
         <title>{data.meta_title}</title>
         <meta name="description" content={data.meta_description} />
       </Head>
       <SliceZone slices={slices} />
-    </>
+      <Footer />
+    </React.Fragment>
   )
 }
 
