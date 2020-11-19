@@ -3,6 +3,7 @@ import { RichText } from "prismic-reactjs"
 import { PitchCards } from "components/core/PitchCards"
 import Heading from "components/prismic/Heading"
 import Anchor from "components/prismic/Anchor"
+import { availContainerWidth } from "lib/config"
 
 const PitchCardsSlice = ({ slice }) => {
   const {
@@ -35,9 +36,9 @@ const PitchCardsSlice = ({ slice }) => {
         title={<Heading render={title} />}
         description={<RichText render={description} />}
         sections={sections}
-        maxWidth="96rem"
+        maxWidth={availContainerWidth}
         my="6rem"
-        span={[12, 6, 4]}
+        span={[12, 12, 6, 4]}
       />
     </React.Fragment>
   )

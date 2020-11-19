@@ -1,6 +1,7 @@
 import React from "react"
 import NavBar from "components/core/NavBar"
 import { useTheme } from "styled-components"
+import { availContainerWidth } from "lib/config"
 
 const NavBarSlice = ({ slice }) => {
   const { colors } = useTheme()
@@ -21,6 +22,7 @@ const NavBarSlice = ({ slice }) => {
       links={links}
       sticky={sticky}
       borderBottom={sticky ? `1px solid ${colors.ui_500}` : "none"}
+      containerWidth={availContainerWidth}
     />
   )
 }

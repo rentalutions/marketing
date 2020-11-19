@@ -10,6 +10,7 @@ import {
 } from "react-feather"
 import { Heading, Text } from "@rent_avail/typography"
 import styled from "styled-components"
+import { availContainerWidth } from "lib/config"
 
 const FooterLinks = styled(Box)`
   margin-top: 3rem;
@@ -29,9 +30,12 @@ const FooterText = styled(Text)`
   margin-top: 0.6667rem;
 `
 
-const FooterIcon = styled(Box).attrs({ as: "a" })`
+const FooterIcon = styled(Box).attrs({
+  as: "a",
+  margin: [0, 0, 0, "2rem 0 0"],
+})`
   display: inline-block;
-  margin: 2rem 0 0;
+  margin: 
   &:first-child {
     margin: 0;
   }
@@ -46,7 +50,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
   return (
     <Box bg="blue_100">
-      <Container maxWidth="96rem" p="2rem 2rem 3rem">
+      <Container maxWidth={availContainerWidth} p="2rem 2rem 3rem">
         <Flex justifyContent="center">
           <Flex
             as="a"
@@ -61,8 +65,8 @@ const Footer = () => {
             <ChevronUp style={{ marginLeft: ".5rem" }} />
           </Flex>
         </Flex>
-        <Grid gap="3rem" justifyContent="space-between">
-          <Col span={[12, 4, 3]}>
+        <Grid gap={["2rem", "2rem", "4rem"]} justifyContent="space-between">
+          <Col span={[12, 6, 4, 3]}>
             <FooterLinks>
               <FooterLinksHeading as="h5">Get Started</FooterLinksHeading>
               <FooterText as="a" href="https://www.avail.co/users/new">
@@ -94,7 +98,7 @@ const Footer = () => {
               </FooterText>
             </FooterLinks>
           </Col>
-          <Col span={[12, 4, 3]}>
+          <Col span={[12, 6, 4, 3]}>
             <FooterLinks>
               <FooterLinksHeading as="h5">How It Works</FooterLinksHeading>
               <FooterText
@@ -147,8 +151,16 @@ const Footer = () => {
               </FooterText>
             </FooterLinks>
           </Col>
-          <Col span={[12, 4, 3]} alignSelf="flex-end">
-            <Flex flexDirection="column" alignItems="flex-end">
+          <Col span={[12, 6, 4, 3]}>
+            <Flex
+              flexDirection="column"
+              alignItems={[
+                "flex-start",
+                "flex-start",
+                "flex-start",
+                "flex-end",
+              ]}
+            >
               <Box>
                 <FooterLinks>
                   <FooterLinksHeading as="h5">Resources</FooterLinksHeading>
@@ -185,11 +197,18 @@ const Footer = () => {
               </Box>
             </Flex>
           </Col>
-          <Col span={[12, 4, 3]} order={[1, -1]}>
+          <Col span={[12, 12, 12, 3]} order={[1, 1, 1, -1]}>
             <Flex>
               <Stack
-                direction={["row", "column"]}
+                direction={["row", "row", "row", "column"]}
                 alignItems="center"
+                justifyContent={[
+                  "space-between",
+                  "space-between",
+                  "space-between",
+                  "center",
+                ]}
+                width={["100%", "100%", "100%", "initial"]}
                 mt="2rem"
                 color="blue_500"
               >
@@ -239,7 +258,7 @@ const Footer = () => {
       <Box bg="blue_500" color="blue_300">
         <Box
           as={Container}
-          maxWidth="96rem"
+          maxWidth={availContainerWidth}
           p="2.667rem 2rem"
           fontSize="1.334rem"
         >

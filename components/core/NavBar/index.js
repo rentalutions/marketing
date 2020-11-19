@@ -40,7 +40,11 @@ const NavBar = ({
       {...props}
     >
       <GlobalStyle sticky />
-      <Container p={["1rem", "2rem"]} maxWidth={containerWidth}>
+      <Container
+        p={["1rem", "2rem"]}
+        maxWidth={containerWidth}
+        overflow="hidden"
+      >
         <Flex>
           <Box as="a" href="https://avail.co" mr="2rem">
             <Box
