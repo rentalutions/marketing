@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["./components/*"],
+      "slices/*": ["./slices/*"],
+      "lib/*": ["./lib/*"],
+      "@prismic-config": ["./lib/prismic.config.js"]
+    }
+  },
+  "exclude": ["node_modules", ".next", "out"]
+}
