@@ -37,18 +37,30 @@ const EmailCapture = ({
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <Box position="absolute" top="calc(1rem + 2px)" right="1rem">
+      <Box
+        position={["static", "absolute"]}
+        mt={["1.5rem", 0]}
+        top="calc(1rem + 2px)"
+        right="1rem"
+      >
         {isDark ? (
           <ContrastButtonPrimary
             scheme={scheme}
             forwardedAs="a"
             href={buttonHref}
             display="block"
+            textAlign="center"
           >
             {buttonText}
           </ContrastButtonPrimary>
         ) : (
-          <Button variant="primary" as="a" href={buttonHref} display="block">
+          <Button
+            variant="primary"
+            as="a"
+            href={buttonHref}
+            display="block"
+            textAlign="center"
+          >
             {buttonText}
           </Button>
         )}
