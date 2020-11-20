@@ -1,17 +1,12 @@
 import React from "react"
-import { RichText } from "prismic-reactjs"
 import { PitchCards } from "components/core/PitchCards"
-import Heading from "components/prismic/Heading"
 import Anchor from "components/prismic/Anchor"
+import RichText from "components/prismic/RichText"
 import { availContainerWidth } from "lib/config"
 
 const PitchCardsSlice = ({ slice }) => {
   const {
-    primary: {
-      title: [title],
-      description,
-      hash,
-    },
+    primary: { title, description, hash },
   } = slice
 
   const sections = slice.items.map(
@@ -33,7 +28,7 @@ const PitchCardsSlice = ({ slice }) => {
     <React.Fragment>
       {hash && <Anchor hash={hash} />}
       <PitchCards
-        title={<Heading render={title} />}
+        title={<RichText render={title} heading />}
         description={<RichText render={description} />}
         sections={sections}
         maxWidth={availContainerWidth}

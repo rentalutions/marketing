@@ -2,8 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { Button } from "@rent_avail/controls"
 import { Box } from "@rent_avail/layout"
-import RichText from "prismic-reactjs/src/Component"
-import Heading from "components/prismic/Heading"
+import RichText from "components/prismic/RichText"
 import { Hero } from "components/core/Hero"
 import { availContainerWidth } from "lib/config"
 import { analyzeColor } from "lib/utils"
@@ -16,7 +15,7 @@ import EmailCapture from "components/core/EmailCapture"
 const HeroUnit = ({ slice }) => {
   const {
     primary: {
-      title: [title],
+      title,
       description,
       background,
       skew,
@@ -44,7 +43,7 @@ const HeroUnit = ({ slice }) => {
 
   return (
     <Hero
-      title={<Heading render={title} />}
+      title={<RichText render={title} heading />}
       description={<RichText render={description} />}
       bg={background}
       skew={skew}
