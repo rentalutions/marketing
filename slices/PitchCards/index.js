@@ -11,10 +11,11 @@ const PitchCardsSlice = ({ slice }) => {
 
   const sections = slice.items.map(
     // eslint-disable-next-line no-shadow
-    ({ title, description, icon, linkText, linkUrl }) => ({
-      title,
+    ({ title, description, icon, linkText, linkUrl }, idx) => ({
+      title: <RichText render={title} heading mb="2rem" />,
       description: <RichText render={description} />,
       icon: icon.url,
+      key: (title[0] && title[0].text) || idx,
       link:
         linkText && linkUrl
           ? {

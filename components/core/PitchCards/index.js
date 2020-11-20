@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Container, Grid, Col, Box } from "@rent_avail/layout"
-import { Heading, Text } from "@rent_avail/typography"
+import { Text } from "@rent_avail/typography"
 import Link from "next/link"
 
 function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
@@ -21,9 +21,9 @@ function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
         </Col>
       )}
       {/* eslint-disable-next-line no-shadow */}
-      {sections.map(({ title, icon, description, link }) => (
+      {sections.map(({ title, key, icon, description, link }) => (
         <PitchCard
-          key={title}
+          key={key}
           title={title}
           icon={icon}
           description={description}
@@ -45,9 +45,7 @@ function PitchCard({
   return (
     <Col {...props}>
       {icon && <Box as="img" src={icon} width="10rem" />}
-      <Heading as="h5" mb="2rem">
-        {title}
-      </Heading>
+      {title && title}
       {description && description}
       {link && (
         <Box mt="1.5rem">
