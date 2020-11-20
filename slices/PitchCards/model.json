@@ -41,16 +41,18 @@
         "title": {
           "config": {
             "label": "Title",
-            "placeholder": ""
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6, strong, em"
           },
-          "type": "Text"
+          "type": "StructuredText"
         },
         "description": {
           "config": {
             "label": "Description",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item"
+            "multi": "heading3,heading4,heading5,heading6, paragraph, strong, em, hyperlink, list-item, o-list-item"
           },
           "type": "StructuredText"
         },
