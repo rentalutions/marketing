@@ -263,11 +263,11 @@ const Footer = () => {
           fontSize="1.334rem"
         >
           <Flex mb="1rem">
-            <Text color="blue_100" as="a" href="https://www.avail.co/sitemap">
+            <Text color="blue_100" as="a" href="https://www.avail.co/privacy">
               Privacy
             </Text>
             <Text mx=".5rem">|</Text>
-            <Text color="blue_100" as="a" href="https://www.avail.co/sitemap">
+            <Text color="blue_100" as="a" href="https://www.avail.co/terms">
               Terms
             </Text>
           </Flex>
