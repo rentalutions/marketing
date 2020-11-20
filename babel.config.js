@@ -9,7 +9,7 @@ module.exports = {
           components: "./components",
           slices: "./slices",
           lib: "./lib",
-          "@prismic-config": "./prismic.config.js",
+          "@prismic-config": "./lib/prismic.config.js",
         },
       },
     ],

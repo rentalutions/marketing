@@ -1,52 +1,17 @@
-import React, { useMemo } from "react"
+import React from "react"
 import Link from "next/link"
 import { Button } from "@rent_avail/controls"
+import { Box } from "@rent_avail/layout"
 import RichText from "prismic-reactjs/src/Component"
 import Heading from "components/prismic/Heading"
 import { Hero } from "components/core/Hero"
-import styled, { useTheme } from "styled-components"
 import { availContainerWidth } from "lib/config"
-
-const isDark = (scheme, intensity) => {
-  switch (scheme) {
-    case "straw":
-    case "gold":
-      return intensity > 700
-    case "ui":
-      return intensity > 500
-    default:
-      return intensity > 300
-  }
-}
-
-const ContrastButton = styled(Button)(({ theme: { colors }, scheme }) => ({
-  background: "transparent",
-  borderColor: colors[`${scheme}_100`],
-  color: colors[`${scheme}_100`],
-  "&:hover": {
-    background: colors[`${scheme}_100`],
-    color: colors[`${scheme}_500`],
-  },
-  "&:focus": {
-    background: colors[`${scheme}_100`],
-  },
-}))
-
-const ContrastPrimaryButton = styled(Button)(
-  ({ theme: { colors }, scheme }) => ({
-    background: colors[`${scheme}_100`],
-    borderColor: colors[`${scheme}_100`],
-    color: colors[`${scheme}_500`],
-    "&:hover": {
-      background: colors.ui_100,
-      borderColor: colors.ui_100,
-      color: colors[`${scheme}_700`],
-    },
-    "&:focus": {
-      background: colors.ui_100,
-    },
-  })
-)
+import { analyzeColor } from "lib/utils"
+import {
+  ContrastButton,
+  ContrastButtonPrimary,
+} from "components/core/ContrastButton"
+import EmailCapture from "components/core/EmailCapture"
 
 const HeroUnit = ({ slice }) => {
   const {
@@ -62,17 +27,20 @@ const HeroUnit = ({ slice }) => {
       primaryButtonLink,
       secondaryButtonText,
       secondaryButtonLink,
+      emailCaptureLabel,
+      emailCaptureButtonText,
     },
   } = slice
 
-  const [scheme, dark] = useMemo(() => {
-    if (typeof background !== "string") {
-      return false
-    }
-    // eslint-disable-next-line no-shadow
-    const [scheme, intensity] = background.split("_")
-    return [scheme, isDark(scheme, intensity)]
-  }, [background])
+  const [scheme, isDark] = background ? analyzeColor(background) : []
+
+  const isEmailCapture = emailCaptureLabel && emailCaptureButtonText
+
+  const isPrimaryButton =
+    primaryButtonText && primaryButtonLink && !isEmailCapture
+
+  const isSecondaryButton =
+    secondaryButtonText && secondaryButtonLink && !isEmailCapture
 
   return (
     <Hero
@@ -84,13 +52,12 @@ const HeroUnit = ({ slice }) => {
       imagePosition={imagePosition}
       color={color}
       primaryLink={
-        primaryButtonText &&
-        primaryButtonLink && (
+        isPrimaryButton && (
           <Link href={primaryButtonLink.url} passHref>
-            {dark ? (
-              <ContrastPrimaryButton scheme={scheme}>
+            {isDark ? (
+              <ContrastButtonPrimary scheme={scheme}>
                 {primaryButtonText}
-              </ContrastPrimaryButton>
+              </ContrastButtonPrimary>
             ) : (
               <Button variant="primary">{primaryButtonText}</Button>
             )}
@@ -98,10 +65,9 @@ const HeroUnit = ({ slice }) => {
         )
       }
       secondaryLink={
-        secondaryButtonText &&
-        secondaryButtonLink && (
+        isSecondaryButton && (
           <Link href={secondaryButtonLink.url} passHref>
-            {dark ? (
+            {isDark ? (
               <ContrastButton scheme={scheme}>
                 {secondaryButtonText}
               </ContrastButton>
@@ -112,7 +78,19 @@ const HeroUnit = ({ slice }) => {
         )
       }
       containerWidth={availContainerWidth}
-    />
+    >
+      {isEmailCapture && (
+        <Box pt="2rem">
+          <EmailCapture
+            background={background}
+            inputLabel={emailCaptureLabel}
+            buttonText={emailCaptureButtonText}
+            buttonUrl="https://www.avail.co/users/new"
+            queryParamName="email"
+          />
+        </Box>
+      )}
+    </Hero>
   )
 }
 

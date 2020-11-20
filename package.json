@@ -16,6 +16,7 @@
     "@apollo/client": "^3.2.5",
     "@rent_avail/base": "^0.4.4",
     "@rent_avail/controls": "^0.2.11",
+    "@rent_avail/input": "^0.3.1",
     "@rent_avail/layout": "^0.3.7",
     "@rent_avail/typography": "^0.1.15",
     "@rent_avail/utils": "^0.2.7",

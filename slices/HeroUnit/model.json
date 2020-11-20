@@ -121,6 +121,20 @@
             "allowTargetBlank": true
           },
           "type": "Link"
+        },
+        "emailCaptureLabel": {
+          "config": {
+            "label": "Email capture label",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "emailCaptureButtonText": {
+          "config": {
+            "label": "Email capture button text",
+            "placeholder": ""
+          },
+          "type": "Text"
         }
       },
       "items": {}
