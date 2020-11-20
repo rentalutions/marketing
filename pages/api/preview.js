@@ -1,11 +1,4 @@
-import { prismicClient } from "@prismic-config"
-
-const linkResolver = (doc) => {
-  // Pretty URLs for known types
-  if (doc.type && doc.uid) {
-    return `/${doc.type}/${doc.uid}`
-  }
-}
+import { prismicClient, linkResolver } from "@prismic-config"
 
 export const fixCookies = (res) => {
   const cookies = res.getHeader("Set-Cookie")
