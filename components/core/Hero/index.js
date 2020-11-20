@@ -30,6 +30,7 @@ function Hero({
   primaryLink,
   secondaryLink,
   containerWidth,
+  children,
   ...props
 }) {
   const links = primaryLink || secondaryLink
@@ -43,7 +44,7 @@ function Hero({
         gap={["2rem", "2rem", "4rem"]}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
-        <Col span={image ? [12, 12, 6] : [12]}>
+        <Col span={image ? [12, 12, 12, 6] : [12]}>
           {cloneElement(title, { fontSize: image ? "4rem" : "5rem" })}
           <Box mt="2rem">{description}</Box>
           {links && (
@@ -52,14 +53,20 @@ function Hero({
               {secondaryLink}
             </Stack>
           )}
+          {children}
         </Col>
         {image && (
           <Col
-            span={[12, 12, 6]}
+            span={[12, 12, 12, 6]}
             gridRow={["1", "auto"]}
             order={imagePosition === "left" ? -1 : 1}
+            sx={{ textAlign: "center" }}
           >
-            <Box as="img" src={image} maxWidth={["100%"]} />
+            <Box
+              as="img"
+              src={image}
+              maxWidth={["100%", "50%", "50%", "100%"]}
+            />
           </Col>
         )}
       </Container>
