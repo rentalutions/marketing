@@ -2,8 +2,9 @@ import React from "react"
 import { ThemeProvider } from "styled-components"
 import { theme, Base } from "@rent_avail/base"
 import Head from "next/head"
-import PreviewWarning from "components/prismic/PreviewWarning"
 import { breakpoints } from "lib/config"
+import PreviewWarning from "components/prismic/PreviewWarning"
+import { RichTextGlobalStyle } from "components/prismic/RichText"
 
 export default function App({ Component, pageProps }) {
   const marketingTheme = {
@@ -20,6 +21,7 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       <Base />
+      <RichTextGlobalStyle />
       {preview && <PreviewWarning />}
       <Component {...pageProps} />
     </ThemeProvider>

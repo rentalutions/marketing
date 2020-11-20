@@ -16,7 +16,7 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6, strong, em "
           },
           "type": "StructuredText"
         },
@@ -25,7 +25,7 @@
             "label": "Description",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item"
+            "multi": "paragraph,heading4,heading5,heading6,heading3, strong, em, hyperlink, list-item, o-list-item"
           },
           "type": "StructuredText"
         },

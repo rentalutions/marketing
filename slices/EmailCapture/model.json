@@ -16,7 +16,7 @@
             "label": "Title",
             "placeholder": "This is where it all begins...",
             "allowTargetBlank": true,
-            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
           },
           "type": "StructuredText"
         },
