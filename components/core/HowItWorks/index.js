@@ -1,18 +1,18 @@
 import * as React from "react"
-import styled from "styled-components"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
-import { Text, Heading } from "@rent_avail/typography"
+import { Text } from "@rent_avail/typography"
 
 function HowItWorks({
   title,
   eyebrow,
   sections = [],
   alternate = (idx) => idx % 2 !== 0,
+  containerWidth,
   ...props
 }) {
   return (
     <Box {...props}>
-      <Container>
+      <Container {...(containerWidth && { maxWidth: containerWidth })}>
         {eyebrow && (
           <Text color="blue_500" mb="1rem">
             {eyebrow}
@@ -22,7 +22,7 @@ function HowItWorks({
         {sections.map((section, idx) => (
           <HowItWorksSection
             {...section}
-            key={section.uid}
+            key={section.uid || idx}
             flip={alternate(idx)}
             mb={idx !== sections.length - 1 ? "6rem" : 0}
           />
@@ -38,7 +38,13 @@ function HowItWorksSection({ copy, image = null, flip, mb }) {
   return (
     <Grid alignItems="center" gridAutoFlow="row dense" mb={mb}>
       <Col gridColumn={copyColumn}>{copy}</Col>
-      <Col as="img" src={image.url} gridColumn={imageColumn} maxWidth="100%" />
+      <Col
+        as="img"
+        src={image.url}
+        alt={image.alt}
+        gridColumn={imageColumn}
+        maxWidth="100%"
+      />
     </Grid>
   )
 }

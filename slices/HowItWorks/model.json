@@ -1,0 +1,77 @@
+{
+  "id": "how_it_works",
+  "type": "SharedSlice",
+  "name": "HowItWorks",
+  "description": "HowItWorks",
+  "variations": [
+    {
+      "id": "default-slice",
+      "name": "Default slice",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "HowItWorks",
+      "primary": {
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "This is where it all begins...",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          },
+          "type": "StructuredText"
+        },
+        "background": {
+          "config": {
+            "label": "Background color",
+            "placeholder": "",
+            "default_value": "transparent",
+            "options": [
+              "transparent",
+              "blue_500"
+            ]
+          },
+          "type": "Select"
+        },
+        "flip": {
+          "config": {
+            "label": "Flip order",
+            "placeholder": "",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          },
+          "type": "Boolean"
+        }
+      },
+      "items": {
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6, strong, em, hyperlink, list-item, o-list-item"
+          },
+          "type": "StructuredText"
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "id": "image",
+            "label": "",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      }
+    }
+  ]
+}
