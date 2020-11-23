@@ -7,3 +7,5 @@ export { default as PitchCards } from "./PitchCards"
 export { default as EmailCapture } from "./EmailCapture"
 
 export { default as HowItWorks } from "./HowItWorks"
+
+export { default as ShowCase } from "./ShowCase"

@@ -1,6 +1,13 @@
 import React from "react"
 import { Flex } from "@rent_avail/layout"
-import { EmailCapture, HeroUnit, HowItWorks, NavBar, PitchCards } from "slices"
+import {
+  EmailCapture,
+  HeroUnit,
+  HowItWorks,
+  NavBar,
+  PitchCards,
+  ShowCase,
+} from "slices"
 import { Text } from "@rent_avail/typography"
 import { useTheme } from "styled-components"
 
@@ -22,6 +29,8 @@ const SliceZone = ({ slices }) => {
         return <EmailCapture key={key} slice={slice} />
       case "how_it_works":
         return <HowItWorks key={key} slice={slice} />
+      case "show_case":
+        return <ShowCase key={key} slice={slice} />
       default:
         return (
           <Flex

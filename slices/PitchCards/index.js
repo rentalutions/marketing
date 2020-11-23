@@ -27,6 +27,7 @@ const PitchCardsSlice = ({ slice }) => {
         title: (
           <RichText
             textAlign={centerTitle ? "center" : "inherit"}
+            color={centerTitle ? "blue_500" : "inherit"}
             render={title}
             heading
           />
