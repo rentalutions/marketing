@@ -26,7 +26,10 @@ export function WithIllustration() {
     <Hero
       color="ui_100"
       bg="#0f3e6f"
-      image="https://avail-design-site.now.sh/images/building.svg"
+      image={{
+        url: "https://avail-design-site.now.sh/images/building.svg",
+        alt: "",
+      }}
       title={
         <Heading as="h1">
           Feel good about the way you manage your rentals.
@@ -77,7 +80,10 @@ export function WithSwap() {
     <Hero
       color="ui_100"
       bg="gold_700"
-      image="https://avail-design-site.now.sh/images/building.svg"
+      image={{
+        url: "https://avail-design-site.now.sh/images/building.svg",
+        alt: "",
+      }}
       imagePosition="left"
       title={
         <Heading as="h1">

@@ -47,7 +47,7 @@ const HeroUnit = ({ slice }) => {
       description={<RichText render={description} />}
       bg={background}
       skew={skew}
-      image={image.url}
+      image={image}
       imagePosition={imagePosition}
       color={color}
       primaryLink={

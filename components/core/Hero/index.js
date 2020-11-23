@@ -64,7 +64,8 @@ function Hero({
           >
             <Box
               as="img"
-              src={image}
+              src={image.url}
+              alt={image.alt}
               maxWidth={["100%", "50%", "50%", "100%"]}
             />
           </Col>
