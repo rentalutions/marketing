@@ -1,1 +1,60 @@
-[{"id":"default-slice","name":"Default slice","docURL":"...","version":"sktwi1xtmkfgx8626","description":"HowItWorks","primary":{"title":[{"type":"heading1","text":"leverage out-of-the-box communities","spans":[]}],"background":"blue_500","flip":true},"items":[{"title":[{"type":"heading1","text":"synthesize magnetic supply-chains","spans":[]}],"description":[{"type":"heading3","text":"visualize wireless markets","spans":[]}],"image":{"dimensions":{"width":900,"height":500},"alt":"Placeholder image","copyright":null,"url":"https://images.prismic.io/important-sm-images/dbd62be9-4ba7-4efe-85ac-a2daf6f297f8_3IpWM9N5_aI.jpg?w=900&h=500"}},{"title":[{"type":"heading1","text":"matrix compelling communities","spans":[]}],"description":[{"type":"heading3","text":"whiteboard viral content","spans":[]}],"image":{"dimensions":{"width":900,"height":500},"alt":"Placeholder image","copyright":null,"url":"https://images.prismic.io/important-sm-images/4b7f2693-f585-4740-9980-3656c4c72dec_JXow53j6AtE.jpg?w=900&h=500"}},{"title":[{"type":"heading1","text":"iterate compelling models","spans":[]}],"description":[{"type":"heading3","text":"strategize ubiquitous infrastructures","spans":[]}],"image":{"dimensions":{"width":900,"height":500},"alt":"Placeholder image","copyright":null,"url":"https://images.prismic.io/important-sm-images/4ac0a22f-06e4-400c-8b1f-29bb64d3bbe7_1IqWqCzYJPs.jpg?w=900&h=500"}}],"slice_type":"how_it_works"}]
+[
+  {
+    "id": "default-slice",
+    "name": "Default slice",
+    "docURL": "...",
+    "version": "sktwi1xtmkfgx8626",
+    "description": "HowItWorks",
+    "primary": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "facilitate strategic initiatives",
+          "spans": []
+        }
+      ],
+      "background": "blue_500",
+      "flip": false,
+      "hash": "A text of type \"Jump link hash\" that conveys "
+    },
+    "items": [
+      {
+        "title": [
+          {
+            "type": "heading1",
+            "text": "transform extensible experiences",
+            "spans": []
+          }
+        ],
+        "description": [
+          { "type": "heading3", "text": "extend dynamic models", "spans": [] }
+        ],
+        "image": {
+          "dimensions": { "width": 900, "height": 500 },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.prismic.io/important-sm-images/a97d6a71-8f4d-412e-94f5-22e8675713c2_Tir2gkW3mYs.jpg?w=900&h=500"
+        }
+      },
+      {
+        "title": [
+          {
+            "type": "heading1",
+            "text": "incentivize out-of-the-box convergence",
+            "spans": []
+          }
+        ],
+        "description": [
+          { "type": "heading3", "text": "facilitate B2B schemas", "spans": [] }
+        ],
+        "image": {
+          "dimensions": { "width": 900, "height": 500 },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.prismic.io/important-sm-images/f9415b28-d28b-4536-8439-eba4ea388b5c_pH-nXzeOvlk.jpg?w=900&h=500"
+        }
+      }
+    ],
+    "slice_type": "how_it_works"
+  }
+]
