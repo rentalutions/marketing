@@ -33,6 +33,7 @@ const MySlice = ({ slice }) => {
         caseInterval={4000}
         containerWidth={availContainerWidth}
         flip={flip}
+        mb="10rem"
       />
     </React.Fragment>
   )
