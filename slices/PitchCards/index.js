@@ -29,7 +29,6 @@ const PitchCardsSlice = ({ slice }) => {
             textAlign={centerTitle ? "center" : "inherit"}
             render={title}
             heading
-            mb="2rem"
           />
         ),
         description: <RichText render={description} />,

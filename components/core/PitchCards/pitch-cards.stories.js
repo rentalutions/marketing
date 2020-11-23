@@ -4,44 +4,33 @@ import { PitchCards } from "."
 
 export default { title: "Components/Pitch Cards" }
 
-const sections = [
+const sectionData = [
   {
-    title: (
-      <Heading as="h5" mb="2rem">
-        Great for any situation.
-      </Heading>
-    ),
+    title: "Great for any situation.",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam ipsum natus velit explicabo eligendi.",
   },
   {
-    title: (
-      <Heading as="h5" mb="2rem">
-        Automatically Mobile Friendly.
-      </Heading>
-    ),
+    title: "Automatically Mobile Friendly.",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam minima quia placeat laudantium debitis ipsum.",
   },
   {
-    title: (
-      <Heading as="h5" mb="2rem">
-        Customize how you see fit.
-      </Heading>
-    ),
+    title: "Customize how you see fit.",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam minima quia placeat laudantium .",
   },
   {
-    title: (
-      <Heading as="h5" mb="2rem">
-        Lets you focus on the story.
-      </Heading>
-    ),
+    title: "Lets you focus on the story.",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo eligendi tenetur sed quo.",
   },
 ]
+
+const sections = sectionData.map(({ title, description }) => ({
+  title: <Heading as="h5">{title}</Heading>,
+  description,
+}))
 
 const icons = [
   { url: "/send-money.png", alt: "" },
@@ -77,6 +66,16 @@ const links = [
 const linkSections = iconSections.map((section, idx) => ({
   ...section,
   link: links[idx],
+}))
+
+const buttonLinkSections = sectionData.map(({ title, description }, idx) => ({
+  title: (
+    <Heading as="h3" textAlign="center">
+      {title}
+    </Heading>
+  ),
+  description,
+  link: { ...links[idx], text: "View sample", button: true },
 }))
 
 export function Default() {
@@ -147,6 +146,22 @@ export function WithLinks() {
   return (
     <PitchCards
       sections={linkSections}
+      eyebrow="Eyebrow"
+      title={
+        <Heading as="h2" mb="1rem">
+          Let Me Pitch You
+        </Heading>
+      }
+      description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
+      mt="4rem"
+    />
+  )
+}
+
+export function WithButtonLinks() {
+  return (
+    <PitchCards
+      sections={buttonLinkSections.slice(0, 3)}
       eyebrow="Eyebrow"
       title={
         <Heading as="h2" mb="1rem">

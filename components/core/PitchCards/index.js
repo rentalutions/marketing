@@ -46,7 +46,7 @@ function PitchCard({
   return (
     <Col {...props} display="flex" flexDirection="column">
       {icon && <Box as="img" src={icon.url} alt={icon.alt} width="10rem" />}
-      {title && title}
+      {title && <Box mb="2rem">{title}</Box>}
       {description && (
         <Box flex={link && link.button ? "1 1 auto" : "initial"}>
           {description}
