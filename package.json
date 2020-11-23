@@ -61,7 +61,7 @@
     "node-fetch": "^2.6.1",
     "prettier": "^2.1.2",
     "prismic-cli": "^3.8.3-beta.0",
-    "slice-machine-ui": "^0.0.38"
+    "slice-machine-ui": "0.0.38"
   },
   "license": "ISC",
   "prettier": {

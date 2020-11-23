@@ -6,32 +6,48 @@ export default { title: "Components/Pitch Cards" }
 
 const sections = [
   {
-    title: "Great for any situation.",
+    title: (
+      <Heading as="h5" mb="2rem">
+        Great for any situation.
+      </Heading>
+    ),
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam ipsum natus velit explicabo eligendi.",
   },
   {
-    title: "Automatically Mobile Friendly.",
+    title: (
+      <Heading as="h5" mb="2rem">
+        Automatically Mobile Friendly.
+      </Heading>
+    ),
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam minima quia placeat laudantium debitis ipsum.",
   },
   {
-    title: "Customize how you see fit.",
+    title: (
+      <Heading as="h5" mb="2rem">
+        Customize how you see fit.
+      </Heading>
+    ),
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam minima quia placeat laudantium .",
   },
   {
-    title: "Lets you focus on the story.",
+    title: (
+      <Heading as="h5" mb="2rem">
+        Lets you focus on the story.
+      </Heading>
+    ),
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo eligendi tenetur sed quo.",
   },
 ]
 
 const icons = [
-  "/send-money.png",
-  "/state-specific.png",
-  "/user-card.png",
-  "/property-damage.png",
+  { url: "/send-money.png", alt: "" },
+  { url: "/state-specific.png", alt: "" },
+  { url: "/user-card.png", alt: "" },
+  { url: "/property-damage.png", alt: "" },
 ]
 
 const iconSections = sections.map((section, idx) => ({

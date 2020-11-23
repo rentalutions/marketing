@@ -9,8 +9,8 @@ const SliceZone = ({ slices }) => {
     return null
   }
   const { colors } = useTheme()
-  return slices.map((slice) => {
-    const key = `${slice.slice_type}-${slice.version}`
+  return slices.map((slice, idx) => {
+    const key = `${slice.slice_type}-${slice.version}-${idx}`
     switch (slice.slice_type) {
       case "hero_unit":
         return <HeroUnit key={key} slice={slice} />
