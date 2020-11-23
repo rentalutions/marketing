@@ -20,6 +20,24 @@
           },
           "type": "StructuredText"
         },
+        "titleImage": {
+          "config": {
+            "label": "Title image",
+            "constraint": {},
+            "thumbnails": []
+          },
+          "type": "Image"
+        },
+        "centerTitle": {
+          "config": {
+            "label": "Center title",
+            "placeholder": "",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          },
+          "type": "Boolean"
+        },
         "description": {
           "config": {
             "label": "Description",
@@ -43,9 +61,19 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "heading1,heading2,heading3,heading4,heading5,heading6, strong, em"
+            "single": "heading3,heading4,heading5,heading6, strong, em"
           },
           "type": "StructuredText"
+        },
+        "centerTitle": {
+          "config": {
+            "label": "Center title",
+            "placeholder": "",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          },
+          "type": "Boolean"
         },
         "description": {
           "config": {
@@ -78,6 +106,16 @@
             "allowTargetBlank": true
           },
           "type": "Link"
+        },
+        "linkAsButton": {
+          "config": {
+            "label": "Show link as a button",
+            "placeholder": "",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          },
+          "type": "Boolean"
         }
       }
     }

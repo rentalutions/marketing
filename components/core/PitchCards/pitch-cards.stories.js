@@ -4,7 +4,7 @@ import { PitchCards } from "."
 
 export default { title: "Components/Pitch Cards" }
 
-const sections = [
+const sectionData = [
   {
     title: "Great for any situation.",
     description:
@@ -27,11 +27,16 @@ const sections = [
   },
 ]
 
+const sections = sectionData.map(({ title, description }) => ({
+  title: <Heading as="h5">{title}</Heading>,
+  description,
+}))
+
 const icons = [
-  "/send-money.png",
-  "/state-specific.png",
-  "/user-card.png",
-  "/property-damage.png",
+  { url: "/send-money.png", alt: "" },
+  { url: "/state-specific.png", alt: "" },
+  { url: "/user-card.png", alt: "" },
+  { url: "/property-damage.png", alt: "" },
 ]
 
 const iconSections = sections.map((section, idx) => ({
@@ -61,6 +66,16 @@ const links = [
 const linkSections = iconSections.map((section, idx) => ({
   ...section,
   link: links[idx],
+}))
+
+const buttonLinkSections = sectionData.map(({ title, description }, idx) => ({
+  title: (
+    <Heading as="h3" textAlign="center">
+      {title}
+    </Heading>
+  ),
+  description,
+  link: { ...links[idx], text: "View sample", button: true },
 }))
 
 export function Default() {
@@ -131,6 +146,22 @@ export function WithLinks() {
   return (
     <PitchCards
       sections={linkSections}
+      eyebrow="Eyebrow"
+      title={
+        <Heading as="h2" mb="1rem">
+          Let Me Pitch You
+        </Heading>
+      }
+      description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
+      mt="4rem"
+    />
+  )
+}
+
+export function WithButtonLinks() {
+  return (
+    <PitchCards
+      sections={buttonLinkSections.slice(0, 3)}
       eyebrow="Eyebrow"
       title={
         <Heading as="h2" mb="1rem">

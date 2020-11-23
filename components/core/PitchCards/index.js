@@ -1,6 +1,7 @@
 import * as React from "react"
-import { Container, Grid, Col, Box } from "@rent_avail/layout"
+import { Container, Grid, Col, Box, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
+import { Button } from "@rent_avail/controls"
 import Link from "next/link"
 
 function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
@@ -10,7 +11,7 @@ function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
   return (
     <Container {...props} as={Grid} gap={["3rem 0", "3rem"]}>
       {headingContent && (
-        <Col span={12}>
+        <Col span={12} mb="3rem">
           {eyebrow && (
             <Text fontSize="small" mb="1rem" color="blue_300">
               {eyebrow}
@@ -38,23 +39,40 @@ function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
 function PitchCard({
   title = "",
   description = "",
-  icon = "",
+  icon = null,
   link,
   ...props
 }) {
   return (
-    <Col {...props}>
-      {icon && <Box as="img" src={icon} width="10rem" />}
-      {title && title}
-      {description && description}
-      {link && (
-        <Box mt="1.5rem">
-          <Link href={link.url} passHref>
-            <Text as="a" color="blue_700">
-              {link.text}
-            </Text>
-          </Link>
+    <Col {...props} display="flex" flexDirection="column">
+      {icon && <Box as="img" src={icon.url} alt={icon.alt} width="10rem" />}
+      {title && <Box mb="2rem">{title}</Box>}
+      {description && (
+        <Box flex={link && link.button ? "1 1 auto" : "initial"}>
+          {description}
         </Box>
+      )}
+      {link && (
+        <Flex
+          mt="1.5rem"
+          justifyContent={link.button ? "center" : "flex-start"}
+        >
+          <Link href={link.url} passHref>
+            {link.button ? (
+              <Button as="a" {...(link.target && { target: link.target })}>
+                {link.text}
+              </Button>
+            ) : (
+              <Text
+                as="a"
+                {...(link.target && { target: link.target })}
+                color="blue_700"
+              >
+                {link.text}
+              </Text>
+            )}
+          </Link>
+        </Flex>
       )}
     </Col>
   )
