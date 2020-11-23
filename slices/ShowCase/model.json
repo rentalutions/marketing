@@ -46,6 +46,13 @@
             "default_value": false
           },
           "type": "Boolean"
+        },
+        "hash": {
+          "config": {
+            "label": "Jump link hash",
+            "placeholder": ""
+          },
+          "type": "Text"
         }
       },
       "items": {

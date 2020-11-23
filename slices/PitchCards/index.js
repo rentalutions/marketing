@@ -59,19 +59,24 @@ const PitchCardsSlice = ({ slice }) => {
     />
   )
   const titleWithImage = titleImage && (
-    <Flex
-      justifyContent={centerTitle ? "center" : "flex-start"}
-      alignItems="flex-end"
-    >
-      <RichText color="blue_500" render={title} heading />
+    <Box textAlign={centerTitle ? "center" : "inherit"}>
+      <RichText
+        display="inline-block"
+        verticalAlign="bottom"
+        color="blue_500"
+        render={title}
+        heading
+      />
       <Box
         as="img"
+        display="inline-block"
+        verticalAlign="bottom"
         src={titleImage.url}
         alt={titleImage.alt}
         ml="1rem"
         sx={{ transform: "translateY(-10%)" }}
       />
-    </Flex>
+    </Box>
   )
   return (
     <React.Fragment>
