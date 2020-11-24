@@ -2,7 +2,7 @@ import React from "react"
 import { useGetStaticProps, useGetStaticPaths } from "next-slicezone/hooks"
 import { prismicClient } from "@prismic-config"
 import SliceZone from "components/prismic/SliceZone"
-import Head from "next/head"
+import { NextSeo } from "next-seo"
 import Footer from "components/avail/Footer"
 
 export const getStaticProps = async ({
@@ -32,16 +32,29 @@ export const getStaticPaths = useGetStaticPaths({
   formatPath: ({ uid }) => ({ params: { uid } }),
 })
 
-const Page = ({ slices, data }) => {
+const Page = ({ slices, data, uid }) => {
   if (!data) {
     return null
   }
+  const BASE_CANONICAL_URL =
+    process.env.NEXT_PUBLIC_BASE_CANONICAL_URL || "https://info.avail.co"
+
+  const url = `${BASE_CANONICAL_URL}/info/${uid}`
+
+  const { meta_title: title, meta_description: description } = data
+
   return (
     <React.Fragment>
-      <Head>
-        <title>{data.meta_title}</title>
-        <meta name="description" content={data.meta_description} />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={url}
+        openGraph={{
+          title,
+          description,
+          url,
+        }}
+      />
       <SliceZone slices={slices} />
       <Footer />
     </React.Fragment>

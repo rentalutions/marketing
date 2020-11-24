@@ -6,6 +6,7 @@ import { breakpoints } from "lib/config"
 import PreviewWarning from "components/prismic/PreviewWarning"
 import { RichTextGlobalStyle } from "components/prismic/RichText"
 import HeaderScripts from "components/avail/HeaderScripts"
+import Seo from "components/avail/Seo"
 
 export default function App({ Component, pageProps }) {
   const marketingTheme = {
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }) {
       <RichTextGlobalStyle />
       {preview && <PreviewWarning />}
       <Component {...pageProps} />
+      <Seo />
     </ThemeProvider>
   )
 }
