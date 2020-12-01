@@ -8,9 +8,7 @@
     "start": "next start",
     "storybook": "start-storybook -p 8008 --no-dll -s public",
     "build-storybook": "build-storybook --no-dll",
-    "schema": "node ./schema/get-schema.js",
-    "slicemachine": "start-slicemachine --port 9999",
-    "sm": "concurrently \"yarn:storybook\" \"yarn:slicemachine\""
+    "schema": "node ./prismic/schema/get-schema.js"
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
@@ -60,9 +58,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "node-fetch": "^2.6.1",
-    "prettier": "^2.1.2",
-    "prismic-cli": "^3.8.3-beta.0",
-    "slice-machine-ui": "0.0.38"
+    "prettier": "^2.1.2"
   },
   "license": "ISC",
   "prettier": {
