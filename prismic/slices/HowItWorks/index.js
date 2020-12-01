@@ -27,7 +27,7 @@ const MySlice = ({ slice }) => {
         sections={sections}
         bg={background}
         containerWidth={availContainerWidth}
-        py="2rem"
+        py="5rem"
         alternate={flip ? (idx) => idx % 2 === 0 : undefined}
         color={background === "blue_500" ? "blue_100" : "inherit"}
       />

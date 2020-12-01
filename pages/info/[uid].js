@@ -49,6 +49,7 @@ const Page = ({ slices, data, uid }) => {
   const {
     meta_title: title,
     meta_description: description,
+    meta_keywords: keywords,
     sticky_nav_bar: navBarSticky,
   } = data
 
@@ -74,6 +75,7 @@ const Page = ({ slices, data, uid }) => {
           description,
           url,
         }}
+        additionalMetaTags={[{ property: "keywords", content: keywords }]}
       />
       <NavBar
         links={navBarLinks}

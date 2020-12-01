@@ -2,15 +2,20 @@ import React from "react"
 import { Elements } from "prismic-reactjs"
 import { Heading } from "@rent_avail/typography"
 import { linkResolver } from "prismic/prismic.config"
+import { List, ListItem, OList } from "prismic/components/List"
 
 const withKey = (props, key) => {
   return Object.assign(props || {}, { key })
 }
 
 const createHeading = (as, props, children, key) => {
-  return children && children[0]
-    ? React.createElement(Heading, withKey({ as, ...props }, key), children)
-    : null
+  return children && children[0] ? (
+    React.createElement(Heading, withKey({ as, ...props }, key), children)
+  ) : (
+    /** This a "hack", if we return NULL as we should've the RichText will
+     * fall back to default implementation and will render empty heading tag */
+    <React.Fragment />
+  )
 }
 
 const htmlSerializer = (props) => {
@@ -28,6 +33,12 @@ const htmlSerializer = (props) => {
         return createHeading("h5", props, children, key)
       case Elements.heading6:
         return createHeading("h6", props, children, key)
+      case Elements.list:
+        return React.createElement(List, withKey(props, key), children)
+      case Elements.listItem:
+        return React.createElement(ListItem, withKey(props, key), children)
+      case Elements.oList:
+        return React.createElement(OList, withKey(props, key), children)
       case Elements.hyperlink: {
         const targetAttr = element.data.target
           ? { target: element.data.target }
