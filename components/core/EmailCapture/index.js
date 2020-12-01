@@ -17,8 +17,12 @@ const EmailCapture = ({
   const buttonHref = `${buttonUrl}${
     queryParamName && inputValue ? `?${queryParamName}=${inputValue}` : ""
   }`
+  const onSubmit = (e) => {
+    e.preventDefault()
+    window.location.href = buttonHref
+  }
   return (
-    <Box position="relative">
+    <Box as="form" position="relative" onSubmit={onSubmit}>
       <Input
         label={inputLabel}
         sx={{
@@ -46,8 +50,7 @@ const EmailCapture = ({
         {isDark ? (
           <ContrastButtonPrimary
             scheme={scheme}
-            forwardedAs="a"
-            href={buttonHref}
+            type="submit"
             display="block"
             textAlign="center"
           >
@@ -56,8 +59,7 @@ const EmailCapture = ({
         ) : (
           <Button
             variant="primary"
-            as="a"
-            href={buttonHref}
+            type="submit"
             display="block"
             textAlign="center"
           >
