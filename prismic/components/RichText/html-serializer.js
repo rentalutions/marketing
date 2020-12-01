@@ -2,7 +2,7 @@ import React from "react"
 import { Elements } from "prismic-reactjs"
 import { Heading } from "@rent_avail/typography"
 import { linkResolver } from "prismic/prismic.config"
-import { List, ListItem } from "prismic/components/List"
+import { List, ListItem, OList } from "prismic/components/List"
 
 const withKey = (props, key) => {
   return Object.assign(props || {}, { key })
@@ -33,6 +33,8 @@ const htmlSerializer = (props) => {
         return React.createElement(List, withKey(props, key), children)
       case Elements.listItem:
         return React.createElement(ListItem, withKey(props, key), children)
+      case Elements.oList:
+        return React.createElement(OList, withKey(props, key), children)
       case Elements.hyperlink: {
         const targetAttr = element.data.target
           ? { target: element.data.target }
