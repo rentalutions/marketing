@@ -9,9 +9,13 @@ const withKey = (props, key) => {
 }
 
 const createHeading = (as, props, children, key) => {
-  return children && children[0]
-    ? React.createElement(Heading, withKey({ as, ...props }, key), children)
-    : null
+  return children && children[0] ? (
+    React.createElement(Heading, withKey({ as, ...props }, key), children)
+  ) : (
+    /** This a "hack", if we return NULL as we should've the RichText will
+     * fall back to default implementation and will render empty heading tag */
+    <React.Fragment />
+  )
 }
 
 const htmlSerializer = (props) => {
