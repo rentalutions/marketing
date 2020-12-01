@@ -1,4 +1,4 @@
-import { prismicClient, linkResolver } from "@prismic-config"
+import { prismicClient, linkResolver } from "prismic/prismic.config"
 
 export const fixCookies = (res) => {
   const cookies = res.getHeader("Set-Cookie")

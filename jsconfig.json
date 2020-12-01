@@ -3,9 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "components/*": ["./components/*"],
-      "slices/*": ["./slices/*"],
-      "lib/*": ["./lib/*"],
-      "@prismic-config": ["./lib/prismic.config.js"]
+      "prismic/*": ["./prismic/*"],
+      "lib/*": ["./lib/*"]
     }
   },
   "exclude": ["node_modules", ".next", "out"]

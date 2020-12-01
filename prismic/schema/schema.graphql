@@ -1,0 +1,410 @@
+"""
+DateTime
+"""
+scalar DateTime
+
+type Info implements _Document & _Linkable {
+  name: Json
+  sticky_nav_bar: Json
+  nav_bar: [InfoNav_bar!]
+  body: [InfoBody!]
+  meta_title: String
+  meta_description: String
+  _meta: Meta!
+  _linkType: String
+}
+
+union InfoBody =
+    InfoBodyHero_unit
+  | InfoBodyPitch_cards
+  | InfoBodyHow_it_works
+  | InfoBodyShow_case
+  | InfoBodyEmail_capture
+
+type InfoBodyEmail_capture {
+  type: String
+  label: String
+  primary: InfoBodyEmail_capturePrimary
+}
+
+type InfoBodyEmail_capturePrimary {
+  hash: String
+  title: Json
+  label: String
+}
+
+type InfoBodyHero_unit {
+  type: String
+  label: String
+  primary: InfoBodyHero_unitPrimary
+}
+
+type InfoBodyHero_unitPrimary {
+  title: Json
+  description: Json
+  background: String
+  color: String
+  skew: String
+  image: Json
+}
+
+type InfoBodyHow_it_works {
+  type: String
+  label: String
+  primary: InfoBodyHow_it_worksPrimary
+  fields: [InfoBodyHow_it_worksFields!]
+}
+
+type InfoBodyHow_it_worksFields {
+  title: Json
+  description: Json
+  image: Json
+}
+
+type InfoBodyHow_it_worksPrimary {
+  hash: String
+  title: Json
+  background: String
+  flip: Json
+}
+
+type InfoBodyPitch_cards {
+  type: String
+  label: String
+  primary: InfoBodyPitch_cardsPrimary
+  fields: [InfoBodyPitch_cardsFields!]
+}
+
+type InfoBodyPitch_cardsFields {
+  title: Json
+  description: Json
+  icon: Json
+}
+
+type InfoBodyPitch_cardsPrimary {
+  hash: String
+  title: Json
+  description: Json
+}
+
+type InfoBodyShow_case {
+  type: String
+  label: String
+  primary: InfoBodyShow_casePrimary
+  fields: [InfoBodyShow_caseFields!]
+}
+
+type InfoBodyShow_caseFields {
+  icon: String
+  copy: Json
+}
+
+type InfoBodyShow_casePrimary {
+  hash: String
+  title: Json
+  description: Json
+  image: Json
+  flip: Json
+}
+
+"""
+A connection to a list of items.
+"""
+type InfoConnectionConnection {
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+
+  """
+  A list of edges.
+  """
+  edges: [InfoConnectionEdge]
+  totalCount: Long!
+}
+
+"""
+An edge in a connection.
+"""
+type InfoConnectionEdge {
+  """
+  The item at the end of the edge.
+  """
+  node: Info!
+
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+}
+
+type InfoNav_bar {
+  primary: Json
+  push: Json
+  breakpoint: String
+}
+
+"""
+Raw JSON value
+"""
+scalar Json
+
+type Meta {
+  """
+  The id of the document.
+  """
+  id: String!
+
+  """
+  The uid of the document.
+  """
+  uid: String
+
+  """
+  The type of the document.
+  """
+  type: String!
+
+  """
+  The tags of the document.
+  """
+  tags: [String!]!
+
+  """
+  The language of the document.
+  """
+  lang: String!
+
+  """
+  Alternate languages the document.
+  """
+  alternateLanguages: [RelatedDocument!]!
+
+  """
+  The first publication date of the document.
+  """
+  firstPublicationDate: DateTime
+
+  """
+  The last publication date of the document.
+  """
+  lastPublicationDate: DateTime
+}
+
+"""
+Information about pagination in a connection.
+"""
+type PageInfo {
+  """
+  When paginating forwards, are there more items?
+  """
+  hasNextPage: Boolean!
+
+  """
+  When paginating backwards, are there more items?
+  """
+  hasPreviousPage: Boolean!
+
+  """
+  When paginating backwards, the cursor to continue.
+  """
+  startCursor: String
+
+  """
+  When paginating forwards, the cursor to continue.
+  """
+  endCursor: String
+}
+
+type Query {
+  _allDocuments(
+    sortBy: SortDocumentsBy
+    id: String
+    id_in: [String!]
+    uid: String
+    uid_in: [String!]
+    lang: String
+    tags: [String!]
+    tags_in: [String!]
+    type: String
+    type_in: [String!]
+    firstPublicationDate: DateTime
+    firstPublicationDate_after: DateTime
+    firstPublicationDate_before: DateTime
+    lastPublicationDate: DateTime
+    lastPublicationDate_after: DateTime
+    lastPublicationDate_before: DateTime
+    fulltext: String
+    similar: similar
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): _DocumentConnection!
+  info(uid: String!, lang: String!): Info
+  allInfos(
+    sortBy: SortInfoy
+    id: String
+    id_in: [String!]
+    uid: String
+    uid_in: [String!]
+    lang: String
+    tags: [String!]
+    tags_in: [String!]
+    type: String
+    type_in: [String!]
+    firstPublicationDate: DateTime
+    firstPublicationDate_after: DateTime
+    firstPublicationDate_before: DateTime
+    lastPublicationDate: DateTime
+    lastPublicationDate_after: DateTime
+    lastPublicationDate_before: DateTime
+    fulltext: String
+    similar: similar
+    where: WhereInfo
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): InfoConnectionConnection!
+}
+
+type RelatedDocument {
+  """
+  The id of the document.
+  """
+  id: String!
+
+  """
+  The uid of the document.
+  """
+  uid: String
+
+  """
+  The type of the document.
+  """
+  type: String!
+
+  """
+  The language of the document.
+  """
+  lang: String!
+}
+
+enum SortDocumentsBy {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+}
+
+enum SortInfoy {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  name_ASC
+  name_DESC
+  meta_title_ASC
+  meta_title_DESC
+  meta_description_ASC
+  meta_description_DESC
+}
+
+input WhereInfo {
+  """
+  name
+  """
+  name_fulltext: String
+  sticky_nav_bar: Boolean
+  meta_title: String
+  meta_title_fulltext: String
+  meta_description: String
+  meta_description_fulltext: String
+}
+
+"""
+A prismic document
+"""
+interface _Document {
+  _meta: Meta!
+}
+
+"""
+A connection to a list of items.
+"""
+type _DocumentConnection {
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+
+  """
+  A list of edges.
+  """
+  edges: [_DocumentEdge]
+  totalCount: Long!
+}
+
+"""
+An edge in a connection.
+"""
+type _DocumentEdge {
+  """
+  The item at the end of the edge.
+  """
+  node: _Document!
+
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+}
+
+"""
+An external link
+"""
+type _ExternalLink implements _Linkable {
+  url: String!
+  target: String
+  _linkType: String
+}
+
+"""
+A linked file
+"""
+type _FileLink implements _Linkable {
+  name: String!
+  url: String!
+  size: Long!
+  _linkType: String
+}
+
+"""
+A linked image
+"""
+type _ImageLink implements _Linkable {
+  name: String!
+  url: String!
+  size: Long!
+  height: Int!
+  width: Int!
+  _linkType: String
+}
+
+"""
+A prismic link
+"""
+interface _Linkable {
+  _linkType: String
+}
+
+input similar {
+  documentId: String!
+  max: Int!
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
