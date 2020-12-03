@@ -9,12 +9,12 @@ export default {
 
 export function Default() {
   const links = [
-    { text: "Overview", href: "#overview", breakpoint: "40rem" },
-    { text: "Features", href: "#features", breakpoint: "80rem" },
-    { text: "Use cases", href: "#use-cases", breakpoint: "100rem" },
-    { text: "Pricing", href: "#pricing", push: true, breakpoint: "40rem" },
+    { text: "Overview", href: "#overview", breakpoint: "960px" },
+    { text: "Features", href: "#features", breakpoint: "960px" },
+    { text: "Use cases", href: "#use-cases", breakpoint: "1200px" },
+    { text: "Pricing", href: "#pricing", push: true, breakpoint: "720px" },
     {
-      text: "Create account",
+      text: "Try For Free",
       href: "https://www.avail.co/users/new",
       primary: true,
       push: true,
