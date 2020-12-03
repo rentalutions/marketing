@@ -1,5 +1,5 @@
 import React, { cloneElement } from "react"
-import styled from "styled-components"
+import styled, { useTheme } from "styled-components"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
 
 const HeroWrapper = styled(Box)`
@@ -33,6 +33,7 @@ function Hero({
   children,
   ...props
 }) {
+  const { fontWeights } = useTheme()
   const links = primaryLink || secondaryLink
   return (
     <HeroWrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
@@ -45,10 +46,15 @@ function Hero({
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
         <Col span={image ? [12, 12, 12, 6] : [12]}>
-          {cloneElement(title, { fontSize: image ? "4rem" : "5rem" })}
+          {cloneElement(title, {
+            fontSize: image
+              ? ["2rem", "3rem", "4rem"]
+              : ["3rem", "4rem", "5rem"],
+            fontWeight: [fontWeights.regular, fontWeights.light],
+          })}
           <Box mt="2rem">{description}</Box>
           {links && (
-            <Stack wrapChildren direction={["row"]} mt="2rem">
+            <Stack wrapChildren direction={["column", "row"]} mt="2rem">
               {primaryLink}
               {secondaryLink}
             </Stack>
@@ -58,7 +64,7 @@ function Hero({
         {image && (
           <Col
             span={[12, 12, 12, 6]}
-            gridRow={["1", "auto"]}
+            gridRow={["1", "1", "1", "auto"]}
             order={imagePosition === "left" ? -1 : 1}
             sx={{ textAlign: "center" }}
           >
