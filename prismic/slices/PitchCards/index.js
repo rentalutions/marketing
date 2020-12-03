@@ -73,6 +73,7 @@ const PitchCardsSlice = ({ slice }) => {
         verticalAlign="bottom"
         src={titleImage.url}
         alt={titleImage.alt}
+        title={titleImage.alt}
         ml="1rem"
         sx={{ transform: "translateY(-10%)" }}
       />

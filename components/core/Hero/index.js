@@ -66,6 +66,7 @@ function Hero({
               as="img"
               src={image.url}
               alt={image.alt}
+              title={image.alt}
               maxWidth={["100%", "50%", "50%", "100%"]}
             />
           </Col>
