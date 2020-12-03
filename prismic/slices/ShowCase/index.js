@@ -1,6 +1,6 @@
 import React from "react"
 import Showcase from "components/core/Showcase"
-import { availContainerWidth } from "lib/config"
+import { availContainerWidth, h3Sizing } from "lib/config"
 import RichText from "prismic/components/RichText"
 import Anchor from "prismic/components/Anchor"
 
@@ -22,8 +22,8 @@ const MySlice = ({ slice }) => {
               color="blue_500"
               render={title}
               heading
-              fontSize="3rem"
               mb="2rem"
+              {...h3Sizing}
             />
             <RichText render={description} />
           </React.Fragment>
