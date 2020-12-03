@@ -33,7 +33,7 @@ function Hero({
   children,
   ...props
 }) {
-  const { fontWeights } = useTheme()
+  const { fontWeights, fontSizes } = useTheme()
   const links = primaryLink || secondaryLink
   return (
     <HeroWrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
@@ -48,8 +48,8 @@ function Hero({
         <Col span={image ? [12, 12, 12, 6] : [12]}>
           {cloneElement(title, {
             fontSize: image
-              ? ["2rem", "3rem", "4rem"]
-              : ["3rem", "4rem", "5rem"],
+              ? [fontSizes.subtitle, fontSizes.title, fontSizes.headline]
+              : [fontSizes.title, fontSizes.headline, fontSizes.hero],
             fontWeight: [fontWeights.regular, fontWeights.light],
           })}
           <Box mt="2rem">{description}</Box>

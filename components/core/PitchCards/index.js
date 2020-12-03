@@ -67,7 +67,11 @@ function PitchCard({
         >
           <Link href={link.url} passHref>
             {link.button ? (
-              <Button as="a" {...(link.target && { target: link.target })}>
+              <Button
+                mb="2rem"
+                as="a"
+                {...(link.target && { target: link.target })}
+              >
                 {link.text}
               </Button>
             ) : (

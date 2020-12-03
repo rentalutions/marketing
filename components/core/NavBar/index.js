@@ -51,6 +51,7 @@ const NavBar = ({
             href="https://avail.co"
             mr="2rem"
             width={["48px", "auto"]}
+            height="48px"
             sx={{
               display: "block",
               overflow: "hidden",
