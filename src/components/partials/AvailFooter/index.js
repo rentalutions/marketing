@@ -46,7 +46,7 @@ const FooterIcon = styled(Box).attrs({
   }
 `
 
-const Footer = () => {
+const AvailFooter = () => {
   const currentYear = new Date().getFullYear()
   return (
     <Box bg="blue_100">
@@ -278,4 +278,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default AvailFooter
