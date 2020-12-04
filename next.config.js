@@ -4,14 +4,4 @@ const withTM = require("next-transpile-modules")([
   "prismic-reactjs",
 ])
 
-module.exports = withPlugins([withTM], {
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/info/listings",
-        permanent: false,
-      },
-    ]
-  },
-})
+module.exports = withPlugins([withTM], {})

@@ -42,6 +42,7 @@ function HowItWorksSection({ copy, image = null, flip, mb }) {
         as="img"
         src={image.url}
         alt={image.alt}
+        title={image.alt}
         gridColumn={imageColumn}
         maxWidth="100%"
       />

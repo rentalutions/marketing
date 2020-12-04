@@ -58,7 +58,7 @@ const PitchCardsSlice = ({ slice }) => {
       heading
     />
   )
-  const titleWithImage = titleImage && (
+  const titleWithImage = titleImage && titleImage.url && (
     <Box textAlign={centerTitle ? "center" : "inherit"}>
       <RichText
         display="inline-block"
@@ -73,6 +73,7 @@ const PitchCardsSlice = ({ slice }) => {
         verticalAlign="bottom"
         src={titleImage.url}
         alt={titleImage.alt}
+        title={titleImage.alt}
         ml="1rem"
         sx={{ transform: "translateY(-10%)" }}
       />

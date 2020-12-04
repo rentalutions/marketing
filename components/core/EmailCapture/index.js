@@ -53,6 +53,7 @@ const EmailCapture = ({
             type="submit"
             display="block"
             textAlign="center"
+            width="100%"
           >
             {buttonText}
           </ContrastButtonPrimary>
@@ -62,6 +63,7 @@ const EmailCapture = ({
             type="submit"
             display="block"
             textAlign="center"
+            width="100%"
           >
             {buttonText}
           </Button>

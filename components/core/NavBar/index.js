@@ -45,42 +45,51 @@ const NavBar = ({
         maxWidth={containerWidth}
         overflow="hidden"
       >
-        <Flex>
-          <Box as="a" href="https://avail.co" mr="2rem">
+        <Flex flexDirection="row" width="100%">
+          <Box
+            as="a"
+            href="https://avail.co"
+            mr="2rem"
+            width={["48px", "auto"]}
+            height="48px"
+            sx={{
+              display: "block",
+              overflow: "hidden",
+            }}
+          >
             <Box
               as="img"
-              src="/icons/icon-100.png"
+              src="/logo-wordmark.svg"
               aria-label="Avail"
               alt="Avail"
+              title="Avail"
               height={48}
-              width={48}
+              width={195}
             />
           </Box>
-          <Flex flexDirection="row" width="100%">
-            {linksSorted.map((link, index) => {
-              const bpIndex = breakpoints.indexOf(link.breakpoint)
-              const display =
-                bpIndex !== -1
-                  ? Array(bpIndex + 2)
-                      .fill("none")
-                      .fill("block", bpIndex + 1)
-                  : "block"
-              return (
-                <React.Fragment key={link.href}>
-                  {index === splitIndex && <Box ml="auto" key="separator" />}
-                  <NavBarButton
-                    variant={link.primary ? "primary" : "default"}
-                    href={link.href}
-                    forwardedAs="a"
-                    display={display}
-                    mr={index === links.length - 1 ? "0" : "2rem"}
-                  >
-                    {link.text}
-                  </NavBarButton>
-                </React.Fragment>
-              )
-            })}
-          </Flex>
+          {linksSorted.map((link, index) => {
+            const bpIndex = breakpoints.indexOf(link.breakpoint)
+            const display =
+              bpIndex !== -1
+                ? Array(bpIndex + 2)
+                    .fill("none")
+                    .fill("block", bpIndex + 1)
+                : "block"
+            return (
+              <React.Fragment key={link.href}>
+                {index === splitIndex && <Box ml="auto" key="separator" />}
+                <NavBarButton
+                  variant={link.primary ? "primary" : "default"}
+                  href={link.href}
+                  forwardedAs="a"
+                  display={display}
+                  mr={index === links.length - 1 ? "0" : "2rem"}
+                >
+                  {link.text}
+                </NavBarButton>
+              </React.Fragment>
+            )
+          })}
         </Flex>
       </Container>
     </Box>

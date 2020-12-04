@@ -62,7 +62,13 @@ const Showcase = ({
             gridColumn={["span 12", "span 12", "span 5"]}
             order={flip ? -1 : 1}
           >
-            <Box as="img" src={image.url} alt={image.alt} maxWidth="22rem" />
+            <Box
+              as="img"
+              src={image.url}
+              alt={image.alt}
+              title={image.alt}
+              maxWidth="22rem"
+            />
           </Col>
         </Grid>
       </Container>
