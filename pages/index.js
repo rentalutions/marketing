@@ -1,5 +1,5 @@
 import { Router } from "next/router"
-import { prismicClient } from "prismic/prismic.config"
+import { prismicClient } from "src/prismic.config"
 import Prismic from "prismic-javascript"
 
 const IndexPage = () => {

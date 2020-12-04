@@ -1,14 +1,14 @@
 import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { theme, Base as Reset } from "@rent_avail/base"
-import { breakpoints, defaultSeo } from "lib/config"
-import PreviewWarning from "prismic/components/PreviewWarning"
-import { RichTextGlobalStyle } from "prismic/components/RichText"
+import PreviewWarning from "components/partials/PreviewWarning"
+import { RichTextGlobalStyle } from "components/partials/SliceZone/components/RichText"
 import { DefaultSeo } from "next-seo"
+import { BREAKPOINTS, DEFAULT_SEO } from "config"
 
 const marketingTheme = {
   ...theme,
-  breakpoints: [...breakpoints],
+  breakpoints: [...BREAKPOINTS],
 }
 
 const GlobalStyles = createGlobalStyle`
@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
   const { preview } = pageProps
   return (
     <ThemeProvider theme={marketingTheme}>
-      <DefaultSeo {...defaultSeo} />
+      <DefaultSeo {...DEFAULT_SEO} />
       <Reset />
       <GlobalStyles />
       <RichTextGlobalStyle />

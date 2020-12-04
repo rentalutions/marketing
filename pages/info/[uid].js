@@ -1,12 +1,12 @@
 import React from "react"
 import { useGetStaticProps, useGetStaticPaths } from "next-slicezone/hooks"
-import { prismicClient } from "prismic/prismic.config"
-import SliceZone from "prismic/components/SliceZone"
+import { prismicClient } from "src/prismic.config"
 import { NextSeo } from "next-seo"
-import Footer from "components/avail/Footer"
-import { availContainerWidth } from "lib/config"
-import NavBar from "components/core/NavBar"
+import Footer from "components/partials/Footer"
+import SliceZone from "components/partials/SliceZone"
+import NavBar from "components/organisms/NavBar"
 import { useTheme } from "styled-components"
+import { CONTAINER_WIDTHS } from "config"
 
 export const getStaticProps = async ({
   preview = null,
@@ -81,9 +81,8 @@ const Page = ({ slices, data, uid }) => {
         links={navBarLinks}
         sticky={navBarSticky}
         borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
-        containerWidth={availContainerWidth}
+        containerWidth={CONTAINER_WIDTHS}
       />
-
       <SliceZone slices={slices} />
       <Footer />
     </React.Fragment>
