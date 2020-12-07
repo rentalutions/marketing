@@ -7,17 +7,16 @@ const IndexPage = () => {
 
 /** TODO: Come up with a tag to indicate "production" pages in CMS and
  *        redirect to the first "production" page instead */
-const possibleFirstPages = ["listings-100001", "listings"]
+const possibleLandingPages = ["listings-100001", "listings"]
 
 IndexPage.getInitialProps = async ({ res }) => {
-  const { results: infoPages } = await prismicClient.query("")
+  const { results: pages } = await prismicClient.query("")
 
   const landingPage =
-    infoPages.find((page) => possibleFirstPages.includes(page.uid)) ||
-    infoPages[0]
+    pages.find((page) => possibleLandingPages.includes(page.uid)) || pages[0]
 
   if (res) {
-    res.writeHead(302, { Location: `/info/${landingPage.uid}` })
+    res.writeHead(302, { Location: `/${landingPage.type}/${landingPage.uid}` })
     res.end()
     return {}
   }
