@@ -1,5 +1,4 @@
 import React from "react"
-import { useGetStaticProps, useGetStaticPaths } from "next-slicezone/hooks"
 import { prismicClient } from "src/prismic.config"
 import { NextSeo } from "next-seo"
 import AvailFooter from "components/partials/AvailFooter"
@@ -11,31 +10,26 @@ import { CONTAINER_WIDTHS } from "config"
 export const getStaticProps = async ({
   preview = null,
   previewData = {},
-  params = {},
+  params: { type, uid },
 }) => {
-  const hookResult = await useGetStaticProps({
-    client: prismicClient,
-    type: "info",
-    uid: ({ params: p }) => p.uid,
-  })({ preview, previewData, params })
+  const data = await prismicClient.getByUID(type, uid, { ...previewData })
   return {
     props: {
       preview,
       previewData,
-      ...hookResult.props,
+      ...data,
     },
     revalidate: 1,
   }
 }
 
-export const getStaticPaths = useGetStaticPaths({
-  client: prismicClient,
-  type: "info",
-  fallback: true,
-  formatPath: ({ uid }) => ({ params: { uid } }),
-})
+export const getStaticPaths = async () => {
+  const pages = await prismicClient.query("", { pageSize: 100 })
+  const paths = pages.results.map((p) => `/${p.type}/${p.uid}`)
+  return { paths, fallback: false }
+}
 
-const Page = ({ slices, data, uid }) => {
+const Page = ({ data, uid }) => {
   if (!data) {
     return null
   }
@@ -51,6 +45,7 @@ const Page = ({ slices, data, uid }) => {
     meta_description: description,
     meta_keywords: keywords,
     sticky_nav_bar: navBarSticky,
+    body: slices,
   } = data
 
   const navBarLinks =
