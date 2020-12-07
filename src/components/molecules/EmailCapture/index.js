@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Input from "@rent_avail/input"
 import { Box } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
@@ -12,6 +12,8 @@ const EmailCapture = ({
   buttonUrl,
   queryParamName,
 }) => {
+  const buttonRef = useRef()
+  const [buttonWidth, setButtonWidth] = useState(0)
   const [inputValue, setInputValue] = useState("")
   const [scheme, isDark] = background ? analyzeColor(background) : []
   const buttonHref = `${buttonUrl}${
@@ -21,6 +23,11 @@ const EmailCapture = ({
     e.preventDefault()
     window.location.href = buttonHref
   }
+  useEffect(() => {
+    if (buttonRef.current) {
+      setButtonWidth(buttonRef.current.offsetWidth)
+    }
+  }, [buttonRef.current])
   return (
     <Box as="form" position="relative" onSubmit={onSubmit}>
       <Input
@@ -36,6 +43,7 @@ const EmailCapture = ({
           },
           "& > input": {
             height: "calc(6.5rem - 2px)",
+            paddingRight: ["2rem", `calc(2rem + ${buttonWidth}px)`],
           },
         }}
         value={inputValue}
@@ -46,6 +54,7 @@ const EmailCapture = ({
         mt={["1.5rem", 0]}
         top="calc(1rem + 2px)"
         right="1rem"
+        ref={buttonRef}
       >
         {isDark ? (
           <ContrastButtonPrimary
