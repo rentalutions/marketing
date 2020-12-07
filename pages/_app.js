@@ -1,20 +1,28 @@
 import React from "react"
-import { ThemeProvider } from "styled-components"
-import { theme, Base } from "@rent_avail/base"
-import Head from "next/head"
-import PreviewWarning from "../components/preview-warning"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
+import { theme, Base as Reset } from "@rent_avail/base"
+import PreviewWarning from "components/partials/PreviewWarning"
+import { RichTextGlobalStyle } from "components/partials/SliceZone/components/RichText"
+import { DefaultSeo } from "next-seo"
+import { BREAKPOINTS, DEFAULT_SEO } from "config"
+
+const marketingTheme = {
+  ...theme,
+  breakpoints: [...BREAKPOINTS],
+}
+
+const GlobalStyles = createGlobalStyle`
+ .async-hide { opacity: 0 !important}
+`
 
 export default function App({ Component, pageProps }) {
   const { preview } = pageProps
   return (
-    <ThemeProvider theme={theme}>
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <Base />
+    <ThemeProvider theme={marketingTheme}>
+      <DefaultSeo {...DEFAULT_SEO} />
+      <Reset />
+      <GlobalStyles />
+      <RichTextGlobalStyle />
       {preview && <PreviewWarning />}
       <Component {...pageProps} />
     </ThemeProvider>

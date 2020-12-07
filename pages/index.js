@@ -1,47 +1,32 @@
-import { Box } from "@rent_avail/layout"
-import { Heading } from "@rent_avail/typography"
-import React from "react"
-import { useTheme } from "styled-components"
-import Head from "next/head"
-import HomeSliceZone from "../components/slices/home-slice-zone"
-import { Hero } from "../components/hero"
-import { getHomepage } from "../lib/api/homepage"
+import { Router } from "next/router"
+import { prismicClient } from "src/prismic.config"
+import Prismic from "prismic-javascript"
 
-export const getStaticProps = async ({ preview = false, previewData = {} }) => {
-  const result = await getHomepage({ previewData })
-  const { data } = result
-  return {
-    props: { data, preview },
-    revalidate: 1,
-  }
+const IndexPage = () => {
+  return null
 }
 
-const Home = ({ data }) => {
-  const homepage = data.allHomepages.edges[0].node
-  const { colors } = useTheme()
-  return (
-    <>
-      <Head>
-        <title>{homepage.title}</title>
-      </Head>
-      <Box as="main">
-        <Hero
-          color="ui_100"
-          bg="blue_500"
-          image={homepage.image.url}
-          title={<Heading as="h1">{homepage.title}</Heading>}
-          description={homepage.tagline}
-          secondaryLink={{
-            url: homepage.button_link.url,
-            text: homepage.button_text,
-            props: { color: "gold_500", textColor: colors.blue_500 },
-          }}
-        />
-        <HomeSliceZone slices={homepage.body} />
-        <Box height="12rem" bg="ui_300" />
-      </Box>
-    </>
+/** TODO: Come up with a tag to indicate "production" pages in CMS and
+ *        redirect to the first "production" page instead */
+const possibleFirstPages = ["listings-100001", "listings"]
+
+IndexPage.getInitialProps = async ({ res }) => {
+  const { results: infoPages } = await prismicClient.query(
+    Prismic.Predicates.at("document.type", "info")
   )
+
+  const landingPage =
+    infoPages.find((page) => possibleFirstPages.includes(page.uid)) ||
+    infoPages[0]
+
+  if (res) {
+    res.writeHead(302, { Location: `/info/${landingPage.uid}` })
+    res.end()
+    return {}
+  }
+
+  Router.push(`/info/${landingPage.uid}`)
+  return {}
 }
 
-export default Home
+export default IndexPage

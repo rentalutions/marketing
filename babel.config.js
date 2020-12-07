@@ -6,8 +6,9 @@ module.exports = {
       "module-resolver",
       {
         alias: {
-          components: "./components",
-          "@prismic-config": "./prismic.config.js",
+          components: "./src/components",
+          utils: "./src/utils",
+          config: "./src/config",
         },
       },
     ],

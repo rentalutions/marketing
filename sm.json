@@ -1,0 +1,3 @@
+{
+  "libraries": ["@/src/components/partials/SliceZone/components"]
+}
