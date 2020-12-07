@@ -1,33 +1,30 @@
 import React from "react"
-import { ThemeProvider } from "styled-components"
-import { theme, Base } from "@rent_avail/base"
-import Head from "next/head"
-import { breakpoints } from "lib/config"
-import PreviewWarning from "prismic/components/PreviewWarning"
-import { RichTextGlobalStyle } from "prismic/components/RichText"
-import HeaderScripts from "components/avail/HeaderScripts"
-import Seo from "components/avail/Seo"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
+import { theme, Base as Reset } from "@rent_avail/base"
+import PreviewWarning from "components/partials/PreviewWarning"
+import { RichTextGlobalStyle } from "components/partials/SliceZone/components/RichText"
+import { DefaultSeo } from "next-seo"
+import { BREAKPOINTS, DEFAULT_SEO } from "config"
+
+const marketingTheme = {
+  ...theme,
+  breakpoints: [...BREAKPOINTS],
+}
+
+const GlobalStyles = createGlobalStyle`
+ .async-hide { opacity: 0 !important}
+`
 
 export default function App({ Component, pageProps }) {
-  const marketingTheme = {
-    ...theme,
-    breakpoints: [...breakpoints],
-  }
   const { preview } = pageProps
   return (
     <ThemeProvider theme={marketingTheme}>
-      <Head>
-        {HeaderScripts()}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <Base />
+      <DefaultSeo {...DEFAULT_SEO} />
+      <Reset />
+      <GlobalStyles />
       <RichTextGlobalStyle />
       {preview && <PreviewWarning />}
       <Component {...pageProps} />
-      <Seo />
     </ThemeProvider>
   )
 }

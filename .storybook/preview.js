@@ -1,7 +1,7 @@
 import React from "react"
 import { ThemeProvider } from "styled-components"
 import { Base, theme } from "@rent_avail/base"
-import { breakpoints } from "lib/config"
+import { BREAKPOINTS } from "config"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -9,7 +9,7 @@ export const parameters = {
 
 const marketingTheme = {
   ...theme,
-  breakpoints: [...breakpoints],
+  breakpoints: [...BREAKPOINTS],
 }
 
 export const decorators = [
