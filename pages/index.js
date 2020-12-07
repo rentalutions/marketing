@@ -1,6 +1,5 @@
 import { Router } from "next/router"
 import { prismicClient } from "src/prismic.config"
-import Prismic from "prismic-javascript"
 
 const IndexPage = () => {
   return null
@@ -11,9 +10,7 @@ const IndexPage = () => {
 const possibleFirstPages = ["listings-100001", "listings"]
 
 IndexPage.getInitialProps = async ({ res }) => {
-  const { results: infoPages } = await prismicClient.query(
-    Prismic.Predicates.at("document.type", "info")
-  )
+  const { results: infoPages } = await prismicClient.query("")
 
   const landingPage =
     infoPages.find((page) => possibleFirstPages.includes(page.uid)) ||
