@@ -3,12 +3,15 @@ import { Box } from "@rent_avail/layout"
 import { PitchCards } from "components/organisms/PitchCards"
 import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS } from "config"
+import { useUrlResolver } from "components/partials/UrlResolver"
 import RichText from "../RichText"
 
 const PitchCardsSlice = ({ slice }) => {
   const {
     primary: { title, titleImage, centerTitle, description, hash },
   } = slice
+
+  const urlResolver = useUrlResolver()
 
   const sections = slice.items.map(
     (
@@ -34,12 +37,12 @@ const PitchCardsSlice = ({ slice }) => {
         ),
         description: <RichText render={description} />,
         icon,
-        key: (title[0] && title[0].text) || idx,
+        key: (title && title[0] && title[0].text) || idx,
         link:
           linkText && linkUrl
             ? {
                 text: linkText,
-                url: linkUrl && linkUrl.url,
+                url: linkUrl && urlResolver(linkUrl.url),
                 target:
                   linkUrl &&
                   (linkUrl.target ||

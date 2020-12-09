@@ -4,6 +4,7 @@ import RichText from "components/partials/SliceZone/components/RichText"
 import { Hero } from "components/organisms/Hero"
 import EmailCapture from "components/molecules/EmailCapture"
 import { CONTAINER_WIDTHS } from "config"
+import { useUrlResolver } from "components/partials/UrlResolver"
 
 const HeroWithEmailCaptureSlice = ({ slice }) => {
   const {
@@ -19,6 +20,8 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       emailCaptureButtonText,
     },
   } = slice
+
+  const urlResolver = useUrlResolver()
 
   const isEmailCapture = emailCaptureLabel && emailCaptureButtonText
 
@@ -39,7 +42,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
             background={background}
             inputLabel={emailCaptureLabel}
             buttonText={emailCaptureButtonText}
-            buttonUrl="https://www.avail.co/users/new"
+            buttonUrl={urlResolver("https://www.avail.co/users/new")}
             queryParamName="email"
           />
         </Box>

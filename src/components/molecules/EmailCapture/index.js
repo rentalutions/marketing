@@ -16,18 +16,22 @@ const EmailCapture = ({
   const [buttonWidth, setButtonWidth] = useState(0)
   const [inputValue, setInputValue] = useState("")
   const [scheme, isDark] = background ? analyzeColor(background) : []
-  const buttonHref = `${buttonUrl}${
-    queryParamName && inputValue ? `?${queryParamName}=${inputValue}` : ""
-  }`
+
   const onSubmit = (e) => {
     e.preventDefault()
-    window.location.href = buttonHref
+    const url = new URL(buttonUrl)
+    if (queryParamName && inputValue) {
+      url.searchParams.append(queryParamName, inputValue)
+    }
+    window.location.href = url.toString()
   }
+
   useEffect(() => {
     if (buttonRef.current) {
       setButtonWidth(buttonRef.current.offsetWidth)
     }
   }, [buttonRef.current])
+
   return (
     <Box as="form" position="relative" onSubmit={onSubmit}>
       <Input
