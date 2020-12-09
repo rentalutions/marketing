@@ -51,10 +51,10 @@ const Page = ({ data, uid }) => {
 
   const urlResolverParams = (({
     query_channel: channel,
-    query_display: display,
-    query_source: source,
-    query_intent: intent,
-  }) => ({ channel, display, source, intent }))(data)
+    query_content: content,
+    query_signup_page: signup_page, // eslint-disable-line camelcase
+    query_campaign: campaign,
+  }) => ({ channel, content, signup_page, campaign }))(data)
 
   const navBarLinks =
     data.nav_bar &&
