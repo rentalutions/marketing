@@ -8,6 +8,7 @@ import {
   OList,
 } from "components/partials/SliceZone/components/RichText/components/List"
 import { H1_SIZING, H2_SIZING, H3_SIZING } from "config"
+import { useUrlResolver } from "components/partials/UrlResolver"
 
 const createHeading = (as, props, children) => {
   return children && children[0] ? (
@@ -15,11 +16,12 @@ const createHeading = (as, props, children) => {
   ) : (
     /** This a "hack", if we return NULL as we should've the RichText will
      * fall back to default implementation and will render empty heading tag */
-    <React.Fragment />
+    <React.Fragment key={props.key} />
   )
 }
 
 const htmlSerializer = (props) => {
+  const urlResolver = useUrlResolver()
   return (type, element, content, children, key) => {
     switch (type) {
       case Elements.heading1:
@@ -72,7 +74,7 @@ const htmlSerializer = (props) => {
         return React.createElement(
           "a",
           {
-            href: element.data.url || linkResolver(element.data),
+            href: urlResolver(element.data.url) || linkResolver(element.data),
             className: "link",
             ...targetAttr,
             ...relAttr,

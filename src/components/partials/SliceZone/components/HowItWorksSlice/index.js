@@ -10,7 +10,7 @@ const HowItWorksSlice = ({ slice }) => {
   } = slice
   // eslint-disable-next-line no-shadow
   const sections = slice.items.map(({ title, description, image }, idx) => ({
-    uid: (title && title[0]) || idx,
+    uid: (title && title[0] && title[0].text) || idx,
     copy: (
       <React.Fragment>
         <RichText render={title} mb="2rem" heading />

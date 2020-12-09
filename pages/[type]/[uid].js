@@ -6,6 +6,7 @@ import SliceZone from "components/partials/SliceZone"
 import NavBar from "components/organisms/NavBar"
 import { useTheme } from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
+import { UrlResolverProvider } from "components/partials/UrlResolver"
 
 export const getStaticProps = async ({
   preview = null,
@@ -48,6 +49,13 @@ const Page = ({ data, uid }) => {
     body: slices,
   } = data
 
+  const urlResolverParams = (({
+    query_channel: channel,
+    query_display: display,
+    query_source: source,
+    query_intent: intent,
+  }) => ({ channel, display, source, intent }))(data)
+
   const navBarLinks =
     data.nav_bar &&
     data.nav_bar.map(
@@ -60,7 +68,7 @@ const Page = ({ data, uid }) => {
       })
     )
   return (
-    <React.Fragment>
+    <UrlResolverProvider params={urlResolverParams}>
       <NextSeo
         title={title}
         description={description}
@@ -80,7 +88,7 @@ const Page = ({ data, uid }) => {
       />
       <SliceZone slices={slices} />
       <AvailFooter />
-    </React.Fragment>
+    </UrlResolverProvider>
   )
 }
 

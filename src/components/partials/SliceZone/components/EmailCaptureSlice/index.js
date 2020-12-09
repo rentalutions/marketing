@@ -4,8 +4,10 @@ import EmailCapture from "components/molecules/EmailCapture"
 import RichText from "components/partials/SliceZone/components/RichText"
 import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS, H3_SIZING } from "config"
+import { useUrlResolver } from "components/partials/UrlResolver"
 
 const EmailCaptureSlice = ({ slice }) => {
+  const urlResolver = useUrlResolver()
   const {
     primary: { title, hash, label, buttonText },
   } = slice
@@ -24,7 +26,7 @@ const EmailCaptureSlice = ({ slice }) => {
         <EmailCapture
           inputLabel={label}
           buttonText={buttonText}
-          buttonUrl="https://www.avail.co/users/new"
+          buttonUrl={urlResolver("https://www.avail.co/users/new")}
           queryParamName="email"
         />
       </Container>
