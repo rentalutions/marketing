@@ -11,6 +11,7 @@ import {
 import { Heading, Text } from "@rent_avail/typography"
 import styled from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
+import { useUrlResolver } from "components/partials/UrlResolver"
 
 const FooterLinks = styled(Box)`
   margin-top: 3rem;
@@ -48,6 +49,7 @@ const FooterIcon = styled(Box).attrs({
 
 const AvailFooter = () => {
   const currentYear = new Date().getFullYear()
+  const urlResolver = useUrlResolver()
   return (
     <Box bg="blue_100">
       <Container maxWidth={CONTAINER_WIDTHS} p="2rem 2rem 3rem">
@@ -69,31 +71,49 @@ const AvailFooter = () => {
           <Col span={[12, 6, 4, 3]}>
             <FooterLinks>
               <FooterLinksHeading as="h5">Get Started</FooterLinksHeading>
-              <FooterText as="a" href="https://www.avail.co/users/new">
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/users/new")}
+              >
                 Sign up as a landlord
               </FooterText>
               <FooterText
                 as="a"
-                href="https://www.avail.co/users/new?tenant=true"
+                href={urlResolver("https://www.avail.co/users/new?tenant=true")}
               >
                 Sign up as a tenant
               </FooterText>
             </FooterLinks>
             <FooterLinks>
               <FooterLinksHeading as="h5">About Us</FooterLinksHeading>
-              <FooterText as="a" href="https://www.avail.co/about">
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/about")}
+              >
                 Company
               </FooterText>
-              <FooterText as="a" href="https://www.avail.co/house-rules">
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/house-rules")}
+              >
                 House Rules
               </FooterText>
-              <FooterText as="a" href="https://www.avail.co/testimonials">
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/testimonials")}
+              >
                 Testimonials
               </FooterText>
-              <FooterText as="a" href="https://www.avail.co/jobs">
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/jobs")}
+              >
                 Jobs
               </FooterText>
-              <FooterText as="a" href="https://www.avail.co/press">
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/press")}
+              >
                 Press
               </FooterText>
             </FooterLinks>
@@ -103,49 +123,65 @@ const AvailFooter = () => {
               <FooterLinksHeading as="h5">How It Works</FooterLinksHeading>
               <FooterText
                 as="a"
-                href="https://www.avail.co/landlords/rental-listings"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/rental-listings"
+                )}
               >
                 Rental Listings
               </FooterText>
               <FooterText
                 as="a"
-                href="https://www.avail.co/landlords/online-rental-applications"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/online-rental-applications"
+                )}
               >
                 Rental Applications
               </FooterText>
               <FooterText
                 as="a"
-                href="https://www.avail.co/landlords/online-tenant-screening"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/online-tenant-screening"
+                )}
               >
                 Tenant Screening
               </FooterText>
               <FooterText
                 as="a"
-                href="https://www.avail.co/landlords/credit-and-background-check"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/credit-and-background-check"
+                )}
               >
                 Credit, Criminal, Eviction Reports
               </FooterText>
               <FooterText
                 as="a"
-                href="https://www.avail.co/landlords/rental-lease-agreement"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/rental-lease-agreement"
+                )}
               >
                 Digital Leasing
               </FooterText>
               <FooterText
                 as="a"
-                href="https://www.avail.co/landlords/online-rent-collection"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/online-rent-collection"
+                )}
               >
                 Online Rent Payments
               </FooterText>
               <FooterText
                 as="a"
-                href="https://www.avail.co/landlords/maintenance-tracking"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/maintenance-tracking"
+                )}
               >
                 Maintenance Tracking
               </FooterText>
               <FooterText
                 as="a"
-                href="https://www.avail.co/landlords/rent-analysis"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/rent-analysis"
+                )}
               >
                 Rent Price Analysis
               </FooterText>
@@ -164,22 +200,40 @@ const AvailFooter = () => {
               <Box>
                 <FooterLinks>
                   <FooterLinksHeading as="h5">Resources</FooterLinksHeading>
-                  <FooterText as="a" href="https://www.avail.co/education">
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://www.avail.co/education")}
+                  >
                     Landlord Education
                   </FooterText>
-                  <FooterText as="a" href="https://community.avail.co">
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://community.avail.co")}
+                  >
                     Avail Community
                   </FooterText>
-                  <FooterText as="a" href="https://www.avail.co/blog">
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://www.avail.co/blog")}
+                  >
                     Avail Blog
                   </FooterText>
-                  <FooterText as="a" href="https://support.avail.co">
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://support.avail.co")}
+                  >
                     Help Center
                   </FooterText>
-                  <FooterText as="a" href="https://www.avail.co/contact">
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://www.avail.co/contact")}
+                  >
                     Contact Us
                   </FooterText>
-                  <FooterText as="a" href="https://www.avail.co/sitemap">
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://www.avail.co/sitemap")}
+                  >
                     Site Map
                   </FooterText>
                 </FooterLinks>
@@ -212,7 +266,7 @@ const AvailFooter = () => {
                 mt="2rem"
                 color="blue_500"
               >
-                <FooterIcon mt="0" href="https://www.avail.co/">
+                <FooterIcon mt="0" href={urlResolver("https://www.avail.co/")}>
                   <Box
                     as="img"
                     src="/logo-glyph.svg"
@@ -263,11 +317,19 @@ const AvailFooter = () => {
           fontSize="1.334rem"
         >
           <Flex mb="1rem">
-            <Text color="blue_100" as="a" href="https://www.avail.co/privacy">
+            <Text
+              color="blue_100"
+              as="a"
+              href={urlResolver("https://www.avail.co/privacy")}
+            >
               Privacy
             </Text>
             <Text mx=".5rem">|</Text>
-            <Text color="blue_100" as="a" href="https://www.avail.co/terms">
+            <Text
+              color="blue_100"
+              as="a"
+              href={urlResolver("https://www.avail.co/terms")}
+            >
               Terms
             </Text>
           </Flex>

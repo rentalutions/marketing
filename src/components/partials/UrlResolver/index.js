@@ -19,7 +19,7 @@ const createUrlResolver = (params) => {
   }
 }
 
-const UrlResolverContext = React.createContext(null)
+const UrlResolverContext = React.createContext((url) => url)
 
 export const UrlResolverProvider = ({ params, children }) => {
   const urlResolver = createUrlResolver(params)
@@ -31,9 +31,5 @@ export const UrlResolverProvider = ({ params, children }) => {
 }
 
 export const useUrlResolver = () => {
-  const urlResolver = useContext(UrlResolverContext)
-  if (urlResolver === null) {
-    throw new Error("Must use UrlResolver within an UrlResolverProvider")
-  }
-  return urlResolver
+  return useContext(UrlResolverContext)
 }
