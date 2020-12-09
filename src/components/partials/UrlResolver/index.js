@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { useRouter } from "next/router"
 
 const isAvailUrl = (url) => {
   return url && url.includes("avail.co")
@@ -22,7 +23,8 @@ const createUrlResolver = (params) => {
 const UrlResolverContext = React.createContext((url) => url)
 
 export const UrlResolverProvider = ({ params, children }) => {
-  const urlResolver = createUrlResolver(params)
+  const router = useRouter()
+  const urlResolver = createUrlResolver({ ...params, ...router.query })
   return (
     <UrlResolverContext.Provider value={urlResolver}>
       {children}
