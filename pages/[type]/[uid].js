@@ -6,7 +6,10 @@ import SliceZone from "components/partials/SliceZone"
 import NavBar from "components/organisms/NavBar"
 import { useTheme } from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
-import { UrlResolverProvider } from "components/partials/UrlResolver"
+import {
+  UrlResolverProvider,
+  useUrlResolver,
+} from "components/partials/UrlResolver"
 
 export const getStaticProps = async ({
   preview = null,
@@ -28,6 +31,15 @@ export const getStaticPaths = async () => {
   const pages = await prismicClient.query("", { pageSize: 100 })
   const paths = pages.results.map((p) => `/${p.type}/${p.uid}`)
   return { paths, fallback: false }
+}
+
+const NavBarWrapper = ({ links, ...props }) => {
+  const urlResolver = useUrlResolver()
+  const resolvedLinks = links.map(({ href = "", ...link }) => ({
+    href: href.indexOf("#") !== 0 ? urlResolver(href) : href,
+    ...link,
+  }))
+  return <NavBar links={resolvedLinks} {...props} />
 }
 
 const Page = ({ data, uid }) => {
@@ -80,7 +92,7 @@ const Page = ({ data, uid }) => {
         }}
         additionalMetaTags={[{ property: "keywords", content: keywords }]}
       />
-      <NavBar
+      <NavBarWrapper
         links={navBarLinks}
         sticky={navBarSticky}
         borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
