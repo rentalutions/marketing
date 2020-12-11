@@ -5,12 +5,14 @@ import RichText from "components/partials/SliceZone/components/RichText"
 import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS, H3_SIZING } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
+import { useUID } from "react-uid"
 
 const EmailCaptureSlice = ({ slice }) => {
   const urlResolver = useUrlResolver()
   const {
     primary: { title, hash, label, buttonText },
   } = slice
+  const inputLabelId = useUID()
   return (
     <Container maxWidth={CONTAINER_WIDTHS} my="6rem">
       {hash && <Anchor hash={hash} />}
@@ -25,6 +27,7 @@ const EmailCaptureSlice = ({ slice }) => {
         />
         <EmailCapture
           inputLabel={label}
+          inputLabelId={inputLabelId}
           buttonText={buttonText}
           buttonUrl={urlResolver("https://www.avail.co/users/new")}
           queryParamName="email"
