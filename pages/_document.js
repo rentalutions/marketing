@@ -34,7 +34,7 @@ export default class Document extends NextDoc {
     const GTM_CONTAINER_ID = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID
     const SEGMENT_KEY = process.env.NEXT_PUBLIC_SEGMENT_KEY
     return (
-      <Html>
+      <Html lang="en-US">
         <Head>
           {GTM_CONTAINER_ID && (
             <script

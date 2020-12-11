@@ -5,6 +5,7 @@ import { Hero } from "components/organisms/Hero"
 import EmailCapture from "components/molecules/EmailCapture"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
+import { useUID } from "react-uid"
 
 const HeroWithEmailCaptureSlice = ({ slice }) => {
   const {
@@ -25,6 +26,8 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
 
   const isEmailCapture = emailCaptureLabel && emailCaptureButtonText
 
+  const inputLabelId = useUID()
+
   return (
     <Hero
       title={<RichText render={title} heading />}
@@ -41,6 +44,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
           <EmailCapture
             background={background}
             inputLabel={emailCaptureLabel}
+            inputLabelId={inputLabelId}
             buttonText={emailCaptureButtonText}
             buttonUrl={urlResolver("https://www.avail.co/users/new")}
             queryParamName="email"

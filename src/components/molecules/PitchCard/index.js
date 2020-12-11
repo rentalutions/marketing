@@ -38,14 +38,14 @@ export function PitchCard({
               <Button
                 mb="2rem"
                 as="a"
-                {...(link.target && { target: link.target })}
+                {...(link.target && { target: link.target, rel: "noopener" })}
               >
                 {link.text}
               </Button>
             ) : (
               <Text
                 as="a"
-                {...(link.target && { target: link.target })}
+                {...(link.target && { target: link.target, rel: "noopener" })}
                 color="blue_700"
               >
                 {link.text}

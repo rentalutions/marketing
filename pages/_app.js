@@ -5,6 +5,7 @@ import PreviewWarning from "components/partials/PreviewWarning"
 import { RichTextGlobalStyle } from "components/partials/SliceZone/components/RichText"
 import { DefaultSeo } from "next-seo"
 import { BREAKPOINTS, DEFAULT_SEO } from "config"
+import { UIDReset } from "react-uid"
 
 const marketingTheme = {
   ...theme,
@@ -24,7 +25,9 @@ export default function App({ Component, pageProps }) {
       <GlobalStyles />
       <RichTextGlobalStyle />
       {preview && <PreviewWarning />}
-      <Component {...pageProps} />
+      <UIDReset prefix="uid_">
+        <Component {...pageProps} />
+      </UIDReset>
     </ThemeProvider>
   )
 }

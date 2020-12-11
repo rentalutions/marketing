@@ -8,6 +8,7 @@ import { analyzeColor } from "utils/color-scheme"
 const EmailCapture = ({
   background,
   inputLabel,
+  inputLabelId,
   buttonText,
   buttonUrl,
   queryParamName,
@@ -36,6 +37,7 @@ const EmailCapture = ({
     <Box as="form" position="relative" onSubmit={onSubmit}>
       <Input
         label={inputLabel}
+        labelId={inputLabelId}
         sx={{
           color: isDark ? "ui_300" : "ui_900",
           "&:focus-within": {

@@ -266,41 +266,56 @@ const AvailFooter = () => {
                 mt="2rem"
                 color="blue_500"
               >
-                <FooterIcon mt="0" href={urlResolver("https://www.avail.co/")}>
+                <FooterIcon
+                  aria-label="Avail.co"
+                  mt="0"
+                  href={urlResolver("https://www.avail.co/")}
+                >
                   <Box
                     as="img"
                     src="/logo-glyph.svg"
                     width="4rem"
                     height="4rem"
+                    alt="Avail Logo"
                   />
                 </FooterIcon>
                 <FooterIcon
+                  aria-label="Avail on Facebook"
                   href="https://www.facebook.com/helloavail"
                   target="_blank"
+                  rel="noopener"
                 >
                   <Facebook />
                 </FooterIcon>
                 <FooterIcon
+                  aria-label="Avail on Twitter"
                   href="https://www.twitter.com/helloavail"
                   target="_blank"
+                  rel="noopener"
                 >
                   <Twitter />
                 </FooterIcon>
                 <FooterIcon
+                  aria-label="Avail on LinkedIn"
                   href="https://www.linkedin.com/company/helloavail"
                   target="_blank"
+                  rel="noopener"
                 >
                   <Linkedin />
                 </FooterIcon>
                 <FooterIcon
+                  aria-label="Avail on Instagram"
                   href="https://www.instagram.com/helloavail"
                   target="_blank"
+                  rel="noopener"
                 >
                   <Instagram />
                 </FooterIcon>
                 <FooterIcon
+                  aria-label="Avail on Youtube"
                   href="https://www.youtube.com/channel/UC4DQLbxKjV2r9xhMtLIDAqQ"
                   target="_blank"
+                  rel="noopener"
                 >
                   <Youtube />
                 </FooterIcon>

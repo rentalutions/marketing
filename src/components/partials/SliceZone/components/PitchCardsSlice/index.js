@@ -42,11 +42,9 @@ const PitchCardsSlice = ({ slice }) => {
           linkText && linkUrl
             ? {
                 text: linkText,
-                url: linkUrl && urlResolver(linkUrl.url),
+                url: urlResolver(linkUrl.url),
                 target:
-                  linkUrl &&
-                  (linkUrl.target ||
-                    (linkUrl.link_type === "Media" && "_blank")),
+                  linkUrl.target || (linkUrl.link_type === "Media" && "_blank"),
                 button: linkAsButton,
               }
             : null,
