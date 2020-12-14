@@ -1,8 +1,8 @@
 # Avail Marketing Pages
 
-The purpose of the project is to allow Avail content editors to create and
-customize static content pages with fast turnaround and great efficiency. The
-project is based on [Next.js](https://nextjs.org/)
+The purpose of the project is to allow Avail content editors to quickly and
+easily create and customize static content pages using pre-design, complex and
+feature-rich components. The project is based on [Next.js](https://nextjs.org/)
 platform, [Avail Design System](https://design.avail.co/) and uses
 [Prismic CMS](https://prismic.io/docs)
 as its’ data source.
@@ -21,7 +21,7 @@ as its’ data source.
 Project structure follows Next.js standard structure with React components
 arrangement based
 on [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
-that can be found in `./src` directory.
+that can be found in `./src/components` directory.
 
 ```
 .storybook
@@ -47,17 +47,17 @@ to maintain a certain degree of project portability.
 
 ### Storybook
 
-Storybook is a primary way to implement new design kit components in isolation
-and is available with the `yarn storybook` command, which should automatically
-open a new tab in the browser with the list of design kit components and their
-variants.
+Storybook is a tool that helps with implementation of new design kit components
+in isolation from the CMS specifics. It's available with the `yarn storybook`
+command, which should automatically open a new tab in the browser with the list
+of design kit components and their variants.
 
 ### Slice Zone
 
 [Prismic Slices](https://intercom.help/prismicio/en/articles/383933-slices) are
 a primary way of implementing dynamic content in Prismic CMS. They are
-repeatable data structures that can be placed in pages with pre-configured in
-CMS editable and typed fields where content editors can change their contents.
+repeatable data structures that can be placed in pages with pre-configured and
+editable in CMS, typed fields.
 
 The `SlizeZone` component is responsible for rendering Prismic Slices in the app
 and has a subcomponents directory with individuals Slices and helper components
@@ -73,14 +73,14 @@ SliceZone
 └── index.js
 ```  
 
-A Slice in the context of the app is a binding between the CMS and the design
-kit in the project. All Slices should have verbose concrete names that match
-their name in CMS and must end with Slice, e.g. -
+A Slice, in the context of the app, is a binding between the CMS and the design
+kit. All Slices should have verbose concrete names that match their name in CMS
+and must end with Slice, e.g. -
 `HeroWithEmailCaptureSlice`.
 
 Since Slices typically have more specific requirements than design kit
-components we should be careful about leaking CMS- or content-specific code into
-design kit and try to contain it within concrete Slice implementations.
+components, we should be careful about leaking CMS- or content-specific code
+into the design kit and try to contain it within concrete Slice implementations.
 
 ### URL Resolver
 
