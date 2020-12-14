@@ -494,5 +494,35 @@
         "label" : "Meta keywords"
       }
     }
+  },
+  "URL params" : {
+    "query_channel" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Channel (sets the channel and keyword cookies)",
+        "placeholder" : "E.g. - email"
+      }
+    },
+    "query_content" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Content (sets the content cookie)",
+        "placeholder" : "E.g. - credit_checks"
+      }
+    },
+    "query_signup_page" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Signup page (sets signup_page cookie)",
+        "placeholder" : "E.g. - listings"
+      }
+    },
+    "query_campaign" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Campaign (sets campaign cookie)",
+        "placeholder" : "E.g. - tenant_feature_landing"
+      }
+    }
   }
 }
