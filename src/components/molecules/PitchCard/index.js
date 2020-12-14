@@ -13,7 +13,7 @@ export function PitchCard({
 }) {
   return (
     <Col {...props} display="flex" flexDirection="column">
-      {icon.url && (
+      {icon && icon.url && (
         <Box
           as="img"
           src={icon.url}
