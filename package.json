@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook -p 8008 --no-dll -s public",
-    "build-storybook": "build-storybook --no-dll",
-    "schema": "node ./src/schema/get-schema.js"
+    "build-storybook": "build-storybook --no-dll"
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",

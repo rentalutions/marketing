@@ -1,1 +1,96 @@
-# Avail Marketing Page
+# Avail Marketing Pages
+
+The purpose of the project is to allow Avail content editors to create and
+customize static content pages with fast turnaround and great efficiency. The
+project is based on [Next.js](https://nextjs.org/)
+platform, [Avail Design System](https://design.avail.co/) and uses
+[Prismic CMS](https://prismic.io/docs)
+as its’ data source.
+
+## Quick start
+
+- Clone the repository
+- Run `yarn` to install dependencies
+- Copy `.env.template` as `.env` to ensure that environment variables are set
+- Launch the app in development mode: `yarn dev`
+- Navigate to the `http://localhost:3000`
+- Optionally start Storybook with `yarn storybook`
+
+## Project structure
+
+Project structure follows Next.js standard structure with React components
+arrangement based
+on [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
+that can be found in `./src` directory.
+
+```
+.storybook
+pages
+public
+src
+└── components
+│   └── elements
+│   └── molecules
+│   └── organisms
+│   └── partials
+└── utils    
+└── config.js
+```    
+
+There is a semi-meaningful split between `partials` and the rest of the
+components, where `partials`
+contains components meant to directly compose a Prismic-backed pages,
+while `elements`, `molecules`
+and `organisms`
+compose the projects’ design kit, that is free of Prismic-specific code in order
+to maintain a certain degree of project portability.
+
+### Storybook
+
+Storybook is a primary way to implement new design kit components in isolation
+and is available with the `yarn storybook` command, which should automatically
+open a new tab in the browser with the list of design kit components and their
+variants.
+
+### Slice Zone
+
+[Prismic Slices](https://intercom.help/prismicio/en/articles/383933-slices) are
+a primary way of implementing dynamic content in Prismic CMS. They are
+repeatable data structures that can be placed in pages with pre-configured in
+CMS editable and typed fields where content editors can change their contents.
+
+The `SlizeZone` component is responsible for rendering Prismic Slices in the app
+and has a subcomponents directory with individuals Slices and helper components
+specific to Prismic DSL (domain-specific language).
+
+```
+...
+SliceZone
+└── components
+│   └── RichText
+│   └── EmailCaptureSlice
+│   └── ...
+└── index.js
+```  
+
+A Slice in the context of the app is a binding between the CMS and the design
+kit in the project. All Slices should have verbose concrete names that match
+their name in CMS and must end with Slice, e.g. -
+`HeroWithEmailCaptureSlice`.
+
+Since Slices typically have more specific requirements than design kit
+components we should be careful about leaking CMS- or content-specific code into
+design kit and try to contain it within concrete Slice implementations.
+
+### URL Resolver
+
+All outgoing link URLs in Slices must be processed through the `UrlResolver`
+function, that can be used as a React hook (as long as components are wrapped in
+`UrlResolverProvider`):
+
+```
+const url = "..."
+const urlResolver = useUrlResolver()
+
+return <Button as="a" href={urlResolver(url)}>Get Started</Button>
+```
