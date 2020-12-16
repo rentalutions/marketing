@@ -16,7 +16,7 @@ as its’ data source.
 - Navigate to the `http://localhost:3000`
 - Optionally start Storybook with `yarn storybook`
 
-## Code Standards
+## Code Preferences
 
 This is just a general list, not meant to be exhaustive, but hoping to make it fairly complete in the near future.
 
