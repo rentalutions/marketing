@@ -54,7 +54,6 @@ MyComponent.getInitialProps = async function(ctx) {
 ### 3. Abstract component logic into a hook.
 ```jsx
 // Good
-
 function useComponent({ref, ...props}) {
   const compRef = useRef(null)
   const [shown, setShown] = useState(false)
