@@ -1,4 +1,5 @@
 import { prismicClient } from "src/prismic.config"
+import Prismic from "prismic-javascript"
 
 export default function IndexPage() {
   return null
@@ -14,7 +15,9 @@ export default function IndexPage() {
 export async function getServerSideProps() {
   const {
     results: [page],
-  } = await prismicClient.query("")
+  } = await prismicClient.query(
+    Prismic.Predicates.at("document.tags", ["production"])
+  )
   if (page) {
     return {
       redirect: {
