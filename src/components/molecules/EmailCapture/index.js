@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import Input from "@rent_avail/input"
 import { Box } from "@rent_avail/layout"
-import { Button } from "@rent_avail/controls"
-import { ContrastButtonPrimary } from "components/elements/ContrastButton"
+import Button from "components/elements/Button"
 import { analyzeColor } from "utils/color-scheme"
 
 const EmailCapture = ({
@@ -16,7 +15,7 @@ const EmailCapture = ({
   const buttonRef = useRef()
   const [buttonWidth, setButtonWidth] = useState(0)
   const [inputValue, setInputValue] = useState("")
-  const [scheme, isDark] = background ? analyzeColor(background) : []
+  const [_, isDark] = background ? analyzeColor(background) : []
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -62,27 +61,16 @@ const EmailCapture = ({
         right="1rem"
         ref={buttonRef}
       >
-        {isDark ? (
-          <ContrastButtonPrimary
-            scheme={scheme}
-            type="submit"
-            display="block"
-            textAlign="center"
-            width="100%"
-          >
-            {buttonText}
-          </ContrastButtonPrimary>
-        ) : (
-          <Button
-            variant="primary"
-            type="submit"
-            display="block"
-            textAlign="center"
-            width="100%"
-          >
-            {buttonText}
-          </Button>
-        )}
+        <Button
+          background={background}
+          variant="primary"
+          type="submit"
+          display="block"
+          textAlign="center"
+          width="100%"
+        >
+          {buttonText}
+        </Button>
       </Box>
     </Box>
   )
