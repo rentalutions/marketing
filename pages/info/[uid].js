@@ -14,9 +14,9 @@ import {
 export const getStaticProps = async ({
   preview = null,
   previewData = {},
-  params: { type, uid },
+  params: { uid },
 }) => {
-  const data = await prismicClient.getByUID(type, uid, { ...previewData })
+  const data = await prismicClient.getByUID("info", uid, { ...previewData })
   return {
     props: {
       preview,
@@ -29,7 +29,7 @@ export const getStaticProps = async ({
 
 export const getStaticPaths = async () => {
   const pages = await prismicClient.query("", { pageSize: 100 })
-  const paths = pages.results.map((p) => `/${p.type}/${p.uid}`)
+  const paths = pages.results.map((p) => `/info/${p.uid}`)
   return { paths, fallback: false }
 }
 
