@@ -10,6 +10,10 @@ import {
   UrlResolverProvider,
   useUrlResolver,
 } from "components/partials/UrlResolver"
+import { useRouter } from "next/router"
+import DefaultErrorPage from "next/error"
+import Head from "next/head"
+import { Box, Flex } from "@rent_avail/layout"
 
 export const getStaticProps = async ({
   preview = null,
@@ -30,7 +34,7 @@ export const getStaticProps = async ({
 export const getStaticPaths = async () => {
   const pages = await prismicClient.query("", { pageSize: 100 })
   const paths = pages.results.map((p) => `/info/${p.uid}`)
-  return { paths, fallback: false }
+  return { paths, fallback: true }
 }
 
 const NavBarWrapper = ({ links, ...props }) => {
@@ -43,9 +47,27 @@ const NavBarWrapper = ({ links, ...props }) => {
 }
 
 const Page = ({ data, uid }) => {
-  if (!data) {
-    return null
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return (
+      <Flex justifyContent="center" alignItems="center" height="100vh">
+        <Box>Loading...</Box>
+      </Flex>
+    )
   }
+
+  if (!data) {
+    return (
+      <React.Fragment>
+        <Head>
+          <meta name="robots" content="noindex" />
+        </Head>
+        <DefaultErrorPage statusCode={404} />
+      </React.Fragment>
+    )
+  }
+
   const { colors } = useTheme()
 
   const BASE_CANONICAL_URL =
