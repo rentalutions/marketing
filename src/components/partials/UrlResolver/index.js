@@ -1,5 +1,4 @@
-import React, { useContext } from "react"
-import { useRouter } from "next/router"
+import React, { useContext, useEffect, useState } from "react"
 import fromEntries from "fromentries"
 
 const isAvailUrl = (url) => {
@@ -24,14 +23,20 @@ const createUrlResolver = (params) => {
 const UrlResolverContext = React.createContext((url) => url)
 
 export const UrlResolverProvider = ({ params, children }) => {
-  const router = useRouter()
-  const url = new URL(`http://irrelevant/${router.asPath}`)
-  const urlResolver = createUrlResolver({
-    ...params,
-    ...fromEntries(url.searchParams),
-  })
+  const [urlResolver, setUrlResolver] = useState(null)
+  useEffect(() => {
+    if (!urlResolver) {
+      const url = new URL(window.location.href)
+      setUrlResolver(() =>
+        createUrlResolver({
+          ...params,
+          ...fromEntries(url.searchParams),
+        })
+      )
+    }
+  }, [urlResolver])
   return (
-    <UrlResolverContext.Provider value={urlResolver}>
+    <UrlResolverContext.Provider value={urlResolver || ((url) => url)}>
       {children}
     </UrlResolverContext.Provider>
   )
