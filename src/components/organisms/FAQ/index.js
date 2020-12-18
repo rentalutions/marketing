@@ -36,6 +36,7 @@ function FAQ({ questions, eyebrow, title, description, ...props }) {
                 p="2rem"
                 bg="blue_100"
                 onClick={(e) => setOpen(idx)}
+                key={question}
               >
                 <Text fontWeight="800">{question}</Text>
                 <AnimatePresence>

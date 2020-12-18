@@ -2,11 +2,13 @@ import React from "react"
 import { Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { useTheme } from "styled-components"
+import HeroSlice from "./components/HeroSlice"
 import HeroWithEmailCaptureSlice from "./components/HeroWithEmailCaptureSlice"
 import PitchCardsSlice from "./components/PitchCardsSlice"
 import EmailCaptureSlice from "./components/EmailCaptureSlice"
 import HowItWorksSlice from "./components/HowItWorksSlice"
 import ShowcaseSlice from "./components/ShowcaseSlice"
+import FAQSlice from "./components/FrequentlyAskedQuestionsSlice"
 
 const SliceZone = ({ slices }) => {
   if (!slices) {
@@ -16,14 +18,19 @@ const SliceZone = ({ slices }) => {
   return slices.map((slice, idx) => {
     const key = `${slice.slice_type}-${slice.version}-${idx}`
     switch (slice.slice_type) {
-      case "hero_unit":
-        return <HeroWithEmailCaptureSlice key={key} slice={slice} />
-      case "pitch_cards":
-        return <PitchCardsSlice key={key} slice={slice} />
       case "email_capture":
         return <EmailCaptureSlice key={key} slice={slice} />
+      case "faq":
+        return <FAQSlice key={key} slice={slice} />
+      case "hero":
+        return <HeroSlice key={key} slice={slice} />
+      case "hero_unit":
+      case "hero_email_capture":
+        return <HeroWithEmailCaptureSlice key={key} slice={slice} />
       case "how_it_works":
         return <HowItWorksSlice key={key} slice={slice} />
+      case "pitch_cards":
+        return <PitchCardsSlice key={key} slice={slice} />
       case "show_case":
         return <ShowcaseSlice key={key} slice={slice} />
       default:
