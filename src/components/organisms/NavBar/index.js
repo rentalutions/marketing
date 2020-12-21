@@ -76,17 +76,18 @@ export default function NavBar({
               overflow: "hidden",
             }}
           >
-            {defaultLinks.map((link) => {
+            {defaultLinks.map(({ href, text, target }) => {
               return (
                 <NavBarButton
-                  key={link.href}
-                  href={link.href}
+                  key={href}
+                  href={href}
+                  {...(target && { target, rel: "noopener" })}
                   forwardedAs="a"
                   ml="2rem"
                   display={primaryLink ? ["none", "none", "block"] : "block"}
                   flex="none"
                 >
-                  {link.text}
+                  {text}
                 </NavBarButton>
               )
             })}
@@ -95,6 +96,10 @@ export default function NavBar({
             <NavBarButton
               variant="primary"
               href={primaryLink.href}
+              {...(primaryLink.target && {
+                target: primaryLink.target,
+                rel: "noopener",
+              })}
               forwardedAs="a"
               flex="0 0 auto"
               ml="2rem"

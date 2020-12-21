@@ -17,7 +17,7 @@ export function Default() {
       text: "Try For Free",
       href: "https://www.avail.co/users/new",
       primary: true,
-      push: true,
+      target: "_blank",
     },
   ]
   return (
