@@ -16,68 +16,6 @@ as its’ data source.
 - Navigate to the `http://localhost:3000`
 - Optionally start Storybook with `yarn storybook`
 
-## Code Preferences
-
-This is just a general list, not meant to be exhaustive, but hoping to make it fairly complete in the near future.
-
-### 1. Prefer function declarations over arrow functions.
-```jsx
-// Good
-function MyComponent(props) {
-  return "something"
-}
-
-// Bad
-const MyComponent = (props) => {
-  return "Something"
-}
-```
-### 2. Prefer `getServerSideProps|getStaticProps` over `getInitialProps`
-```jsx
-// Good
-export async function getServerSideProps(ctx) {
-  return {props: {banana: true}}
-}
-
-export default function MyComponent({banana}) {
-  if (banana) return "There's a banana"
-  return "There's no banana"
-}
-
-// Bad
-export default function MyComponent() {}
-
-MyComponent.getInitialProps = async function(ctx) {
-  return {}
-}
-```
-### 3. Abstract component logic into a hook.
-```jsx
-// Good
-function useComponent({ref, ...props}) {
-  const compRef = useRef(null)
-  const [shown, setShown] = useState(false)
-  return {
-    ...props,
-    shown,
-    ref: mergeRefs(ref, compRef),
-  }
-}
-function Component(props, ref) {
-  const {shown, ...htmlProps} = useComponent({...props, ref})
-  return shown && <Box {...htmlProps} />
-}
-
-// Bad
-function Component(props, ref) {
-  const compRef = useRef(null)
-  const [shown, setShown] = useState(false)
-  return shown && <Box ref={mergeRefs(compRef, ref)} {...props} />
-}
-```
-
-
-
 ## Project structure
 
 Project structure follows Next.js standard structure with React components
@@ -155,4 +93,64 @@ const url = "..."
 const urlResolver = useUrlResolver()
 
 return <Button as="a" href={urlResolver(url)}>Get Started</Button>
+```
+
+## Code Preferences
+
+This is just a general list, not meant to be exhaustive, but hoping to make it fairly complete in the near future.
+
+### Prefer function declarations over arrow functions.
+```jsx
+// Good
+function MyComponent(props) {
+  return "something"
+}
+
+// Bad
+const MyComponent = (props) => {
+  return "Something"
+}
+```
+### Prefer `getServerSideProps|getStaticProps` over `getInitialProps`
+```jsx
+// Good
+export async function getServerSideProps(ctx) {
+  return {props: {banana: true}}
+}
+
+export default function MyComponent({banana}) {
+  if (banana) return "There's a banana"
+  return "There's no banana"
+}
+
+// Bad
+export default function MyComponent() {}
+
+MyComponent.getInitialProps = async function(ctx) {
+  return {}
+}
+```
+### Abstract component logic into a hook.
+```jsx
+// Good
+function useComponent({ref, ...props}) {
+  const compRef = useRef(null)
+  const [shown, setShown] = useState(false)
+  return {
+    ...props,
+    shown,
+    ref: mergeRefs(ref, compRef),
+  }
+}
+function Component(props, ref) {
+  const {shown, ...htmlProps} = useComponent({...props, ref})
+  return shown && <Box {...htmlProps} />
+}
+
+// Bad
+function Component(props, ref) {
+  const compRef = useRef(null)
+  const [shown, setShown] = useState(false)
+  return shown && <Box ref={mergeRefs(compRef, ref)} {...props} />
+}
 ```
