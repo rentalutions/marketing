@@ -1,6 +1,7 @@
 import React from "react"
 import NextLink from "next/link"
 import { useUrlResolver } from "components/partials/UrlResolver"
+import { getTargetProps } from "utils/link"
 
 const LinkType = {
   Web: "Web",
@@ -39,7 +40,7 @@ const Link = ({ link, children, ...props }) => {
   return (
     <NextLink passHref href={href} {...props}>
       {React.cloneElement(children, {
-        ...(target && { target, rel: "noopener" }),
+        ...getTargetProps(target),
       })}
     </NextLink>
   )

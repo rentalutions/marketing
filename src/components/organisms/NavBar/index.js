@@ -2,6 +2,7 @@ import React, { useMemo } from "react"
 import { Box, Container, Flex } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
 import styled, { createGlobalStyle } from "styled-components"
+import { getTargetProps } from "utils/link"
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -76,30 +77,25 @@ export default function NavBar({
               overflow: "hidden",
             }}
           >
-            {defaultLinks.map(({ href, text, target }) => {
-              return (
-                <NavBarButton
-                  key={href}
-                  href={href}
-                  {...(target && { target, rel: "noopener" })}
-                  forwardedAs="a"
-                  ml="2rem"
-                  display={primaryLink ? ["none", "none", "block"] : "block"}
-                  flex="none"
-                >
-                  {text}
-                </NavBarButton>
-              )
-            })}
+            {defaultLinks.map(({ href, text, target }) => (
+              <NavBarButton
+                key={href}
+                href={href}
+                {...getTargetProps(target)}
+                forwardedAs="a"
+                ml="2rem"
+                display={primaryLink ? ["none", "none", "block"] : "block"}
+                flex="none"
+              >
+                {text}
+              </NavBarButton>
+            ))}
           </Flex>
           {primaryLink && (
             <NavBarButton
               variant="primary"
               href={primaryLink.href}
-              {...(primaryLink.target && {
-                target: primaryLink.target,
-                rel: "noopener",
-              })}
+              {...getTargetProps(primaryLink.target)}
               forwardedAs="a"
               flex="0 0 auto"
               ml="2rem"

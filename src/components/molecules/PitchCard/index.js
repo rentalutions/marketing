@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@rent_avail/controls"
 import { Text } from "@rent_avail/typography"
 import * as React from "react"
+import { getTargetProps } from "utils/link"
 
 export function PitchCard({
   title = "",
@@ -35,19 +36,11 @@ export function PitchCard({
         >
           <Link href={link.url} passHref>
             {link.button ? (
-              <Button
-                mb="2rem"
-                as="a"
-                {...(link.target && { target: link.target, rel: "noopener" })}
-              >
+              <Button mb="2rem" as="a" {...getTargetProps(link.target)}>
                 {link.text}
               </Button>
             ) : (
-              <Text
-                as="a"
-                {...(link.target && { target: link.target, rel: "noopener" })}
-                color="blue_700"
-              >
+              <Text as="a" {...getTargetProps(link.target)} color="blue_700">
                 {link.text}
               </Text>
             )}
