@@ -92,12 +92,15 @@ const Page = ({ data, uid }) => {
 
   const navBarLinks =
     data.nav_bar &&
-    data.nav_bar.map(({ buttonText, buttonLink, buttonHash, primary }) => ({
-      text: buttonText,
-      href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
-      target: buttonLink && buttonLink.target,
-      primary,
-    }))
+    data.nav_bar.map(
+      ({ buttonText, buttonLink, buttonHash, primary, push }) => ({
+        text: buttonText,
+        href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
+        target: buttonLink && buttonLink.target,
+        primary,
+        push,
+      })
+    )
   return (
     <UrlResolverProvider params={urlResolverParams}>
       <NextSeo
