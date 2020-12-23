@@ -3,9 +3,9 @@ import styled from "styled-components"
 import { sx as applySx } from "@rent_avail/base"
 import { Text as _DesignSystemText } from "@rent_avail/typography"
 
-const DesignSystemText = styled(_DesignSystemText)(({ sx }) =>
-  applySx({ sx: { ...sx } })
-)
+const DesignSystemText = styled(_DesignSystemText)`
+  ${applySx};
+`
 
 export function Text({ sx, children }) {
   return (
