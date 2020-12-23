@@ -1,7 +1,8 @@
 import React, { useMemo } from "react"
 import { Box, Container, Flex } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
-import styled, { createGlobalStyle, useTheme } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
+import { getTargetProps } from "utils/link"
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -11,26 +12,70 @@ const GlobalStyle = createGlobalStyle`
 
 const NavBarButton = styled(Button)`
   border: none;
-  height: 48px;
+  height: 4rem;
 `
 
-const NavBar = ({
+/**
+ * @typedef Link
+ * @type {object}
+ * @property {string} href - a Link href
+ * @property {string | undefined} target - Link target property
+ * @property {boolean | undefined} push - specifies if button should be pushed to the right
+ * @property {boolean | undefined} primary - indicates primary button. NB: Only one primary button is supported
+ */
+
+/**
+ * @param background - a background color in the theme format, e.g. - "ui_100" for white
+ * @param links - a collection of objects of @type Link
+ * @param containerWidth - width in space units to limit Nav Bar width
+ * @param sticky - boolean to indicate if NavBar should be sticky. If true - will inject "scroll-padding-top" as global style
+ * @param props - rest of the props
+ * @returns {JSX.Element}
+ */
+export default function NavBar({
   background = "ui_100",
   links = [],
   containerWidth = "96rem",
   sticky,
   ...props
-}) => {
-  const { breakpoints } = useTheme()
-  const [linksSorted, splitIndex] = useMemo(() => {
-    const sorted = links.sort(({ push: a }, { push: b }) => {
-      if (a === b) {
-        return 0
-      }
-      return a ? 1 : -1
-    })
-    return [sorted, sorted.findIndex(({ push }) => push)]
+}) {
+  const [defaultLinks, primaryLink, pushIndex] = useMemo(() => {
+    /** Clone links, since we are going to perform some dirty mutations */
+    const _defaultLinks = [...links]
+
+    /** Find and remove the primary link from the default links using mutating .splice.
+     * NB: Only the first link with { primary: true } would be treated as such, -
+     * the rest would be considered default links */
+    const primaryLinkIndex = _defaultLinks.findIndex(({ primary }) => primary)
+    const [_primaryLink] =
+      primaryLinkIndex !== -1 ? _defaultLinks.splice(primaryLinkIndex, 1) : []
+
+    /** Check if links contain { push: true }. If so, - we will render the default links as "row-reverse",
+     * because the expectation would be that links with { push: true } disappear last on smaller devices.
+     * To achieve that, we will sort the links so that the ones with { push: true } are at the head of the array
+     * and then reverse the array. We will also recalculate "pushIndex" as the last index in this case,
+     * in order to inject "margin-left: auto" at the correct link */
+    let _pushIndex = _defaultLinks.findIndex(({ push }) => push)
+    if (_pushIndex !== -1) {
+      _defaultLinks.sort(({ push: a }, { push: b }) => {
+        if (a === b) return 0
+        return a ? 1 : -1
+      })
+
+      _defaultLinks.reverse()
+
+      _pushIndex = _defaultLinks.reduce(
+        (r, { push }, idx) => (push ? idx : r),
+        -1
+      )
+    }
+
+    return [_defaultLinks, _primaryLink, _pushIndex]
   }, [links])
+
+  const hasPrimary = !!primaryLink
+  const hasPush = pushIndex !== -1
+
   return (
     <Box
       bg={background}
@@ -49,12 +94,13 @@ const NavBar = ({
           <Box
             as="a"
             href="https://avail.co"
-            mr="2rem"
-            width={["48px", "auto"]}
-            height="48px"
             sx={{
               display: "block",
               overflow: "hidden",
+              width: ["4rem", "4rem", "auto"],
+              height: "4rem",
+              flex: "0 0 auto",
+              mr: "2rem",
             }}
           >
             <Box
@@ -67,33 +113,47 @@ const NavBar = ({
               width={195}
             />
           </Box>
-          {linksSorted.map((link, index) => {
-            const bpIndex = breakpoints.indexOf(link.breakpoint)
-            const display =
-              bpIndex !== -1
-                ? Array(bpIndex + 2)
-                    .fill("none")
-                    .fill("block", bpIndex + 1)
-                : "block"
-            return (
-              <React.Fragment key={link.href}>
-                {index === splitIndex && <Box ml="auto" key="separator" />}
-                <NavBarButton
-                  variant={link.primary ? "primary" : "default"}
-                  href={link.href}
-                  forwardedAs="a"
-                  display={display}
-                  mr={index === links.length - 1 ? "0" : "2rem"}
-                >
-                  {link.text}
-                </NavBarButton>
-              </React.Fragment>
-            )
-          })}
+          <Flex
+            sx={{
+              visibility: hasPrimary ? ["hidden", "visible"] : "visible",
+              flexDirection: hasPush ? "row-reverse" : "row",
+              justifyContent: hasPush
+                ? ["flex-start", "flex-start", "flex-start", "flex-end"]
+                : ["flex-end", "flex-end", "flex-end", "flex-start"],
+              flex: "1 1 auto",
+              flexWrap: "wrap",
+              height: "4rem",
+              overflow: "hidden",
+              gap: "2rem",
+            }}
+          >
+            {defaultLinks.map(({ href, text, target }, idx) => (
+              <NavBarButton
+                key={href}
+                href={href}
+                {...getTargetProps(target)}
+                forwardedAs="a"
+                flex="none"
+                ml={idx === pushIndex ? "auto" : 0}
+              >
+                {text}
+              </NavBarButton>
+            ))}
+          </Flex>
+          {hasPrimary && (
+            <NavBarButton
+              variant="primary"
+              href={primaryLink.href}
+              {...getTargetProps(primaryLink.target)}
+              forwardedAs="a"
+              flex="0 0 auto"
+              ml="2rem"
+            >
+              {primaryLink.text}
+            </NavBarButton>
+          )}
         </Flex>
       </Container>
     </Box>
   )
 }
-
-export default NavBar

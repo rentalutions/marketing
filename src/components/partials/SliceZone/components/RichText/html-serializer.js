@@ -9,6 +9,7 @@ import {
 } from "components/partials/SliceZone/components/RichText/components/List"
 import { H1_SIZING, H2_SIZING, H3_SIZING } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
+import { getTargetProps } from "utils/link"
 
 const createHeading = (as, props, children) => {
   return children && children[0] ? (
@@ -67,17 +68,12 @@ const htmlSerializer = (props) => {
       case Elements.oList:
         return React.createElement(OList, { ...props, key }, children)
       case Elements.hyperlink: {
-        const targetAttr = element.data.target
-          ? { target: element.data.target }
-          : {}
-        const relAttr = element.data.target ? { rel: "noopener" } : {}
         return React.createElement(
           "a",
           {
             href: urlResolver(element.data.url) || linkResolver(element.data),
             className: "link",
-            ...targetAttr,
-            ...relAttr,
+            ...getTargetProps(element.data.target),
             ...props,
             key,
           },

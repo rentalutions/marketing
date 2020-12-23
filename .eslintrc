@@ -10,6 +10,7 @@
   "rules": {
     "prettier/prettier": ["error"],
     "no-console": "off",
+    "no-underscore-dangle": [0],
     "no-unused-vars": [1, { "args": "after-used", "ignoreRestSiblings": true }],
     "quotes": [1, "double", { "allowTemplateLiterals": true }],
     "semi": [1, "never"],
