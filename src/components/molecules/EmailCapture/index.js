@@ -38,17 +38,19 @@ const EmailCapture = ({
         label={inputLabel}
         labelId={inputLabelId}
         sx={{
-          color: isDark ? "ui_300" : "ui_900",
-          "&:focus-within": {
-            borderColor: isDark ? "ui_100" : "blue_500",
-            color: isDark ? "ui_100" : "blue_500",
-          },
-          "&.filled:not(:focus-within):not(.error) .input__label-row": {
-            color: isDark ? "ui_300" : "ui_700",
-          },
-          "& > input": {
-            height: "calc(6.5rem - 2px)",
-            paddingRight: ["2rem", `calc(2rem + ${buttonWidth}px)`],
+          "& > label": {
+            color: isDark ? "ui_300" : "ui_900",
+            "&:focus-within": {
+              borderColor: isDark ? "ui_100" : "blue_500",
+              color: isDark ? "ui_100" : "blue_500",
+            },
+            "&.filled:not(:focus-within):not(.error) .input__label-row": {
+              color: isDark ? "ui_300" : "ui_700",
+            },
+            "& > input": {
+              height: "calc(6.5rem - 2px)",
+              paddingRight: ["2rem", `calc(2rem + ${buttonWidth}px)`],
+            },
           },
         }}
         value={inputValue}
