@@ -2,7 +2,7 @@ import React from "react"
 import { Text } from "@rent_avail/typography"
 import { Testimonials } from "./index"
 
-export default { title: "Components/FAQ" }
+export default { title: "Components/Testimonials" }
 
 function Quote() {
   return (
