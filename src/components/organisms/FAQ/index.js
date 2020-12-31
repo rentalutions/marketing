@@ -1,37 +1,46 @@
 import * as React from "react"
 import styled from "styled-components"
 import { Box, Container, Stack } from "@rent_avail/layout"
-import { Text, Heading } from "@rent_avail/typography"
+import { Text } from "@rent_avail/typography"
 import { motion, AnimatePresence } from "framer-motion"
+import { Typography } from "config"
 
-const Accordian = styled(Box)`
+const Accordion = styled(Box)`
   cursor: pointer;
   &:hover {
     opacity: 0.75;
   }
 `
 
-function FAQ({ questions, eyebrow, title, description, ...props }) {
+function FAQ({
+  questions,
+  eyebrow,
+  title,
+  description,
+  color,
+  containerWidth,
+  ...props
+}) {
   const [openIdx, setOpen] = React.useState(null)
   return (
-    <Box {...props}>
-      <Container>
-        {eyebrow && (
-          <Text color={props.color || "blue_300"} mb="1rem">
-            {eyebrow}
-          </Text>
-        )}
-        {title && (
-          <Heading as="h3" mb="1rem">
-            {title}
-          </Heading>
-        )}
+    <Box color={color} {...props}>
+      <Container {...(containerWidth && { maxWidth: containerWidth })}>
+        {eyebrow &&
+          React.cloneElement(eyebrow, {
+            color: color || "blue_300",
+            mb: "1rem",
+          })}
+        {title &&
+          React.cloneElement(title, {
+            mb: "1rem",
+            sx: { ...Typography.H2, ...title.props?.sx },
+          })}
         {description && <Box mb="2rem">{description}</Box>}
         <Stack>
           {questions.map(({ question, answer: Answer }, idx) => {
             const isOpen = idx === openIdx
             return (
-              <Accordian
+              <Accordion
                 borderRadius="0.25rem"
                 p="2rem"
                 bg="blue_100"
@@ -56,7 +65,7 @@ function FAQ({ questions, eyebrow, title, description, ...props }) {
                     </Box>
                   )}
                 </AnimatePresence>
-              </Accordian>
+              </Accordion>
             )
           })}
         </Stack>

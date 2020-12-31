@@ -7,17 +7,19 @@ const DesignSystemText = styled(_DesignSystemText)`
   ${applySx};
 `
 
-export function Text({ sx, children }) {
+export function Text({ sx, children, ...props }) {
   return (
     <DesignSystemText
       sx={{
-        margin: ".5rem 0",
+        "&:not(:first-child)": { marginTop: ".5rem" },
+        "&:not(:last-child)": { marginBottom: ".5rem" },
         "&:empty::before": {
           whiteSpace: "pre",
           content: "' '",
         },
         ...sx,
       }}
+      {...props}
     >
       {children}
     </DesignSystemText>

@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
+import { Typography } from "config"
 
 function HowItWorks({
   title,
@@ -18,7 +19,11 @@ function HowItWorks({
             {eyebrow}
           </Text>
         )}
-        {title && React.cloneElement(title, { mb: "4rem" })}
+        {title &&
+          React.cloneElement(title, {
+            mb: "4rem",
+            sx: { ...Typography.H2, ...title.props?.sx },
+          })}
         {sections.map((section, idx) => (
           <HowItWorksSection
             {...section}

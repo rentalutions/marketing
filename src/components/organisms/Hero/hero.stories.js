@@ -1,7 +1,8 @@
 import React from "react"
-import { Heading, Text } from "@rent_avail/typography"
+import { Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
 import Link from "next/link"
+import { Box } from "@rent_avail/layout"
 import { Hero } from "./index"
 
 export default { title: "Components/Hero" }
@@ -9,7 +10,7 @@ export default { title: "Components/Hero" }
 export function Default() {
   return (
     <Hero
-      title={<Heading as="h1">Hero Title</Heading>}
+      title={<Box as="h1">Hero Title</Box>}
       description={
         <Text>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vel
@@ -31,9 +32,7 @@ export function WithIllustration() {
         alt: "",
       }}
       title={
-        <Heading as="h1">
-          Feel good about the way you manage your rentals.
-        </Heading>
+        <Box as="h1">Feel good about the way you manage your rentals.</Box>
       }
       description={
         <Text>
@@ -50,9 +49,9 @@ export function WithBgColor() {
     <Hero
       skew="left"
       title={
-        <Heading as="h1">
+        <Box as="h1">
           Publish your listing to over a dozen top rental sites all at once.
-        </Heading>
+        </Box>
       }
       description={
         <Text>
@@ -86,9 +85,7 @@ export function WithSwap() {
       }}
       imagePosition="left"
       title={
-        <Heading as="h1">
-          Feel good about the way you manage your rentals.
-        </Heading>
+        <Box as="h1">Feel good about the way you manage your rentals.</Box>
       }
       description={
         <Text>

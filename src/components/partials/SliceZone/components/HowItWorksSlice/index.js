@@ -1,7 +1,7 @@
 import React from "react"
 import Anchor from "components/elements/Anchor"
 import { HowItWorks } from "components/organisms/HowItWorks"
-import { CONTAINER_WIDTHS } from "config"
+import { CONTAINER_WIDTHS, Typography } from "config"
 import RichText from "../RichText"
 
 const HowItWorksSlice = ({ slice }) => {
@@ -10,10 +10,10 @@ const HowItWorksSlice = ({ slice }) => {
   } = slice
   // eslint-disable-next-line no-shadow
   const sections = slice.items.map(({ title, description, image }, idx) => ({
-    uid: (title && title[0] && title[0].text) || idx,
+    uid: title?.[0]?.text || idx,
     copy: (
       <React.Fragment>
-        <RichText render={title} mb="2rem" heading />
+        <RichText render={title} mb="2rem" sx={{ ...Typography.H3 }} />
         <RichText render={description} />
       </React.Fragment>
     ),
@@ -23,7 +23,7 @@ const HowItWorksSlice = ({ slice }) => {
     <React.Fragment>
       {hash && <Anchor hash={hash} />}
       <HowItWorks
-        title={<RichText render={title} heading />}
+        title={<RichText render={title} />}
         sections={sections}
         bg={background}
         containerWidth={CONTAINER_WIDTHS}

@@ -56,7 +56,7 @@
               "placeholder_false" : "Default",
               "placeholder_true" : "Primary",
               "default_value" : false,
-              "label" : "Button variant"
+              "label" : "Button variant (note: there should be only one primary button)"
             }
           },
           "push" : {
@@ -67,14 +67,6 @@
               "default_value" : false
             },
             "type" : "Boolean"
-          },
-          "breakpoint" : {
-            "type" : "Select",
-            "config" : {
-              "options" : [ "Always show", "480px", "720px", "960px", "1200px", "1440px" ],
-              "default_value" : "Always show",
-              "label" : "Hide button on devices smaller than"
-            }
           }
         },
         "label" : "Nav Bar Buttons"
@@ -86,12 +78,187 @@
       "config" : {
         "labels" : {
           "email_capture" : [ ],
+          "faq" : [ ],
+          "hero" : [ ],
           "hero_unit" : [ ],
           "how_it_works" : [ ],
           "pitch_cards" : [ ],
-          "show_case" : [ ]
+          "show_case" : [ ],
+          "testimonials" : [ ]
         },
         "choices" : {
+          "faq" : {
+            "type" : "Slice",
+            "fieldset" : "FAQ",
+            "description" : "A box that displays frequently asked questions and its answers",
+            "icon" : "help_outline",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Description",
+                  "placeholder" : "Description",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "eyebrow" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Eyebrow",
+                  "placeholder" : "Eyebrow"
+                }
+              }
+            },
+            "repeat" : {
+              "question" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Question",
+                  "placeholder" : "How much does it costs?"
+                }
+              },
+              "answer" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "Answer",
+                  "placeholder" : "It costs nothing! Its free!",
+                  "allowTargetBlank" : true,
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                }
+              }
+            }
+          },
+          "hero" : {
+            "type" : "Slice",
+            "fieldset" : "Hero",
+            "description" : "A hero unit with action buttons",
+            "icon" : "chrome_reader_mode",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Description",
+                  "placeholder" : "Description",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "skew" : {
+                "config" : {
+                  "label" : "Skew",
+                  "placeholder" : "",
+                  "default_value" : "right",
+                  "options" : [ "right", "left" ]
+                },
+                "type" : "Select"
+              },
+              "image" : {
+                "config" : {
+                  "label" : "Image",
+                  "constraint" : { },
+                  "thumbnails" : [ ]
+                },
+                "type" : "Image"
+              },
+              "imagePosition" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "right", "left" ],
+                  "default_value" : "right",
+                  "label" : "Image position"
+                }
+              },
+              "primaryButtonText" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Primary Button Text",
+                  "placeholder" : "Get Started"
+                }
+              },
+              "primaryButtonLink" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Primary Button Link"
+                }
+              },
+              "secondaryButtonText" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Secondary Button Text",
+                  "placeholder" : "Get Started"
+                }
+              },
+              "secondaryButtonLink" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Secondary Button Link"
+                }
+              }
+            },
+            "repeat" : { }
+          },
           "hero_unit" : {
             "type" : "Slice",
             "fieldset" : "Hero w/ Email Capture",
@@ -105,7 +272,8 @@
                   "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
                   "allowTargetBlank" : true,
                   "label" : "Title",
-                  "placeholder" : "Title"
+                  "placeholder" : "Title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "description" : {
@@ -114,7 +282,8 @@
                   "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank" : true,
                   "label" : "Description",
-                  "placeholder" : "Description"
+                  "placeholder" : "Description",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "background" : {
@@ -195,7 +364,8 @@
                   "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
                   "allowTargetBlank" : true,
                   "label" : "Title",
-                  "placeholder" : "Title"
+                  "placeholder" : "Title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "titleImage" : {
@@ -221,7 +391,8 @@
                   "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank" : true,
                   "label" : "Description",
-                  "placeholder" : "Description"
+                  "placeholder" : "Description",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               }
             },
@@ -232,7 +403,8 @@
                   "single" : "heading3, heading4, heading5, heading6, strong, em",
                   "allowTargetBlank" : true,
                   "label" : "Title",
-                  "placeholder" : "Card title"
+                  "placeholder" : "Card title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "centerTitle" : {
@@ -250,7 +422,8 @@
                   "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank" : true,
                   "label" : "Description",
-                  "placeholder" : "Card description"
+                  "placeholder" : "Card description",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "icon" : {
@@ -307,7 +480,8 @@
                   "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
                   "allowTargetBlank" : true,
                   "label" : "Title",
-                  "placeholder" : "Title"
+                  "placeholder" : "Title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "background" : {
@@ -336,7 +510,8 @@
                   "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
                   "allowTargetBlank" : true,
                   "label" : "Title",
-                  "placeholder" : "Section title"
+                  "placeholder" : "Section title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "description" : {
@@ -345,7 +520,8 @@
                   "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank" : true,
                   "label" : "Description",
-                  "placeholder" : "Section description"
+                  "placeholder" : "Section description",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "image" : {
@@ -378,7 +554,8 @@
                   "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
                   "allowTargetBlank" : true,
                   "label" : "Title",
-                  "placeholder" : "Title"
+                  "placeholder" : "Title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "description" : {
@@ -387,7 +564,8 @@
                   "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank" : true,
                   "label" : "Description",
-                  "placeholder" : "Description"
+                  "placeholder" : "Description",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "image" : {
@@ -423,7 +601,8 @@
                   "label" : "Copy",
                   "placeholder" : "",
                   "allowTargetBlank" : true,
-                  "multi" : "paragraph, strong, em, hyperlink, list-item, o-list-item"
+                  "multi" : "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 },
                 "type" : "StructuredText"
               }
@@ -449,7 +628,8 @@
                   "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
                   "allowTargetBlank" : true,
                   "label" : "Title",
-                  "placeholder" : "Title"
+                  "placeholder" : "Title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
                 }
               },
               "label" : {
@@ -468,6 +648,92 @@
               }
             },
             "repeat" : { }
+          },
+          "testimonials" : {
+            "type" : "Slice",
+            "fieldset" : "Testimonials",
+            "description" : "A list that displays quotes and its authors",
+            "icon" : "format_quote",
+            "display" : "grid",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Title",
+                  "placeholder" : "Testimonials Title",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "testimonialBackground" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_100",
+                  "label" : "Testimonial Background color"
+                }
+              },
+              "testimonialColor" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "default_value" : "ui_900",
+                  "label" : "Testimonial Text color"
+                }
+              }
+            },
+            "repeat" : {
+              "picture" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : {
+                    "width" : 48,
+                    "height" : 48
+                  },
+                  "thumbnails" : [ ],
+                  "label" : "Author Picture"
+                }
+              },
+              "author" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Author Name",
+                  "placeholder" : "Jhon Smith"
+                }
+              },
+              "titleAndLocation" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Title and Location",
+                  "placeholder" : "Landlord in Chicago, Illinois"
+                }
+              },
+              "quote" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, rtl",
+                  "label" : "Quote",
+                  "placeholder" : "Lorem ipsum sit dolor amet",
+                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                }
+              }
+            }
           }
         }
       }
