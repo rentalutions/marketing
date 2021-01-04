@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useCallback, useEffect, useState, useRef } from "react"
 import styled from "styled-components"
 
 import { useResize } from "@rent_avail/utils"
@@ -30,7 +30,7 @@ const ScrollControlsContainer = styled(Box)`
       opacity: 1;
     }
     &.scrollControlDisabled {
-      opacity: 0.7;
+      opacity: 0.3;
     }
   }
 `
@@ -46,15 +46,6 @@ const Testimonial = styled(Card)`
   border-radius: 12px;
 `
 
-const containerObserverCb = (setLeftClipped, setRightClipped) => (entries) => {
-  entries.forEach((entry) => {
-    const isVisible = entry.isIntersecting
-    const { previousSibling, nextSibling } = entry.target.parentElement
-    if (previousSibling === null) setLeftClipped(!isVisible)
-    if (nextSibling === null) setRightClipped(!isVisible)
-  })
-}
-
 function Testimonials({
   bg,
   title,
@@ -65,19 +56,15 @@ function Testimonials({
   ...props
 }) {
   const containerRef = useRef()
+  const scrollRef = useRef()
+  const childrenRef = useRef([])
+  const containerObserver = useRef()
 
-  const [scrollSpace, setScrollSpace] = useState(0)
   const containerRect = useResize(containerRef)
 
-  const [leftClipped, setLeftClipped] = useState(false)
-  const [rightClipped, setRightClipped] = useState(false)
-
-  const [containerObserver, setContainerObserver] = useState()
-
-  const scrollRef = useRef()
-  function scroll(multiplier = 1) {
-    scrollRef.current.scrollBy(multiplier * containerRef.current.offsetWidth, 0)
-  }
+  const [scrollSpace, setScrollSpace] = useState(0)
+  const [mayScrollLeft, setMayScrollLeft] = useState(false)
+  const [mayScrollRight, setMayScrollRight] = useState(false)
 
   useEffect(() => {
     const container = containerRef.current
@@ -87,16 +74,52 @@ function Testimonials({
   }, [containerRect])
 
   useEffect(() => {
-    if (containerObserver) containerObserver.disconnect()
+    if (containerObserver.current) containerObserver.current.disconnect()
 
-    const cb = containerObserverCb(setLeftClipped, setRightClipped)
-    const options = {
+    function observerCb(entries) {
+      entries.forEach((entry) => {
+        const isVisible = entry.isIntersecting
+        const { previousSibling, nextSibling } = entry.target.parentElement
+        if (previousSibling === null) setMayScrollLeft(!isVisible)
+        if (nextSibling === null) setMayScrollRight(!isVisible)
+      })
+    }
+    const observerOptions = {
       root: containerRef.current,
-      rootMargin: `0px ${scrollSpace}px`,
       threshold: 1.0,
     }
-    setContainerObserver(new IntersectionObserver(cb, options))
-  }, [scrollSpace, containerRef.current])
+    containerObserver.current = new IntersectionObserver(
+      observerCb,
+      observerOptions
+    )
+
+    const first = childrenRef.current[0]
+    if (first) containerObserver.current.observe(first)
+
+    const last = childrenRef.current.pop()
+    if (last) containerObserver.current.observe(last)
+  }, [containerRef.current, childrenRef.current.length])
+
+  const scrollLeft = useCallback(() => {
+    const leftClipped = childrenRef.current
+      .slice()
+      .reverse()
+      .find(({ offsetLeft }) => offsetLeft - scrollRef.current.scrollLeft < 0)
+    if (leftClipped) {
+      scrollRef.current.scrollTo(scrollSpace - leftClipped.offsetLeft, 0)
+    }
+  }, [scrollSpace, scrollRef.current, childrenRef.current.length])
+
+  const scrollRight = useCallback(() => {
+    const rightClipped = childrenRef.current.find(
+      ({ offsetLeft, offsetWidth }) =>
+        offsetLeft + offsetWidth - scrollRef.current.scrollLeft >
+        containerRect.width
+    )
+    if (rightClipped) {
+      scrollRef.current.scrollTo(rightClipped.offsetLeft, 0)
+    }
+  }, [scrollRef.current, childrenRef.current.length])
 
   return (
     <SkewBox bg={bg} {...props}>
@@ -120,11 +143,8 @@ function Testimonials({
             {testimonials.map(
               ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
                 <Testimonial
-                  ref={(ref) => {
-                    const isFirstOrLast =
-                      idx === 0 || idx === testimonials.length - 1
-                    if (ref && isFirstOrLast)
-                      containerObserver?.observe(ref)
+                  ref={(el) => {
+                    childrenRef.current[idx] = el
                   }}
                   key={`${author}-${titleAndLocation}`}
                   bg={testimonialBg}
@@ -151,15 +171,15 @@ function Testimonials({
         </CarouselBox>
         <ScrollControlsContainer>
           <ChevronLeft
-            onClick={() => leftClipped && scroll(-1)}
+            onClick={() => mayScrollLeft && scrollLeft()}
             className={
-              leftClipped ? "scrollControlEnabled" : "scrollControlDisabled"
+              mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
             }
           />
           <ChevronRight
-            onClick={() => rightClipped && scroll(1)}
+            onClick={() => mayScrollRight && scrollRight()}
             className={
-              rightClipped ? "scrollControlEnabled" : "scrollControlDisabled"
+              mayScrollRight ? "scrollControlEnabled" : "scrollControlDisabled"
             }
           />
         </ScrollControlsContainer>

@@ -19,10 +19,10 @@ const Wrapper = styled(Box)`
     transform-origin: top ${({ skew }) => skew};
   }
 `
-function SkewBox({ bg, skew = "right", children, ...props }) {
+function SkewBox({ bg, skew = "none", children, ...props }) {
   return (
     <Wrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
-      <div className="skew" />
+      {skew !== "none" && <div className="skew" />}
       {children}
     </Wrapper>
   )

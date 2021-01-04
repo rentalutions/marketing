@@ -11,6 +11,7 @@ const TestimonialsSlice = ({ slice }) => {
       color,
       testimonialBackground,
       testimonialColor,
+      skew,
     },
   } = slice
 
@@ -32,6 +33,7 @@ const TestimonialsSlice = ({ slice }) => {
       color={color}
       testimonialBg={testimonialBackground}
       testimonialColor={testimonialColor}
+      skew={skew}
     />
   )
 }
