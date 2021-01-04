@@ -4,6 +4,7 @@ import { Base, theme } from "@rent_avail/base"
 import { BREAKPOINTS } from "config"
 
 export const parameters = {
+  layout: "fullscreen",
   actions: { argTypesRegex: "^on[A-Z].*" },
 }
 
