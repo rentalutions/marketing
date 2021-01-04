@@ -18,6 +18,7 @@ const CarouselBox = styled(Box)`
   scrollbar-width: none; /* Firefox */
 `
 const TestimonialsStack = styled(Stack)`
+  position: relative;
   display: inline-flex;
 `
 const ScrollControlsContainer = styled(Box)`
@@ -96,22 +97,20 @@ function Testimonials({
     const first = childrenRef.current[0]
     if (first) containerObserver.current.observe(first)
 
-    const last = childrenRef.current.pop()
+    const last = childrenRef.current[childrenRef.current.length - 1]
     if (last) containerObserver.current.observe(last)
-  }, [containerRef.current, childrenRef.current.length])
+  }, [containerRef, childrenRef])
 
   const scrollLeft = useCallback(() => {
-    const leftClipped = childrenRef.current
-      .slice()
-      .reverse()
-      .find(
-        ({ offsetLeft }) =>
-          offsetLeft - scrollSpace - scrollRef.current.scrollLeft < 0
-      )
+    const leftClipped = childrenRef.current.find(
+      ({ offsetLeft, offsetWidth }) =>
+        offsetLeft + offsetWidth - scrollRef.current.scrollLeft >
+        0 - containerRect.width
+    )
     if (leftClipped) {
-      scrollRef.current.scrollTo(scrollSpace - leftClipped.offsetLeft, 0)
+      scrollRef.current.scrollTo(leftClipped.offsetLeft, 0)
     }
-  }, [scrollSpace, scrollRef.current, childrenRef.current.length])
+  }, [containerRect, scrollRef, childrenRef])
 
   const scrollRight = useCallback(() => {
     const rightClipped = childrenRef.current.find(
@@ -122,7 +121,7 @@ function Testimonials({
     if (rightClipped) {
       scrollRef.current.scrollTo(rightClipped.offsetLeft, 0)
     }
-  }, [scrollRef.current, childrenRef.current.length])
+  }, [containerRect, scrollRef, childrenRef])
 
   return (
     <SkewBox bg={bg} {...props}>
@@ -134,7 +133,7 @@ function Testimonials({
         )}
         <CarouselBox
           ref={scrollRef}
-          mb="1rem"
+          pb="1rem"
           mx={`-${scrollSpace}px`}
           px={`${scrollSpace}px`}
         >
@@ -172,20 +171,24 @@ function Testimonials({
             )}
           </TestimonialsStack>
         </CarouselBox>
-        <ScrollControlsContainer>
-          <ChevronLeft
-            onClick={() => mayScrollLeft && scrollLeft()}
-            className={
-              mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
-            }
-          />
-          <ChevronRight
-            onClick={() => mayScrollRight && scrollRight()}
-            className={
-              mayScrollRight ? "scrollControlEnabled" : "scrollControlDisabled"
-            }
-          />
-        </ScrollControlsContainer>
+        {(mayScrollLeft || mayScrollRight) && (
+          <ScrollControlsContainer>
+            <ChevronLeft
+              onClick={() => mayScrollLeft && scrollLeft()}
+              className={
+                mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
+              }
+            />
+            <ChevronRight
+              onClick={() => mayScrollRight && scrollRight()}
+              className={
+                mayScrollRight
+                  ? "scrollControlEnabled"
+                  : "scrollControlDisabled"
+              }
+            />
+          </ScrollControlsContainer>
+        )}
       </Container>
     </SkewBox>
   )
