@@ -15,9 +15,9 @@ export default function FrequentlyAskedQuestionsSlice({ slice }) {
 
   return (
     <FAQ
-      title={title[0]?.text && <RichText render={title} />}
-      description={description[0]?.text && <RichText render={description} />}
-      eyebrow={eyebrow[0]?.text && <RichText render={eyebrow} />}
+      title={title?.[0]?.text && <RichText render={title} />}
+      description={description?.[0]?.text && <RichText render={description} />}
+      eyebrow={eyebrow?.[0]?.text && <RichText render={eyebrow} />}
       questions={questions}
       containerWidth={CONTAINER_WIDTHS}
       bg={background}
