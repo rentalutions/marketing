@@ -104,7 +104,10 @@ function Testimonials({
     const leftClipped = childrenRef.current
       .slice()
       .reverse()
-      .find(({ offsetLeft }) => offsetLeft - scrollRef.current.scrollLeft < 0)
+      .find(
+        ({ offsetLeft }) =>
+          offsetLeft - scrollSpace - scrollRef.current.scrollLeft < 0
+      )
     if (leftClipped) {
       scrollRef.current.scrollTo(scrollSpace - leftClipped.offsetLeft, 0)
     }

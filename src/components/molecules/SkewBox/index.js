@@ -20,11 +20,15 @@ const Wrapper = styled(Box)`
   }
 `
 function SkewBox({ bg, skew = "none", children, ...props }) {
-  return (
+  return skew !== "none" ? (
     <Wrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
-      {skew !== "none" && <div className="skew" />}
+      <div className="skew" />
       {children}
     </Wrapper>
+  ) : (
+    <Box {...props} bg={bg}>
+      {children}
+    </Box>
   )
 }
 
