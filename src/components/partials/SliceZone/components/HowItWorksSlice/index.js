@@ -1,7 +1,7 @@
 import React from "react"
 import Anchor from "components/elements/Anchor"
 import { HowItWorks } from "components/organisms/HowItWorks"
-import { CONTAINER_WIDTHS, Typography } from "config"
+import { CONTAINER_WIDTHS, STYLING } from "config"
 import RichText from "../RichText"
 
 const HowItWorksSlice = ({ slice }) => {
@@ -13,7 +13,7 @@ const HowItWorksSlice = ({ slice }) => {
     uid: title?.[0]?.text || idx,
     copy: (
       <React.Fragment>
-        <RichText render={title} mb="2rem" sx={{ ...Typography.H3 }} />
+        <RichText render={title} mb="2rem" sx={{ ...STYLING.title }} />
         <RichText render={description} />
       </React.Fragment>
     ),

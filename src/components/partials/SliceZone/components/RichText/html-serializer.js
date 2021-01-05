@@ -1,7 +1,7 @@
 import React from "react"
 import { Elements } from "prismic-reactjs"
 import { linkResolver } from "src/prismic.config"
-import { Typography } from "config"
+import { STYLING } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { getTargetProps } from "utils/link"
 import { Box } from "@rent_avail/layout"
@@ -18,13 +18,8 @@ function createHeading(as, { key, ...props }, children) {
   )
 }
 
-function getLabelProps(category, value) {
-  switch (category) {
-    case "Typography":
-      return Typography[value] && { sx: { ...Typography[value] } }
-    default:
-      return null
-  }
+function getLabelProps(label) {
+  return STYLING[label] && { sx: { ...STYLING[label] } }
 }
 
 export default function htmlSerializer(props) {
@@ -37,7 +32,7 @@ export default function htmlSerializer(props) {
           {
             ...props,
             sx: {
-              ...Typography.H1,
+              ...STYLING.hero,
               ...props.sx,
             },
             key,
@@ -50,7 +45,7 @@ export default function htmlSerializer(props) {
           {
             ...props,
             sx: {
-              ...Typography.H2,
+              ...STYLING.headline,
               ...props.sx,
             },
             key,
@@ -63,7 +58,7 @@ export default function htmlSerializer(props) {
           {
             ...props,
             sx: {
-              ...Typography.H3,
+              ...STYLING.title,
               ...props.sx,
             },
             key,
@@ -76,7 +71,7 @@ export default function htmlSerializer(props) {
           {
             ...props,
             sx: {
-              ...Typography.H4,
+              ...STYLING.subtitle,
               ...props.sx,
             },
             key,
@@ -89,7 +84,7 @@ export default function htmlSerializer(props) {
           {
             ...props,
             sx: {
-              ...Typography.H5,
+              ...STYLING.body__emphasis,
               ...props.sx,
             },
             key,
@@ -120,13 +115,12 @@ export default function htmlSerializer(props) {
         )
       }
       case Elements.label: {
-        if (element.data?.label?.includes(": ")) {
-          const [category, value] = element.data.label.split(": ")
+        if (element.data?.label) {
           return React.createElement(
             Text,
             {
               as: "span",
-              ...getLabelProps(category, value),
+              ...getLabelProps(element.data.label),
               key,
             },
             children

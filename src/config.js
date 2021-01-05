@@ -2,26 +2,34 @@ export const CONTAINER_WIDTHS = ["62rem", "62rem", "62rem", "80rem", "96rem"]
 
 export const BREAKPOINTS = ["480px", "720px", "960px", "1200px", "1440px"]
 
-export const Typography = {
-  H1: {
+export const STYLING = {
+  hero: {
     text: ["title", "headline", "hero"],
     fontWeight: ["regular", "regular", "light"],
   },
-  H2: {
+  headline: {
     text: ["title", "title", "headline"],
     fontWeight: ["regular"],
   },
-  H3: {
+  title: {
     text: ["subtitle", "subtitle", "title"],
     fontWeight: ["regular"],
   },
-  H4: {
-    text: "subtitle",
+  subtitle: {
+    text: ["subtitle"],
     fontWeight: "regular",
   },
-  H5: {
-    text: "body",
+  body__emphasis: {
+    text: ["body"],
     fontWeight: "black",
+  },
+  body: {
+    text: ["body"],
+    fontWeight: "regular",
+  },
+  small: {
+    text: ["small"],
+    fontWeight: "regular",
   },
 }
 

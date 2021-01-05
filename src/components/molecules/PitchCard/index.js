@@ -4,9 +4,10 @@ import { Button } from "@rent_avail/controls"
 import { Text } from "@rent_avail/typography"
 import * as React from "react"
 import { getTargetProps } from "utils/link"
-import { Typography } from "config"
+import { STYLING } from "config"
 
 export function PitchCard({ title, description, icon = null, link, ...props }) {
+  const isButtonVariant = !!link?.button
   return (
     <Col {...props} display="flex" flexDirection="column">
       {icon?.url && (
@@ -21,21 +22,21 @@ export function PitchCard({ title, description, icon = null, link, ...props }) {
       {title &&
         React.cloneElement(title, {
           sx: {
-            ...(link?.button ? Typography.H3 : Typography.H5),
+            ...(isButtonVariant ? STYLING.title : STYLING.body__emphasis),
             ...title.props?.sx,
-            marginBottom: link?.button ? "2rem" : "1rem",
+            marginBottom: isButtonVariant ? "2rem" : "1rem",
           },
         })}
       {description && (
-        <Box flex={link?.button ? "1 1 auto" : "initial"}>{description}</Box>
+        <Box flex={isButtonVariant ? "1 1 auto" : "initial"}>{description}</Box>
       )}
       {link && (
         <Flex
-          mt={link.button ? "3rem" : "1.5rem"}
-          justifyContent={link.button ? "center" : "flex-start"}
+          mt={isButtonVariant ? "3rem" : "1.5rem"}
+          justifyContent={isButtonVariant ? "center" : "flex-start"}
         >
           <Link href={link.url} passHref>
-            {link.button ? (
+            {isButtonVariant ? (
               <Button as="a" {...getTargetProps(link.target)}>
                 {link.text}
               </Button>

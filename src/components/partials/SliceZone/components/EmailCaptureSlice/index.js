@@ -3,7 +3,7 @@ import { Container } from "@rent_avail/layout"
 import EmailCapture from "components/molecules/EmailCapture"
 import RichText from "components/partials/SliceZone/components/RichText"
 import Anchor from "components/elements/Anchor"
-import { CONTAINER_WIDTHS, Typography } from "config"
+import { CONTAINER_WIDTHS, STYLING } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
 
@@ -22,7 +22,7 @@ const EmailCaptureSlice = ({ slice }) => {
           textAlign={["left", "center"]}
           color="blue_500"
           render={title}
-          sx={{ ...Typography.H3 }}
+          sx={{ ...STYLING.title }}
         />
         <EmailCapture
           inputLabel={label}

@@ -101,7 +101,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "description" : {
@@ -111,7 +111,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Description",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "background" : {
@@ -155,7 +155,7 @@
                   "placeholder" : "It costs nothing! Its free!",
                   "allowTargetBlank" : true,
                   "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               }
             }
@@ -174,7 +174,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "description" : {
@@ -184,7 +184,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Description",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "background" : {
@@ -273,7 +273,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "description" : {
@@ -283,7 +283,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Description",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "background" : {
@@ -365,7 +365,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "titleImage" : {
@@ -392,7 +392,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Description",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               }
             },
@@ -404,7 +404,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Card title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "centerTitle" : {
@@ -423,7 +423,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Card description",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "icon" : {
@@ -481,7 +481,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "background" : {
@@ -511,7 +511,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Section title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "description" : {
@@ -521,7 +521,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Section description",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "image" : {
@@ -555,7 +555,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "description" : {
@@ -565,7 +565,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Description",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "image" : {
@@ -602,7 +602,7 @@
                   "placeholder" : "",
                   "allowTargetBlank" : true,
                   "multi" : "paragraph, strong, em, hyperlink, list-item, o-list-item",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 },
                 "type" : "StructuredText"
               }
@@ -629,7 +629,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "label" : {
@@ -662,7 +662,7 @@
                   "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
                   "label" : "Title",
                   "placeholder" : "Testimonials Title",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "background" : {
@@ -695,6 +695,14 @@
                   "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
                   "default_value" : "ui_900",
                   "label" : "Testimonial Text color"
+                }
+              },
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "right", "left" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
                 }
               }
             },
@@ -730,7 +738,7 @@
                   "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, rtl",
                   "label" : "Quote",
                   "placeholder" : "Lorem ipsum sit dolor amet",
-                  "labels" : [ "Typography: H1", "Typography: H2", "Typography: H3", "Typography: H4", "Typography: H5" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               }
             }

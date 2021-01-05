@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Box, Container, Stack } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { motion, AnimatePresence } from "framer-motion"
-import { Typography } from "config"
+import { STYLING } from "config"
 
 const Accordion = styled(Box)`
   cursor: pointer;
@@ -33,7 +33,7 @@ function FAQ({
         {title &&
           React.cloneElement(title, {
             mb: "1rem",
-            sx: { ...Typography.H2, ...title.props?.sx },
+            sx: { ...STYLING.headline, ...title.props?.sx },
           })}
         {description && <Box mb="2rem">{description}</Box>}
         <Stack>

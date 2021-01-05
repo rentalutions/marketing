@@ -1,6 +1,6 @@
 import React from "react"
 import Showcase from "components/organisms/Showcase"
-import { CONTAINER_WIDTHS, Typography } from "config"
+import { CONTAINER_WIDTHS, STYLING } from "config"
 import Anchor from "components/elements/Anchor"
 import RichText from "../RichText"
 
@@ -22,7 +22,7 @@ const ShowcaseSlice = ({ slice }) => {
               color="blue_500"
               render={title}
               mb="2rem"
-              sx={{ ...Typography.H3 }}
+              sx={{ ...STYLING.title }}
             />
             <RichText render={description} />
           </React.Fragment>

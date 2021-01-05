@@ -1,7 +1,7 @@
 import React, { cloneElement } from "react"
 import styled from "styled-components"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
-import { Typography } from "config"
+import { STYLING } from "config"
 
 const HeroWrapper = styled(Box)`
   position: relative;
@@ -48,7 +48,7 @@ function Hero({
         <Col span={image ? [12, 12, 12, 6] : [12]}>
           {cloneElement(title, {
             sx: {
-              ...(image ? Typography.H2 : Typography.H1),
+              ...(image ? STYLING.headline : STYLING.hero),
               fontWeight: ["regular", "light"],
               ...title.props?.sx,
             },
