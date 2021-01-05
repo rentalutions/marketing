@@ -75,7 +75,7 @@ function Testimonials({
   }, [containerRect])
 
   useEffect(() => {
-    if (containerObserver.current) containerObserver.current.disconnect()
+    containerObserver.current?.disconnect()
 
     function observerCb(entries) {
       entries.forEach((entry) => {
@@ -99,6 +99,10 @@ function Testimonials({
 
     const last = childrenRef.current[childrenRef.current.length - 1]
     if (last) containerObserver.current.observe(last)
+
+    return () => {
+      containerObserver.current?.disconnect()
+    }
   }, [containerRef, childrenRef])
 
   const scrollLeft = useCallback(() => {
