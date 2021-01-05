@@ -1,6 +1,6 @@
 import React from "react"
 import { Testimonials } from "components/organisms/Testimonials"
-import { CONTAINER_WIDTHS } from "config"
+import { CONTAINER_WIDTHS, STYLING } from "config"
 import RichText from "../RichText"
 
 const TestimonialsSlice = ({ slice }) => {
@@ -26,7 +26,7 @@ const TestimonialsSlice = ({ slice }) => {
 
   return (
     <Testimonials
-      title={<RichText render={title} heading />}
+      title={<RichText render={title} sx={{ ...STYLING.headline }} heading />}
       testimonials={testimonials}
       containerWidth={CONTAINER_WIDTHS}
       bg={background}
