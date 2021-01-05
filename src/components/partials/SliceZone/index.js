@@ -9,6 +9,7 @@ import EmailCaptureSlice from "./components/EmailCaptureSlice"
 import HowItWorksSlice from "./components/HowItWorksSlice"
 import ShowcaseSlice from "./components/ShowcaseSlice"
 import FAQSlice from "./components/FrequentlyAskedQuestionsSlice"
+import TestimonialsSlice from "./components/TestimonialsSlice"
 
 const SliceZone = ({ slices }) => {
   if (!slices) {
@@ -33,6 +34,8 @@ const SliceZone = ({ slices }) => {
         return <PitchCardsSlice key={key} slice={slice} />
       case "show_case":
         return <ShowcaseSlice key={key} slice={slice} />
+      case "testimonials":
+        return <TestimonialsSlice key={key} slice={slice} />
       default:
         return (
           <Flex

@@ -37,13 +37,13 @@ const Link = ({ link, children, ...props }) => {
     }
   })()
 
-  return (
+  return href ? (
     <NextLink passHref href={href} {...props}>
       {React.cloneElement(children, {
         ...getTargetProps(target),
       })}
     </NextLink>
-  )
+  ) : null
 }
 
 export default Link
