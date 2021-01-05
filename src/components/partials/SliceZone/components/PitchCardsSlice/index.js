@@ -25,48 +25,43 @@ const PitchCardsSlice = ({ slice }) => {
         linkAsButton,
       },
       idx
-    ) => {
-      return {
-        title: (
-          <RichText
-            textAlign={centerTitle ? "center" : "inherit"}
-            color={centerTitle ? "blue_500" : "inherit"}
-            render={title}
-            heading
-          />
-        ),
-        description: <RichText render={description} />,
-        icon,
-        key: (title && title[0] && title[0].text) || idx,
-        link:
-          linkText && linkUrl
-            ? {
-                text: linkText,
-                url: urlResolver(linkUrl.url),
-                target:
-                  linkUrl.target || (linkUrl.link_type === "Media" && "_blank"),
-                button: linkAsButton,
-              }
-            : null,
-      }
-    }
+    ) => ({
+      title: (
+        <RichText
+          textAlign={centerTitle ? "center" : "inherit"}
+          color={centerTitle ? "blue_500" : "inherit"}
+          render={title}
+        />
+      ),
+      description: <RichText render={description} />,
+      icon,
+      key: title?.[0]?.text || idx,
+      link:
+        linkText && linkUrl
+          ? {
+              text: linkText,
+              url: urlResolver(linkUrl.url),
+              target:
+                linkUrl.target || (linkUrl.link_type === "Media" && "_blank"),
+              button: linkAsButton,
+            }
+          : null,
+    })
   )
   const titleText = (
     <RichText
       color="blue_500"
       textAlign={centerTitle ? "center" : "inherit"}
       render={title}
-      heading
     />
   )
-  const titleWithImage = titleImage && titleImage.url && (
+  const titleWithImage = titleImage?.url && (
     <Box textAlign={centerTitle ? "center" : "inherit"}>
       <RichText
         display="inline-block"
         verticalAlign="bottom"
         color="blue_500"
         render={title}
-        heading
       />
       <Box
         as="img"

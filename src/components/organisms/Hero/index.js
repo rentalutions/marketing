@@ -1,6 +1,7 @@
 import React, { cloneElement } from "react"
-import styled, { useTheme } from "styled-components"
+import styled from "styled-components"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
+import { STYLING } from "config"
 
 const HeroWrapper = styled(Box)`
   position: relative;
@@ -33,7 +34,6 @@ function Hero({
   children,
   ...props
 }) {
-  const { fontWeights, fontSizes } = useTheme()
   const links = primaryLink || secondaryLink
   return (
     <HeroWrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
@@ -47,10 +47,11 @@ function Hero({
       >
         <Col span={image ? [12, 12, 12, 6] : [12]}>
           {cloneElement(title, {
-            fontSize: image
-              ? [fontSizes.subtitle, fontSizes.title, fontSizes.headline]
-              : [fontSizes.title, fontSizes.headline, fontSizes.hero],
-            fontWeight: [fontWeights.regular, fontWeights.light],
+            sx: {
+              ...(image ? STYLING.headline : STYLING.hero),
+              fontWeight: ["regular", "light"],
+              ...title.props?.sx,
+            },
           })}
           <Box mt="2rem">{description}</Box>
           {links && (

@@ -30,7 +30,7 @@ const HeroSlice = ({ slice }) => {
 
   return (
     <Hero
-      title={<RichText render={title} heading />}
+      title={<RichText render={title} />}
       description={<RichText render={description} />}
       bg={background}
       skew={skew}

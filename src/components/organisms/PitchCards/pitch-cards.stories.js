@@ -1,5 +1,5 @@
 import React from "react"
-import { Heading } from "@rent_avail/typography"
+import { Box } from "@rent_avail/layout"
 import { PitchCards } from "./index"
 
 export default { title: "Components/Pitch Cards" }
@@ -28,7 +28,7 @@ const sectionData = [
 ]
 
 const sections = sectionData.map(({ title, description }) => ({
-  title: <Heading as="h5">{title}</Heading>,
+  title: <Box as="h3">{title}</Box>,
   description,
 }))
 
@@ -70,9 +70,9 @@ const linkSections = iconSections.map((section, idx) => ({
 
 const buttonLinkSections = sectionData.map(({ title, description }, idx) => ({
   title: (
-    <Heading as="h3" textAlign="center">
+    <Box as="h3" textAlign="center">
       {title}
-    </Heading>
+    </Box>
   ),
   description,
   link: { ...links[idx], text: "View sample", button: true },
@@ -84,9 +84,9 @@ export function Default() {
       sections={sections}
       eyebrow="Eyebrow"
       title={
-        <Heading as="h2" mb="1rem">
+        <Box as="h2" mb="1rem">
           Let Me Pitch You
-        </Heading>
+        </Box>
       }
       description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
       mt="4rem"
@@ -100,9 +100,9 @@ export function WithIcons() {
       sections={iconSections}
       eyebrow="Eyebrow"
       title={
-        <Heading as="h2" mb="1rem">
+        <Box as="h2" mb="1rem">
           Let Me Pitch You
-        </Heading>
+        </Box>
       }
       description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
       mt="4rem"
@@ -116,9 +116,9 @@ export function WithThreeSections() {
       sections={iconSections.slice(0, 3)}
       eyebrow="Eyebrow"
       title={
-        <Heading as="h2" mb="1rem">
+        <Box as="h2" mb="1rem">
           Let Me Pitch You
-        </Heading>
+        </Box>
       }
       description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
       mt="4rem"
@@ -132,9 +132,9 @@ export function WithTwoSections() {
       sections={iconSections.slice(0, 2)}
       eyebrow="Eyebrow"
       title={
-        <Heading as="h2" mb="1rem">
+        <Box as="h2" mb="1rem">
           Let Me Pitch You
-        </Heading>
+        </Box>
       }
       description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
       mt="4rem"
@@ -148,9 +148,9 @@ export function WithLinks() {
       sections={linkSections}
       eyebrow="Eyebrow"
       title={
-        <Heading as="h2" mb="1rem">
+        <Box as="h2" mb="1rem">
           Let Me Pitch You
-        </Heading>
+        </Box>
       }
       description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
       mt="4rem"
@@ -164,9 +164,9 @@ export function WithButtonLinks() {
       sections={buttonLinkSections.slice(0, 3)}
       eyebrow="Eyebrow"
       title={
-        <Heading as="h2" mb="1rem">
+        <Box as="h2" mb="1rem">
           Let Me Pitch You
-        </Heading>
+        </Box>
       }
       description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
       mt="4rem"

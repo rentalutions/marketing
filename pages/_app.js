@@ -2,7 +2,6 @@ import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { theme, Base as Reset } from "@rent_avail/base"
 import PreviewWarning from "components/partials/PreviewWarning"
-import { RichTextGlobalStyle } from "components/partials/SliceZone/components/RichText"
 import { DefaultSeo } from "next-seo"
 import { BREAKPOINTS, DEFAULT_SEO } from "config"
 import { UIDReset } from "react-uid"
@@ -23,7 +22,6 @@ export default function App({ Component, pageProps }) {
       <DefaultSeo {...DEFAULT_SEO} />
       <Reset />
       <GlobalStyles />
-      <RichTextGlobalStyle />
       {preview && <PreviewWarning />}
       <UIDReset prefix="uid_">
         <Component {...pageProps} />

@@ -2,6 +2,7 @@ import * as React from "react"
 import { Col, Container, Grid } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { PitchCard } from "components/molecules/PitchCard"
+import { STYLING } from "config"
 
 function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
   const cardSpan =
@@ -16,7 +17,10 @@ function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
               {eyebrow}
             </Text>
           )}
-          {title && title}
+          {title &&
+            React.cloneElement(title, {
+              sx: { ...STYLING.headline, ...title.props?.sx },
+            })}
           {description && description}
         </Col>
       )}

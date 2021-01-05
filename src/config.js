@@ -1,20 +1,36 @@
-import { theme } from "@rent_avail/base"
-
-const { fontSizes: fs, fontWeights: fw } = theme
-
 export const CONTAINER_WIDTHS = ["62rem", "62rem", "62rem", "80rem", "96rem"]
 
 export const BREAKPOINTS = ["480px", "720px", "960px", "1200px", "1440px"]
 
-export const H1_SIZING = {
-  fontSize: [fs.title, fs.headline, fs.hero],
-  fontWeight: [fw.regular, fw.regular, fs.light],
-}
-export const H2_SIZING = {
-  fontSize: [fs.title, fs.title, fs.headline],
-}
-export const H3_SIZING = {
-  fontSize: [fs.subtitle, fs.subtitle, fs.title],
+export const STYLING = {
+  hero: {
+    text: ["title", "headline", "hero"],
+    fontWeight: ["regular", "regular", "light"],
+  },
+  headline: {
+    text: ["title", "title", "headline"],
+    fontWeight: ["regular"],
+  },
+  title: {
+    text: ["subtitle", "subtitle", "title"],
+    fontWeight: ["regular"],
+  },
+  subtitle: {
+    text: ["subtitle"],
+    fontWeight: "regular",
+  },
+  body__emphasis: {
+    text: ["body"],
+    fontWeight: "black",
+  },
+  body: {
+    text: ["body"],
+    fontWeight: "regular",
+  },
+  small: {
+    text: ["small"],
+    fontWeight: "regular",
+  },
 }
 
 export const DEFAULT_SEO = {
