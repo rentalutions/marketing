@@ -16,6 +16,7 @@
     "semi": [1, "never"],
     "comma-dangle": [1, "only-multiline"],
     "consistent-return": [0],
+    "prefer-arrow-callback": [ "error", { "allowNamedFunctions": true } ],
     "import/no-unresolved": [0],
     "import/no-extraneous-dependencies": [0],
     "import/prefer-default-export": [0],
