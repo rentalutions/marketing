@@ -5,7 +5,7 @@ import { useTheme } from "styled-components"
 import HeroSlice from "./components/HeroSlice"
 import HeroWithEmailCaptureSlice from "./components/HeroWithEmailCaptureSlice"
 import PitchCardsSlice from "./components/PitchCardsSlice"
-import ButtonSlice from "./components/ButtonSlice"
+import ButtonCTASlice from "./components/ButtonCTASlice"
 import EmailCaptureSlice from "./components/EmailCaptureSlice"
 import HowItWorksSlice from "./components/HowItWorksSlice"
 import ShowcaseSlice from "./components/ShowcaseSlice"
@@ -21,7 +21,7 @@ const SliceZone = ({ slices }) => {
     const key = `${slice.slice_type}-${slice.version}-${idx}`
     switch (slice.slice_type) {
       case "button":
-        return <ButtonSlice key={key} slice={slice} />
+        return <ButtonCTASlice key={key} slice={slice} />
       case "email_capture":
         return <EmailCaptureSlice key={key} slice={slice} />
       case "faq":

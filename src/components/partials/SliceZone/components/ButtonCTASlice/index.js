@@ -1,8 +1,10 @@
 import React from "react"
 import { ButtonCTA } from "components/organisms/ButtonCTA"
+import Link from "components/partials/SliceZone/components/Link"
+import RichText from "components/partials/SliceZone/components/RichText"
 import { CONTAINER_WIDTHS } from "config"
 
-const ButtonSlice = ({ slice }) => {
+const ButtonCTASlice = ({ slice }) => {
   const {
     primary: {
       title,
@@ -10,23 +12,23 @@ const ButtonSlice = ({ slice }) => {
       buttonLink,
       background,
       color,
-      position,
-      skew,
+      orientation = "left",
+      skew = "none",
     },
   } = slice
 
   return (
     <ButtonCTA
-      title={title}
+      title={title && <RichText render={title} />}
       buttonText={buttonText}
-      buttonLink={buttonLink}
+      buttonLink={buttonLink && <Link link={buttonLink} />}
       containerWidth={CONTAINER_WIDTHS}
       bg={background}
       color={color}
-      position={position}
+      orientation={orientation}
       skew={skew}
     />
   )
 }
 
-export default ButtonSlice
+export default ButtonCTASlice
