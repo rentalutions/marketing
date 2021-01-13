@@ -1,4 +1,5 @@
 import React from "react"
+import Button from "components/elements/Button"
 import { ButtonCTA } from "components/organisms/ButtonCTA"
 import Link from "components/partials/SliceZone/components/Link"
 import RichText from "components/partials/SliceZone/components/RichText"
@@ -19,14 +20,22 @@ const ButtonCTASlice = ({ slice }) => {
 
   return (
     <ButtonCTA
-      title={title && <RichText render={title} />}
-      buttonText={buttonText}
-      buttonLink={buttonLink && <Link link={buttonLink} />}
       containerWidth={CONTAINER_WIDTHS}
       bg={background}
       color={color}
       orientation={orientation}
       skew={skew}
+      title={title && <RichText render={title} />}
+      button={
+        buttonText &&
+        buttonLink && (
+          <Link link={buttonLink}>
+            <Button as="a" variant="primary" background={background}>
+              {buttonText}
+            </Button>
+          </Link>
+        )
+      }
     />
   )
 }

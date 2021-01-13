@@ -4,7 +4,6 @@ import { variant } from "styled-system"
 
 import { Container, Flex } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"
-import Button from "components/elements/Button"
 
 const StyledFlex = styled(Flex)(
   {
@@ -37,8 +36,7 @@ const StyledFlex = styled(Flex)(
 function ButtonCTA({
   bg,
   title,
-  buttonText,
-  buttonLink,
+  button,
   orientation = "left",
   containerWidth,
   ...props
@@ -55,24 +53,7 @@ function ButtonCTA({
                 minWidth: "80%",
               },
             })}
-          {buttonLink &&
-            cloneElement(
-              buttonLink,
-              {},
-              <Button
-                flex="0"
-                variant="primary"
-                background={bg}
-                type="submit"
-                display="block"
-                height="fit-content"
-                width="fit-content"
-                margin="auto"
-                textAlign="center"
-              >
-                {buttonText}
-              </Button>
-            )}
+          {button}
         </StyledFlex>
       </Container>
     </SkewBox>

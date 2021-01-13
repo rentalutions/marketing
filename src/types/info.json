@@ -77,7 +77,7 @@
       "fieldset" : "Slice zone",
       "config" : {
         "labels" : {
-          "button" : [ ],
+          "button_cta" : [ ],
           "email_capture" : [ ],
           "faq" : [ ],
           "hero" : [ ],
@@ -88,7 +88,7 @@
           "testimonials" : [ ]
         },
         "choices" : {
-          "button" : {
+          "button_cta" : {
             "type" : "Slice",
             "fieldset" : "Button/CTA",
             "description" : "A skewable box that displays a button and its title",

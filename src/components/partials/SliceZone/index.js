@@ -20,7 +20,7 @@ const SliceZone = ({ slices }) => {
   return slices.map((slice, idx) => {
     const key = `${slice.slice_type}-${slice.version}-${idx}`
     switch (slice.slice_type) {
-      case "button":
+      case "button_cta":
         return <ButtonCTASlice key={key} slice={slice} />
       case "email_capture":
         return <EmailCaptureSlice key={key} slice={slice} />
