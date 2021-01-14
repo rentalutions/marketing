@@ -10,11 +10,9 @@ export function Default() {
     <ButtonCTA
       title={<Box as="h1">Button CTA Title</Box>}
       button={
-        <a href="https://avail.co">
-          <Button as="a" variant="primary">
-            Button
-          </Button>
-        </a>
+        <Button as="a" variant="primary" href="https://avail.co">
+          Button
+        </Button>
       }
       orientation="left"
     />
@@ -26,11 +24,9 @@ export function Top() {
     <ButtonCTA
       title={<Box as="h1">🔝 CTA Title</Box>}
       button={
-        <a href="https://avail.co">
-          <Button as="a" variant="primary">
-            Button
-          </Button>
-        </a>
+        <Button as="a" variant="primary" href="https://avail.co">
+          Button
+        </Button>
       }
       orientation="top"
     />
@@ -42,11 +38,9 @@ export function Right() {
     <ButtonCTA
       title={<Box as="h1">Right Button CTA Title</Box>}
       button={
-        <a href="https://avail.co">
-          <Button as="a" variant="primary">
-            Right?
-          </Button>
-        </a>
+        <Button as="a" variant="primary" href="https://avail.co">
+          Right?
+        </Button>
       }
       orientation="right"
     />
@@ -58,11 +52,9 @@ export function Bottom() {
     <ButtonCTA
       title={<Box as="h1">Bottom CTA Title</Box>}
       button={
-        <a href="https://avail.co">
-          <Button as="a" variant="primary">
-            Bottom?
-          </Button>
-        </a>
+        <Button as="a" variant="primary" href="https://avail.co">
+          Bottom?
+        </Button>
       }
       orientation="bottom"
     />
@@ -73,11 +65,9 @@ export function NoTitle() {
   return (
     <ButtonCTA
       button={
-        <a href="https://avail.co">
-          <Button as="a" variant="primary">
-            Lonely Button
-          </Button>
-        </a>
+        <Button as="a" variant="primary" href="https://avail.co">
+          Lonely Button
+        </Button>
       }
       orientation="left"
     />

@@ -5,6 +5,8 @@ import { variant } from "styled-system"
 import { Box, Container, Flex } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"
 
+import { STYLING } from "config"
+
 const StyledFlex = styled(Flex)(
   {
     alignItems: "center",
@@ -49,6 +51,7 @@ function ButtonCTA({
             cloneElement(title, {
               sx: {
                 ...title.props?.sx,
+                ...STYLING.headline,
                 flex: "1",
                 minWidth: "fit-content",
               },
