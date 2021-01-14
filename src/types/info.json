@@ -102,23 +102,7 @@
                   "allowTargetBlank" : true,
                   "label" : "Title",
                   "placeholder" : "Title",
-                  "labels" : {
-                    "" : [ {
-                      "name" : "hero"
-                    }, {
-                      "name" : "headline"
-                    }, {
-                      "name" : "title"
-                    }, {
-                      "name" : "subtitle"
-                    }, {
-                      "name" : "body__emphasis"
-                    }, {
-                      "name" : "body"
-                    }, {
-                      "name" : "small"
-                    } ]
-                  }
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "buttonText" : {
