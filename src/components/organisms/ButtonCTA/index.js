@@ -2,7 +2,7 @@ import React, { cloneElement } from "react"
 import styled from "styled-components"
 import { variant } from "styled-system"
 
-import { Container, Flex } from "@rent_avail/layout"
+import { Box, Container, Flex } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"
 
 const StyledFlex = styled(Flex)(
@@ -50,10 +50,22 @@ function ButtonCTA({
               sx: {
                 ...title.props?.sx,
                 flex: "1",
-                minWidth: "80%",
+                minWidth: "fit-content",
               },
             })}
-          {button}
+          {button && (
+            <Box
+              sx={{
+                flex: "0",
+                margin: "auto",
+                height: "fit-content",
+                width: "fit-content",
+                minWidth: "unset",
+              }}
+            >
+              {button}
+            </Box>
+          )}
         </StyledFlex>
       </Container>
     </SkewBox>

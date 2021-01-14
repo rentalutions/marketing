@@ -3,7 +3,7 @@ import Button from "components/elements/Button"
 import { ButtonCTA } from "components/organisms/ButtonCTA"
 import Link from "components/partials/SliceZone/components/Link"
 import RichText from "components/partials/SliceZone/components/RichText"
-import { CONTAINER_WIDTHS } from "config"
+import { CONTAINER_WIDTHS, STYLING } from "config"
 
 const ButtonCTASlice = ({ slice }) => {
   const {
@@ -25,7 +25,11 @@ const ButtonCTASlice = ({ slice }) => {
       color={color}
       orientation={orientation}
       skew={skew}
-      title={title && <RichText render={title} />}
+      title={
+        title && (
+          <RichText render={title} sx={{ ...STYLING.headline }} heading />
+        )
+      }
       button={
         buttonText &&
         buttonLink && (
