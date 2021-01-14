@@ -26,7 +26,7 @@ const TestimonialsSlice = ({ slice }) => {
 
   return (
     <Testimonials
-      title={<RichText render={title} sx={{ ...STYLING.headline }} heading />}
+      title={<RichText render={title} heading />}
       testimonials={testimonials}
       containerWidth={CONTAINER_WIDTHS}
       bg={background}

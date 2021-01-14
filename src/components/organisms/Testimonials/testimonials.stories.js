@@ -1,5 +1,6 @@
 import React from "react"
 import { Text } from "@rent_avail/typography"
+import { Box } from "@rent_avail/layout"
 import { Testimonials } from "./index"
 
 export default { title: "Components/Testimonials" }
@@ -42,7 +43,12 @@ export function Default() {
       quote: Quote,
     },
   ]
-  return <Testimonials title="Testimonials" testimonials={testimonials} />
+  return (
+    <Testimonials
+      title={<Box as="h2">Testimonials</Box>}
+      testimonials={testimonials}
+    />
+  )
 }
 
 export function WithTwoCards() {
@@ -60,7 +66,12 @@ export function WithTwoCards() {
       quote: Quote,
     },
   ]
-  return <Testimonials title="Testimonials" testimonials={testimonials} />
+  return (
+    <Testimonials
+      title={<Box as="h2">Testimonials</Box>}
+      testimonials={testimonials}
+    />
+  )
 }
 
 export function WithTwelveCards() {
@@ -138,5 +149,10 @@ export function WithTwelveCards() {
       quote: Quote,
     },
   ]
-  return <Testimonials title="Testimonials" testimonials={testimonials} />
+  return (
+    <Testimonials
+      title={<Box as="h2">Testimonials</Box>}
+      testimonials={testimonials}
+    />
+  )
 }
