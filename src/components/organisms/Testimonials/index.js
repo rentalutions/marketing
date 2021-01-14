@@ -3,10 +3,10 @@ import styled from "styled-components"
 
 import { useResize } from "@rent_avail/utils"
 import { Container, Box, Card, Stack } from "@rent_avail/layout"
-import { Heading } from "@rent_avail/typography"
 import { ChevronLeft, ChevronRight } from "react-feather"
 
 import SkewBox from "components/molecules/SkewBox"
+import { STYLING } from "config"
 
 const CarouselBox = styled(Box)`
   overflow: scroll;
@@ -130,11 +130,11 @@ function Testimonials({
   return (
     <SkewBox bg={bg} {...props}>
       <Container ref={containerRef} maxWidth={containerWidth}>
-        {title && (
-          <Heading as="h3" mb="1rem">
-            {title}
-          </Heading>
-        )}
+        {title &&
+          React.cloneElement(title, {
+            sx: { ...STYLING.headline, ...title?.props?.sx },
+            mb: "2rem",
+          })}
         <CarouselBox
           ref={scrollRef}
           pb="1rem"
