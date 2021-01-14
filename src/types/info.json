@@ -77,6 +77,7 @@
       "fieldset" : "Slice zone",
       "config" : {
         "labels" : {
+          "button_cta" : [ ],
           "email_capture" : [ ],
           "faq" : [ ],
           "hero" : [ ],
@@ -87,6 +88,72 @@
           "testimonials" : [ ]
         },
         "choices" : {
+          "button_cta" : {
+            "type" : "Slice",
+            "fieldset" : "Button/CTA",
+            "description" : "A skewable box that displays a button and its title",
+            "icon" : "call_to_action",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "buttonText" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Button Text",
+                  "placeholder" : "Get Started"
+                }
+              },
+              "buttonLink" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Button Link"
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "orientation" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "left", "top", "right", "bottom" ],
+                  "default_value" : "left",
+                  "label" : "Text Orientation"
+                }
+              },
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "right", "left" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
+                }
+              }
+            },
+            "repeat" : { }
+          },
           "faq" : {
             "type" : "Slice",
             "fieldset" : "FAQ",
