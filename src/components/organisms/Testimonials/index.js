@@ -166,6 +166,7 @@ function Testimonials({
                       alt={picture.alt}
                       title={picture.alt}
                       width="4rem"
+                      sx={{ borderRadius: "50%" }}
                     />
                   )}
                   <h5>{author}</h5>
