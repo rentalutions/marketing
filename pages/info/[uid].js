@@ -1,5 +1,4 @@
 import React from "react"
-import { prismicClient } from "src/prismic.config"
 import { NextSeo } from "next-seo"
 import AvailFooter from "components/partials/AvailFooter"
 import SliceZone from "components/partials/SliceZone"
@@ -14,28 +13,11 @@ import { useRouter } from "next/router"
 import DefaultErrorPage from "next/error"
 import Head from "next/head"
 import { Box, Flex } from "@rent_avail/layout"
+import { useGetStaticPaths, useGetStaticProps } from "../_lib"
 
-export const getStaticProps = async ({
-  preview = null,
-  previewData = {},
-  params: { uid },
-}) => {
-  const data = await prismicClient.getByUID("info", uid, { ...previewData })
-  return {
-    props: {
-      preview,
-      previewData,
-      ...data,
-    },
-    revalidate: 1,
-  }
-}
+export const getStaticProps = useGetStaticProps("info")
 
-export const getStaticPaths = async () => {
-  const pages = await prismicClient.query("", { pageSize: 100 })
-  const paths = pages.results.map((p) => `/info/${p.uid}`)
-  return { paths, fallback: true }
-}
+export const getStaticPaths = useGetStaticPaths("info")
 
 const NavBarWrapper = ({ links, ...props }) => {
   const urlResolver = useUrlResolver()
