@@ -2,7 +2,7 @@ import React from "react"
 import { Button } from "@rent_avail/controls"
 import { Box } from "@rent_avail/layout"
 import { PlansPrices } from "./index"
-import PlanInfo from "./planInfo"
+import PlanInfo from "./plan-info"
 
 export default { title: "Components/Plans and Prices" }
 

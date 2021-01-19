@@ -5,7 +5,7 @@ import { variant } from "styled-system"
 import { Box, Card, Container, Flex, Grid } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"
 import { STYLING } from "config"
-import PlanInfo from "./planInfo"
+import PlanInfo from "./plan-info"
 
 const PlansGrid = styled(Grid)(
   variant({
@@ -61,18 +61,18 @@ function PlansPrices({
         <Box textAlign="center">
           {title &&
             cloneElement(title, {
+              mb: "1rem",
               sx: {
                 ...title.props?.sx,
                 ...STYLING.headline,
-                marginBottom: "1rem",
               },
             })}
           {subtitle &&
             cloneElement(subtitle, {
+              mb: "1rem",
               sx: {
                 ...subtitle.props?.sx,
                 ...STYLING.subtitle,
-                marginBottom: "1rem",
               },
             })}
           <PlansGrid direction={direction} gap="2rem" my="2rem">
@@ -114,7 +114,7 @@ function PlansPrices({
                           Features
                         )}
                       </Box>
-                      <Box marginTop="auto">
+                      <Box mt="auto">
                         {button &&
                           cloneElement(button, {
                             display: "block",
