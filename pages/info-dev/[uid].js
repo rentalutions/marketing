@@ -1,4 +1,4 @@
-import { useGetStaticPaths, useGetStaticProps } from "../_lib"
+import { useGetStaticPaths, useGetStaticProps } from "src/next.helpers"
 
 export const getStaticProps = useGetStaticProps("info-dev")
 

@@ -1,5 +1,5 @@
+import { prismicClient } from "./prismic.config"
 import Prismic from "prismic-javascript"
-import { prismicClient } from "src/prismic.config"
 
 export const useGetStaticProps = (type) => async ({
   preview = null,
@@ -16,7 +16,6 @@ export const useGetStaticProps = (type) => async ({
     revalidate: 1,
   }
 }
-
 export const useGetStaticPaths = (type) => async () => {
   const pages = await prismicClient.query(
     Prismic.Predicates.at("document.type", type),
