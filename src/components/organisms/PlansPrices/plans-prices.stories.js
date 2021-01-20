@@ -1,5 +1,6 @@
 import React from "react"
-import { Button } from "@rent_avail/controls"
+import { Award, CheckCircle, Gift } from "react-feather"
+import Button from "components/elements/Button"
 import { Box } from "@rent_avail/layout"
 import { PlansPrices } from "./index"
 import PlanInfo from "./plan-info"
@@ -9,14 +10,29 @@ export default { title: "Components/Plans and Prices" }
 function Features() {
   return (
     <React.Fragment>
-      <b>Features Title:</b>
-      <ul>
-        <li>Feature A</li>
-        <li>Feature B</li>
-        <li>Feature C</li>
-        <li>Feature D</li>
-        <li>Feature E</li>
-      </ul>
+      <Box>
+        <b>Features Title:</b>
+      </Box>
+      <Box>
+        <CheckCircle size="1.3334rem" style={{ marginRight: "1rem" }} />
+        <span>Feature A</span>
+      </Box>
+      <Box>
+        <Award size="1.3334rem" style={{ marginRight: "1rem" }} />
+        <span>Feature B</span>
+      </Box>
+      <Box>
+        <Award size="1.3334rem" style={{ marginRight: "1rem" }} />
+        <span>Feature C</span>
+      </Box>
+      <Box>
+        <Gift size="1.3334rem" style={{ marginRight: "1rem" }} />
+        <span>Feature D</span>
+      </Box>
+      <Box>
+        <Gift size="1.3334rem" style={{ marginRight: "1rem" }} />
+        <span>Feature E</span>
+      </Box>
     </React.Fragment>
   )
 }
@@ -59,7 +75,7 @@ function planWithButton(p) {
   return {
     ...p,
     button: (
-      <Button as="a" variant="primary" href="https://avail.co">
+      <Button forwardedAs="a" variant="primary" href="https://avail.co">
         Button Text
       </Button>
     ),
