@@ -1,7 +1,7 @@
 import React, { cloneElement } from "react"
 import styled from "styled-components"
 import { variant } from "styled-system"
-
+import { motion } from "framer-motion"
 import { Box, Container, Flex } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"
 
@@ -36,6 +36,21 @@ const StyledFlex = styled(Flex)(
   })
 )
 
+// const variantsDict = {
+//   top: {
+//     // style
+//   },
+//   left: {
+//     // style
+//   },
+//   bottom: {
+//     // style
+//   },
+//   right: {
+//     // style
+//   }
+// }
+
 function ButtonCTA({
   bg,
   title,
@@ -44,23 +59,25 @@ function ButtonCTA({
   containerWidth,
   ...props
 }) {
+  console.log(button)
   return (
     <SkewBox bg={bg} {...props}>
       <Container maxWidth={containerWidth} py="6rem">
         <StyledFlex orientation={orientation}>
-          {title &&
-            <FadeIn transition={{ delay: 0.5 }}>
-              {cloneElement(title, {
-                sx: {
-                  ...title.props?.sx,
-                  ...STYLING.headline,
-                  flex: "1",
-                  minWidth: "fit-content",
-                },
-              })}
-          </FadeIn>
-          }
-          {button &&
+          {title && (
+            <FadeIn
+              {...title.props}
+              as={motion[title.props.as]}
+              transition={{ delay: 0.5 }}
+              sx={{
+                ...title.props?.sx,
+                ...STYLING.headline,
+                flex: "1",
+                minWidth: "fit-content",
+              }}
+            />
+          )}
+          {button && (
             <FadeIn transition={{ delay: 0.7 }}>
               <Box
                 sx={{
@@ -74,7 +91,7 @@ function ButtonCTA({
                 {button}
               </Box>
             </FadeIn>
-          }
+          )}
         </StyledFlex>
       </Container>
     </SkewBox>

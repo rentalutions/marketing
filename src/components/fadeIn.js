@@ -5,8 +5,8 @@ import { useIntersection } from "@rent_avail/utils"
 
 const MotionContents = styled.div(
   {
-    transitionDelay: ({delay}) => `${delay || 0}s`,
-    transitionDuration: ({duration}) => `${duration || 0}s`,
+    transitionDelay: ({ delay }) => `${delay || 0}s`,
+    transitionDuration: ({ duration }) => `${duration || 0}s`,
   },
   variant({
     prop: "visibility",
@@ -24,27 +24,20 @@ const MotionContents = styled.div(
 )
 
 export function withFadeIn(BaseComponent) {
-  return ({
-    intersectionOptions,
-    transition,
-    ...props
-  }) => (
+  return ({ intersectionOptions, transition, ...props }) => (
     <FadeIn intersectionOptions={intersectionOptions} transition={transition}>
-        <BaseComponent {...props} />
+      <BaseComponent {...props} />
     </FadeIn>
   )
 }
 
 export function FadeIn({
   intersectionOptions = { threshold: 0.75 },
-  transition: {
-    delay = 0.5,
-    duration = 1.0
-  } = {},
+  transition: { delay = 0.5, duration = 1.0 } = {},
   ...props
 }) {
   const [hidden, setHidden] = useState(true)
-  const [ target, { isIntersecting } ] = useIntersection(intersectionOptions)
+  const [target, { isIntersecting }] = useIntersection(intersectionOptions)
 
   useEffect(() => {
     hidden && setHidden(!isIntersecting)
@@ -53,7 +46,7 @@ export function FadeIn({
   return (
     <MotionContents
       {...props}
-      ref={ref => target.current = ref}
+      ref={(ref) => (target.current = ref)}
       visibility={hidden ? "hidden" : "shown"}
       delay={delay}
       duration={duration}
