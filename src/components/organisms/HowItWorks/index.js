@@ -2,6 +2,7 @@ import * as React from "react"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
+import { FadeIn } from "components/fadeIn"
 
 function HowItWorks({
   title,
@@ -15,23 +16,30 @@ function HowItWorks({
     <Box {...props}>
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         {eyebrow && (
-          <Text color="blue_500" mb="1rem">
-            {eyebrow}
-          </Text>
+          <FadeIn>
+            <Text color="blue_500" mb="1rem">
+              {eyebrow}
+            </Text>
+          </FadeIn>
         )}
         {title &&
-          React.cloneElement(title, {
-            mb: "4rem",
-            sx: { ...STYLING.headline, ...title.props?.sx },
-          })}
-        {sections.map((section, idx) => (
-          <HowItWorksSection
-            {...section}
-            key={section.uid || idx}
-            flip={alternate(idx)}
-            mb={idx !== sections.length - 1 ? "6rem" : 0}
-          />
-        ))}
+          <FadeIn transition={{ delay: 0.5 }}>
+            {React.cloneElement(title, {
+              mb: "4rem",
+              sx: { ...STYLING.headline, ...title.props?.sx },
+            })}
+          </FadeIn>
+        }
+        <FadeIn transition={{ delay: 0.7 }}>
+          {sections.map((section, idx) => (
+            <HowItWorksSection
+              {...section}
+              key={section.uid || idx}
+              flip={alternate(idx)}
+              mb={idx !== sections.length - 1 ? "6rem" : 0}
+            />
+          ))}
+        </FadeIn>
       </Container>
     </Box>
   )

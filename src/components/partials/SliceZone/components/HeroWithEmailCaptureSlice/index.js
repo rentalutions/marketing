@@ -2,7 +2,7 @@ import React from "react"
 import { Box } from "@rent_avail/layout"
 import RichText from "components/partials/SliceZone/components/RichText"
 import { Hero } from "components/organisms/Hero"
-import EmailCapture from "components/molecules/EmailCapture"
+import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
@@ -41,7 +41,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
     >
       {isEmailCapture && (
         <Box pt="2rem">
-          <EmailCapture
+          <EmailCaptureInput
             background={background}
             inputLabel={emailCaptureLabel}
             inputLabelId={inputLabelId}

@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from "react-feather"
 
 import SkewBox from "components/molecules/SkewBox"
 import { STYLING } from "config"
+import { FadeIn } from "components/fadeIn"
 
 const CarouselBox = styled(Box)`
   overflow: scroll;
@@ -131,69 +132,76 @@ function Testimonials({
     <SkewBox bg={bg} {...props}>
       <Container ref={containerRef} maxWidth={containerWidth}>
         {title &&
-          React.cloneElement(title, {
-            sx: { ...STYLING.headline, ...title?.props?.sx },
-            mb: "2rem",
-          })}
-        <CarouselBox
-          ref={scrollRef}
-          pb="1rem"
-          mx={`-${scrollSpace}px`}
-          px={`${scrollSpace}px`}
-        >
-          <TestimonialsStack
-            wrapChildren
-            direction={["row"]}
-            sx={{ "& > *:last-child": { marginRight: 0 } }}
+          <FadeIn transition={{ delay: 0.5 }}>
+            {React.cloneElement(title, {
+              sx: { ...STYLING.headline, ...title?.props?.sx },
+              mb: "2rem",
+            })}
+          </FadeIn>
+        }
+        <FadeIn transition={{ delay: 0.5 }}>
+          <CarouselBox
+            ref={scrollRef}
+            pb="1rem"
+            mx={`-${scrollSpace}px`}
+            px={`${scrollSpace}px`}
           >
-            {testimonials.map(
-              ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
-                <Testimonial
-                  ref={(el) => {
-                    childrenRef.current[idx] = el
-                  }}
-                  key={`${author}-${titleAndLocation}`}
-                  bg={testimonialBg}
-                  color={testimonialColor}
-                >
-                  <Box flex={1}>
-                    {typeof Quote === "function" ? <Quote /> : Quote}
-                  </Box>
-                  {picture && picture.url && (
-                    <Box
-                      as="img"
-                      src={picture.url}
-                      alt={picture.alt}
-                      title={picture.alt}
-                      width="4rem"
-                      sx={{ borderRadius: "50%" }}
-                    />
-                  )}
-                  <h5>{author}</h5>
-                  <span>{titleAndLocation}</span>
-                </Testimonial>
-              )
-            )}
-          </TestimonialsStack>
-        </CarouselBox>
-        {(mayScrollLeft || mayScrollRight) && (
-          <ScrollControlsContainer>
-            <ChevronLeft
-              onClick={() => mayScrollLeft && scrollLeft()}
-              className={
-                mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
-              }
-            />
-            <ChevronRight
-              onClick={() => mayScrollRight && scrollRight()}
-              className={
-                mayScrollRight
-                  ? "scrollControlEnabled"
-                  : "scrollControlDisabled"
-              }
-            />
-          </ScrollControlsContainer>
-        )}
+            <TestimonialsStack
+              wrapChildren
+              direction={["row"]}
+              sx={{ "& > *:last-child": { marginRight: 0 } }}
+            >
+              {testimonials.map(
+                ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
+                  <FadeIn transition={{ delay: 0.7 }}>
+                    <Testimonial
+                      ref={(el) => {
+                        childrenRef.current[idx] = el
+                      }}
+                      key={`${author}-${titleAndLocation}`}
+                      bg={testimonialBg}
+                      color={testimonialColor}
+                    >
+                      <Box flex={1}>
+                        {typeof Quote === "function" ? <Quote /> : Quote}
+                      </Box>
+                      {picture && picture.url && (
+                        <Box
+                          as="img"
+                          src={picture.url}
+                          alt={picture.alt}
+                          title={picture.alt}
+                          width="4rem"
+                          sx={{ borderRadius: "50%" }}
+                        />
+                      )}
+                      <h5>{author}</h5>
+                      <span>{titleAndLocation}</span>
+                    </Testimonial>
+                  </FadeIn>
+                )
+                )}
+            </TestimonialsStack>
+          </CarouselBox>
+          {(mayScrollLeft || mayScrollRight) && (
+            <ScrollControlsContainer>
+              <ChevronLeft
+                onClick={() => mayScrollLeft && scrollLeft()}
+                className={
+                  mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
+                }
+              />
+              <ChevronRight
+                onClick={() => mayScrollRight && scrollRight()}
+                className={
+                  mayScrollRight
+                    ? "scrollControlEnabled"
+                    : "scrollControlDisabled"
+                }
+              />
+            </ScrollControlsContainer>
+          )}
+        </FadeIn>
       </Container>
     </SkewBox>
   )

@@ -3,6 +3,7 @@ import { Col, Container, Grid } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { PitchCard } from "components/molecules/PitchCard"
 import { STYLING } from "config"
+import { FadeIn } from "components/fadeIn"
 
 function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
   const cardSpan =
@@ -13,15 +14,24 @@ function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
       {headingContent && (
         <Col span={12} mb="3rem">
           {eyebrow && (
-            <Text fontSize="small" mb="1rem" color="blue_300">
-              {eyebrow}
-            </Text>
+            <FadeIn>
+              <Text fontSize="small" mb="1rem" color="blue_300">
+                {eyebrow}
+              </Text>
+            </FadeIn>
           )}
           {title &&
-            React.cloneElement(title, {
-              sx: { ...STYLING.headline, ...title.props?.sx },
-            })}
-          {description && description}
+            <FadeIn transition={{ delay: 0.5 }}>
+              {React.cloneElement(title, {
+                sx: { ...STYLING.headline, ...title.props?.sx },
+              })}
+            </FadeIn>
+          }
+          {description && 
+            <FadeIn transition={{ delay: 0.7 }}>
+              {description}
+            </FadeIn>
+          }
         </Col>
       )}
       {/* eslint-disable-next-line no-shadow */}

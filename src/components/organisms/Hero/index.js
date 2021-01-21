@@ -2,6 +2,7 @@ import React, { cloneElement } from "react"
 import styled from "styled-components"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
 import { STYLING } from "config"
+import { FadeIn } from "components/fadeIn"
 
 const HeroWrapper = styled(Box)`
   position: relative;
@@ -46,21 +47,25 @@ function Hero({
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
         <Col span={image ? [12, 12, 12, 6] : [12]}>
-          {cloneElement(title, {
-            sx: {
-              ...(image ? STYLING.headline : STYLING.hero),
-              fontWeight: ["regular", "light"],
-              ...title.props?.sx,
-            },
-          })}
-          <Box mt="2rem">{description}</Box>
-          {links && (
-            <Stack wrapChildren direction={["column", "row"]} mt="2rem">
-              {primaryLink}
-              {secondaryLink}
-            </Stack>
-          )}
-          {children}
+          <FadeIn transition={{ delay: 0.8 }}>
+            {cloneElement(title, {
+              sx: {
+                ...(image ? STYLING.headline : STYLING.hero),
+                fontWeight: ["regular", "light"],
+                ...title.props?.sx,
+              },
+            })}
+            <Box mt="2rem">{description}</Box>
+            {links && (
+              <Stack wrapChildren direction={["column", "row"]} mt="2rem">
+                {primaryLink}
+                {secondaryLink}
+              </Stack>
+            )}
+          </FadeIn>
+          <FadeIn transition={{ delay: 1.2 }}>
+            {children}
+          </FadeIn>
         </Col>
         {image && (
           <Col
@@ -69,13 +74,15 @@ function Hero({
             order={imagePosition === "left" ? -1 : 1}
             sx={{ textAlign: "center" }}
           >
-            <Box
-              as="img"
-              src={image.url}
-              alt={image.alt}
-              title={image.alt}
-              maxWidth={["100%", "50%", "50%", "100%"]}
-            />
+            <FadeIn transition={{ delay: 0.5, duration: 1.2 }}>
+              <Box
+                as="img"
+                src={image.url}
+                alt={image.alt}
+                title={image.alt}
+                maxWidth={["100%", "50%", "50%", "100%"]}
+              />
+            </FadeIn>
           </Col>
         )}
       </Container>

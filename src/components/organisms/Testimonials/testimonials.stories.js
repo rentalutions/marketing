@@ -22,7 +22,9 @@ export function Default() {
       picture: { url: "/send-money.png", alt: "" },
       author: "Paul",
       titleAndLocation: "Tenant in Liverpool, UK",
-      quote: Quote,
+      quote: (<Text>
+      Lorem ipsum dolor sit amet.
+    </Text>),
     },
     {
       picture: { url: "/state-specific.png", alt: "" },

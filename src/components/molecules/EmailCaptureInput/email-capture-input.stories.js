@@ -3,7 +3,7 @@ import { Container, Box } from "@rent_avail/layout"
 import EmailCapture from "./index"
 
 export default {
-  title: "Components/EmailCapture",
+  title: "Components/EmailCaptureInput",
 }
 
 export function Default() {
