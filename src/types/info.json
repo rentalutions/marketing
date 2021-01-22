@@ -84,6 +84,7 @@
           "hero_unit" : [ ],
           "how_it_works" : [ ],
           "pitch_cards" : [ ],
+          "plans_and_prices" : [ ],
           "show_case" : [ ],
           "testimonials" : [ ]
         },
@@ -150,6 +151,46 @@
                   "default_value" : "none",
                   "label" : "Skew"
                 }
+              }
+            }
+          },
+          "email_capture" : {
+            "type" : "Slice",
+            "fieldset" : "Email Capture",
+            "description" : "An email capture block with title",
+            "icon" : "email",
+            "display" : "list",
+            "non-repeat" : {
+              "hash" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Jump link hash",
+                  "placeholder" : "A hash to link to this slice, e.g. - overview"
+                }
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "label" : {
+                "config" : {
+                  "label" : "Input label",
+                  "placeholder" : "E.g. - Enter your email"
+                },
+                "type" : "Text"
+              },
+              "buttonText" : {
+                "config" : {
+                  "label" : "Button text",
+                  "placeholder" : "E.g. - Get Started"
+                },
+                "type" : "Text"
               }
             },
             "repeat" : { }
@@ -411,6 +452,80 @@
             },
             "repeat" : { }
           },
+          "how_it_works" : {
+            "type" : "Slice",
+            "fieldset" : "How It Works",
+            "description" : "A grid of alternating blocks with images and text",
+            "icon" : "dashboard",
+            "display" : "list",
+            "non-repeat" : {
+              "hash" : {
+                "config" : {
+                  "label" : "Jump link hash",
+                  "placeholder" : "A hash to link to this slice, e.g. - overview"
+                },
+                "type" : "Text"
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "background" : {
+                "config" : {
+                  "label" : "Background color",
+                  "placeholder" : "",
+                  "default_value" : "transparent",
+                  "options" : [ "transparent", "blue_500" ]
+                },
+                "type" : "Select"
+              },
+              "flip" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "Right",
+                  "placeholder_true" : "Left",
+                  "default_value" : false,
+                  "label" : "First section image position"
+                }
+              }
+            },
+            "repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Section title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Description",
+                  "placeholder" : "Section description",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Section image"
+                }
+              }
+            }
+          },
           "pitch_cards" : {
             "type" : "Slice",
             "fieldset" : "Pitch Cards",
@@ -527,76 +642,169 @@
               }
             }
           },
-          "how_it_works" : {
-            "type" : "Slice",
-            "fieldset" : "How It Works",
-            "description" : "A grid of alternating blocks with images and text",
-            "icon" : "dashboard",
-            "display" : "list",
-            "non-repeat" : {
-              "hash" : {
-                "config" : {
-                  "label" : "Jump link hash",
-                  "placeholder" : "A hash to link to this slice, e.g. - overview"
-                },
-                "type" : "Text"
+          "plans_and_prices": {
+            "type": "Slice",
+            "fieldset": "Plans and Prices",
+            "description": "A list that displays cards containing plans descriptions and prices",
+            "icon": "card_membership",
+            "display": "grid",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "Title",
+                  "placeholder": "Title"
+                }
               },
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "Subtitle",
+                  "placeholder": "Subtitle"
+                }
+              },
+              "linkText": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Text",
+                  "placeholder": "See more"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Link",
+                  "placeholder": "link"
                 }
               },
               "background" : {
+                "type" : "Select",
                 "config" : {
-                  "label" : "Background color",
-                  "placeholder" : "",
-                  "default_value" : "transparent",
-                  "options" : [ "transparent", "blue_500" ]
-                },
-                "type" : "Select"
+                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
               },
-              "flip" : {
-                "type" : "Boolean",
+              "color" : {
+                "type" : "Select",
                 "config" : {
-                  "placeholder_false" : "Right",
-                  "placeholder_true" : "Left",
-                  "default_value" : false,
-                  "label" : "First section image position"
+                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "skew": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "none",
+                    "left",
+                    "right"
+                  ],
+                  "default_value": "none",
+                  "label": "Skew"
+                }
+              },
+              "direction": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "horizontal",
+                    "vertical"
+                  ],
+                  "default_value": "horizontal",
+                  "label": "Direction"
                 }
               }
             },
-            "repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Section title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+            "repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 70,
+                    "height": 70
+                  },
+                  "thumbnails": [],
+                  "label": "Image"
                 }
               },
-              "description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Description",
-                  "placeholder" : "Section description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Unlimited Plus"
                 }
               },
-              "image" : {
-                "type" : "Image",
+              "price": {
+                "type": "Text",
+                "config": {
+                  "label": "Price",
+                  "placeholder": "$9,90/mo"
+                }
+              },
+              "subtext": {
+                "type": "Text",
+                "config": {
+                  "label": "Subtext",
+                  "placeholder": "Price Subtext"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "Plan Description"
+                }
+              },
+              "features": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "Features",
+                  "placeholder": "Features",
+                  "labels" : [
+                    "icon__award",
+                    "icon__box",
+                    "icon__bullet",
+                    "icon__checkmark",
+                    "icon__checkcircle",
+                    "icon__dash",
+                    "icon__gift"
+                  ]
+                }
+              },
+              "buttonText": {
+                "type": "Text",
+                "config": {
+                  "label": "Button Text",
+                  "placeholder": "Button Text"
+                }
+              },
+              "buttonLink": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Button Link"
+                }
+              },
+              "background" : {
+                "type" : "Select",
                 "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Section image"
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
                 }
               }
             }
@@ -674,47 +882,6 @@
                 "type" : "StructuredText"
               }
             }
-          },
-          "email_capture" : {
-            "type" : "Slice",
-            "fieldset" : "Email Capture",
-            "description" : "An email capture block with title",
-            "icon" : "email",
-            "display" : "list",
-            "non-repeat" : {
-              "hash" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Jump link hash",
-                  "placeholder" : "A hash to link to this slice, e.g. - overview"
-                }
-              },
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
-                }
-              },
-              "label" : {
-                "config" : {
-                  "label" : "Input label",
-                  "placeholder" : "E.g. - Enter your email"
-                },
-                "type" : "Text"
-              },
-              "buttonText" : {
-                "config" : {
-                  "label" : "Button text",
-                  "placeholder" : "E.g. - Get Started"
-                },
-                "type" : "Text"
-              }
-            },
-            "repeat" : { }
           },
           "testimonials" : {
             "type" : "Slice",
