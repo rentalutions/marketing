@@ -28,6 +28,8 @@ function Hero({
   title,
   image = null,
   imagePosition = "right",
+  video,
+  embed,
   primaryLink,
   secondaryLink,
   containerWidth,
@@ -35,6 +37,10 @@ function Hero({
   ...props
 }) {
   const links = primaryLink || secondaryLink
+  const hasVideo = !!(video?.url || embed)
+  const hasImage = !!image?.url
+  const hasTwoCols = hasImage || hasVideo
+
   return (
     <HeroWrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
       <div className="skew" />
@@ -45,10 +51,10 @@ function Hero({
         gap={["2rem", "2rem", "4rem"]}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
-        <Col span={image ? [12, 12, 12, 6] : [12]}>
+        <Col span={hasTwoCols ? [12, 12, 12, 6] : [12]}>
           {cloneElement(title, {
             sx: {
-              ...(image ? STYLING.headline : STYLING.hero),
+              ...(hasTwoCols ? STYLING.headline : STYLING.hero),
               fontWeight: ["regular", "light"],
               ...title.props?.sx,
             },
@@ -62,20 +68,26 @@ function Hero({
           )}
           {children}
         </Col>
-        {image && (
+        {hasTwoCols && (
           <Col
             span={[12, 12, 12, 6]}
             gridRow={["1", "1", "1", "auto"]}
             order={imagePosition === "left" ? -1 : 1}
             sx={{ textAlign: "center" }}
           >
-            <Box
-              as="img"
-              src={image.url}
-              alt={image.alt}
-              title={image.alt}
-              maxWidth={["100%", "50%", "50%", "100%"]}
-            />
+            {!!image?.url && (
+              <Box
+                as="img"
+                src={image.url}
+                alt={image.alt}
+                title={image.alt}
+                maxWidth={["100%", "50%", "50%", "100%"]}
+              />
+            )}
+            {!!video?.url && (
+              <Box as="video" width="100%" controls src={video.url} />
+            )}
+            {!!embed && embed}
           </Col>
         )}
       </Container>

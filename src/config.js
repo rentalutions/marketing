@@ -70,3 +70,8 @@ export const DEFAULT_SEO = {
     { property: "place:location:longitude", content: "-87.63611" },
   ],
 }
+
+export const EMBED_WHITELIST = [
+  "https://www.youtube.com/",
+  "https://wistia.com",
+]

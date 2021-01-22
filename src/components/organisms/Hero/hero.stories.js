@@ -3,6 +3,7 @@ import { Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
 import Link from "next/link"
 import { Box } from "@rent_avail/layout"
+import ResponsiveEmbed from "components/elements/ResponsiveEmbed"
 import { Hero } from "./index"
 
 export default { title: "Components/Hero" }
@@ -97,6 +98,62 @@ export function WithSwap() {
         <Link href="https://avail.co/">
           <Button variant="primary">Get Started</Button>
         </Link>
+      }
+    />
+  )
+}
+
+export function WithVideo() {
+  return (
+    <Hero
+      skew="left"
+      title={
+        <Box as="h1">
+          Publish your listing to over a dozen top rental sites all at once.
+        </Box>
+      }
+      description={
+        <Text>
+          Find qualified tenants without the hassle. Receive an average of 18
+          inquiries within 2 weeks and respond from one place.
+        </Text>
+      }
+      bg="blue_100"
+      video={{
+        url: "/media/sample-video.mp4",
+      }}
+    />
+  )
+}
+
+export function WithEmbed() {
+  return (
+    <Hero
+      skew="left"
+      title={
+        <Box as="h1">
+          Publish your listing to over a dozen top rental sites all at once.
+        </Box>
+      }
+      description={
+        <Text>
+          Find qualified tenants without the hassle. Receive an average of 18
+          inquiries within 2 weeks and respond from one place.
+        </Text>
+      }
+      bg="blue_100"
+      embed={
+        <ResponsiveEmbed aspect={{ width: 200, height: 113 }}>
+          {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
+          <iframe
+            width="200"
+            height="113"
+            src="https://www.youtube.com/embed/RMMatpUtmZo?feature=oembed"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </ResponsiveEmbed>
       }
     />
   )
