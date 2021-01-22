@@ -37,20 +37,37 @@ function HowItWorks({
   )
 }
 
-function HowItWorksSection({ copy, image = null, flip, mb }) {
+function HowItWorksSection({ copy, image = null, video, embed, flip, mb }) {
   const copyColumn = ["span 12", flip ? "7 / span 6" : "1 / span 6"]
   const imageColumn = ["span 12", flip ? "1 / span 6" : "7 / span 6"]
   return (
     <Grid alignItems="center" gridAutoFlow="row dense" mb={mb}>
       <Col gridColumn={copyColumn}>{copy}</Col>
-      <Col
-        as="img"
-        src={image.url}
-        alt={image.alt}
-        title={image.alt}
-        gridColumn={imageColumn}
-        maxWidth="100%"
-      />
+      {image?.url && (
+        <Col
+          as="img"
+          src={image.url}
+          alt={image.alt}
+          title={image.alt}
+          gridColumn={imageColumn}
+          maxWidth="100%"
+        />
+      )}
+      {!!video?.url && (
+        <Col
+          as="video"
+          width="100%"
+          gridColumn={imageColumn}
+          maxWidth="100%"
+          controls
+          src={video.url}
+        />
+      )}
+      {!!embed && (
+        <Col gridColumn={imageColumn} maxWidth="100%">
+          {embed}
+        </Col>
+      )}
     </Grid>
   )
 }

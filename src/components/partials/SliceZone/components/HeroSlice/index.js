@@ -5,6 +5,7 @@ import RichText from "components/partials/SliceZone/components/RichText"
 import Link from "components/partials/SliceZone/components/Link"
 import Button from "components/elements/Button"
 import { CONTAINER_WIDTHS } from "config"
+import Embed from "../Embed"
 
 const HeroSlice = ({ slice }) => {
   const {
@@ -15,6 +16,8 @@ const HeroSlice = ({ slice }) => {
       skew,
       image,
       imagePosition,
+      video,
+      embed,
       color,
       primaryButtonText,
       primaryButtonLink,
@@ -38,6 +41,8 @@ const HeroSlice = ({ slice }) => {
       imagePosition={imagePosition}
       color={color}
       containerWidth={CONTAINER_WIDTHS}
+      video={video?.url && video}
+      embed={embed?.html && <Embed embed={embed} />}
       primaryLink={
         showPrimaryButton && (
           <Link link={primaryButtonLink}>

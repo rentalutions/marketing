@@ -6,7 +6,15 @@ import * as React from "react"
 import { getTargetProps } from "utils/link"
 import { STYLING } from "config"
 
-export function PitchCard({ title, description, icon = null, link, ...props }) {
+export function PitchCard({
+  title,
+  description,
+  icon = null,
+  video,
+  embed,
+  link,
+  ...props
+}) {
   const isButtonVariant = !!link?.button
   return (
     <Col {...props} display="flex" flexDirection="column">
@@ -19,6 +27,10 @@ export function PitchCard({ title, description, icon = null, link, ...props }) {
           width="10rem"
         />
       )}
+      {!!video?.url && (
+        <Box as="video" mb="2rem" width="100%" controls src={video.url} />
+      )}
+      {!!embed && React.cloneElement(embed, { sx: { mb: "2rem" } })}
       {title &&
         React.cloneElement(title, {
           sx: {

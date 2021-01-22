@@ -25,15 +25,8 @@ function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
         </Col>
       )}
       {/* eslint-disable-next-line no-shadow */}
-      {sections.map(({ title, key, icon, description, link }) => (
-        <PitchCard
-          key={key}
-          title={title}
-          icon={icon}
-          description={description}
-          link={link}
-          span={cardSpan}
-        />
+      {sections.map(({ ...props }) => (
+        <PitchCard {...props} span={cardSpan} />
       ))}
     </Container>
   )

@@ -328,6 +328,19 @@
                 },
                 "type" : "Image"
               },
+              "video" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "media",
+                  "label" : "Video (Media Library or S3)"
+                }
+              },
+              "embed" : {
+                "type" : "Embed",
+                "config" : {
+                  "label" : "Embed"
+                }
+              },
               "imagePosition" : {
                 "type" : "Select",
                 "config" : {
@@ -427,6 +440,19 @@
                 },
                 "type" : "Image"
               },
+              "video" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "media",
+                  "label" : "Video (Media Library or S3)"
+                }
+              },
+              "embed" : {
+                "type" : "Embed",
+                "config" : {
+                  "label" : "Embed"
+                }
+              },
               "imagePosition" : {
                 "type" : "Select",
                 "config" : {
@@ -514,6 +540,19 @@
                   "label" : "Description",
                   "placeholder" : "Section description",
                   "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "video" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "media",
+                  "label" : "Video (Media Library or S3)"
+                }
+              },
+              "embed" : {
+                "type" : "Embed",
+                "config" : {
+                  "label" : "Embed"
                 }
               },
               "image" : {
@@ -639,45 +678,58 @@
                   "default_value" : false,
                   "label" : "Link type"
                 }
+              },
+              "video" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "media",
+                  "label" : "Video (Media Library or S3)"
+                }
+              },
+              "embed" : {
+                "type" : "Embed",
+                "config" : {
+                  "label" : "Embed"
+                }
               }
             }
           },
-          "plans_and_prices": {
-            "type": "Slice",
-            "fieldset": "Plans and Prices",
-            "description": "A list that displays cards containing plans descriptions and prices",
-            "icon": "card_membership",
-            "display": "grid",
-            "non-repeat": {
-              "title": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
-                  "label": "Title",
-                  "placeholder": "Title"
+          "plans_and_prices" : {
+            "type" : "Slice",
+            "fieldset" : "Plans and Prices",
+            "description" : "A list that displays cards containing plans descriptions and prices",
+            "icon" : "card_membership",
+            "display" : "grid",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Title",
+                  "placeholder" : "Title"
                 }
               },
-              "subtitle": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-                  "label": "Subtitle",
-                  "placeholder": "Subtitle"
+              "subtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label" : "Subtitle",
+                  "placeholder" : "Subtitle"
                 }
               },
-              "linkText": {
-                "type": "Text",
-                "config": {
-                  "label": "Link Text",
-                  "placeholder": "See more"
+              "linkText" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Link Text",
+                  "placeholder" : "See more"
                 }
               },
-              "link": {
-                "type": "Link",
-                "config": {
-                  "allowTargetBlank": true,
-                  "label": "Link",
-                  "placeholder": "link"
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Link",
+                  "placeholder" : "link"
                 }
               },
               "background" : {
@@ -696,99 +748,84 @@
                   "label" : "Text color"
                 }
               },
-              "skew": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "none",
-                    "left",
-                    "right"
-                  ],
-                  "default_value": "none",
-                  "label": "Skew"
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "left", "right" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
                 }
               },
-              "direction": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "horizontal",
-                    "vertical"
-                  ],
-                  "default_value": "horizontal",
-                  "label": "Direction"
+              "direction" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "horizontal", "vertical" ],
+                  "default_value" : "horizontal",
+                  "label" : "Direction"
                 }
               }
             },
-            "repeat": {
-              "image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {
-                    "width": 70,
-                    "height": 70
+            "repeat" : {
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : {
+                    "width" : 70,
+                    "height" : 70
                   },
-                  "thumbnails": [],
-                  "label": "Image"
+                  "thumbnails" : [ ],
+                  "label" : "Image"
                 }
               },
-              "title": {
-                "type": "Text",
-                "config": {
-                  "label": "Title",
-                  "placeholder": "Unlimited Plus"
+              "title" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Title",
+                  "placeholder" : "Unlimited Plus"
                 }
               },
-              "price": {
-                "type": "Text",
-                "config": {
-                  "label": "Price",
-                  "placeholder": "$9,90/mo"
+              "price" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Price",
+                  "placeholder" : "$9,90/mo"
                 }
               },
-              "subtext": {
-                "type": "Text",
-                "config": {
-                  "label": "Subtext",
-                  "placeholder": "Price Subtext"
+              "subtext" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Subtext",
+                  "placeholder" : "Price Subtext"
                 }
               },
-              "description": {
-                "type": "Text",
-                "config": {
-                  "label": "Description",
-                  "placeholder": "Plan Description"
+              "description" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Description",
+                  "placeholder" : "Plan Description"
                 }
               },
-              "features": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-                  "label": "Features",
-                  "placeholder": "Features",
-                  "labels" : [
-                    "icon__award",
-                    "icon__box",
-                    "icon__bullet",
-                    "icon__checkmark",
-                    "icon__checkcircle",
-                    "icon__dash",
-                    "icon__gift"
-                  ]
+              "features" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label" : "Features",
+                  "placeholder" : "Features",
+                  "labels" : [ "icon__award", "icon__box", "icon__bullet", "icon__checkmark", "icon__checkcircle", "icon__dash", "icon__gift" ]
                 }
               },
-              "buttonText": {
-                "type": "Text",
-                "config": {
-                  "label": "Button Text",
-                  "placeholder": "Button Text"
+              "buttonText" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Button Text",
+                  "placeholder" : "Button Text"
                 }
               },
-              "buttonLink": {
-                "type": "Link",
-                "config": {
-                  "allowTargetBlank": true,
-                  "label": "Button Link"
+              "buttonLink" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Button Link"
                 }
               },
               "background" : {
