@@ -10,7 +10,7 @@ export function Default() {
     <ButtonCTA
       title={<Box as="h1">Button CTA Title</Box>}
       button={
-        <Button as="a" variant="primary" href="https://avail.co">
+        <Button forwardedAs="a" variant="primary" href="https://avail.co">
           Button
         </Button>
       }
@@ -24,7 +24,7 @@ export function Top() {
     <ButtonCTA
       title={<Box as="h1">🔝 CTA Title</Box>}
       button={
-        <Button as="a" variant="primary" href="https://avail.co">
+        <Button forwardedAs="a" variant="primary" href="https://avail.co">
           Button
         </Button>
       }
@@ -38,7 +38,7 @@ export function Right() {
     <ButtonCTA
       title={<Box as="h1">Right Button CTA Title</Box>}
       button={
-        <Button as="a" variant="primary" href="https://avail.co">
+        <Button forwardedAs="a" variant="primary" href="https://avail.co">
           Right?
         </Button>
       }
@@ -52,7 +52,7 @@ export function Bottom() {
     <ButtonCTA
       title={<Box as="h1">Bottom CTA Title</Box>}
       button={
-        <Button as="a" variant="primary" href="https://avail.co">
+        <Button forwardedAs="a" variant="primary" href="https://avail.co">
           Bottom?
         </Button>
       }
@@ -65,7 +65,7 @@ export function NoTitle() {
   return (
     <ButtonCTA
       button={
-        <Button as="a" variant="primary" href="https://avail.co">
+        <Button forwardedAs="a" variant="primary" href="https://avail.co">
           Lonely Button
         </Button>
       }

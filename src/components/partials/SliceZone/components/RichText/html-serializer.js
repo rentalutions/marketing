@@ -7,6 +7,7 @@ import { getTargetProps } from "utils/link"
 import { Box } from "@rent_avail/layout"
 import { List, ListItem, OList } from "./components/List"
 import { Text } from "./components/Text"
+import { CustomLabel } from "./components/Label"
 
 function createHeading(as, { key, ...props }, children) {
   return children?.[0] ? (
@@ -16,10 +17,6 @@ function createHeading(as, { key, ...props }, children) {
      * fall back to default implementation and will render empty heading tag */
     <React.Fragment key={key} />
   )
-}
-
-function getLabelProps(label) {
-  return STYLING[label] && { sx: { ...STYLING[label] } }
 }
 
 export default function htmlSerializer(props) {
@@ -117,12 +114,8 @@ export default function htmlSerializer(props) {
       case Elements.label: {
         if (element.data?.label) {
           return React.createElement(
-            Text,
-            {
-              as: "span",
-              ...getLabelProps(element.data.label),
-              key,
-            },
+            CustomLabel,
+            { ...props, ...element.data, key },
             children
           )
         }

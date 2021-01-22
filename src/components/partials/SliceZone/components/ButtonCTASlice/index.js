@@ -30,7 +30,7 @@ const ButtonCTASlice = ({ slice }) => {
         buttonText &&
         buttonLink && (
           <Link link={buttonLink}>
-            <Button as="a" variant="primary" background={background}>
+            <Button forwardedAs="a" variant="primary" background={background}>
               {buttonText}
             </Button>
           </Link>
