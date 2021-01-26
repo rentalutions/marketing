@@ -26,10 +26,7 @@ export function WithDarkBg() {
       <Container py="10rem">
         <EmailCapture
           title={
-            <Box
-              as="h1"
-              color="ui_300"
-            >
+            <Box as="h1" color="ui_300">
               Email Capture
             </Box>
           }

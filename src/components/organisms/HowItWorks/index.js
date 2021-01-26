@@ -14,7 +14,7 @@ function HowItWorks({
   animationPreset = "fadeIn",
   ...props
 }) {
-  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.25 })
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
 
   return (
@@ -27,21 +27,21 @@ function HowItWorks({
             </Text>
           </motion.aside>
         )}
-        {title &&
+        {title && (
           <motion.aside {...animation}>
             {cloneElement(title, {
               mb: "4rem",
               sx: { ...STYLING.headline, ...title.props?.sx },
             })}
           </motion.aside>
-        }
-        {sections.map(({uid, ...section}, idx) => (
-          <motion.aside 
+        )}
+        {sections.map(({ uid, ...section }, idx) => (
+          <motion.aside
             key={uid || idx}
             {...animation}
             transition={{
               ...animation.transition,
-              delay: 0.75 + (idx * 0.25)
+              delay: 0.75 + idx * 0.25,
             }}
           >
             <HowItWorksSection

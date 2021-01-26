@@ -45,7 +45,7 @@ function Hero({
   const hasImage = !!image?.url
   const hasTwoCols = hasImage || hasVideo
 
-  const [ presets, intersectionView ] = useInViewAnimation()
+  const [presets, intersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
   return (
@@ -75,27 +75,36 @@ function Hero({
               },
             })}
           </motion.aside>
-          <motion.aside {...animation} transition={{
+          <motion.aside
+            {...animation}
+            transition={{
               ...animation.transition,
               delay: 0.75,
-            }}>
+            }}
+          >
             <Box mt="2rem">{description}</Box>
           </motion.aside>
           {links && (
-            <motion.aside {...animation} transition={{
-              ...animation.transition,
-              delay: 1.0,
-            }}>
+            <motion.aside
+              {...animation}
+              transition={{
+                ...animation.transition,
+                delay: 1.0,
+              }}
+            >
               <Stack wrapChildren direction={["column", "row"]} mt="2rem">
                 {primaryLink}
                 {secondaryLink}
               </Stack>
             </motion.aside>
           )}
-          <motion.aside {...animation} transition={{
+          <motion.aside
+            {...animation}
+            transition={{
               ...animation.transition,
               delay: 1.0,
-            }}>
+            }}
+          >
             {children}
           </motion.aside>
         </Col>
@@ -106,11 +115,14 @@ function Hero({
             order={imagePosition === "left" ? -1 : 1}
             sx={{ textAlign: "center" }}
           >
-            <motion.aside {...animation} transition={{
-              ...animation.transition,
-              delay: 0.25,
-              duration: 1.25,
-            }}>
+            <motion.aside
+              {...animation}
+              transition={{
+                ...animation.transition,
+                delay: 0.25,
+                duration: 1.25,
+              }}
+            >
               {!!image?.url && (
                 <Box
                   as="img"

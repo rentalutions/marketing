@@ -27,7 +27,7 @@ const Showcase = ({
     }
   }, [cases, activeCase, setActiveCase])
 
-  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.25 })
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
 
   return (
@@ -39,32 +39,38 @@ const Showcase = ({
           gridAutoFlow="row dense"
         >
           <Col gridColumn={["span 12", "span 12", "span 7"]}>
-            {copy &&
-              <motion.aside {...animation} transition={{
-                ...animation.transition,
-                delay: 0.75,
-              }}>
+            {copy && (
+              <motion.aside
+                {...animation}
+                transition={{
+                  ...animation.transition,
+                  delay: 0.75,
+                }}
+              >
                 <Box>{copy}</Box>
               </motion.aside>
-            }
-            <motion.aside {...animation} transition={{
+            )}
+            <motion.aside
+              {...animation}
+              transition={{
                 ...animation.transition,
                 delay: 1.25,
-              }}>
+              }}
+            >
               <Flex
                 justifyContent="space-between"
                 m="2rem 0 3rem"
                 minHeight="4.5rem"
               >
-                {cases.map(({ icon }, idx) => (
+                {cases.map(({ icon, copy }, idx) => (
                   <Box
+                    key={copy}
                     color={idx === activeCase ? "blue_500" : "ui_500"}
                     sx={{
                       transition: "color 500ms ease-in-out",
                       cursor: "pointer",
                     }}
                     onClick={() => setActiveCase(idx)}
-                    key={`${icon}-${idx}`}
                   >
                     <Icon name={icon} width="48px" height="48px" />
                   </Box>
@@ -81,11 +87,14 @@ const Showcase = ({
             gridColumn={["span 12", "span 12", "span 5"]}
             order={flip ? -1 : 1}
           >
-            <motion.aside {...animation} transition={{
-              ...animation.transition,
-              delay: 0.25,
-              duration: 1.75,
-            }}>
+            <motion.aside
+              {...animation}
+              transition={{
+                ...animation.transition,
+                delay: 0.25,
+                duration: 1.75,
+              }}
+            >
               <Box
                 as="img"
                 src={image.url}

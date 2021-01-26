@@ -15,23 +15,26 @@ function EmailCapture({
   queryParamName,
   animationPreset = "fadeIn",
 }) {
-  const [ presets, intersectionView ] = useInViewAnimation()
+  const [presets, intersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
   return (
     <Box ref={intersectionView}>
-      {title &&
+      {title && (
         <motion.aside {...animation}>
           {cloneElement(title, {
             my: "2.5rem",
             sx: { ...STYLING.title, ...title.props?.sx },
           })}
         </motion.aside>
-      }
-      <motion.aside {...animation} transition={{
-        ...animation.transition,
-        delay: 0.75,
-      }}>
+      )}
+      <motion.aside
+        {...animation}
+        transition={{
+          ...animation.transition,
+          delay: 0.75,
+        }}
+      >
         <EmailCaptureInput
           inputLabel={inputLabel}
           inputLabelId={inputLabelId}

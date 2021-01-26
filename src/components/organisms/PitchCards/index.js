@@ -1,19 +1,32 @@
 import React, { cloneElement } from "react"
 import { useInViewAnimation } from "components/@rent_avail/utils"
-import { Box, Col, Container, Grid } from "@rent_avail/layout"
+import { Col, Container, Grid } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { PitchCard } from "components/molecules/PitchCard"
 import { STYLING } from "config"
 import { motion } from "framer-motion"
 
-function PitchCards({ span, sections, title, description, eyebrow, animationPreset = "fadeIn", ...props }) {
+function PitchCards({
+  span,
+  sections,
+  title,
+  description,
+  eyebrow,
+  animationPreset = "fadeIn",
+  ...props
+}) {
   const cardSpan =
     span || (sections.length < 4 ? [12, 12 / sections.length] : [12, 6])
   const headingContent = title || description || eyebrow
-  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.1 })
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.1 })
   const animation = presets[animationPreset]
   return (
-    <Container {...props} as={Grid} gap={["3rem 0", "3rem"]} ref={intersectionView}>
+    <Container
+      {...props}
+      as={Grid}
+      gap={["3rem 0", "3rem"]}
+      ref={intersectionView}
+    >
       {headingContent && (
         <Col span={12} mb="3rem">
           {eyebrow && (
@@ -23,18 +36,16 @@ function PitchCards({ span, sections, title, description, eyebrow, animationPres
               </Text>
             </motion.aside>
           )}
-          {title &&
+          {title && (
             <motion.aside {...animation}>
               {cloneElement(title, {
                 sx: { ...STYLING.headline, ...title.props?.sx },
               })}
             </motion.aside>
-          }
-          {description && 
-            <motion.aside {...animation}>
-              {description}
-            </motion.aside>
-          }
+          )}
+          {description && (
+            <motion.aside {...animation}>{description}</motion.aside>
+          )}
         </Col>
       )}
       {/* eslint-disable-next-line no-shadow */}
@@ -44,8 +55,8 @@ function PitchCards({ span, sections, title, description, eyebrow, animationPres
             {...animation}
             transition={{
               ...animation.transition,
-              delay: 0.75 + (idx * 0.25)
-            }} 
+              delay: 0.75 + idx * 0.25,
+            }}
           >
             <PitchCard {...props} />
           </motion.aside>

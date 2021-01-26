@@ -1,4 +1,10 @@
-import React, { cloneElement, useCallback, useEffect, useState, useRef } from "react"
+import React, {
+  cloneElement,
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+} from "react"
 import { motion } from "framer-motion"
 import styled from "styled-components"
 
@@ -130,7 +136,9 @@ function Testimonials({
     }
   }, [containerRect, scrollRef, childrenRef])
 
-  const [ presets, animationIntersectionView ] = useInViewAnimation({ threshold: 0.25 })
+  const [presets, animationIntersectionView] = useInViewAnimation({
+    threshold: 0.25,
+  })
   const animation = presets[animationPreset]
 
   return (
@@ -142,8 +150,7 @@ function Testimonials({
               cloneElement(title, {
                 sx: { ...STYLING.headline, ...title?.props?.sx },
                 mb: "2rem",
-              })
-            }
+              })}
             <CarouselBox
               ref={scrollRef}
               pb="1rem"
@@ -156,7 +163,10 @@ function Testimonials({
                 sx={{ "& > *:last-child": { marginRight: 0 } }}
               >
                 {testimonials.map(
-                  ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
+                  (
+                    { picture, author, titleAndLocation, quote: Quote },
+                    idx
+                  ) => (
                     <Testimonial
                       key={`${author}-${titleAndLocation}`}
                       ref={(el) => {
@@ -190,7 +200,9 @@ function Testimonials({
                 <ChevronLeft
                   onClick={() => mayScrollLeft && scrollLeft()}
                   className={
-                    mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
+                    mayScrollLeft
+                      ? "scrollControlEnabled"
+                      : "scrollControlDisabled"
                   }
                 />
                 <ChevronRight

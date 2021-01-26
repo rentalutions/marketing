@@ -10,7 +10,10 @@ export function Default() {
   return (
     <Box>
       <Container py="10rem">
-        <EmailCaptureInput inputLabel="Enter your email" buttonText="Get started" />
+        <EmailCaptureInput
+          inputLabel="Enter your email"
+          buttonText="Get started"
+        />
       </Container>
     </Box>
   )

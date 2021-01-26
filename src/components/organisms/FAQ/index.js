@@ -24,36 +24,39 @@ function FAQ({
   ...props
 }) {
   const [openIdx, setOpen] = useState(null)
-  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.25 })
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
 
   return (
     <Box color={color} {...props} ref={intersectionView}>
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
-        {eyebrow &&
+        {eyebrow && (
           <motion.aside {...animation}>
             {cloneElement(eyebrow, {
               color: color || "blue_300",
               mb: "1rem",
             })}
           </motion.aside>
-        }
-        {title &&
+        )}
+        {title && (
           <motion.aside {...animation}>
             {cloneElement(title, {
               mb: "1rem",
               sx: { ...STYLING.headline, ...title.props?.sx },
             })}
           </motion.aside>
-        }
-        {description && 
-          <motion.aside {...animation} transition={{
-            ...animation.transition,
-            delay: 0.75
-          }}>
+        )}
+        {description && (
+          <motion.aside
+            {...animation}
+            transition={{
+              ...animation.transition,
+              delay: 0.75,
+            }}
+          >
             <Box mb="2rem">{description}</Box>
           </motion.aside>
-        }
+        )}
         <Stack>
           {questions.map(({ question, answer: Answer }, idx) => {
             const isOpen = idx === openIdx
@@ -63,7 +66,7 @@ function FAQ({
                 {...animation}
                 transition={{
                   ...animation.transition,
-                  delay: 1.0 + (idx * 0.25)
+                  delay: 1.0 + idx * 0.25,
                 }}
               >
                 <Accordion
@@ -71,7 +74,7 @@ function FAQ({
                   mb="2rem"
                   p="2rem"
                   bg="blue_100"
-                  onClick={(e) => setOpen(idx)}
+                  onClick={() => setOpen(idx)}
                 >
                   <Text fontWeight="800">{question}</Text>
                   <AnimatePresence>

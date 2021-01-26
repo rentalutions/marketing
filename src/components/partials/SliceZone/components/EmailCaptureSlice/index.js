@@ -3,7 +3,7 @@ import { Container } from "@rent_avail/layout"
 import EmailCapture from "components/organisms/EmailCapture"
 import RichText from "components/partials/SliceZone/components/RichText"
 import Anchor from "components/elements/Anchor"
-import { CONTAINER_WIDTHS, STYLING } from "config"
+import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
 

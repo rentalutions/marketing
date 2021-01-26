@@ -1,5 +1,5 @@
 import React, { cloneElement } from "react"
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 import styled from "styled-components"
 import { variant } from "styled-system"
 
@@ -47,14 +47,14 @@ function ButtonCTA({
   animationPreset = "fadeIn",
   ...props
 }) {
-  const [ presets, intersectionView ] = useInViewAnimation()
+  const [presets, intersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
   return (
     <SkewBox bg={bg} {...props}>
       <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
         <StyledFlex orientation={orientation}>
-          {title &&
+          {title && (
             <Box
               sx={{
                 flex: "1",
@@ -73,7 +73,7 @@ function ButtonCTA({
                 })}
               </motion.aside>
             </Box>
-          }
+          )}
           {button && (
             <Box
               sx={{
@@ -84,10 +84,13 @@ function ButtonCTA({
                 minWidth: "unset",
               }}
             >
-              <motion.aside {...animation} transition={{
-                ...animation.transition,
-                delay: 0.75,
-              }}>
+              <motion.aside
+                {...animation}
+                transition={{
+                  ...animation.transition,
+                  delay: 0.75,
+                }}
+              >
                 {button}
               </motion.aside>
             </Box>

@@ -58,13 +58,13 @@ function PlansPrices({
   animationPreset = "fadeIn",
   ...props
 }) {
-  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.25 })
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
   return (
     <SkewBox bg={bg} {...props}>
       <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
         <Box textAlign="center">
-          {title &&
+          {title && (
             <motion.aside {...animation}>
               {cloneElement(title, {
                 mb: "1rem",
@@ -74,8 +74,8 @@ function PlansPrices({
                 },
               })}
             </motion.aside>
-          }
-          {subtitle &&
+          )}
+          {subtitle && (
             <motion.aside {...animation}>
               {cloneElement(subtitle, {
                 mb: "1rem",
@@ -85,36 +85,34 @@ function PlansPrices({
                 },
               })}
             </motion.aside>
-          }
+          )}
           <PlansGrid direction={direction} gap="2rem" my="2rem">
             {plans.map(
-              ({
-                image,
-                title: planTitle,
-                price,
-                subtext,
-                description,
-                features: Features,
-                button,
-                buttonColor,
-                buttonBackground,
-                background,
-                color,
-              }, idx) => (
+              (
+                {
+                  image,
+                  title: planTitle,
+                  price,
+                  subtext,
+                  description,
+                  features: Features,
+                  button,
+                  buttonColor,
+                  buttonBackground,
+                  background,
+                  color,
+                },
+                idx
+              ) => (
                 <motion.aside
                   key={planTitle}
                   {...animation}
                   transition={{
                     ...animation.transition,
-                    delay: 0.75 + (idx * 0.25)
-                  }} 
+                    delay: 0.75 + idx * 0.25,
+                  }}
                 >
-                  <Card
-                    flex="auto"
-                    bg={background}
-                    color={color}
-                    border="none"
-                  >
+                  <Card flex="auto" bg={background} color={color} border="none">
                     <PlanCard direction={direction}>
                       <PlanInfo
                         flex={1}
@@ -124,7 +122,11 @@ function PlansPrices({
                         subtext={subtext}
                         description={description}
                       />
-                      <Flex flex={1} flexDirection="column" sx={{ gap: "2rem" }}>
+                      <Flex
+                        flex={1}
+                        flexDirection="column"
+                        sx={{ gap: "2rem" }}
+                      >
                         <Box textAlign="left">
                           {typeof Features === "function" ? (
                             <Features />
@@ -148,11 +150,7 @@ function PlansPrices({
               )
             )}
           </PlansGrid>
-          {link &&
-            <motion.aside {...animation}>
-              {link}
-            </motion.aside>
-          }
+          {link && <motion.aside {...animation}>{link}</motion.aside>}
         </Box>
       </Container>
     </SkewBox>

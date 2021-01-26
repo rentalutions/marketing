@@ -1,7 +1,7 @@
 import React from "react"
 import { Box } from "@rent_avail/layout"
-import { PitchCards } from "./index"
 import ResponsiveEmbed from "components/elements/ResponsiveEmbed"
+import { PitchCards } from "./index"
 
 export default { title: "Components/Pitch Cards" }
 
