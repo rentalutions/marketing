@@ -1,6 +1,6 @@
 import React, { cloneElement } from "react"
 import { Box } from "@rent_avail/layout"
-import { useAnimateIntersection } from "@rent_avail/utils"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { STYLING } from "config"
 import { motion } from "framer-motion"
@@ -13,20 +13,23 @@ function EmailCapture({
   buttonText,
   buttonUrl,
   queryParamName,
+  animationPreset = "fadeIn",
 }) {
-  const [ { fadeIn }, target ] = useAnimateIntersection()
+  const [ presets, intersectionView ] = useInViewAnimation()
+  const animation = presets[animationPreset]
+
   return (
-    <Box ref={target}>
+    <Box ref={intersectionView}>
       {title &&
-        <motion.aside {...fadeIn}>
+        <motion.aside {...animation}>
           {cloneElement(title, {
             my: "2.5rem",
             sx: { ...STYLING.title, ...title.props?.sx },
           })}
         </motion.aside>
       }
-      <motion.aside {...fadeIn} transition={{
-        ...fadeIn.transition,
+      <motion.aside {...animation} transition={{
+        ...animation.transition,
         delay: 0.75,
       }}>
         <EmailCaptureInput

@@ -1,7 +1,7 @@
 import React, { useState, cloneElement } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import styled from "styled-components"
-import { useAnimateIntersection } from "@rent_avail/utils"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Box, Container, Stack } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
@@ -20,16 +20,18 @@ function FAQ({
   description,
   color,
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
   const [openIdx, setOpen] = useState(null)
-  const [ { fadeIn }, target ] = useAnimateIntersection()
+  const [ presets, intersectionView ] = useInViewAnimation()
+  const animation = presets[animationPreset]
 
   return (
-    <Box color={color} {...props} ref={target}>
+    <Box color={color} {...props} ref={intersectionView}>
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         {eyebrow &&
-          <motion.aside {...fadeIn}>
+          <motion.aside {...animation}>
             {cloneElement(eyebrow, {
               color: color || "blue_300",
               mb: "1rem",
@@ -37,7 +39,7 @@ function FAQ({
           </motion.aside>
         }
         {title &&
-          <motion.aside {...fadeIn}>
+          <motion.aside {...animation}>
             {cloneElement(title, {
               mb: "1rem",
               sx: { ...STYLING.headline, ...title.props?.sx },
@@ -45,8 +47,8 @@ function FAQ({
           </motion.aside>
         }
         {description && 
-          <motion.aside {...fadeIn} transition={{
-            ...fadeIn.transition,
+          <motion.aside {...animation} transition={{
+            ...animation.transition,
             delay: 0.75
           }}>
             <Box mb="2rem">{description}</Box>
@@ -56,8 +58,8 @@ function FAQ({
           {questions.map(({ question, answer: Answer }, idx) => {
             const isOpen = idx === openIdx
             return (
-              <motion.aside {...fadeIn} transition={{
-                ...fadeIn.transition,
+              <motion.aside {...animation} transition={{
+                ...animation.transition,
                 delay: 1.0 + (idx * 0.25)
               }}>
                 <Accordion

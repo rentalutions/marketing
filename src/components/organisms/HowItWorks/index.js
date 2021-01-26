@@ -1,6 +1,6 @@
 import React, { cloneElement } from "react"
 import { motion } from "framer-motion"
-import { useAnimateIntersection } from "@rent_avail/utils"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
@@ -11,22 +11,24 @@ function HowItWorks({
   sections = [],
   alternate = (idx) => idx % 2 !== 0,
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
-  const [ { fadeIn }, target ] = useAnimateIntersection({ threshold: 0.4 })
+  const [ presets, intersectionView ] = useInViewAnimation()
+  const animation = presets[animationPreset]
 
   return (
-    <Box {...props} ref={target}>
+    <Box {...props} ref={intersectionView}>
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         {eyebrow && (
-          <motion.aside {...fadeIn}>
+          <motion.aside {...animation}>
             <Text color="blue_500" mb="1rem">
               {eyebrow}
             </Text>
           </motion.aside>
         )}
         {title &&
-          <motion.aside {...fadeIn}>
+          <motion.aside {...animation}>
             {cloneElement(title, {
               mb: "4rem",
               sx: { ...STYLING.headline, ...title.props?.sx },
@@ -34,8 +36,8 @@ function HowItWorks({
           </motion.aside>
         }
         {sections.map((section, idx) => (
-          <motion.aside {...fadeIn} transition={{
-            ...fadeIn.transition,
+          <motion.aside {...animation} transition={{
+            ...animation.transition,
             delay: 0.75 + (idx * 0.25)
           }}>
             <HowItWorksSection

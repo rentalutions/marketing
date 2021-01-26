@@ -2,7 +2,8 @@ import React, { cloneElement, useCallback, useEffect, useState, useRef } from "r
 import { motion } from "framer-motion"
 import styled from "styled-components"
 
-import { useAnimateIntersection, useResize } from "@rent_avail/utils"
+import { useResize } from "@rent_avail/utils"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Container, Box, Card, Stack } from "@rent_avail/layout"
 import { ChevronLeft, ChevronRight } from "react-feather"
 
@@ -128,12 +129,12 @@ function Testimonials({
     }
   }, [containerRect, scrollRef, childrenRef])
 
-  const [ { fadeIn, scaleIn }, animateIntersectionTarget ] = useAnimateIntersection({ threshold: 0.5 })
+  const [ { fadeIn, scaleIn }, animationIntersectionView ] = useInViewAnimation({ threshold: 0.5 })
 
   return (
     <SkewBox bg={bg} {...props}>
       <Container ref={ref => {
-        containerRef.current = animateIntersectionTarget.current = ref
+        containerRef.current = animationIntersectionView.current = ref
       }} maxWidth={containerWidth}>
         {title &&
           <motion.aside {...fadeIn}>

@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import styled from "styled-components"
 import { variant } from "styled-system"
 
-import { useAnimateIntersection } from "@rent_avail/utils"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Box, Card, Container, Flex, Grid } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"
 import { STYLING } from "config"
@@ -55,15 +55,17 @@ function PlansPrices({
   link,
   plans,
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
-  const [ { fadeIn }, target ] = useAnimateIntersection({ threshold: 0.4 })
+  const [ presets, intersectionView ] = useInViewAnimation()
+  const animation = presets[animationPreset]
   return (
     <SkewBox bg={bg} {...props}>
-      <Container ref={target} maxWidth={containerWidth} py="6rem">
+      <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
         <Box textAlign="center">
           {title &&
-            <motion.aside {...fadeIn}>
+            <motion.aside {...animation}>
               {cloneElement(title, {
                 mb: "1rem",
                 sx: {
@@ -74,7 +76,7 @@ function PlansPrices({
             </motion.aside>
           }
           {subtitle &&
-            <motion.aside {...fadeIn}>
+            <motion.aside {...animation}>
               {cloneElement(subtitle, {
                 mb: "1rem",
                 sx: {
@@ -100,9 +102,9 @@ function PlansPrices({
                 color,
               }, idx) => (
                 <motion.aside
-                  {...fadeIn}
+                  {...animation}
                   transition={{
-                    ...fadeIn.transition,
+                    ...animation.transition,
                     delay: 0.75 + (idx * 0.25)
                   }} 
                 >
@@ -147,7 +149,7 @@ function PlansPrices({
             )}
           </PlansGrid>
           {link &&
-            <motion.aside {...fadeIn}>
+            <motion.aside {...animation}>
               {link}
             </motion.aside>
           }

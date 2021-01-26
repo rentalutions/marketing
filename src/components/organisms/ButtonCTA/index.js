@@ -3,7 +3,7 @@ import {motion} from "framer-motion"
 import styled from "styled-components"
 import { variant } from "styled-system"
 
-import { useAnimateIntersection } from "@rent_avail/utils"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Box, Container, Flex } from "@rent_avail/layout"
 
 import SkewBox from "components/molecules/SkewBox"
@@ -44,13 +44,15 @@ function ButtonCTA({
   button,
   orientation = "left",
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
-  const [ { fadeIn }, target ] = useAnimateIntersection()
+  const [ presets, intersectionView ] = useInViewAnimation()
+  const animation = presets[animationPreset]
 
   return (
     <SkewBox bg={bg} {...props}>
-      <Container ref={target} maxWidth={containerWidth} py="6rem">
+      <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
         <StyledFlex orientation={orientation}>
           {title &&
             <Box
@@ -62,7 +64,7 @@ function ButtonCTA({
                 minWidth: "fit-content",
               }}
             >
-              <motion.aside {...fadeIn}>
+              <motion.aside {...animation}>
                 {cloneElement(title, {
                   sx: {
                     ...title.props?.sx,
@@ -82,8 +84,8 @@ function ButtonCTA({
                 minWidth: "unset",
               }}
             >
-              <motion.aside {...fadeIn} transition={{
-                ...fadeIn.transition,
+              <motion.aside {...animation} transition={{
+                ...animation.transition,
                 delay: 0.75,
               }}>
                 {button}

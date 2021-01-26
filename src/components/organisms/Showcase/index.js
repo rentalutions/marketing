@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { useAnimateIntersection } from "@rent_avail/utils"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Box, Col, Container, Flex, Grid } from "@rent_avail/layout"
 import Icon from "components/elements/Icon"
 
@@ -11,6 +11,7 @@ const Showcase = ({
   caseInterval,
   containerWidth,
   flip,
+  animationPreset = "fadeIn",
   ...props
 }) => {
   const [activeCase, setActiveCase] = useState(0)
@@ -26,10 +27,11 @@ const Showcase = ({
     }
   }, [cases, activeCase, setActiveCase])
 
-  const [ { fadeIn }, target ] = useAnimateIntersection({ threshold: 0.4 })
+  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.4 })
+  const animation = presets[animationPreset]
 
   return (
-    <Box {...props} ref={target}>
+    <Box {...props} ref={intersectionView}>
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         <Grid
           alignItems="center"
@@ -38,15 +40,15 @@ const Showcase = ({
         >
           <Col gridColumn={["span 12", "span 12", "span 7"]}>
             {copy &&
-              <motion.aside {...fadeIn} transition={{
-                ...fadeIn.transition,
+              <motion.aside {...animation} transition={{
+                ...animation.transition,
                 delay: 0.75,
               }}>
                 <Box>{copy}</Box>
               </motion.aside>
             }
-            <motion.aside {...fadeIn} transition={{
-                ...fadeIn.transition,
+            <motion.aside {...animation} transition={{
+                ...animation.transition,
                 delay: 1.25,
               }}>
               <Flex
@@ -79,8 +81,8 @@ const Showcase = ({
             gridColumn={["span 12", "span 12", "span 5"]}
             order={flip ? -1 : 1}
           >
-            <motion.aside {...fadeIn} transition={{
-              ...fadeIn.transition,
+            <motion.aside {...animation} transition={{
+              ...animation.transition,
               delay: 0.25,
               duration: 1.75,
             }}>
