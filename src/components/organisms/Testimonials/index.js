@@ -54,6 +54,7 @@ const Testimonial = styled(Card)`
   text-align: center;
   border-radius: 12px;
 `
+const MotionTestimonial = motion.custom(Testimonial)
 
 function Testimonials({
   bg,
@@ -140,6 +141,7 @@ function Testimonials({
     threshold: 0.25,
   })
   const animation = presets[animationPreset]
+  const { scaleIn } = presets
 
   return (
     <SkewBox bg={bg} {...props}>
@@ -167,7 +169,12 @@ function Testimonials({
                     { picture, author, titleAndLocation, quote: Quote },
                     idx
                   ) => (
-                    <Testimonial
+                    <MotionTestimonial
+                      {...scaleIn}
+                      transition={{
+                        ...scaleIn.transition,
+                        delay: 0.75 + idx * 0.25,
+                      }}
                       key={`${author}-${titleAndLocation}`}
                       ref={(el) => {
                         childrenRef.current[idx] = el
@@ -190,7 +197,7 @@ function Testimonials({
                       )}
                       <h5>{author}</h5>
                       <span>{titleAndLocation}</span>
-                    </Testimonial>
+                    </MotionTestimonial>
                   )
                 )}
               </TestimonialsStack>
