@@ -38,8 +38,8 @@ function PitchCards({ span, sections, title, description, eyebrow, animationPres
         </Col>
       )}
       {/* eslint-disable-next-line no-shadow */}
-      {sections.map(({ ...props }, idx) => (
-        <Col span={cardSpan}>
+      {sections.map(({ key, ...props }, idx) => (
+        <Col key={key || idx} span={cardSpan}>
           <motion.aside
             {...animation}
             transition={{

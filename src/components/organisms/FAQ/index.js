@@ -58,17 +58,20 @@ function FAQ({
           {questions.map(({ question, answer: Answer }, idx) => {
             const isOpen = idx === openIdx
             return (
-              <motion.aside {...animation} transition={{
-                ...animation.transition,
-                delay: 1.0 + (idx * 0.25)
-              }}>
+              <motion.aside
+                key={question}
+                {...animation}
+                transition={{
+                  ...animation.transition,
+                  delay: 1.0 + (idx * 0.25)
+                }}
+              >
                 <Accordion
                   borderRadius="0.25rem"
                   mb="2rem"
                   p="2rem"
                   bg="blue_100"
                   onClick={(e) => setOpen(idx)}
-                  key={question}
                 >
                   <Text fontWeight="800">{question}</Text>
                   <AnimatePresence>

@@ -58,7 +58,7 @@ function PlansPrices({
   animationPreset = "fadeIn",
   ...props
 }) {
-  const [ presets, intersectionView ] = useInViewAnimation()
+  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
   return (
     <SkewBox bg={bg} {...props}>
@@ -102,6 +102,7 @@ function PlansPrices({
                 color,
               }, idx) => (
                 <motion.aside
+                  key={planTitle}
                   {...animation}
                   transition={{
                     ...animation.transition,
@@ -109,7 +110,6 @@ function PlansPrices({
                   }} 
                 >
                   <Card
-                    key={planTitle}
                     flex="auto"
                     bg={background}
                     color={color}

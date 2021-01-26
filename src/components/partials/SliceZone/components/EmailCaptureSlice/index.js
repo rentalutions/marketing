@@ -17,14 +17,14 @@ const EmailCaptureSlice = ({ slice }) => {
     <Container maxWidth={CONTAINER_WIDTHS} my="6rem">
       {hash && <Anchor hash={hash} />}
       <Container maxWidth="66rem" px="0">
-        <RichText
-          my="2.5rem"
-          textAlign={["left", "center"]}
-          color="blue_500"
-          render={title}
-          sx={{ ...STYLING.title }}
-        />
         <EmailCapture
+          title={
+            <RichText
+              textAlign={["left", "center"]}
+              color="blue_500"
+              render={title}
+            />
+          }
           inputLabel={label}
           inputLabelId={inputLabelId}
           buttonText={buttonText}

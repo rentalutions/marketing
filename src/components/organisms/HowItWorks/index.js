@@ -35,14 +35,17 @@ function HowItWorks({
             })}
           </motion.aside>
         }
-        {sections.map((section, idx) => (
-          <motion.aside {...animation} transition={{
-            ...animation.transition,
-            delay: 0.75 + (idx * 0.25)
-          }}>
+        {sections.map(({uid, ...section}, idx) => (
+          <motion.aside 
+            key={uid || idx}
+            {...animation}
+            transition={{
+              ...animation.transition,
+              delay: 0.75 + (idx * 0.25)
+            }}
+          >
             <HowItWorksSection
               {...section}
-              key={section.uid || idx}
               flip={alternate(idx)}
               mb={idx !== sections.length - 1 ? "6rem" : 0}
             />

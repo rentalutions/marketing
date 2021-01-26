@@ -157,15 +157,18 @@ function Testimonials({
           >
             {testimonials.map(
               ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
-                <motion.aside {...scaleIn} transition={{
-                  ...scaleIn.transition,
-                  delay: 0.75 + (idx * 0.25)
-                }}>
+                <motion.aside
+                  key={`${author}-${titleAndLocation}`}
+                  {...scaleIn}
+                  transition={{
+                    ...scaleIn.transition,
+                    delay: 0.75 + (idx * 0.25)
+                  }}
+                >
                   <Testimonial
                     ref={(el) => {
                       childrenRef.current[idx] = el
                     }}
-                    key={`${author}-${titleAndLocation}`}
                     bg={testimonialBg}
                     color={testimonialColor}
                   >
