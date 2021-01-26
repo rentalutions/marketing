@@ -56,6 +56,7 @@ function Testimonials({
   testimonialBg,
   testimonialColor,
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
   const containerRef = useRef()
@@ -129,93 +130,81 @@ function Testimonials({
     }
   }, [containerRect, scrollRef, childrenRef])
 
-  const [ { fadeIn, scaleIn }, animationIntersectionView ] = useInViewAnimation({ threshold: 0.5 })
+  const [ presets, animationIntersectionView ] = useInViewAnimation({ threshold: 0.25 })
+  const animation = presets[animationPreset]
 
   return (
     <SkewBox bg={bg} {...props}>
-      <Container ref={ref => {
-        containerRef.current = animationIntersectionView.current = ref
-      }} maxWidth={containerWidth}>
-        {title &&
-          <motion.aside {...fadeIn}>
-            {cloneElement(title, {
-              sx: { ...STYLING.headline, ...title?.props?.sx },
-              mb: "2rem",
-            })}
-          </motion.aside>
-        }
-        <CarouselBox
-          ref={scrollRef}
-          pb="1rem"
-          mx={`-${scrollSpace}px`}
-          px={`${scrollSpace}px`}
-        >
-          <TestimonialsStack
-            wrapChildren
-            direction={["row"]}
-            sx={{ "& > *:last-child": { marginRight: 0 } }}
-          >
-            {testimonials.map(
-              ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
-                <motion.aside
-                  key={`${author}-${titleAndLocation}`}
-                  {...scaleIn}
-                  transition={{
-                    ...scaleIn.transition,
-                    delay: 0.75 + (idx * 0.25)
-                  }}
-                >
-                  <Testimonial
-                    ref={(el) => {
-                      childrenRef.current[idx] = el
-                    }}
-                    bg={testimonialBg}
-                    color={testimonialColor}
-                  >
-                    <Box flex={1}>
-                      {typeof Quote === "function" ? <Quote /> : Quote}
-                    </Box>
-                    {picture && picture.url && (
-                      <Box
-                        as="img"
-                        src={picture.url}
-                        alt={picture.alt}
-                        title={picture.alt}
-                        width="4rem"
-                        sx={{ borderRadius: "50%" }}
-                      />
-                    )}
-                    <h5>{author}</h5>
-                    <span>{titleAndLocation}</span>
-                  </Testimonial>
-                </motion.aside>
-              )
+      <Container ref={containerRef} maxWidth={containerWidth}>
+        <Box ref={animationIntersectionView}>
+          <motion.aside {...animation}>
+            {title &&
+              cloneElement(title, {
+                sx: { ...STYLING.headline, ...title?.props?.sx },
+                mb: "2rem",
+              })
+            }
+            <CarouselBox
+              ref={scrollRef}
+              pb="1rem"
+              mx={`-${scrollSpace}px`}
+              px={`${scrollSpace}px`}
+            >
+              <TestimonialsStack
+                wrapChildren
+                direction={["row"]}
+                sx={{ "& > *:last-child": { marginRight: 0 } }}
+              >
+                {testimonials.map(
+                  ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
+                    <Testimonial
+                      key={`${author}-${titleAndLocation}`}
+                      ref={(el) => {
+                        childrenRef.current[idx] = el
+                      }}
+                      bg={testimonialBg}
+                      color={testimonialColor}
+                    >
+                      <Box flex={1}>
+                        {typeof Quote === "function" ? <Quote /> : Quote}
+                      </Box>
+                      {picture && picture.url && (
+                        <Box
+                          as="img"
+                          src={picture.url}
+                          alt={picture.alt}
+                          title={picture.alt}
+                          width="4rem"
+                          sx={{ borderRadius: "50%" }}
+                        />
+                      )}
+                      <h5>{author}</h5>
+                      <span>{titleAndLocation}</span>
+                    </Testimonial>
+                  )
+                )}
+              </TestimonialsStack>
+            </CarouselBox>
+            {(mayScrollLeft || mayScrollRight) && (
+              <ScrollControlsContainer>
+                <ChevronLeft
+                  onClick={() => mayScrollLeft && scrollLeft()}
+                  className={
+                    mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
+                  }
+                />
+                <ChevronRight
+                  onClick={() => mayScrollRight && scrollRight()}
+                  className={
+                    mayScrollRight
+                      ? "scrollControlEnabled"
+                      : "scrollControlDisabled"
+                  }
+                />
+              </ScrollControlsContainer>
             )}
-          </TestimonialsStack>
-        </CarouselBox>
-        {(mayScrollLeft || mayScrollRight) && (
-          <motion.aside {...fadeIn} transition={{
-            ...fadeIn.transition,
-            delay: 1.25,
-          }}>
-            <ScrollControlsContainer>
-              <ChevronLeft
-                onClick={() => mayScrollLeft && scrollLeft()}
-                className={
-                  mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
-                }
-              />
-              <ChevronRight
-                onClick={() => mayScrollRight && scrollRight()}
-                className={
-                  mayScrollRight
-                    ? "scrollControlEnabled"
-                    : "scrollControlDisabled"
-                }
-              />
-            </ScrollControlsContainer>
           </motion.aside>
-        )}
+        </Box>
       </Container>
     </SkewBox>
   )

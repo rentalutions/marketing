@@ -10,7 +10,7 @@ function PitchCards({ span, sections, title, description, eyebrow, animationPres
   const cardSpan =
     span || (sections.length < 4 ? [12, 12 / sections.length] : [12, 6])
   const headingContent = title || description || eyebrow
-  const [ presets, intersectionView ] = useInViewAnimation()
+  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.1 })
   const animation = presets[animationPreset]
   return (
     <Container {...props} as={Grid} gap={["3rem 0", "3rem"]} ref={intersectionView}>

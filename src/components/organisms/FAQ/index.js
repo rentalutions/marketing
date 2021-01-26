@@ -24,7 +24,7 @@ function FAQ({
   ...props
 }) {
   const [openIdx, setOpen] = useState(null)
-  const [ presets, intersectionView ] = useInViewAnimation()
+  const [ presets, intersectionView ] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
 
   return (
