@@ -1,4 +1,6 @@
-import * as React from "react"
+import React, { cloneElement } from "react"
+import { motion } from "framer-motion"
+import { useAnimateIntersection } from "@rent_avail/utils"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
@@ -11,26 +13,38 @@ function HowItWorks({
   containerWidth,
   ...props
 }) {
+  const [ { fadeIn }, target ] = useAnimateIntersection({ threshold: 0.4 })
+
   return (
-    <Box {...props}>
+    <Box {...props} ref={target}>
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         {eyebrow && (
-          <Text color="blue_500" mb="1rem">
-            {eyebrow}
-          </Text>
+          <motion.aside {...fadeIn}>
+            <Text color="blue_500" mb="1rem">
+              {eyebrow}
+            </Text>
+          </motion.aside>
         )}
         {title &&
-          React.cloneElement(title, {
-            mb: "4rem",
-            sx: { ...STYLING.headline, ...title.props?.sx },
-          })}
+          <motion.aside {...fadeIn}>
+            {cloneElement(title, {
+              mb: "4rem",
+              sx: { ...STYLING.headline, ...title.props?.sx },
+            })}
+          </motion.aside>
+        }
         {sections.map((section, idx) => (
-          <HowItWorksSection
-            {...section}
-            key={section.uid || idx}
-            flip={alternate(idx)}
-            mb={idx !== sections.length - 1 ? "6rem" : 0}
-          />
+          <motion.aside {...fadeIn} transition={{
+            ...fadeIn.transition,
+            delay: 0.75 + (idx * 0.25)
+          }}>
+            <HowItWorksSection
+              {...section}
+              key={section.uid || idx}
+              flip={alternate(idx)}
+              mb={idx !== sections.length - 1 ? "6rem" : 0}
+            />
+          </motion.aside>
         ))}
       </Container>
     </Box>

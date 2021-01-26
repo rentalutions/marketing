@@ -1,7 +1,9 @@
 import React, { cloneElement } from "react"
+import { motion } from "framer-motion"
 import styled from "styled-components"
 import { variant } from "styled-system"
 
+import { useAnimateIntersection } from "@rent_avail/utils"
 import { Box, Card, Container, Flex, Grid } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"
 import { STYLING } from "config"
@@ -55,26 +57,33 @@ function PlansPrices({
   containerWidth,
   ...props
 }) {
+  const [ { fadeIn }, target ] = useAnimateIntersection({ threshold: 0.4 })
   return (
     <SkewBox bg={bg} {...props}>
-      <Container maxWidth={containerWidth} py="6rem">
+      <Container ref={target} maxWidth={containerWidth} py="6rem">
         <Box textAlign="center">
           {title &&
-            cloneElement(title, {
-              mb: "1rem",
-              sx: {
-                ...title.props?.sx,
-                ...STYLING.headline,
-              },
-            })}
+            <motion.aside {...fadeIn}>
+              {cloneElement(title, {
+                mb: "1rem",
+                sx: {
+                  ...title.props?.sx,
+                  ...STYLING.headline,
+                },
+              })}
+            </motion.aside>
+          }
           {subtitle &&
-            cloneElement(subtitle, {
-              mb: "1rem",
-              sx: {
-                ...subtitle.props?.sx,
-                ...STYLING.subtitle,
-              },
-            })}
+            <motion.aside {...fadeIn}>
+              {cloneElement(subtitle, {
+                mb: "1rem",
+                sx: {
+                  ...subtitle.props?.sx,
+                  ...STYLING.subtitle,
+                },
+              })}
+            </motion.aside>
+          }
           <PlansGrid direction={direction} gap="2rem" my="2rem">
             {plans.map(
               ({
@@ -89,47 +98,59 @@ function PlansPrices({
                 buttonBackground,
                 background,
                 color,
-              }) => (
-                <Card
-                  key={planTitle}
-                  flex="auto"
-                  bg={background}
-                  color={color}
-                  border="none"
+              }, idx) => (
+                <motion.aside
+                  {...fadeIn}
+                  transition={{
+                    ...fadeIn.transition,
+                    delay: 0.75 + (idx * 0.25)
+                  }} 
                 >
-                  <PlanCard direction={direction}>
-                    <PlanInfo
-                      flex={1}
-                      image={image}
-                      title={planTitle}
-                      price={price}
-                      subtext={subtext}
-                      description={description}
-                    />
-                    <Flex flex={1} flexDirection="column" sx={{ gap: "2rem" }}>
-                      <Box textAlign="left">
-                        {typeof Features === "function" ? (
-                          <Features />
-                        ) : (
-                          Features
-                        )}
-                      </Box>
-                      <Box mt="auto">
-                        {button &&
-                          cloneElement(button, {
-                            display: "block",
-                            color: buttonColor,
-                            backgroundColor: buttonBackground,
-                            borderColor: buttonBackground,
-                          })}
-                      </Box>
-                    </Flex>
-                  </PlanCard>
-                </Card>
+                  <Card
+                    key={planTitle}
+                    flex="auto"
+                    bg={background}
+                    color={color}
+                    border="none"
+                  >
+                    <PlanCard direction={direction}>
+                      <PlanInfo
+                        flex={1}
+                        image={image}
+                        title={planTitle}
+                        price={price}
+                        subtext={subtext}
+                        description={description}
+                      />
+                      <Flex flex={1} flexDirection="column" sx={{ gap: "2rem" }}>
+                        <Box textAlign="left">
+                          {typeof Features === "function" ? (
+                            <Features />
+                          ) : (
+                            Features
+                          )}
+                        </Box>
+                        <Box mt="auto">
+                          {button &&
+                            cloneElement(button, {
+                              display: "block",
+                              color: buttonColor,
+                              backgroundColor: buttonBackground,
+                              borderColor: buttonBackground,
+                            })}
+                        </Box>
+                      </Flex>
+                    </PlanCard>
+                  </Card>
+                </motion.aside>
               )
             )}
           </PlansGrid>
-          {link}
+          {link &&
+            <motion.aside {...fadeIn}>
+              {link}
+            </motion.aside>
+          }
         </Box>
       </Container>
     </SkewBox>

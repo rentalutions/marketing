@@ -1,6 +1,9 @@
 import React, { cloneElement } from "react"
+import { motion } from "framer-motion"
 import styled from "styled-components"
+import { useAnimateIntersection } from "@rent_avail/utils"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
+
 import { STYLING } from "config"
 
 const HeroWrapper = styled(Box)`
@@ -41,8 +44,17 @@ function Hero({
   const hasImage = !!image?.url
   const hasTwoCols = hasImage || hasVideo
 
+  const [ { fadeIn }, setTarget ] = useAnimateIntersection()
+
   return (
-    <HeroWrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
+    <HeroWrapper
+      {...props}
+      ref={setTarget}
+      skewBg={bg}
+      skew={skew}
+      pt="4rem"
+      pb="10rem"
+    >
       <div className="skew" />
       <Container
         as={Grid}
@@ -52,21 +64,38 @@ function Hero({
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
         <Col span={hasTwoCols ? [12, 12, 12, 6] : [12]}>
-          {cloneElement(title, {
-            sx: {
-              ...(hasTwoCols ? STYLING.headline : STYLING.hero),
-              fontWeight: ["regular", "light"],
-              ...title.props?.sx,
-            },
-          })}
-          <Box mt="2rem">{description}</Box>
+          <motion.aside {...fadeIn}>
+            {cloneElement(title, {
+              sx: {
+                ...(hasTwoCols ? STYLING.headline : STYLING.hero),
+                fontWeight: ["regular", "light"],
+                ...title.props?.sx,
+              },
+            })}
+          </motion.aside>
+          <motion.aside {...fadeIn} transition={{
+              ...fadeIn.transition,
+              delay: 0.75,
+            }}>
+            <Box mt="2rem">{description}</Box>
+          </motion.aside>
           {links && (
-            <Stack wrapChildren direction={["column", "row"]} mt="2rem">
-              {primaryLink}
-              {secondaryLink}
-            </Stack>
+            <motion.aside {...fadeIn} transition={{
+              ...fadeIn.transition,
+              delay: 1.0,
+            }}>
+              <Stack wrapChildren direction={["column", "row"]} mt="2rem">
+                {primaryLink}
+                {secondaryLink}
+              </Stack>
+            </motion.aside>
           )}
-          {children}
+          <motion.aside {...fadeIn} transition={{
+              ...fadeIn.transition,
+              delay: 1.0,
+            }}>
+            {children}
+          </motion.aside>
         </Col>
         {hasTwoCols && (
           <Col
@@ -75,19 +104,25 @@ function Hero({
             order={imagePosition === "left" ? -1 : 1}
             sx={{ textAlign: "center" }}
           >
-            {!!image?.url && (
-              <Box
-                as="img"
-                src={image.url}
-                alt={image.alt}
-                title={image.alt}
-                maxWidth={["100%", "50%", "50%", "100%"]}
-              />
-            )}
-            {!!video?.url && (
-              <Box as="video" width="100%" controls src={video.url} />
-            )}
-            {!!embed && embed}
+            <motion.aside {...fadeIn} transition={{
+              ...fadeIn.transition,
+              delay: 0.25,
+              duration: 1.75,
+            }}>
+              {!!image?.url && (
+                <Box
+                  as="img"
+                  src={image.url}
+                  alt={image.alt}
+                  title={image.alt}
+                  maxWidth={["100%", "50%", "50%", "100%"]}
+                />
+              )}
+              {!!video?.url && (
+                <Box as="video" width="100%" controls src={video.url} />
+              )}
+              {!!embed && embed}
+            </motion.aside>
           </Col>
         )}
       </Container>

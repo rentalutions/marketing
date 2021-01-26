@@ -10,7 +10,11 @@ export function Default() {
   return (
     <Box>
       <Container py="10rem">
-        <EmailCapture inputLabel="Enter your email" buttonText="Get started" />
+        <EmailCapture
+          title={<Box as="h1">Email Capture</Box>}
+          inputLabel="Enter your email"
+          buttonText="Get started"
+        />
       </Container>
     </Box>
   )
@@ -21,11 +25,19 @@ export function WithDarkBg() {
     <Box bg="blue_500">
       <Container py="10rem">
         <EmailCapture
-          background="blue_500"
+          title={
+            <Box
+              as="h1"
+              color="ui_300"
+            >
+              Email Capture
+            </Box>
+          }
           inputLabel="Enter your email"
           buttonText="Get started"
           buttonUrl="https://www.avail.co/users/new"
           queryParamName="email"
+          containerBg="blue_500"
         />
       </Container>
     </Box>

@@ -4,7 +4,7 @@ import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import { analyzeColor } from "utils/color-scheme"
 
-const EmailCapture = ({
+const EmailCaptureInput = ({
   background,
   inputLabel,
   inputLabelId,
@@ -78,4 +78,4 @@ const EmailCapture = ({
   )
 }
 
-export default EmailCapture
+export default EmailCaptureInput

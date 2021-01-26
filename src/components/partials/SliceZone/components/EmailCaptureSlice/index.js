@@ -1,6 +1,6 @@
 import React from "react"
 import { Container } from "@rent_avail/layout"
-import EmailCapture from "components/molecules/EmailCapture"
+import EmailCapture from "components/organisms/EmailCapture"
 import RichText from "components/partials/SliceZone/components/RichText"
 import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS, STYLING } from "config"
