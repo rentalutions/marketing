@@ -1,9 +1,12 @@
 import React from "react"
-import { Testimonials } from "components/organisms/Testimonials"
-import { CONTAINER_WIDTHS, STYLING } from "config"
+import { TestimonialsV1, TestimonialsV2 } from "components/organisms/Testimonials"
+import { CONTAINER_WIDTHS } from "config"
 import RichText from "../RichText"
 
-const TestimonialsSlice = ({ slice }) => {
+const TestimonialsSlice = ({
+  version = "v1",
+  slice
+}) => {
   const {
     primary: {
       title,
@@ -11,18 +14,30 @@ const TestimonialsSlice = ({ slice }) => {
       color,
       testimonialBackground,
       testimonialColor,
+      titleBackground,
+      testimonialInterval,
       skew,
     },
   } = slice
 
   const testimonials = slice.items.map(
-    ({ picture, author, titleAndLocation, quote }) => ({
+    ({ picture, author, titleAndLocation, quote, aditionalInfo }) => ({
       picture,
       author,
       titleAndLocation,
+      aditionalInfo,
       quote: <RichText render={quote} />,
     })
   )
+
+  const Testimonials = (()=>{
+    switch (version) {
+      case "v2": return TestimonialsV2
+      case "v1":
+      default:
+        return TestimonialsV1
+    }
+  })()
 
   return (
     <Testimonials
@@ -33,6 +48,8 @@ const TestimonialsSlice = ({ slice }) => {
       color={color}
       testimonialBg={testimonialBackground}
       testimonialColor={testimonialColor}
+      titleBackground={titleBackground}
+      testimonialInterval={testimonialInterval}
       skew={skew}
     />
   )
