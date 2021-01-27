@@ -1,13 +1,21 @@
-import React, { useCallback, useEffect, useState, useRef } from "react"
+import React, {
+  cloneElement,
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+} from "react"
+import { motion } from "framer-motion"
 import styled from "styled-components"
 
 import { useResize } from "@rent_avail/utils"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Container, Box, Card, Stack } from "@rent_avail/layout"
 import { ChevronLeft, ChevronRight } from "react-feather"
 
 import SkewBox from "components/molecules/SkewBox"
 import { STYLING } from "config"
-import { FadeIn } from "components/fadeIn"
+// import { FadeIn } from "components/fadeIn"
 
 const CarouselBox = styled(Box)`
   overflow: scroll;
@@ -47,6 +55,7 @@ const Testimonial = styled(Card)`
   text-align: center;
   border-radius: 12px;
 `
+const MotionTestimonial = motion.custom(Testimonial)
 
 function Testimonials({
   bg,
@@ -55,6 +64,7 @@ function Testimonials({
   testimonialBg,
   testimonialColor,
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
   const containerRef = useRef()
@@ -128,37 +138,48 @@ function Testimonials({
     }
   }, [containerRect, scrollRef, childrenRef])
 
+  const [presets, animationIntersectionView] = useInViewAnimation({
+    threshold: 0.25,
+  })
+  const animation = presets[animationPreset]
+  const { scaleIn } = presets
+
   return (
     <SkewBox bg={bg} {...props}>
       <Container ref={containerRef} maxWidth={containerWidth}>
-        {title &&
-          <FadeIn transition={{ delay: 0.5 }}>
-            {React.cloneElement(title, {
-              sx: { ...STYLING.headline, ...title?.props?.sx },
-              mb: "2rem",
-            })}
-          </FadeIn>
-        }
-        <FadeIn transition={{ delay: 0.5 }}>
-          <CarouselBox
-            ref={scrollRef}
-            pb="1rem"
-            mx={`-${scrollSpace}px`}
-            px={`${scrollSpace}px`}
-          >
-            <TestimonialsStack
-              wrapChildren
-              direction={["row"]}
-              sx={{ "& > *:last-child": { marginRight: 0 } }}
+        <Box ref={animationIntersectionView}>
+          <motion.aside {...animation}>
+            {title &&
+              cloneElement(title, {
+                sx: { ...STYLING.headline, ...title?.props?.sx },
+                mb: "2rem",
+              })}
+            <CarouselBox
+              ref={scrollRef}
+              pb="1rem"
+              mx={`-${scrollSpace}px`}
+              px={`${scrollSpace}px`}
             >
-              {testimonials.map(
-                ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
-                  <FadeIn transition={{ delay: 0.7 }}>
-                    <Testimonial
+              <TestimonialsStack
+                wrapChildren
+                direction={["row"]}
+                sx={{ "& > *:last-child": { marginRight: 0 } }}
+              >
+                {testimonials.map(
+                  (
+                    { picture, author, titleAndLocation, quote: Quote },
+                    idx
+                  ) => (
+                    <MotionTestimonial
+                      {...scaleIn}
+                      transition={{
+                        ...scaleIn.transition,
+                        delay: 0.75 + idx * 0.25,
+                      }}
+                      key={`${author}-${titleAndLocation}`}
                       ref={(el) => {
                         childrenRef.current[idx] = el
                       }}
-                      key={`${author}-${titleAndLocation}`}
                       bg={testimonialBg}
                       color={testimonialColor}
                     >
@@ -177,31 +198,33 @@ function Testimonials({
                       )}
                       <h5>{author}</h5>
                       <span>{titleAndLocation}</span>
-                    </Testimonial>
-                  </FadeIn>
-                )
+                    </MotionTestimonial>
+                  )
                 )}
-            </TestimonialsStack>
-          </CarouselBox>
-          {(mayScrollLeft || mayScrollRight) && (
-            <ScrollControlsContainer>
-              <ChevronLeft
-                onClick={() => mayScrollLeft && scrollLeft()}
-                className={
-                  mayScrollLeft ? "scrollControlEnabled" : "scrollControlDisabled"
-                }
-              />
-              <ChevronRight
-                onClick={() => mayScrollRight && scrollRight()}
-                className={
-                  mayScrollRight
-                    ? "scrollControlEnabled"
-                    : "scrollControlDisabled"
-                }
-              />
-            </ScrollControlsContainer>
-          )}
-        </FadeIn>
+              </TestimonialsStack>
+            </CarouselBox>
+            {(mayScrollLeft || mayScrollRight) && (
+              <ScrollControlsContainer>
+                <ChevronLeft
+                  onClick={() => mayScrollLeft && scrollLeft()}
+                  className={
+                    mayScrollLeft
+                      ? "scrollControlEnabled"
+                      : "scrollControlDisabled"
+                  }
+                />
+                <ChevronRight
+                  onClick={() => mayScrollRight && scrollRight()}
+                  className={
+                    mayScrollRight
+                      ? "scrollControlEnabled"
+                      : "scrollControlDisabled"
+                  }
+                />
+              </ScrollControlsContainer>
+            )}
+          </motion.aside>
+        </Box>
       </Container>
     </SkewBox>
   )

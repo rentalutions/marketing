@@ -2,14 +2,15 @@ import React from "react"
 import { Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { useTheme } from "styled-components"
-import HeroSlice from "./components/HeroSlice"
-import HeroWithEmailCaptureSlice from "./components/HeroWithEmailCaptureSlice"
-import PitchCardsSlice from "./components/PitchCardsSlice"
 import ButtonCTASlice from "./components/ButtonCTASlice"
 import EmailCaptureSlice from "./components/EmailCaptureSlice"
-import HowItWorksSlice from "./components/HowItWorksSlice"
-import ShowcaseSlice from "./components/ShowcaseSlice"
 import FAQSlice from "./components/FrequentlyAskedQuestionsSlice"
+import HeroSlice from "./components/HeroSlice"
+import HeroWithEmailCaptureSlice from "./components/HeroWithEmailCaptureSlice"
+import HowItWorksSlice from "./components/HowItWorksSlice"
+import PitchCardsSlice from "./components/PitchCardsSlice"
+import PlansPricesSlice from "./components/PlansPricesSlice"
+import ShowcaseSlice from "./components/ShowcaseSlice"
 import TestimonialsSlice from "./components/TestimonialsSlice"
 
 const SliceZone = ({ slices }) => {
@@ -35,6 +36,8 @@ const SliceZone = ({ slices }) => {
         return <HowItWorksSlice key={key} slice={slice} />
       case "pitch_cards":
         return <PitchCardsSlice key={key} slice={slice} />
+      case  "plans_and_prices":
+        return <PlansPricesSlice key={key} slice={slice} />
       case "show_case":
         return <ShowcaseSlice key={key} slice={slice} />
       case "testimonials":

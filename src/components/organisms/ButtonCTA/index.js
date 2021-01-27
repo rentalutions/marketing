@@ -1,8 +1,11 @@
 import React, { cloneElement } from "react"
+import { motion } from "framer-motion"
 import styled from "styled-components"
 import { variant } from "styled-system"
-import { motion } from "framer-motion"
+
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Box, Container, Flex } from "@rent_avail/layout"
+
 import SkewBox from "components/molecules/SkewBox"
 
 import { STYLING } from "config"
@@ -57,40 +60,56 @@ function ButtonCTA({
   button,
   orientation = "left",
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
-  console.log(button)
+  const [presets, intersectionView] = useInViewAnimation()
+  const animation = presets[animationPreset]
+
   return (
     <SkewBox bg={bg} {...props}>
-      <Container maxWidth={containerWidth} py="6rem">
+      <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
         <StyledFlex orientation={orientation}>
           {title && (
-            <FadeIn
-              {...title.props}
-              as={motion[title.props.as]}
-              transition={{ delay: 0.5 }}
+            <Box
               sx={{
-                ...title.props?.sx,
-                ...STYLING.headline,
                 flex: "1",
+                margin: "auto",
+                height: "fit-content",
+                width: "fit-content",
                 minWidth: "fit-content",
               }}
-            />
+            >
+              <motion.aside {...animation}>
+                {cloneElement(title, {
+                  sx: {
+                    ...title.props?.sx,
+                    ...STYLING.headline,
+                  },
+                })}
+              </motion.aside>
+            </Box>
           )}
           {button && (
-            <FadeIn transition={{ delay: 0.7 }}>
-              <Box
-                sx={{
-                  flex: "0",
-                  margin: "auto",
-                  height: "fit-content",
-                  width: "fit-content",
-                  minWidth: "unset",
+            <Box
+              sx={{
+                flex: "0",
+                margin: "auto",
+                height: "fit-content",
+                width: "fit-content",
+                minWidth: "unset",
+              }}
+            >
+              <motion.aside
+                {...animation}
+                transition={{
+                  ...animation.transition,
+                  delay: 0.75,
                 }}
               >
                 {button}
-              </Box>
-            </FadeIn>
+              </motion.aside>
+            </Box>
           )}
         </StyledFlex>
       </Container>

@@ -1,8 +1,10 @@
-import * as React from "react"
+import React, { cloneElement } from "react"
+import { motion } from "framer-motion"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
-import { FadeIn } from "components/fadeIn"
+// import { FadeIn } from "components/fadeIn"
 
 function HowItWorks({
   title,
@@ -10,55 +12,82 @@ function HowItWorks({
   sections = [],
   alternate = (idx) => idx % 2 !== 0,
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
+  const animation = presets[animationPreset]
+
   return (
-    <Box {...props}>
+    <Box {...props} ref={intersectionView}>
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         {eyebrow && (
-          <FadeIn>
+          <motion.aside {...animation}>
             <Text color="blue_500" mb="1rem">
               {eyebrow}
             </Text>
-          </FadeIn>
+          </motion.aside>
         )}
-        {title &&
-          <FadeIn transition={{ delay: 0.5 }}>
-            {React.cloneElement(title, {
+        {title && (
+          <motion.aside {...animation}>
+            {cloneElement(title, {
               mb: "4rem",
               sx: { ...STYLING.headline, ...title.props?.sx },
             })}
-          </FadeIn>
-        }
-        <FadeIn transition={{ delay: 0.7 }}>
-          {sections.map((section, idx) => (
+          </motion.aside>
+        )}
+        {sections.map(({ uid, ...section }, idx) => (
+          <motion.aside
+            key={uid || idx}
+            {...animation}
+            transition={{
+              ...animation.transition,
+              delay: 0.75 + idx * 0.25,
+            }}
+          >
             <HowItWorksSection
               {...section}
-              key={section.uid || idx}
               flip={alternate(idx)}
               mb={idx !== sections.length - 1 ? "6rem" : 0}
             />
-          ))}
-        </FadeIn>
+          </motion.aside>
+        ))}
       </Container>
     </Box>
   )
 }
 
-function HowItWorksSection({ copy, image = null, flip, mb }) {
+function HowItWorksSection({ copy, image = null, video, embed, flip, mb }) {
   const copyColumn = ["span 12", flip ? "7 / span 6" : "1 / span 6"]
   const imageColumn = ["span 12", flip ? "1 / span 6" : "7 / span 6"]
   return (
     <Grid alignItems="center" gridAutoFlow="row dense" mb={mb}>
       <Col gridColumn={copyColumn}>{copy}</Col>
-      <Col
-        as="img"
-        src={image.url}
-        alt={image.alt}
-        title={image.alt}
-        gridColumn={imageColumn}
-        maxWidth="100%"
-      />
+      {image?.url && (
+        <Col
+          as="img"
+          src={image.url}
+          alt={image.alt}
+          title={image.alt}
+          gridColumn={imageColumn}
+          maxWidth="100%"
+        />
+      )}
+      {!!video?.url && (
+        <Col
+          as="video"
+          width="100%"
+          gridColumn={imageColumn}
+          maxWidth="100%"
+          controls
+          src={video.url}
+        />
+      )}
+      {!!embed && (
+        <Col gridColumn={imageColumn} maxWidth="100%">
+          {embed}
+        </Col>
+      )}
     </Grid>
   )
 }

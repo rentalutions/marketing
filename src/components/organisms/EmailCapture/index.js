@@ -1,49 +1,51 @@
-import React from "react"
-import { useUID } from "react-uid"
-import { Container } from "@rent_avail/layout"
+import React, { cloneElement } from "react"
+import { Box } from "@rent_avail/layout"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import EmailCaptureInput from "components/molecules/EmailCaptureInput"
-import { useUrlResolver } from "components/partials/UrlResolver"
 import { STYLING } from "config"
-
-import { FadeIn, withFadeIn } from "components/fadeIn"
+import { motion } from "framer-motion"
 
 function EmailCapture({
-  containerWidth,
+  containerBg,
   title,
-  hash,
-  label,
+  inputLabel,
+  inputLabelId,
   buttonText,
+  buttonUrl,
+  queryParamName,
+  animationPreset = "fadeIn",
 }) {
-  const urlResolver = useUrlResolver()
-  const inputLabelId = useUID()
-
-  const FadeInEmailCaptureInput = withFadeIn(EmailCaptureInput)
+  const [presets, intersectionView] = useInViewAnimation()
+  const animation = presets[animationPreset]
 
   return (
-    <Container maxWidth={containerWidth} my="6rem">
-      {hash}
-      <Container maxWidth="66rem" px="0">
-        {title &&
-          <FadeIn>
-            {React.cloneElement(title, {
-              sx: { ...STYLING.title, ...title?.props?.sx },
-              my: "2.5rem",
-              textAlign: ["left", "center"],
-              color: "blue_500",
-            })}
-          </FadeIn>
-        }
-        <FadeInEmailCaptureInput
-          transition={{ delay: 0.7 }}
-          inputLabel={label}
+    <Box ref={intersectionView}>
+      {title && (
+        <motion.aside {...animation}>
+          {cloneElement(title, {
+            my: "2.5rem",
+            sx: { ...STYLING.title, ...title.props?.sx },
+          })}
+        </motion.aside>
+      )}
+      <motion.aside
+        {...animation}
+        transition={{
+          ...animation.transition,
+          delay: 0.75,
+        }}
+      >
+        <EmailCaptureInput
+          inputLabel={inputLabel}
           inputLabelId={inputLabelId}
           buttonText={buttonText}
-          buttonUrl={urlResolver("https://www.avail.co/users/new")}
-          queryParamName="email"
+          buttonUrl={buttonUrl}
+          queryParamName={queryParamName}
+          background={containerBg}
         />
-      </Container>
-    </Container>
+      </motion.aside>
+    </Box>
   )
 }
 
-export { EmailCapture }
+export default EmailCapture

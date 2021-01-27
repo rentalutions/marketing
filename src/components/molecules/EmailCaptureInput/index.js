@@ -15,7 +15,7 @@ const EmailCaptureInput = ({
   const buttonRef = useRef()
   const [buttonWidth, setButtonWidth] = useState(0)
   const [inputValue, setInputValue] = useState("")
-  const [_, isDark] = background ? analyzeColor(background) : []
+  const [, isDark] = background ? analyzeColor(background) : []
 
   const onSubmit = (e) => {
     e.preventDefault()

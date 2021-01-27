@@ -1,8 +1,9 @@
-import * as React from "react"
+import React, { useState, cloneElement } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import styled from "styled-components"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Box, Container, Stack } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
-import { motion, AnimatePresence } from "framer-motion"
 import { STYLING } from "config"
 import { FadeIn } from "components/fadeIn"
 
@@ -20,44 +21,61 @@ function FAQ({
   description,
   color,
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
-  const [openIdx, setOpen] = React.useState(null)
+  const [openIdx, setOpen] = useState(null)
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
+  const animation = presets[animationPreset]
+
   return (
-    <Box color={color} {...props}>
+    <Box color={color} {...props} ref={intersectionView}>
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
-        {eyebrow &&
-          <FadeIn>
-            {React.cloneElement(eyebrow, {
+        {eyebrow && (
+          <motion.aside {...animation}>
+            {cloneElement(eyebrow, {
               color: color || "blue_300",
               mb: "1rem",
             })}
-          </FadeIn>
-        }
-        {title &&
-          <FadeIn transition={{ delay: 0.5 }}>
-            {React.cloneElement(title, {
+          </motion.aside>
+        )}
+        {title && (
+          <motion.aside {...animation}>
+            {cloneElement(title, {
               mb: "1rem",
               sx: { ...STYLING.headline, ...title.props?.sx },
             })}
-          </FadeIn>
-        }
-        {description && 
-          <FadeIn transition={{ delay: 0.7 }}>
+          </motion.aside>
+        )}
+        {description && (
+          <motion.aside
+            {...animation}
+            transition={{
+              ...animation.transition,
+              delay: 0.75,
+            }}
+          >
             <Box mb="2rem">{description}</Box>
-          </FadeIn>
-        }
-        <FadeIn transition={{ delay: 0.7 }}>
-          <Stack>
-            {questions.map(({ question, answer: Answer }, idx) => {
-              const isOpen = idx === openIdx
-              return (
+          </motion.aside>
+        )}
+        <Stack>
+          {questions.map(({ question, answer: Answer }, idx) => {
+            const isOpen = idx === openIdx
+            return (
+              <motion.aside
+                key={question}
+                {...animation}
+                transition={{
+                  ...animation.transition,
+                  delay: 1.0 + idx * 0.25,
+                }}
+              >
                 <Accordion
                   borderRadius="0.25rem"
+                  mb="2rem"
                   p="2rem"
                   bg="blue_100"
-                  onClick={(e) => setOpen(idx)}
-                  key={question}
+                  onClick={() => setOpen(idx)}
                 >
                   <Text fontWeight="800">{question}</Text>
                   <AnimatePresence>
@@ -78,10 +96,10 @@ function FAQ({
                     )}
                   </AnimatePresence>
                 </Accordion>
-              )
-            })}
-          </Stack>
-        </FadeIn>
+              </motion.aside>
+            )
+          })}
+        </Stack>
       </Container>
     </Box>
   )

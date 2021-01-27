@@ -1,25 +1,42 @@
 import React from "react"
-import { Box } from "@rent_avail/layout"
-import { EmailCapture } from "./index"
+import { Container, Box } from "@rent_avail/layout"
+import EmailCapture from "./index"
 
-export default { title: "Components/EmailCapture" }
+export default {
+  title: "Components/EmailCapture",
+}
 
 export function Default() {
   return (
-    <EmailCapture
-      title={<Box as="h1">Your first unit is always FREE</Box>}
-      label="Enter your email"
-      buttonText="Join Today"
-    />
+    <Box>
+      <Container py="10rem">
+        <EmailCapture
+          title={<Box as="h1">Email Capture</Box>}
+          inputLabel="Enter your email"
+          buttonText="Get started"
+        />
+      </Container>
+    </Box>
   )
 }
 
-export function WithoutTitle() {
+export function WithDarkBg() {
   return (
-    <EmailCapture
-      label="Your first unit is always FREE"
-      buttonText="Join Today"
-    />
+    <Box bg="blue_500">
+      <Container py="10rem">
+        <EmailCapture
+          title={
+            <Box as="h1" color="ui_300">
+              Email Capture
+            </Box>
+          }
+          inputLabel="Enter your email"
+          buttonText="Get started"
+          buttonUrl="https://www.avail.co/users/new"
+          queryParamName="email"
+          containerBg="blue_500"
+        />
+      </Container>
+    </Box>
   )
 }
-

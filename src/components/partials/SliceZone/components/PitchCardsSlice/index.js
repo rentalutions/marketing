@@ -5,6 +5,7 @@ import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import RichText from "../RichText"
+import Embed from "../Embed"
 
 const PitchCardsSlice = ({ slice }) => {
   const {
@@ -20,6 +21,8 @@ const PitchCardsSlice = ({ slice }) => {
         centerTitle, // eslint-disable-line no-shadow
         description, // eslint-disable-line no-shadow
         icon,
+        video,
+        embed,
         linkText,
         linkUrl,
         linkAsButton,
@@ -35,6 +38,8 @@ const PitchCardsSlice = ({ slice }) => {
       ),
       description: <RichText render={description} />,
       icon,
+      video,
+      embed: embed?.html && <Embed embed={embed} />,
       key: title?.[0]?.text || idx,
       link:
         linkText && linkUrl
@@ -84,7 +89,9 @@ const PitchCardsSlice = ({ slice }) => {
         sections={sections}
         maxWidth={CONTAINER_WIDTHS}
         m="6rem 0 12rem"
-        span={[12, 12, 6, 4]}
+        span={
+          sections.length < 3 ? [12, 12, 12 / sections.length] : [12, 12, 6, 4]
+        }
       />
     </React.Fragment>
   )

@@ -1,49 +1,66 @@
-import * as React from "react"
+import React, { cloneElement } from "react"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Col, Container, Grid } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { PitchCard } from "components/molecules/PitchCard"
 import { STYLING } from "config"
-import { FadeIn } from "components/fadeIn"
+import { motion } from "framer-motion"
 
-function PitchCards({ span, sections, title, description, eyebrow, ...props }) {
+function PitchCards({
+  span,
+  sections,
+  title,
+  description,
+  eyebrow,
+  animationPreset = "fadeIn",
+  ...props
+}) {
   const cardSpan =
     span || (sections.length < 4 ? [12, 12 / sections.length] : [12, 6])
   const headingContent = title || description || eyebrow
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.1 })
+  const animation = presets[animationPreset]
   return (
-    <Container {...props} as={Grid} gap={["3rem 0", "3rem"]}>
+    <Container
+      {...props}
+      as={Grid}
+      gap={["3rem 0", "3rem"]}
+      ref={intersectionView}
+    >
       {headingContent && (
         <Col span={12} mb="3rem">
           {eyebrow && (
-            <FadeIn>
+            <motion.aside {...animation}>
               <Text fontSize="small" mb="1rem" color="blue_300">
                 {eyebrow}
               </Text>
-            </FadeIn>
+            </motion.aside>
           )}
-          {title &&
-            <FadeIn transition={{ delay: 0.5 }}>
-              {React.cloneElement(title, {
+          {title && (
+            <motion.aside {...animation}>
+              {cloneElement(title, {
                 sx: { ...STYLING.headline, ...title.props?.sx },
               })}
-            </FadeIn>
-          }
-          {description && 
-            <FadeIn transition={{ delay: 0.7 }}>
-              {description}
-            </FadeIn>
-          }
+            </motion.aside>
+          )}
+          {description && (
+            <motion.aside {...animation}>{description}</motion.aside>
+          )}
         </Col>
       )}
       {/* eslint-disable-next-line no-shadow */}
-      {sections.map(({ title, key, icon, description, link }) => (
-        <PitchCard
-          key={key}
-          title={title}
-          icon={icon}
-          description={description}
-          link={link}
-          span={cardSpan}
-        />
+      {sections.map(({ key, ...props }, idx) => (
+        <Col key={key || idx} span={cardSpan}>
+          <motion.aside
+            {...animation}
+            transition={{
+              ...animation.transition,
+              delay: 0.75 + idx * 0.25,
+            }}
+          >
+            <PitchCard {...props} />
+          </motion.aside>
+        </Col>
       ))}
     </Container>
   )

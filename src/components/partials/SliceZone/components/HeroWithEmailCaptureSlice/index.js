@@ -6,6 +6,7 @@ import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
+import Embed from "../Embed"
 
 const HeroWithEmailCaptureSlice = ({ slice }) => {
   const {
@@ -16,6 +17,8 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       skew,
       image,
       imagePosition,
+      video,
+      embed,
       color,
       emailCaptureLabel,
       emailCaptureButtonText,
@@ -36,6 +39,8 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       skew={skew}
       image={image}
       imagePosition={imagePosition}
+      video={video?.url && video}
+      embed={embed?.html && <Embed embed={embed} />}
       color={color}
       containerWidth={CONTAINER_WIDTHS}
     >

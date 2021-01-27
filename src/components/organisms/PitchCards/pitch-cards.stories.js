@@ -1,5 +1,6 @@
 import React from "react"
 import { Box } from "@rent_avail/layout"
+import ResponsiveEmbed from "components/elements/ResponsiveEmbed"
 import { PitchCards } from "./index"
 
 export default { title: "Components/Pitch Cards" }
@@ -76,6 +77,30 @@ const buttonLinkSections = sectionData.map(({ title, description }, idx) => ({
   ),
   description,
   link: { ...links[idx], text: "View sample", button: true },
+}))
+
+const videoSections = sections.slice(0, 2).map((section) => ({
+  ...section,
+  video: {
+    url: "/media/sample-video.mp4",
+  },
+}))
+
+const embedSections = sections.slice(0, 2).map((section) => ({
+  ...section,
+  embed: (
+    <ResponsiveEmbed aspect={{ width: 200, height: 113 }}>
+      {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
+      <iframe
+        width="200"
+        height="113"
+        src="https://www.youtube.com/embed/RMMatpUtmZo?feature=oembed"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </ResponsiveEmbed>
+  ),
 }))
 
 export function Default() {
@@ -162,6 +187,38 @@ export function WithButtonLinks() {
   return (
     <PitchCards
       sections={buttonLinkSections.slice(0, 3)}
+      eyebrow="Eyebrow"
+      title={
+        <Box as="h2" mb="1rem">
+          Let Me Pitch You
+        </Box>
+      }
+      description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
+      mt="4rem"
+    />
+  )
+}
+
+export function WithVideo() {
+  return (
+    <PitchCards
+      sections={videoSections}
+      eyebrow="Eyebrow"
+      title={
+        <Box as="h2" mb="1rem">
+          Let Me Pitch You
+        </Box>
+      }
+      description="A pre-designed piece of content perfect for showcasing the top features of a product or service. It's more condensed than the how-it-works section."
+      mt="4rem"
+    />
+  )
+}
+
+export function WithEmbed() {
+  return (
+    <PitchCards
+      sections={embedSections}
       eyebrow="Eyebrow"
       title={
         <Box as="h2" mb="1rem">

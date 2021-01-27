@@ -1,8 +1,11 @@
 import React, { cloneElement } from "react"
+import { motion } from "framer-motion"
 import styled from "styled-components"
+import { useInViewAnimation } from "components/@rent_avail/utils"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
+
 import { STYLING } from "config"
-import { FadeIn } from "components/fadeIn"
+// import { FadeIn } from "components/fadeIn"
 
 const HeroWrapper = styled(Box)`
   position: relative;
@@ -29,15 +32,32 @@ function Hero({
   title,
   image = null,
   imagePosition = "right",
+  video,
+  embed,
   primaryLink,
   secondaryLink,
   containerWidth,
+  animationPreset = "fadeIn",
   children,
   ...props
 }) {
   const links = primaryLink || secondaryLink
+  const hasVideo = !!(video?.url || embed)
+  const hasImage = !!image?.url
+  const hasTwoCols = hasImage || hasVideo
+
+  const [presets, intersectionView] = useInViewAnimation()
+  const animation = presets[animationPreset]
+
   return (
-    <HeroWrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
+    <HeroWrapper
+      {...props}
+      ref={intersectionView}
+      skewBg={bg}
+      skew={skew}
+      pt="4rem"
+      pb="10rem"
+    >
       <div className="skew" />
       <Container
         as={Grid}
@@ -46,43 +66,78 @@ function Hero({
         gap={["2rem", "2rem", "4rem"]}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
-        <Col span={image ? [12, 12, 12, 6] : [12]}>
-          <FadeIn transition={{ delay: 0.8 }}>
+        <Col span={hasTwoCols ? [12, 12, 12, 6] : [12]}>
+          <motion.aside {...animation}>
             {cloneElement(title, {
               sx: {
-                ...(image ? STYLING.headline : STYLING.hero),
+                ...(hasTwoCols ? STYLING.headline : STYLING.hero),
                 fontWeight: ["regular", "light"],
                 ...title.props?.sx,
               },
             })}
+          </motion.aside>
+          <motion.aside
+            {...animation}
+            transition={{
+              ...animation.transition,
+              delay: 0.75,
+            }}
+          >
             <Box mt="2rem">{description}</Box>
-            {links && (
+          </motion.aside>
+          {links && (
+            <motion.aside
+              {...animation}
+              transition={{
+                ...animation.transition,
+                delay: 1.0,
+              }}
+            >
               <Stack wrapChildren direction={["column", "row"]} mt="2rem">
                 {primaryLink}
                 {secondaryLink}
               </Stack>
-            )}
-          </FadeIn>
-          <FadeIn transition={{ delay: 1.2 }}>
+            </motion.aside>
+          )}
+          <motion.aside
+            {...animation}
+            transition={{
+              ...animation.transition,
+              delay: 1.0,
+            }}
+          >
             {children}
-          </FadeIn>
+          </motion.aside>
         </Col>
-        {image && (
+        {hasTwoCols && (
           <Col
             span={[12, 12, 12, 6]}
             gridRow={["1", "1", "1", "auto"]}
             order={imagePosition === "left" ? -1 : 1}
             sx={{ textAlign: "center" }}
           >
-            <FadeIn transition={{ delay: 0.5, duration: 1.2 }}>
-              <Box
-                as="img"
-                src={image.url}
-                alt={image.alt}
-                title={image.alt}
-                maxWidth={["100%", "50%", "50%", "100%"]}
-              />
-            </FadeIn>
+            <motion.aside
+              {...animation}
+              transition={{
+                ...animation.transition,
+                delay: 0.25,
+                duration: 1.25,
+              }}
+            >
+              {!!image?.url && (
+                <Box
+                  as="img"
+                  src={image.url}
+                  alt={image.alt}
+                  title={image.alt}
+                  maxWidth={["100%", "50%", "50%", "100%"]}
+                />
+              )}
+              {!!video?.url && (
+                <Box as="video" width="100%" controls src={video.url} />
+              )}
+              {!!embed && embed}
+            </motion.aside>
           </Col>
         )}
       </Container>

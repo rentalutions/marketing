@@ -7,7 +7,15 @@ import { getTargetProps } from "utils/link"
 import { STYLING } from "config"
 import { FadeIn } from "components/fadeIn"
 
-export function PitchCard({ title, description, icon = null, link, ...props }) {
+export function PitchCard({
+  title,
+  description,
+  icon = null,
+  video,
+  embed,
+  link,
+  ...props
+}) {
   const isButtonVariant = !!link?.button
   return (
     <Col {...props} display="flex" flexDirection="column">
@@ -22,6 +30,10 @@ export function PitchCard({ title, description, icon = null, link, ...props }) {
           />
         </FadeIn>
       )}
+      {!!video?.url && (
+        <Box as="video" mb="2rem" width="100%" controls src={video.url} />
+      )}
+      {!!embed && React.cloneElement(embed, { sx: { mb: "2rem" } })}
       {title &&
         <FadeIn transition={{ delay: 0.7 }} intersectionOptions={{ threshold: 0.60 }}>
           {React.cloneElement(title, {
