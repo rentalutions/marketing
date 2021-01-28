@@ -12,15 +12,16 @@ function Testimonials({
   testimonials = [],
   testimonialBg,
   testimonialColor,
-  containerWidth,
+  orientation = "right",
   testimonialInterval = 3,
+  containerWidth,
   ...props
 }) {
   const [ activeIndex, setActiveIndex ] = useState(0)
   const [ currentInterval, setCurrentInterval ] = useState(testimonialInterval)
 
   const activeTestiomnial = testimonials.length > activeIndex ? testimonials[activeIndex] : null
-  const { quote: Quote, author, titleAndLocation } = activeTestiomnial || {}
+  const { quote: Quote, author, titleAndLocation, aditionalInfo } = activeTestiomnial || {}
 
   const getSafeIndex = useCallback((desiredIndex) => {
     const { length } = testimonials
@@ -70,6 +71,11 @@ function Testimonials({
           position="absolute"
           background="white"
           opacity={opacity}
+          sx={{
+            "&:hover": {
+              cursor: "pointer",
+            }
+          }}
         />
         {picture && <Box
           as="img"
@@ -80,6 +86,21 @@ function Testimonials({
       </Box>
     )
   })
+
+  const titleBoxVariants = {
+    right: {
+      textAlign: "right",
+      padding: "4rem 2rem 4rem 50vw",
+      ml: "-50vw",
+      borderRadius: "0 2.5rem 2.5rem 0",
+    },
+    left: {
+      textAlign: "left",
+      padding: "4rem 50vw 4rem 2rem",
+      mr: "-50vw",
+      borderRadius: "2.5rem 0 0 2.5rem",
+    },
+  }
 
   return (
     <SkewBox bg={bg} {...props}>
@@ -94,12 +115,10 @@ function Testimonials({
         >
           <Flex
             flex={1}
-            background={titleBackground}
-            padding="4rem 2rem 4rem 50vw"
-            ml="-50vw"
+            bg={titleBackground}
             alignItems="center"
-            justifyContent="flex-end"
-            borderRadius="0 2.5rem 2.5rem 0"
+            textAlign={orientation}
+            {...titleBoxVariants[orientation]}
           >
             {title &&
               cloneElement(title, {
@@ -111,6 +130,7 @@ function Testimonials({
             }
           </Flex>
           <Flex
+            order={orientation === "left" ? -1 : 1}
             flex={1}
             sx={{
               padding: 2,
@@ -136,7 +156,7 @@ function Testimonials({
             <Box mb={1}>
               <Text fontSize="1.5rem" fontWeight="black">{author}</Text>
               <Text fontSize="1.3rem" opacity={0.45}>{titleAndLocation}</Text>
-              <Text fontSize="1.3rem" opacity={0.45}>Aditional info</Text>
+              <Text fontSize="1.3rem" opacity={0.45}>{aditionalInfo || "-"}</Text>
             </Box>
           </Flex>
         </Flex>

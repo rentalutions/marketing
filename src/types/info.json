@@ -86,7 +86,8 @@
           "pitch_cards" : [ ],
           "plans_and_prices" : [ ],
           "show_case" : [ ],
-          "testimonials" : [ ]
+          "testimonials" : [ ],
+          "testimonials_v2" : [ ]
         },
         "choices" : {
           "button_cta" : {
@@ -1052,6 +1053,14 @@
                   "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
                   "default_value" : "blue_100",
                   "label" : "Slice Title Background color"
+                }
+              },
+              "orientation" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "left", "right" ],
+                  "default_value" : "right",
+                  "label" : "Testimonials Orientation"
                 }
               },
               "testimonialInterval": {

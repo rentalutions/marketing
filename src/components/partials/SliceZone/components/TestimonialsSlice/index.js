@@ -15,6 +15,7 @@ const TestimonialsSlice = ({
       testimonialBackground,
       testimonialColor,
       titleBackground,
+      orientation,
       testimonialInterval,
       skew,
     },
@@ -49,6 +50,7 @@ const TestimonialsSlice = ({
       testimonialBg={testimonialBackground}
       testimonialColor={testimonialColor}
       titleBackground={titleBackground}
+      orientation={orientation}
       testimonialInterval={testimonialInterval}
       skew={skew}
     />
