@@ -17,17 +17,22 @@ function Testimonials({
   containerWidth,
   ...props
 }) {
-  const [ activeIndex, setActiveIndex ] = useState(0)
-  const [ currentInterval, setCurrentInterval ] = useState(testimonialInterval)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [currentInterval, setCurrentInterval] = useState(testimonialInterval)
 
-  const activeTestiomnial = testimonials.length > activeIndex ? testimonials[activeIndex] : null
-  const { quote: Quote, author, titleAndLocation, aditionalInfo } = activeTestiomnial || {}
+  const activeTestiomnial =
+    testimonials.length > activeIndex ? testimonials[activeIndex] : null
+  const { quote: Quote, author, titleAndLocation, aditionalInfo } =
+    activeTestiomnial || {}
 
-  const getSafeIndex = useCallback((desiredIndex) => {
-    const { length } = testimonials
-    const remainder = desiredIndex % length
-    return remainder < 0 ? remainder + length : remainder
-  }, [ testimonials ])
+  const getSafeIndex = useCallback(
+    (desiredIndex) => {
+      const { length } = testimonials
+      const remainder = desiredIndex % length
+      return remainder < 0 ? remainder + length : remainder
+    },
+    [testimonials]
+  )
 
   useEffect(() => {
     if (currentInterval) {
@@ -39,10 +44,11 @@ function Testimonials({
         clearInterval(timeout)
       }
     }
-  }, [ currentInterval, testimonials, activeIndex ])
+  }, [currentInterval, testimonials, activeIndex])
 
   const Picture = useCallback((testimonialIndex, level = 0) => {
-    const { picture, author } = testimonials[testimonialIndex] || {}
+    const { picture, author: altFallback } =
+      testimonials[testimonialIndex] || {}
     const [opacity, scale] = (() => {
       if (level >= 3) return [0.9, 0.5625]
       if (level === 2) return [0.75, 0.625]
@@ -64,7 +70,7 @@ function Testimonials({
             borderRadius: "50%",
             width: "100%",
             height: "100%",
-          }
+          },
         }}
       >
         <Box
@@ -74,15 +80,17 @@ function Testimonials({
           sx={{
             "&:hover": {
               cursor: "pointer",
-            }
+            },
           }}
         />
-        {picture && <Box
-          as="img"
-          src={picture.url}
-          alt={picture.alt || author}
-          title={picture.alt || author}
-        />}
+        {picture && (
+          <Box
+            as="img"
+            src={picture.url}
+            alt={picture.alt || altFallback}
+            title={picture.alt || altFallback}
+          />
+        )}
       </Box>
     )
   })
@@ -110,7 +118,7 @@ function Testimonials({
           my={2}
           sx={{
             gap: 1,
-            flexFlow: "row wrap"
+            flexFlow: "row wrap",
           }}
         >
           <Flex
@@ -126,8 +134,7 @@ function Testimonials({
                   ...STYLING.headline,
                   ...title?.props?.sx,
                 },
-              })
-            }
+              })}
           </Flex>
           <Flex
             order={orientation === "left" ? -1 : 1}
@@ -145,8 +152,9 @@ function Testimonials({
             <Flex
               justifyContent="center"
               sx={{
-                gap: 3
-            }}>
+                gap: 3,
+              }}
+            >
               {Picture(getSafeIndex(activeIndex - 2), 2)}
               {Picture(getSafeIndex(activeIndex - 1), 1)}
               {Picture(activeIndex)}
@@ -154,9 +162,15 @@ function Testimonials({
               {Picture(getSafeIndex(activeIndex + 2), 2)}
             </Flex>
             <Box mb={1}>
-              <Text fontSize="1.5rem" fontWeight="black">{author}</Text>
-              <Text fontSize="1.3rem" opacity={0.45}>{titleAndLocation}</Text>
-              <Text fontSize="1.3rem" opacity={0.45}>{aditionalInfo || "-"}</Text>
+              <Text fontSize="1.5rem" fontWeight="black">
+                {author}
+              </Text>
+              <Text fontSize="1.3rem" opacity={0.45}>
+                {titleAndLocation}
+              </Text>
+              <Text fontSize="1.3rem" opacity={0.45}>
+                {aditionalInfo || "-"}
+              </Text>
             </Box>
           </Flex>
         </Flex>

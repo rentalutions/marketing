@@ -36,7 +36,7 @@ const SliceZone = ({ slices }) => {
         return <HowItWorksSlice key={key} slice={slice} />
       case "pitch_cards":
         return <PitchCardsSlice key={key} slice={slice} />
-      case  "plans_and_prices":
+      case "plans_and_prices":
         return <PlansPricesSlice key={key} slice={slice} />
       case "show_case":
         return <ShowcaseSlice key={key} slice={slice} />
