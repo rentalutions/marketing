@@ -1,7 +1,13 @@
-import React, { cloneElement, useCallback, useEffect, useState } from "react"
+import React, {
+  cloneElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import { Box, Container, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
-
+import { useResize } from "@rent_avail/utils"
 import SkewBox from "components/molecules/SkewBox"
 import { STYLING } from "config"
 
@@ -17,13 +23,41 @@ function Testimonials({
   containerWidth,
   ...props
 }) {
-  const [activeIndex, setActiveIndex] = useState(0)
   const [currentInterval, setCurrentInterval] = useState(testimonialInterval)
 
+  const [activeIndex, setActiveIndex] = useState(0)
   const activeTestiomnial =
     testimonials.length > activeIndex ? testimonials[activeIndex] : null
   const { quote: Quote, author, titleAndLocation, aditionalInfo } =
     activeTestiomnial || {}
+
+  const containerRef = useRef()
+  const containerRect = useResize(containerRef)
+
+  const [titleSpace, setTitleSpace] = useState("0px")
+  const titleBoxVariants = {
+    right: {
+      textAlign: "right",
+      padding: `4rem 2rem 4rem ${titleSpace}`,
+      ml: `-${titleSpace}`,
+      borderRadius: "0 2.5rem 2.5rem 0",
+    },
+    left: {
+      textAlign: "left",
+      padding: `4rem ${titleSpace} 4rem 2rem`,
+      mr: `-${titleSpace}`,
+      borderRadius: "2.5rem 0 0 2.5rem",
+    },
+  }
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container || !getComputedStyle) return
+    const { marginLeft, paddingLeft } = getComputedStyle(container)
+    const titleSpaceInPixels =
+      parseInt(marginLeft, 10) + parseInt(paddingLeft, 10)
+    setTitleSpace(`${titleSpaceInPixels}px`)
+  }, [containerRect])
 
   const getSafeIndex = useCallback(
     (desiredIndex) => {
@@ -33,18 +67,6 @@ function Testimonials({
     },
     [testimonials]
   )
-
-  useEffect(() => {
-    if (currentInterval) {
-      const timeout = setTimeout(() => {
-        const nextIndex = getSafeIndex(activeIndex + 1)
-        setActiveIndex(nextIndex)
-      }, currentInterval * 1000)
-      return () => {
-        clearInterval(timeout)
-      }
-    }
-  }, [currentInterval, testimonials, activeIndex])
 
   const Picture = useCallback((testimonialIndex, level = 0) => {
     const { picture, author: altFallback } =
@@ -95,24 +117,21 @@ function Testimonials({
     )
   })
 
-  const titleBoxVariants = {
-    right: {
-      textAlign: "right",
-      padding: "4rem 2rem 4rem 50vw",
-      ml: "-50vw",
-      borderRadius: "0 2.5rem 2.5rem 0",
-    },
-    left: {
-      textAlign: "left",
-      padding: "4rem 50vw 4rem 2rem",
-      mr: "-50vw",
-      borderRadius: "2.5rem 0 0 2.5rem",
-    },
-  }
+  useEffect(() => {
+    if (currentInterval) {
+      const timeout = setTimeout(() => {
+        const nextIndex = getSafeIndex(activeIndex + 1)
+        setActiveIndex(nextIndex)
+      }, currentInterval * 1000)
+      return () => {
+        clearInterval(timeout)
+      }
+    }
+  }, [currentInterval, testimonials, activeIndex])
 
   return (
     <SkewBox bg={bg} {...props}>
-      <Container maxWidth={containerWidth}>
+      <Container ref={containerRef} maxWidth={containerWidth}>
         <Flex
           minHeight="36rem"
           my={2}
