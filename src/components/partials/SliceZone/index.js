@@ -41,10 +41,10 @@ const SliceZone = ({ slices }) => {
       case "show_case":
         return <ShowcaseSlice key={key} slice={slice} />
       case "testimonials":
-      case "testimonials_v1":
-        return <TestimonialsSlice key={key} slice={slice} version="v1" />
-      case "testimonials_v2":
-        return <TestimonialsSlice key={key} slice={slice} version="v2" />
+      case "testimonials_cards":
+        return <TestimonialsSlice key={key} slice={slice} version="cards" />
+      case "testimonials_carousel":
+        return <TestimonialsSlice key={key} slice={slice} version="carousel" />
       default:
         return (
           <Flex

@@ -1,12 +1,12 @@
 import React from "react"
 import {
-  TestimonialsV1,
-  TestimonialsV2,
+  TestimonialsCards,
+  TestimonialsCarousel,
 } from "components/organisms/Testimonials"
 import { CONTAINER_WIDTHS } from "config"
 import RichText from "../RichText"
 
-const TestimonialsSlice = ({ version = "v1", slice }) => {
+const TestimonialsSlice = ({ version = "cards", slice }) => {
   const {
     primary: {
       title,
@@ -33,11 +33,11 @@ const TestimonialsSlice = ({ version = "v1", slice }) => {
 
   const Testimonials = (() => {
     switch (version) {
-      case "v2":
-        return TestimonialsV2
-      case "v1":
+      case "carousel":
+        return TestimonialsCarousel
+      case "cards":
       default:
-        return TestimonialsV1
+        return TestimonialsCards
     }
   })()
 

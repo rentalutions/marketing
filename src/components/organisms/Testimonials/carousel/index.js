@@ -1,5 +1,6 @@
 import React, {
   cloneElement,
+  memo,
   useCallback,
   useEffect,
   useRef,
@@ -68,7 +69,7 @@ function Testimonials({
     [testimonials]
   )
 
-  const Picture = useCallback((testimonialIndex, level = 0) => {
+  const Picture = memo(function Picture({ testimonialIndex, level = 0 }) {
     const { picture, author: altFallback } =
       testimonials[testimonialIndex] || {}
     const [opacity, scale] = (() => {
@@ -174,11 +175,23 @@ function Testimonials({
                 gap: 3,
               }}
             >
-              {Picture(getSafeIndex(activeIndex - 2), 2)}
-              {Picture(getSafeIndex(activeIndex - 1), 1)}
-              {Picture(activeIndex)}
-              {Picture(getSafeIndex(activeIndex + 1), 1)}
-              {Picture(getSafeIndex(activeIndex + 2), 2)}
+              <Picture
+                testimonialIndex={getSafeIndex(activeIndex - 2)}
+                level={2}
+              />
+              <Picture
+                testimonialIndex={getSafeIndex(activeIndex - 1)}
+                level={1}
+              />
+              <Picture testimonialIndex={activeIndex} />
+              <Picture
+                testimonialIndex={getSafeIndex(activeIndex + 1)}
+                level={1}
+              />
+              <Picture
+                testimonialIndex={getSafeIndex(activeIndex + 2)}
+                level={2}
+              />
             </Flex>
             <Box mb={1}>
               <Text fontSize="1.5rem" fontWeight="black">

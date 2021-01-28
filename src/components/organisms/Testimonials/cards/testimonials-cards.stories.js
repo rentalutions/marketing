@@ -3,7 +3,7 @@ import { Text } from "@rent_avail/typography"
 import { Box } from "@rent_avail/layout"
 import { Testimonials } from "./index"
 
-export default { title: "Components/Testimonials" }
+export default { title: "Components/TestimonialsCards" }
 
 function Quote() {
   return (

@@ -87,7 +87,7 @@
           "plans_and_prices" : [ ],
           "show_case" : [ ],
           "testimonials" : [ ],
-          "testimonials_v2" : [ ]
+          "testimonials_carousel" : [ ]
         },
         "choices" : {
           "button_cta" : {
@@ -923,8 +923,8 @@
           },
           "testimonials" : {
             "type" : "Slice",
-            "fieldset" : "Testimonials",
-            "description" : "A list that displays quotes and its authors",
+            "fieldset" : "Testimonials Cards",
+            "description" : "A card list that displays quotes and its authors",
             "icon" : "format_quote",
             "display" : "grid",
             "non-repeat" : {
@@ -1015,9 +1015,9 @@
               }
             }
           },
-          "testimonials_v2" : {
+          "testimonials_carousel" : {
             "type" : "Slice",
-            "fieldset" : "Testimonials V2",
+            "fieldset" : "Testimonials Carousel",
             "description" : "A carousel that displays quotes and its authors",
             "icon" : "format_quote",
             "display" : "grid",
