@@ -3,13 +3,12 @@ import React, {
   memo,
   useCallback,
   useEffect,
-  useRef,
   useState,
 } from "react"
-import { Box, Container, Flex } from "@rent_avail/layout"
+import { Box, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
-import { useResize } from "@rent_avail/utils"
 import SkewBox from "components/molecules/SkewBox"
+import TitleOverflowContainer from "components/molecules/TitleOverflowContainer"
 import { STYLING } from "config"
 
 function Testimonials({
@@ -31,34 +30,6 @@ function Testimonials({
     testimonials.length > activeIndex ? testimonials[activeIndex] : null
   const { quote: Quote, author, titleAndLocation, aditionalInfo } =
     activeTestiomnial || {}
-
-  const containerRef = useRef()
-  const containerRect = useResize(containerRef)
-
-  const [titleSpace, setTitleSpace] = useState("0px")
-  const titleBoxVariants = {
-    right: {
-      textAlign: "right",
-      padding: `4rem 2rem 4rem ${titleSpace}`,
-      ml: `-${titleSpace}`,
-      borderRadius: "0 2.5rem 2.5rem 0",
-    },
-    left: {
-      textAlign: "left",
-      padding: `4rem ${titleSpace} 4rem 2rem`,
-      mr: `-${titleSpace}`,
-      borderRadius: "2.5rem 0 0 2.5rem",
-    },
-  }
-
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container || !getComputedStyle) return
-    const { marginLeft, paddingLeft } = getComputedStyle(container)
-    const titleSpaceInPixels =
-      parseInt(marginLeft, 10) + parseInt(paddingLeft, 10)
-    setTitleSpace(`${titleSpaceInPixels}px`)
-  }, [containerRect])
 
   const getSafeIndex = useCallback(
     (desiredIndex) => {
@@ -132,81 +103,69 @@ function Testimonials({
 
   return (
     <SkewBox bg={bg} {...props}>
-      <Container ref={containerRef} maxWidth={containerWidth}>
+      <TitleOverflowContainer
+        containerWidth={containerWidth}
+        orientation={orientation}
+        titleBackground={titleBackground}
+        title={
+          title &&
+          cloneElement(title, {
+            sx: {
+              ...STYLING.headline,
+              ...title?.props?.sx,
+            },
+          })
+        }
+      >
         <Flex
-          minHeight="36rem"
-          my={2}
           sx={{
-            gap: 1,
-            flexFlow: "row wrap",
+            minHeight: "36rem",
+            padding: 2,
+            gap: 2,
+            flexFlow: "column",
+            textAlign: "center",
           }}
         >
+          <Box mt="auto" mx={3}>
+            {typeof Quote === "function" ? <Quote /> : Quote}
+          </Box>
           <Flex
-            flex={1}
-            bg={titleBackground}
-            alignItems="center"
-            textAlign={orientation}
-            {...titleBoxVariants[orientation]}
-          >
-            {title &&
-              cloneElement(title, {
-                sx: {
-                  ...STYLING.headline,
-                  ...title?.props?.sx,
-                },
-              })}
-          </Flex>
-          <Flex
-            order={orientation === "left" ? -1 : 1}
-            flex={1}
+            justifyContent="center"
             sx={{
-              padding: 2,
-              gap: 2,
-              flexFlow: "column",
-              textAlign: "center",
+              gap: 3,
             }}
           >
-            <Box mt="auto" mx={3}>
-              {typeof Quote === "function" ? <Quote /> : Quote}
-            </Box>
-            <Flex
-              justifyContent="center"
-              sx={{
-                gap: 3,
-              }}
-            >
-              <Picture
-                testimonialIndex={getSafeIndex(activeIndex - 2)}
-                level={2}
-              />
-              <Picture
-                testimonialIndex={getSafeIndex(activeIndex - 1)}
-                level={1}
-              />
-              <Picture testimonialIndex={activeIndex} />
-              <Picture
-                testimonialIndex={getSafeIndex(activeIndex + 1)}
-                level={1}
-              />
-              <Picture
-                testimonialIndex={getSafeIndex(activeIndex + 2)}
-                level={2}
-              />
-            </Flex>
-            <Box mb={1}>
-              <Text fontSize="1.5rem" fontWeight="black">
-                {author}
-              </Text>
-              <Text fontSize="1.3rem" opacity={0.45}>
-                {titleAndLocation}
-              </Text>
-              <Text fontSize="1.3rem" opacity={0.45}>
-                {aditionalInfo || "-"}
-              </Text>
-            </Box>
+            <Picture
+              testimonialIndex={getSafeIndex(activeIndex - 2)}
+              level={2}
+            />
+            <Picture
+              testimonialIndex={getSafeIndex(activeIndex - 1)}
+              level={1}
+            />
+            <Picture testimonialIndex={activeIndex} />
+            <Picture
+              testimonialIndex={getSafeIndex(activeIndex + 1)}
+              level={1}
+            />
+            <Picture
+              testimonialIndex={getSafeIndex(activeIndex + 2)}
+              level={2}
+            />
           </Flex>
+          <Box mb={1}>
+            <Text fontSize="1.5rem" fontWeight="black">
+              {author}
+            </Text>
+            <Text fontSize="1.3rem" opacity={0.45}>
+              {titleAndLocation}
+            </Text>
+            <Text fontSize="1.3rem" opacity={0.45}>
+              {aditionalInfo || "-"}
+            </Text>
+          </Box>
         </Flex>
-      </Container>
+      </TitleOverflowContainer>
     </SkewBox>
   )
 }
