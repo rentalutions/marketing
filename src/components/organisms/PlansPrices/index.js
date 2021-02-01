@@ -11,10 +11,12 @@ const PlansGrid = styled(Grid)(
   variant({
     prop: "direction",
     variants: {
-      horizontal: {
-        gridTemplateColumns: "1fr",
-      },
       vertical: {
+        gridTemplateColumns: "1fr",
+        maxWidth: ["unset", "unset", "75%", "75%", "54rem"],
+        mx: "auto",
+      },
+      horizontal: {
         gridTemplateColumns: "repeat(auto-fit, minmax(24rem, 30rem))",
         justifyContent: "center",
       },
@@ -33,11 +35,11 @@ const PlanCard = styled(Flex)(
   variant({
     prop: "direction",
     variants: {
-      horizontal: {
+      vertical: {
         flexFlow: "row wrap",
         width: "100%",
       },
-      vertical: {
+      horizontal: {
         flexFlow: "column wrap",
         height: "100%",
       },
@@ -47,7 +49,7 @@ const PlanCard = styled(Flex)(
 
 function PlansPrices({
   bg,
-  direction = "horizontal",
+  direction = "vertical",
   title,
   subtitle,
   link,
