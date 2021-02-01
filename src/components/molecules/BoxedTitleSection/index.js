@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react"
 import { Box, Container, Flex } from "@rent_avail/layout"
 import { useResize } from "@rent_avail/utils"
 
-function TitleOverflowContainer({
+function BoxedTitleSection({
   containerWidth,
+  overflow = true,
   background,
   orientation = "right",
   title,
@@ -34,8 +35,9 @@ function TitleOverflowContainer({
     const container = containerRef.current
     if (!container || !getComputedStyle) return
     const { marginLeft, paddingLeft } = getComputedStyle(container)
-    const titleSpaceInPixels =
-      parseInt(marginLeft, 10) + parseInt(paddingLeft, 10)
+    const titleSpaceInPixels = overflow
+      ? parseInt(marginLeft, 10) + parseInt(paddingLeft, 10)
+      : 0
     setTitleSpace(`${titleSpaceInPixels}px`)
   }, [containerRect])
 
@@ -69,4 +71,4 @@ function TitleOverflowContainer({
   )
 }
 
-export default TitleOverflowContainer
+export default BoxedTitleSection

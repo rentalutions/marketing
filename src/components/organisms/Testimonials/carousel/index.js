@@ -8,7 +8,7 @@ import React, {
 import { Box, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import SkewBox from "components/molecules/SkewBox"
-import TitleOverflowContainer from "components/molecules/TitleOverflowContainer"
+import BoxedTitleSection from "components/molecules/BoxedTitleSection"
 import { STYLING } from "config"
 
 function Testimonials({
@@ -103,7 +103,7 @@ function Testimonials({
 
   return (
     <SkewBox bg={bg} {...props}>
-      <TitleOverflowContainer
+      <BoxedTitleSection
         containerWidth={containerWidth}
         orientation={orientation}
         titleBackground={titleBackground}
@@ -165,7 +165,7 @@ function Testimonials({
             </Text>
           </Box>
         </Flex>
-      </TitleOverflowContainer>
+      </BoxedTitleSection>
     </SkewBox>
   )
 }
