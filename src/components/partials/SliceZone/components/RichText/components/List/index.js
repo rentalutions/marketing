@@ -25,11 +25,9 @@ const StyledSpan = styled.span`
   vertical-align: middle;
 `
 
-export const ListItem = ({ children }) => {
-  return (
-    <li>
-      <StyledCheck size="1.3334rem" />
-      <StyledSpan>{children}</StyledSpan>
-    </li>
-  )
-}
+export const ListItem = ({ children }) => (
+  <li>
+    <StyledCheck size="1.3334rem" />
+    <StyledSpan>{children}</StyledSpan>
+  </li>
+)

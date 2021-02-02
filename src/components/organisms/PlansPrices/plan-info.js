@@ -24,15 +24,15 @@ function PlanInfo({ image, title, price, subtext, description, sx, ...props }) {
           borderRadius="50%"
         />
       )}
-      {title && <Text fontSize="1.6rem">{title}</Text>}
-      {price && <Text fontSize="2.4rem">{price}</Text>}
+      {title && <Text fontSize="2rem">{title}</Text>}
+      {price && <Text fontSize="4rem">{price}</Text>}
       {subtext && (
-        <Text fontSize="1.2rem" opacity="0.5">
+        <Text fontSize="1.5rem" opacity="0.5">
           {subtext}
         </Text>
       )}
       {description && (
-        <Text fontSize="1.2rem" fontWeight="800">
+        <Text fontSize="1.5rem" fontWeight="800">
           {description}
         </Text>
       )}
