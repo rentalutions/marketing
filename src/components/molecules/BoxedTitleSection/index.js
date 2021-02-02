@@ -29,6 +29,11 @@ function BoxedTitleSection({
       mr: `-${titleSpace}`,
       borderRadius: "2.5rem 0 0 2.5rem",
     },
+    noOverflow: {
+      textAlign: "center",
+      padding: "4rem 2rem",
+      borderRadius: "2.5rem",
+    },
   }
 
   useEffect(() => {
@@ -59,11 +64,16 @@ function BoxedTitleSection({
           flex={1}
           bg={titleBackground}
           alignItems="center"
-          {...titleBoxVariants[orientation]}
+          borderRadius="2.5rem"
+          {...titleBoxVariants[overflow ? orientation : "noOverflow"]}
         >
-          {title}
+          <Box width="fill-available">{title}</Box>
         </Flex>
-        <Box order={orientation === "left" ? -1 : 1} flex={1}>
+        <Box
+          width={["100%", "100%", "fit-content"]}
+          flex={["auto", "auto", 1]}
+          order={orientation === "left" ? ["unset", "unset", -1] : "unset"}
+        >
           {children}
         </Box>
       </Flex>
