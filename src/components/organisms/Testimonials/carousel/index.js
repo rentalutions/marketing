@@ -1,15 +1,10 @@
-import React, {
-  cloneElement,
-  memo,
-  useCallback,
-  useEffect,
-  useState,
-} from "react"
+import React, { cloneElement, useCallback, useEffect, useState } from "react"
 import { Box, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import SkewBox from "components/molecules/SkewBox"
 import BoxedTitleSection from "components/molecules/BoxedTitleSection"
 import { STYLING } from "config"
+import Picture from "./picture"
 
 function Testimonials({
   bg,
@@ -34,72 +29,49 @@ function Testimonials({
   const getSafeIndex = useCallback(
     (desiredIndex) => {
       const { length } = testimonials
+      if (!length) return undefined
       const remainder = desiredIndex % length
       return remainder < 0 ? remainder + length : remainder
     },
     [testimonials]
   )
 
-  const Picture = memo(function Picture({ testimonialIndex, level = 0 }) {
-    const { picture, author: altFallback } =
-      testimonials[testimonialIndex] || {}
-    const [opacity, scale] = (() => {
-      if (level >= 3) return [0.9, 0.5625]
-      if (level === 2) return [0.75, 0.625]
-      if (level === 1) return [0.5, 0.75]
-      return [0, 1]
-    })()
-    return (
-      <Box
-        onClick={() => {
-          setActiveIndex(testimonialIndex)
-          setCurrentInterval(0)
-        }}
-        position="relative"
-        width="4rem"
-        height="4rem"
-        sx={{
-          transform: `scale(${scale})`,
-          "& > *": {
-            borderRadius: "50%",
-            width: "100%",
-            height: "100%",
-          },
-        }}
-      >
-        <Box
-          position="absolute"
-          background="white"
-          opacity={opacity}
-          sx={{
-            "&:hover": {
-              cursor: "pointer",
-            },
-          }}
-        />
-        {picture && (
-          <Box
-            as="img"
-            src={picture.url}
-            alt={picture.alt || altFallback}
-            title={picture.alt || altFallback}
-          />
-        )}
-      </Box>
-    )
-  })
-
   useEffect(() => {
     if (currentInterval) {
       const timeout = setTimeout(() => {
         const nextIndex = getSafeIndex(activeIndex + 1)
-        setActiveIndex(nextIndex)
+        if (nextIndex !== undefined) {
+          setActiveIndex(nextIndex)
+        }
       }, currentInterval * 1000)
       return () => {
         clearInterval(timeout)
       }
     }
   }, [currentInterval, testimonials, activeIndex])
+
+  const carouselItems = [
+    {
+      index: getSafeIndex(activeIndex - 2),
+      level: 2,
+    },
+    {
+      index: getSafeIndex(activeIndex - 1),
+      level: 1,
+    },
+    {
+      index: getSafeIndex(activeIndex),
+      level: 0,
+    },
+    {
+      index: getSafeIndex(activeIndex + 1),
+      level: 1,
+    },
+    {
+      index: getSafeIndex(activeIndex + 2),
+      level: 2,
+    },
+  ]
 
   return (
     <SkewBox bg={bg} {...props}>
@@ -135,23 +107,23 @@ function Testimonials({
               gap: 3,
             }}
           >
-            <Picture
-              testimonialIndex={getSafeIndex(activeIndex - 2)}
-              level={2}
-            />
-            <Picture
-              testimonialIndex={getSafeIndex(activeIndex - 1)}
-              level={1}
-            />
-            <Picture testimonialIndex={activeIndex} />
-            <Picture
-              testimonialIndex={getSafeIndex(activeIndex + 1)}
-              level={1}
-            />
-            <Picture
-              testimonialIndex={getSafeIndex(activeIndex + 2)}
-              level={2}
-            />
+            {carouselItems.map(({ index, level }) => {
+              const testimonial = index >= 0 && testimonials[index]
+              if (!testimonial) return null
+              const { picture, author: itemAuthor } = testimonial
+              return (
+                <Picture
+                  key={itemAuthor}
+                  level={level}
+                  picture={picture}
+                  altFallback={itemAuthor}
+                  onClick={() => {
+                    setActiveIndex(index)
+                    setCurrentInterval(0)
+                  }}
+                />
+              )
+            })}
           </Flex>
           <Box mb={1}>
             <Text fontSize="1.5rem" fontWeight="black">
