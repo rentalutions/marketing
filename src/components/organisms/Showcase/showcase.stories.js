@@ -39,6 +39,7 @@ const cases = [
 export function Default() {
   return (
     <Showcase
+      py="6rem"
       copy={
         <React.Fragment>
           <Heading as="h2" fontSize="3rem" mb="2rem">

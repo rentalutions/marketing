@@ -22,9 +22,7 @@ export function Default() {
       picture: { url: "/send-money.png", alt: "" },
       author: "Paul",
       titleAndLocation: "Tenant in Liverpool, UK",
-      quote: (<Text>
-      Lorem ipsum dolor sit amet.
-    </Text>),
+      quote: <Text>Lorem ipsum dolor sit amet.</Text>,
     },
     {
       picture: { url: "/state-specific.png", alt: "" },
@@ -49,6 +47,7 @@ export function Default() {
     <Testimonials
       title={<Box as="h2">Testimonials</Box>}
       testimonials={testimonials}
+      py="4rem"
     />
   )
 }
@@ -72,6 +71,7 @@ export function WithTwoCards() {
     <Testimonials
       title={<Box as="h2">Testimonials</Box>}
       testimonials={testimonials}
+      py="4rem"
     />
   )
 }
@@ -155,6 +155,7 @@ export function WithTwelveCards() {
     <Testimonials
       title={<Box as="h2">Testimonials</Box>}
       testimonials={testimonials}
+      py="4rem"
     />
   )
 }

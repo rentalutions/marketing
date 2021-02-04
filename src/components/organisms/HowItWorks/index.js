@@ -1,10 +1,9 @@
 import React, { cloneElement } from "react"
 import { motion } from "framer-motion"
-import { useInViewAnimation } from "components/@rent_avail/utils"
+import { useInViewAnimation } from "utils/animation"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
-// import { FadeIn } from "components/fadeIn"
 
 function HowItWorks({
   title,
@@ -15,21 +14,29 @@ function HowItWorks({
   animationPreset = "fadeIn",
   ...props
 }) {
-  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
+  const [presets, intersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
   return (
-    <Box {...props} ref={intersectionView}>
+    <Box
+      as={motion.aside}
+      {...animation?.container}
+      {...props}
+      ref={intersectionView}
+    >
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         {eyebrow && (
-          <motion.aside {...animation}>
-            <Text color="blue_500" mb="1rem">
-              {eyebrow}
-            </Text>
-          </motion.aside>
+          <Text
+            as={motion.aside}
+            {...animation?.item}
+            color="blue_500"
+            mb="1rem"
+          >
+            {eyebrow}
+          </Text>
         )}
         {title && (
-          <motion.aside {...animation}>
+          <motion.aside {...animation?.item}>
             {cloneElement(title, {
               mb: "4rem",
               sx: { ...STYLING.headline, ...title.props?.sx },
@@ -37,57 +44,63 @@ function HowItWorks({
           </motion.aside>
         )}
         {sections.map(({ uid, ...section }, idx) => (
-          <motion.aside
-            key={uid || idx}
-            {...animation}
-            transition={{
-              ...animation.transition,
-              delay: 0.75 + idx * 0.25,
-            }}
-          >
-            <HowItWorksSection
-              {...section}
-              flip={alternate(idx)}
-              mb={idx !== sections.length - 1 ? "6rem" : 0}
-            />
-          </motion.aside>
+          <HowItWorksSection
+            {...section}
+            flip={alternate(idx)}
+            animationPreset={animationPreset}
+            mb={idx !== sections.length - 1 ? "6rem" : 0}
+          />
         ))}
       </Container>
     </Box>
   )
 }
 
-function HowItWorksSection({ copy, image = null, video, embed, flip, mb }) {
+function HowItWorksSection({
+  copy,
+  image = null,
+  video,
+  embed,
+  flip,
+  animationPreset,
+  mb,
+}) {
   const copyColumn = ["span 12", flip ? "7 / span 6" : "1 / span 6"]
   const imageColumn = ["span 12", flip ? "1 / span 6" : "7 / span 6"]
+
+  const [presets, intersectionView] = useInViewAnimation({
+    staggerDirection: flip ? -1 : 1,
+    threshold: 0.5,
+  })
+  const animation = presets[animationPreset]
+
   return (
-    <Grid alignItems="center" gridAutoFlow="row dense" mb={mb}>
-      <Col gridColumn={copyColumn}>{copy}</Col>
-      {image?.url && (
-        <Col
-          as="img"
-          src={image.url}
-          alt={image.alt}
-          title={image.alt}
-          gridColumn={imageColumn}
-          maxWidth="100%"
-        />
-      )}
-      {!!video?.url && (
-        <Col
-          as="video"
-          width="100%"
-          gridColumn={imageColumn}
-          maxWidth="100%"
-          controls
-          src={video.url}
-        />
-      )}
-      {!!embed && (
-        <Col gridColumn={imageColumn} maxWidth="100%">
-          {embed}
-        </Col>
-      )}
+    <Grid
+      as={motion.aside}
+      {...animation?.container}
+      alignItems="center"
+      gridAutoFlow="row dense"
+      mb={mb}
+      ref={intersectionView}
+    >
+      <Col as={motion.aside} {...animation?.item} gridColumn={copyColumn}>
+        {copy}
+      </Col>
+      <Col as={motion.aside} {...animation?.item} gridColumn={imageColumn}>
+        {image?.url && (
+          <Box
+            as="img"
+            src={image.url}
+            alt={image.alt}
+            title={image.alt}
+            maxWidth="100%"
+          />
+        )}
+        {!!video?.url && (
+          <Box as="video" width="100%" controls src={video.url} />
+        )}
+        {!!embed && <Box>{embed}</Box>}
+      </Col>
     </Grid>
   )
 }

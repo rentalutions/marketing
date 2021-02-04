@@ -1,6 +1,6 @@
 import React, { cloneElement } from "react"
 import { Box } from "@rent_avail/layout"
-import { useInViewAnimation } from "components/@rent_avail/utils"
+import { useInViewAnimation } from "utils/animation"
 import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { STYLING } from "config"
 import { motion } from "framer-motion"
@@ -19,22 +19,16 @@ function EmailCapture({
   const animation = presets[animationPreset]
 
   return (
-    <Box ref={intersectionView}>
+    <Box as={motion.aside} {...animation?.container} ref={intersectionView}>
       {title && (
-        <motion.aside {...animation}>
+        <motion.aside {...animation?.item}>
           {cloneElement(title, {
             my: "2.5rem",
             sx: { ...STYLING.title, ...title.props?.sx },
           })}
         </motion.aside>
       )}
-      <motion.aside
-        {...animation}
-        transition={{
-          ...animation.transition,
-          delay: 0.75,
-        }}
-      >
+      <motion.aside {...animation?.item}>
         <EmailCaptureInput
           inputLabel={inputLabel}
           inputLabelId={inputLabelId}

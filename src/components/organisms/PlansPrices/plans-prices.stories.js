@@ -205,15 +205,3 @@ export function VerticalWithImageAndButton() {
     </Box>
   )
 }
-
-export function StandAlonePlanInfo() {
-  return (
-    <PlanInfo
-      image={{ url: "/user-card.png", alt: "" }}
-      title="Plan 3"
-      price="$9.99"
-      subtext="Subtext"
-      description="Description"
-    />
-  )
-}

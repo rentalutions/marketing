@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { useInViewAnimation } from "components/@rent_avail/utils"
+import { useInViewAnimation } from "utils/animation"
 import { Box, Col, Container, Flex, Grid } from "@rent_avail/layout"
 import Icon from "components/elements/Icon"
 
@@ -30,80 +30,74 @@ const Showcase = ({
   const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
 
+  const imageCol = (
+    <Col gridColumn={["span 12", "span 12", "span 5"]}>
+      <motion.aside {...animation?.item}>
+        <Box
+          as="img"
+          src={image.url}
+          alt={image.alt}
+          title={image.alt}
+          maxWidth="22rem"
+        />
+      </motion.aside>
+    </Col>
+  )
+
   return (
-    <Box {...props} ref={intersectionView}>
+    <Box
+      as={motion.aside}
+      {...animation?.container}
+      {...props}
+      ref={intersectionView}
+    >
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         <Grid
           alignItems="center"
           justifyItems="center"
           gridAutoFlow="row dense"
         >
+          {flip && imageCol}
           <Col gridColumn={["span 12", "span 12", "span 7"]}>
             {copy && (
-              <motion.aside
-                {...animation}
-                transition={{
-                  ...animation.transition,
-                  delay: 0.75,
-                }}
-              >
-                <Box>{copy}</Box>
-              </motion.aside>
+              <Box as={motion.aside} {...animation?.item}>
+                {copy}
+              </Box>
             )}
-            <motion.aside
-              {...animation}
-              transition={{
-                ...animation.transition,
-                delay: 1.25,
-              }}
+
+            <Flex
+              as={motion.aside}
+              {...animation?.item}
+              justifyContent="space-between"
+              m="2rem 0 3rem"
+              minHeight="4.5rem"
             >
-              <Flex
-                justifyContent="space-between"
-                m="2rem 0 3rem"
-                minHeight="4.5rem"
-              >
-                {cases.map(({ icon, copy }, idx) => (
-                  <Box
-                    key={copy}
-                    color={idx === activeCase ? "blue_500" : "ui_500"}
-                    sx={{
-                      transition: "color 500ms ease-in-out",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setActiveCase(idx)}
-                  >
-                    <Icon name={icon} width="48px" height="48px" />
-                  </Box>
-                ))}
-              </Flex>
-              {cases && cases[activeCase] && cases[activeCase].copy && (
-                <Box minHeight="4rem" textAlign="center">
-                  {cases[activeCase].copy}
+              {cases.map(({ icon, copy }, idx) => (
+                <Box
+                  key={copy}
+                  color={idx === activeCase ? "blue_500" : "ui_500"}
+                  sx={{
+                    transition: "color 500ms ease-in-out",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setActiveCase(idx)}
+                >
+                  <Icon name={icon} width="48px" height="48px" />
                 </Box>
-              )}
-            </motion.aside>
-          </Col>
-          <Col
-            gridColumn={["span 12", "span 12", "span 5"]}
-            order={flip ? -1 : 1}
-          >
-            <motion.aside
-              {...animation}
-              transition={{
-                ...animation.transition,
-                delay: 0.25,
-                duration: 1.75,
-              }}
-            >
+              ))}
+            </Flex>
+            {cases && cases[activeCase] && cases[activeCase].copy && (
               <Box
-                as="img"
-                src={image.url}
-                alt={image.alt}
-                title={image.alt}
-                maxWidth="22rem"
-              />
-            </motion.aside>
+                as={motion.aside}
+                {...animation?.item}
+                minHeight="4rem"
+                textAlign="center"
+              >
+                {cases[activeCase].copy}
+              </Box>
+            )}
           </Col>
+          {!flip && imageCol}
         </Grid>
       </Container>
     </Box>

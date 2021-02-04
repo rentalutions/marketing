@@ -1,11 +1,10 @@
 import React, { useState, cloneElement } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import styled from "styled-components"
-import { useInViewAnimation } from "components/@rent_avail/utils"
+import { useInViewAnimation } from "utils/animation"
 import { Box, Container, Stack } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
-import { FadeIn } from "components/fadeIn"
 
 const Accordion = styled(Box)`
   cursor: pointer;
@@ -29,10 +28,16 @@ function FAQ({
   const animation = presets[animationPreset]
 
   return (
-    <Box color={color} {...props} ref={intersectionView}>
+    <Box
+      as={motion.aside}
+      {...animation?.container}
+      color={color}
+      {...props}
+      ref={intersectionView}
+    >
       <Container {...(containerWidth && { maxWidth: containerWidth })}>
         {eyebrow && (
-          <motion.aside {...animation}>
+          <motion.aside {...animation?.item}>
             {cloneElement(eyebrow, {
               color: color || "blue_300",
               mb: "1rem",
@@ -40,7 +45,7 @@ function FAQ({
           </motion.aside>
         )}
         {title && (
-          <motion.aside {...animation}>
+          <motion.aside {...animation?.item}>
             {cloneElement(title, {
               mb: "1rem",
               sx: { ...STYLING.headline, ...title.props?.sx },
@@ -48,13 +53,7 @@ function FAQ({
           </motion.aside>
         )}
         {description && (
-          <motion.aside
-            {...animation}
-            transition={{
-              ...animation.transition,
-              delay: 0.75,
-            }}
-          >
+          <motion.aside {...animation?.item}>
             <Box mb="2rem">{description}</Box>
           </motion.aside>
         )}
@@ -62,14 +61,7 @@ function FAQ({
           {questions.map(({ question, answer: Answer }, idx) => {
             const isOpen = idx === openIdx
             return (
-              <motion.aside
-                key={question}
-                {...animation}
-                transition={{
-                  ...animation.transition,
-                  delay: 1.0 + idx * 0.25,
-                }}
-              >
+              <motion.aside key={question} {...animation?.item}>
                 <Accordion
                   borderRadius="0.25rem"
                   mb="2rem"
