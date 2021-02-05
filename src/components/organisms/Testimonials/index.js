@@ -7,12 +7,11 @@ import React, {
 } from "react"
 import { motion } from "framer-motion"
 import styled from "styled-components"
-
+import { ChevronLeft, ChevronRight } from "react-feather"
 import { useResize } from "@rent_avail/utils"
 import { useInViewAnimation } from "utils/animation"
 import { Container, Box, Card, Stack } from "@rent_avail/layout"
-import { ChevronLeft, ChevronRight } from "react-feather"
-
+import { Text } from "@rent_avail/typography"
 import SkewBox from "components/molecules/SkewBox"
 import { STYLING } from "config"
 
@@ -48,6 +47,7 @@ const Testimonial = styled(Card)`
   width: 26rem;
   height: 100%;
   display: flex;
+  gap: 1rem;
   flex-flow: column;
   align-items: center;
   justify-content: center;
@@ -190,8 +190,10 @@ function Testimonials({
                         sx={{ borderRadius: "50%" }}
                       />
                     )}
-                    <h5>{author}</h5>
-                    <span>{titleAndLocation}</span>
+                    <Box>
+                      <h5>{author}</h5>
+                      <Text>{titleAndLocation}</Text>
+                    </Box>
                   </Testimonial>
                 )
               )}

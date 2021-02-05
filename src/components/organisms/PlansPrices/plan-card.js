@@ -17,11 +17,11 @@ const PlanContainer = styled(Flex)(
   variant({
     prop: "direction",
     variants: {
-      horizontal: {
+      vertical: {
         flexFlow: "row wrap",
         width: "100%",
       },
-      vertical: {
+      horizontal: {
         flexFlow: "column wrap",
         height: "100%",
       },
@@ -82,12 +82,12 @@ export default function PlanCard({
             />
           )}
           {title && (
-            <Text as={motion.aside} {...animation?.item} fontSize="1.6rem">
+            <Text as={motion.aside} {...animation?.item} fontSize="2rem">
               {title}
             </Text>
           )}
           {price && (
-            <Text as={motion.aside} {...animation?.item} fontSize="2.4rem">
+            <Text as={motion.aside} {...animation?.item} fontSize="4rem">
               {price}
             </Text>
           )}
@@ -95,7 +95,7 @@ export default function PlanCard({
             <Text
               as={motion.aside}
               {...animation?.item}
-              fontSize="1.2rem"
+              fontSize="1.5rem"
               opacity="0.5"
             >
               {subtext}
@@ -105,7 +105,7 @@ export default function PlanCard({
             <Text
               as={motion.aside}
               {...animation?.item}
-              fontSize="1.2rem"
+              fontSize="1.5rem"
               fontWeight="800"
             >
               {description}

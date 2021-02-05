@@ -70,11 +70,15 @@ function planWithImage(p) {
   }
 }
 
-function planWithButton(p) {
+function planWithButton(p, idx) {
   return {
     ...p,
     button: (
-      <Button forwardedAs="a" variant="primary" href="https://avail.co">
+      <Button
+        forwardedAs="a"
+        variant={idx % 2 === 0 ? "primary" : "default"}
+        href="https://avail.co"
+      >
         Button Text
       </Button>
     ),

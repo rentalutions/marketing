@@ -759,8 +759,8 @@
               "direction" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "horizontal", "vertical" ],
-                  "default_value" : "horizontal",
+                  "options" : [ "vertical", "horizontal" ],
+                  "default_value" : "vertical",
                   "label" : "Direction"
                 }
               }
@@ -826,6 +826,15 @@
                 "config" : {
                   "allowTargetBlank" : true,
                   "label" : "Button Link"
+                }
+              },
+              "buttonIsPrimary" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "Default",
+                  "placeholder_true" : "Primary",
+                  "default_value" : false,
+                  "label" : "Button variant"
                 }
               },
               "background" : {
