@@ -1,8 +1,9 @@
-import { Box, Col, Flex } from "@rent_avail/layout"
+import * as React from "react"
 import Link from "next/link"
 import { Button } from "@rent_avail/controls"
+import { Box, Col, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
-import * as React from "react"
+import Video from "components/elements/Video"
 import { getTargetProps } from "utils/link"
 import { STYLING } from "config"
 import { useInViewAnimation } from "utils/animation"
@@ -42,7 +43,7 @@ export function PitchCard({
       )}
       {!!video?.url && (
         <motion.aside {...animation?.item}>
-          <Box as="video" mb="2rem" width="100%" controls src={video.url} />
+          <Video mb="2rem" src={video?.url} />
         </motion.aside>
       )}
       {!!embed && (

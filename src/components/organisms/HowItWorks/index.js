@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
+import Video from "components/elements/Video"
 import { STYLING } from "config"
 
 function HowItWorks({
@@ -96,9 +97,7 @@ function HowItWorksSection({
             maxWidth="100%"
           />
         )}
-        {!!video?.url && (
-          <Box as="video" width="100%" controls src={video.url} />
-        )}
+        {!!video?.url && <Video src={video.url} width="100%" />}
         {!!embed && <Box>{embed}</Box>}
       </Col>
     </Grid>

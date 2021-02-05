@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import styled from "styled-components"
 import { useInViewAnimation } from "utils/animation"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
-
+import Video from "components/elements/Video"
 import { STYLING } from "config"
 
 const HeroWrapper = styled(Box)`
@@ -65,9 +65,7 @@ function Hero({
             maxWidth={["100%", "50%", "50%", "100%"]}
           />
         )}
-        {!!video?.url && (
-          <Box as="video" width="100%" controls src={video.url} />
-        )}
+        {!!video?.url && <Video src={video?.url} />}
         {!!embed && embed}
       </motion.aside>
     </Col>
