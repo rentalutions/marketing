@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
+import Video from "components/elements/Video"
 import { STYLING } from "config"
 
 function HowItWorks({
@@ -37,7 +38,14 @@ function HowItWorks({
   )
 }
 
-function HowItWorksSection({ copy, image = null, video, embed, flip, mb }) {
+function HowItWorksSection({
+  copy,
+  image = null,
+  video = {},
+  embed,
+  flip,
+  mb,
+}) {
   const copyColumn = ["span 12", flip ? "7 / span 6" : "1 / span 6"]
   const imageColumn = ["span 12", flip ? "1 / span 6" : "7 / span 6"]
   return (
@@ -54,14 +62,9 @@ function HowItWorksSection({ copy, image = null, video, embed, flip, mb }) {
         />
       )}
       {!!video?.url && (
-        <Col
-          as="video"
-          width="100%"
-          gridColumn={imageColumn}
-          maxWidth="100%"
-          controls
-          src={video.url}
-        />
+        <Col width="100%" gridColumn={imageColumn} maxWidth="100%">
+          <Video src={video.url} />
+        </Col>
       )}
       {!!embed && (
         <Col gridColumn={imageColumn} maxWidth="100%">
