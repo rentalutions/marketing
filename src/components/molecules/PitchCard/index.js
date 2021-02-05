@@ -18,7 +18,7 @@ export function PitchCard({
   animationPreset,
   ...props
 }) {
-  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.5 })
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
   const isButtonVariant = !!link?.button
   return (

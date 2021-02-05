@@ -27,7 +27,7 @@ const Showcase = ({
     }
   }, [cases, activeCase, setActiveCase])
 
-  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
+  const [presets, intersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
   const imageCol = (

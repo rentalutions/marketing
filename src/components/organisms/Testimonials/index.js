@@ -136,9 +136,7 @@ function Testimonials({
     }
   }, [containerRect, scrollRef, childrenRef])
 
-  const [presets, animationIntersectionView] = useInViewAnimation({
-    threshold: 0.25,
-  })
+  const [presets, animationIntersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
   return (

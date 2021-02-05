@@ -14,7 +14,7 @@ function HowItWorks({
   animationPreset = "fadeIn",
   ...props
 }) {
-  const [presets, intersectionView] = useInViewAnimation()
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.05 })
   const animation = presets[animationPreset]
 
   return (
@@ -71,7 +71,6 @@ function HowItWorksSection({
 
   const [presets, intersectionView] = useInViewAnimation({
     staggerDirection: flip ? -1 : 1,
-    threshold: 0.5,
   })
   const animation = presets[animationPreset]
 

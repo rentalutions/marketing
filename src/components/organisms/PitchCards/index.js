@@ -18,7 +18,7 @@ function PitchCards({
   const cardSpan =
     span || (sections.length < 4 ? [12, 12 / sections.length] : [12, 6])
   const headingContent = title || description || eyebrow
-  const [presets, intersectionView] = useInViewAnimation()
+  const [presets, intersectionView] = useInViewAnimation({ threshold: 0.05 })
   const animation = presets[animationPreset]
   return (
     <motion.aside {...animation?.container}>
