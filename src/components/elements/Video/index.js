@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Box } from "@rent_avail/layout"
-import usePlatformDetector, { BROWSER } from "utils/usePlatformDetector"
+import { isSafari } from "react-device-detect"
 
 function Video({ src, ...props }) {
-  const { browser } = usePlatformDetector()
-  const forcePreview = browser === BROWSER.Safari
+  const [forcePreview, setForcePreview] = useState(false)
+  useEffect(() => {
+    setForcePreview(isSafari)
+  }, [])
 
   return src ? (
     <Box
