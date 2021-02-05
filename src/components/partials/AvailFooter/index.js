@@ -12,6 +12,8 @@ import { Heading, Text } from "@rent_avail/typography"
 import styled from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
+import { useInViewAnimation } from "utils/animation"
+import { motion } from "framer-motion"
 
 const FooterLinks = styled(Box)`
   margin-top: 3rem;
@@ -47,11 +49,19 @@ const FooterIcon = styled(Box).attrs({
   }
 `
 
-const AvailFooter = () => {
+const AvailFooter = ({ animationPreset = "fadeIn" }) => {
   const currentYear = new Date().getFullYear()
   const urlResolver = useUrlResolver()
+  const [presets, intersectionView] = useInViewAnimation()
+  const animation = presets[animationPreset]
+
   return (
-    <Box bg="blue_100">
+    <Box
+      as={motion.div}
+      {...animation?.container}
+      bg="blue_100"
+      ref={intersectionView}
+    >
       <Container maxWidth={CONTAINER_WIDTHS} p="2rem 2rem 3rem">
         <Flex justifyContent="center">
           <Flex
@@ -68,190 +78,12 @@ const AvailFooter = () => {
           </Flex>
         </Flex>
         <Grid gap={["2rem", "2rem", "4rem"]} justifyContent="space-between">
-          <Col span={[12, 6, 4, 3]}>
-            <FooterLinks>
-              <FooterLinksHeading as="h5">Get Started</FooterLinksHeading>
-              <FooterText
-                as="a"
-                href={urlResolver("https://www.avail.co/users/new")}
-              >
-                Sign up as a landlord
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver("https://www.avail.co/users/new?tenant=true")}
-              >
-                Sign up as a tenant
-              </FooterText>
-            </FooterLinks>
-            <FooterLinks>
-              <FooterLinksHeading as="h5">About Us</FooterLinksHeading>
-              <FooterText
-                as="a"
-                href={urlResolver("https://www.avail.co/about")}
-              >
-                Company
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver("https://www.avail.co/house-rules")}
-              >
-                House Rules
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver("https://www.avail.co/testimonials")}
-              >
-                Testimonials
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver("https://www.avail.co/jobs")}
-              >
-                Jobs
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver("https://www.avail.co/press")}
-              >
-                Press
-              </FooterText>
-            </FooterLinks>
-          </Col>
-          <Col span={[12, 6, 4, 3]}>
-            <FooterLinks>
-              <FooterLinksHeading as="h5">How It Works</FooterLinksHeading>
-              <FooterText
-                as="a"
-                href={urlResolver(
-                  "https://www.avail.co/landlords/rental-listings"
-                )}
-              >
-                Rental Listings
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver(
-                  "https://www.avail.co/landlords/online-rental-applications"
-                )}
-              >
-                Rental Applications
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver(
-                  "https://www.avail.co/landlords/online-tenant-screening"
-                )}
-              >
-                Tenant Screening
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver(
-                  "https://www.avail.co/landlords/credit-and-background-check"
-                )}
-              >
-                Credit, Criminal, Eviction Reports
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver(
-                  "https://www.avail.co/landlords/rental-lease-agreement"
-                )}
-              >
-                Digital Leasing
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver(
-                  "https://www.avail.co/landlords/online-rent-collection"
-                )}
-              >
-                Online Rent Payments
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver(
-                  "https://www.avail.co/landlords/maintenance-tracking"
-                )}
-              >
-                Maintenance Tracking
-              </FooterText>
-              <FooterText
-                as="a"
-                href={urlResolver(
-                  "https://www.avail.co/landlords/rent-analysis"
-                )}
-              >
-                Rent Price Analysis
-              </FooterText>
-            </FooterLinks>
-          </Col>
-          <Col span={[12, 6, 4, 3]}>
-            <Flex
-              flexDirection="column"
-              alignItems={[
-                "flex-start",
-                "flex-start",
-                "flex-start",
-                "flex-end",
-              ]}
-            >
-              <Box>
-                <FooterLinks>
-                  <FooterLinksHeading as="h5">Resources</FooterLinksHeading>
-                  <FooterText
-                    as="a"
-                    href={urlResolver("https://www.avail.co/education")}
-                  >
-                    Landlord Education
-                  </FooterText>
-                  <FooterText
-                    as="a"
-                    href={urlResolver("https://community.avail.co")}
-                  >
-                    Avail Community
-                  </FooterText>
-                  <FooterText
-                    as="a"
-                    href={urlResolver("https://www.avail.co/blog")}
-                  >
-                    Avail Blog
-                  </FooterText>
-                  <FooterText
-                    as="a"
-                    href={urlResolver("https://support.avail.co")}
-                  >
-                    Help Center
-                  </FooterText>
-                  <FooterText
-                    as="a"
-                    href={urlResolver("https://www.avail.co/contact")}
-                  >
-                    Contact Us
-                  </FooterText>
-                  <FooterText
-                    as="a"
-                    href={urlResolver("https://www.avail.co/sitemap")}
-                  >
-                    Site Map
-                  </FooterText>
-                </FooterLinks>
-                <FooterLinks>
-                  <FooterLinksHeading as="h5">Avail</FooterLinksHeading>
-                  <FooterText as="div">
-                    <address style={{ fontStyle: "normal" }}>
-                      Suite #404 <br />
-                      900 N Franklin St. <br />
-                      Chicago, IL 60610
-                    </address>
-                  </FooterText>
-                  <FooterText>(312) 292-9347</FooterText>
-                </FooterLinks>
-              </Box>
-            </Flex>
-          </Col>
-          <Col span={[12, 12, 12, 3]} order={[1, 1, 1, -1]}>
+          <Col
+            as={motion.div}
+            {...animation?.item}
+            span={[12, 12, 12, 3]}
+            order={[1, 1, 1, 0]}
+          >
             <Flex>
               <Stack
                 direction={["row", "row", "row", "column"]}
@@ -322,6 +154,189 @@ const AvailFooter = () => {
               </Stack>
             </Flex>
           </Col>
+          <Col as={motion.div} {...animation?.item} span={[12, 6, 4, 3]}>
+            <FooterLinks>
+              <FooterLinksHeading as="h5">Get Started</FooterLinksHeading>
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/users/new")}
+              >
+                Sign up as a landlord
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/users/new?tenant=true")}
+              >
+                Sign up as a tenant
+              </FooterText>
+            </FooterLinks>
+            <FooterLinks>
+              <FooterLinksHeading as="h5">About Us</FooterLinksHeading>
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/about")}
+              >
+                Company
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/house-rules")}
+              >
+                House Rules
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/testimonials")}
+              >
+                Testimonials
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/jobs")}
+              >
+                Jobs
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver("https://www.avail.co/press")}
+              >
+                Press
+              </FooterText>
+            </FooterLinks>
+          </Col>
+          <Col as={motion.div} {...animation?.item} span={[12, 6, 4, 3]}>
+            <FooterLinks>
+              <FooterLinksHeading as="h5">How It Works</FooterLinksHeading>
+              <FooterText
+                as="a"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/rental-listings"
+                )}
+              >
+                Rental Listings
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/online-rental-applications"
+                )}
+              >
+                Rental Applications
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/online-tenant-screening"
+                )}
+              >
+                Tenant Screening
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/credit-and-background-check"
+                )}
+              >
+                Credit, Criminal, Eviction Reports
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/rental-lease-agreement"
+                )}
+              >
+                Digital Leasing
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/online-rent-collection"
+                )}
+              >
+                Online Rent Payments
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/maintenance-tracking"
+                )}
+              >
+                Maintenance Tracking
+              </FooterText>
+              <FooterText
+                as="a"
+                href={urlResolver(
+                  "https://www.avail.co/landlords/rent-analysis"
+                )}
+              >
+                Rent Price Analysis
+              </FooterText>
+            </FooterLinks>
+          </Col>
+          <Col as={motion.div} {...animation?.item} span={[12, 6, 4, 3]}>
+            <Flex
+              flexDirection="column"
+              alignItems={[
+                "flex-start",
+                "flex-start",
+                "flex-start",
+                "flex-end",
+              ]}
+            >
+              <Box>
+                <FooterLinks>
+                  <FooterLinksHeading as="h5">Resources</FooterLinksHeading>
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://www.avail.co/education")}
+                  >
+                    Landlord Education
+                  </FooterText>
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://community.avail.co")}
+                  >
+                    Avail Community
+                  </FooterText>
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://www.avail.co/blog")}
+                  >
+                    Avail Blog
+                  </FooterText>
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://support.avail.co")}
+                  >
+                    Help Center
+                  </FooterText>
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://www.avail.co/contact")}
+                  >
+                    Contact Us
+                  </FooterText>
+                  <FooterText
+                    as="a"
+                    href={urlResolver("https://www.avail.co/sitemap")}
+                  >
+                    Site Map
+                  </FooterText>
+                </FooterLinks>
+                <FooterLinks>
+                  <FooterLinksHeading as="h5">Avail</FooterLinksHeading>
+                  <FooterText as="div">
+                    <address style={{ fontStyle: "normal" }}>
+                      Suite #404 <br />
+                      900 N Franklin St. <br />
+                      Chicago, IL 60610
+                    </address>
+                  </FooterText>
+                  <FooterText>(312) 292-9347</FooterText>
+                </FooterLinks>
+              </Box>
+            </Flex>
+          </Col>
         </Grid>
       </Container>
       <Box bg="blue_500" color="blue_300">
@@ -331,7 +346,7 @@ const AvailFooter = () => {
           p="2.667rem 2rem"
           fontSize="1.334rem"
         >
-          <Flex mb="1rem">
+          <Flex mb="1rem" as={motion.div} {...animation?.item}>
             <Text
               color="blue_100"
               as="a"
@@ -348,7 +363,9 @@ const AvailFooter = () => {
               Terms
             </Text>
           </Flex>
-          <Box>© 2011—{currentYear} Avail, All Rights Reserved.</Box>
+          <Box as={motion.div} {...animation?.item}>
+            © 2011—{currentYear} Avail, All Rights Reserved.
+          </Box>
         </Box>
       </Box>
     </Box>

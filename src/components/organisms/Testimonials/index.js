@@ -88,7 +88,6 @@ function Testimonials({
 
     function observerCb(entries) {
       entries.forEach((entry) => {
-        console.log(entry)
         const isVisible = entry.isIntersecting
         const { previousSibling, nextSibling } = entry.target.parentElement
         if (previousSibling === null) setMayScrollLeft(!isVisible)

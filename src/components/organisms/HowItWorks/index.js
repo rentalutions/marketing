@@ -45,6 +45,7 @@ function HowItWorks({
         )}
         {sections.map(({ uid, ...section }, idx) => (
           <HowItWorksSection
+            key={uid || idx}
             {...section}
             flip={alternate(idx)}
             animationPreset={animationPreset}

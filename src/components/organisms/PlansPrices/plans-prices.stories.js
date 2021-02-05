@@ -3,7 +3,6 @@ import { Award, CheckCircle, Gift } from "react-feather"
 import Button from "components/elements/Button"
 import { Box } from "@rent_avail/layout"
 import { PlansPrices } from "./index"
-import PlanInfo from "./plan-info"
 
 export default { title: "Components/Plans and Prices" }
 

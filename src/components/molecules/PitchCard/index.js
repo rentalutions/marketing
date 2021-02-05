@@ -31,15 +31,14 @@ export function PitchCard({
       {...animation?.container}
     >
       {icon?.url && (
-        <motion.aside {...animation?.item}>
-          <Box
-            as="img"
-            src={icon.url}
-            alt={icon.alt}
-            title={icon.alt}
-            width="10rem"
-          />
-        </motion.aside>
+        <Box
+          as={motion.img}
+          {...animation?.item}
+          src={icon.url}
+          alt={icon.alt}
+          title={icon.alt}
+          width="10rem"
+        />
       )}
       {!!video?.url && (
         <motion.aside {...animation?.item}>

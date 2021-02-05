@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useCallback } from "react"
 
 export function useHadIntersected({ threshold } = {}) {
   const targetRef = useRef()
@@ -22,66 +22,62 @@ export function useHadIntersected({ threshold } = {}) {
   return [hadIntersected, targetRef]
 }
 
-export function useAnimation({ duration, staggerDirection = 1 } = {}) {
+export function useAnimation({
+  containerDuration = 0,
+  itemDuration,
+  staggerChildren = 0.15,
+  staggerDirection = 1,
+  when,
+} = {}) {
   const [final, setFinal] = useState(false)
 
   function animate() {
     setFinal(true)
   }
 
-  const baseProps = {
-    transition: {
-      duration,
-    },
-  }
-
-  const container = {
-    initial: "initial",
-    animate: final ? "final" : "initial",
-    variants: {
-      initial: { opacity: 0 },
-      final: {
-        opacity: 1,
-        transition: {
-          duration: 0,
-          staggerChildren: 0.15,
-          staggerDirection,
+  const makeEffect = useCallback(
+    (variants) => ({
+      container: {
+        initial: "initial",
+        animate: final ? "final" : "initial",
+        variants: {
+          ...variants,
+          final: {
+            ...variants.final,
+            transition: {
+              ...(containerDuration !== "default" && {
+                duration: containerDuration,
+              }),
+              staggerChildren,
+              staggerDirection,
+              when,
+            },
+          },
         },
       },
-    },
-  }
+      item: {
+        transition: {
+          duration: itemDuration,
+        },
+        variants,
+      },
+    }),
+    [final, containerDuration, itemDuration, staggerChildren, staggerDirection]
+  )
 
   const animationEffects = {
-    fadeIn: {
-      container,
-      item: {
-        ...baseProps,
-        variants: {
-          initial: { opacity: 0, y: "1rem" },
-          final: { opacity: 1, y: "0rem" },
-        },
-      },
-    },
-    fadeOut: {
-      container,
-      item: {
-        ...baseProps,
-        variants: {
-          initial: { opacity: 1, y: "0rem" },
-          final: { opacity: 0, y: "-1rem" },
-        },
-      },
-    },
-    scaleIn: {
-      container,
-      item: {
-        baseProps,
-        variants: {
-          initial: { opacity: 0, scale: 0 },
-          final: { opacity: 1, scale: 1 },
-        },
-      },
-    },
+    fadeIn: makeEffect({
+      initial: { opacity: 0, y: "1rem" },
+      final: { opacity: 1, y: "0rem" },
+    }),
+    fadeOut: makeEffect({
+      initial: { opacity: 1, y: "0rem" },
+      final: { opacity: 0, y: "-1rem" },
+    }),
+    scaleIn: makeEffect({
+      initial: { opacity: 0, scale: 0 },
+      final: { opacity: 1, scale: 1 },
+    }),
   }
 
   return [animationEffects, animate]
@@ -89,13 +85,19 @@ export function useAnimation({ duration, staggerDirection = 1 } = {}) {
 
 export function useInViewAnimation({
   threshold = 0.1,
-  duration,
+  containerDuration,
+  itemDuration,
+  staggerChildren,
   staggerDirection,
+  when,
 } = {}) {
   const [hadIntersected, intersectionView] = useHadIntersected({ threshold })
   const [animationVariants, animate] = useAnimation({
-    duration,
+    containerDuration,
+    itemDuration,
+    staggerChildren,
     staggerDirection,
+    when,
   })
 
   useEffect(() => {
