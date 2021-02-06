@@ -10,7 +10,10 @@ export function useHadIntersected({ threshold } = {}) {
     if (!hadIntersected && targetRef.current) {
       observerRef.current = new IntersectionObserver(
         ([{ isIntersecting }]) => {
-          setHadIntersected((value) => !value && isIntersecting)
+          if (!hadIntersected && isIntersecting) {
+            setHadIntersected(true)
+            observerRef.current?.disconnect()
+          }
         },
         { threshold }
       )
@@ -31,11 +34,7 @@ export function useAnimation({
 } = {}) {
   const [final, setFinal] = useState(false)
 
-  function animate() {
-    setFinal(true)
-  }
-
-  const makeEffect = useCallback(
+  const makePreset = useCallback(
     (variants) => ({
       container: {
         initial: "initial",
@@ -65,22 +64,26 @@ export function useAnimation({
     [final, containerDuration, itemDuration, staggerChildren, staggerDirection]
   )
 
-  const animationEffects = {
-    fadeIn: makeEffect({
+  const presets = {
+    none: {
+      container: null,
+      item: null,
+    },
+    fadeIn: makePreset({
       initial: { opacity: 0, y: "1rem" },
       final: { opacity: 1, y: "0rem" },
     }),
-    fadeOut: makeEffect({
+    fadeOut: makePreset({
       initial: { opacity: 1, y: "0rem" },
       final: { opacity: 0, y: "-1rem" },
     }),
-    scaleIn: makeEffect({
+    scaleIn: makePreset({
       initial: { opacity: 0, scale: 0 },
       final: { opacity: 1, scale: 1 },
     }),
   }
 
-  return [animationEffects, animate]
+  return [presets, setFinal]
 }
 
 export function useInViewAnimation({
@@ -92,7 +95,7 @@ export function useInViewAnimation({
   when,
 } = {}) {
   const [hadIntersected, intersectionView] = useHadIntersected({ threshold })
-  const [animationVariants, animate] = useAnimation({
+  const [animationVariants, setAnimation] = useAnimation({
     containerDuration,
     itemDuration,
     staggerChildren,
@@ -102,7 +105,7 @@ export function useInViewAnimation({
 
   useEffect(() => {
     if (hadIntersected) {
-      animate()
+      setAnimation(true)
     }
   }, [hadIntersected])
 
