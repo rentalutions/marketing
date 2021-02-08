@@ -72,6 +72,7 @@ function HowItWorksSection({
 
   const [presets, intersectionView] = useInViewAnimation({
     staggerDirection: flip ? -1 : 1,
+    threshold: 0.25,
   })
   const animation = presets[animationPreset]
 

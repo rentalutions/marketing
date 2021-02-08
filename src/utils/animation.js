@@ -28,6 +28,7 @@ export function useHadIntersected({ threshold } = {}) {
 export function useAnimation({
   containerDuration = 0,
   itemDuration,
+  delayChildren = 0,
   staggerChildren = 0.15,
   staggerDirection = 1,
   when,
@@ -47,6 +48,7 @@ export function useAnimation({
               ...(containerDuration !== "default" && {
                 duration: containerDuration,
               }),
+              delayChildren,
               staggerChildren,
               staggerDirection,
               when,
@@ -88,6 +90,7 @@ export function useAnimation({
 
 export function useInViewAnimation({
   threshold = 0.1,
+  delayChildren = 0.3,
   containerDuration,
   itemDuration,
   staggerChildren,
@@ -100,6 +103,7 @@ export function useInViewAnimation({
     itemDuration,
     staggerChildren,
     staggerDirection,
+    delayChildren,
     when,
   })
 

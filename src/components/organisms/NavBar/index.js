@@ -81,7 +81,7 @@ export default function NavBar({
   const hasPrimary = !!primaryLink
   const hasPush = pushIndex !== -1
 
-  const [presets, intersectionTarget] = useInViewAnimation()
+  const [presets, intersectionTarget] = useInViewAnimation({ delayChildren: 0 })
   const animation = presets[animationPreset]
 
   return (

@@ -45,7 +45,7 @@ function Hero({
   const hasImage = !!image?.url
   const hasTwoCols = hasImage || hasVideo
 
-  const [presets, intersectionView] = useInViewAnimation()
+  const [presets, intersectionView] = useInViewAnimation({ delayChildren: 0 })
   const animation = presets[animationPreset]
 
   const secondCol = (
