@@ -1,8 +1,11 @@
 import React, { cloneElement } from "react"
+import { motion } from "framer-motion"
 import styled from "styled-components"
 import { variant } from "styled-system"
 
+import { useInViewAnimation } from "utils/animation"
 import { Box, Container, Flex } from "@rent_avail/layout"
+
 import SkewBox from "components/molecules/SkewBox"
 
 import { STYLING } from "config"
@@ -41,23 +44,41 @@ function ButtonCTA({
   button,
   orientation = "left",
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
+  const staggerDirection = ["left", "top"].includes(orientation) ? 1 : -1
+  const [presets, intersectionView] = useInViewAnimation({ staggerDirection })
+  const animation = presets[animationPreset]
+
   return (
-    <SkewBox bg={bg} {...props}>
-      <Container maxWidth={containerWidth} py="6rem">
+    <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
+      <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
         <StyledFlex orientation={orientation}>
-          {title &&
-            cloneElement(title, {
-              sx: {
-                ...title.props?.sx,
-                ...STYLING.headline,
+          {title && (
+            <Box
+              as={motion.aside}
+              {...animation?.item}
+              sx={{
                 flex: "1",
+                margin: "auto",
+                height: "fit-content",
+                width: "fit-content",
                 minWidth: "fit-content",
-              },
-            })}
+              }}
+            >
+              {cloneElement(title, {
+                sx: {
+                  ...title.props?.sx,
+                  ...STYLING.headline,
+                },
+              })}
+            </Box>
+          )}
           {button && (
             <Box
+              as={motion.aside}
+              {...animation?.item}
               sx={{
                 flex: "0",
                 margin: "auto",

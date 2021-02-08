@@ -1,5 +1,7 @@
 import React, { cloneElement } from "react"
+import { motion } from "framer-motion"
 import styled from "styled-components"
+import { useInViewAnimation } from "utils/animation"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
 import Video from "components/elements/Video"
 import { STYLING } from "config"
@@ -34,6 +36,7 @@ function Hero({
   primaryLink,
   secondaryLink,
   containerWidth,
+  animationPreset = "fadeIn",
   children,
   ...props
 }) {
@@ -42,8 +45,43 @@ function Hero({
   const hasImage = !!image?.url
   const hasTwoCols = hasImage || hasVideo
 
+  const [presets, intersectionView] = useInViewAnimation({ delayChildren: 0 })
+  const animation = presets[animationPreset]
+
+  const secondCol = (
+    <Col
+      span={[12, 12, 12, 6]}
+      gridRow={["1", "1", "1", "auto"]}
+      order={imagePosition === "left" ? -1 : 1}
+      sx={{ textAlign: "center" }}
+    >
+      <motion.aside {...animation?.item}>
+        {!!image?.url && (
+          <Box
+            as="img"
+            src={image.url}
+            alt={image.alt}
+            title={image.alt}
+            maxWidth={["100%", "50%", "50%", "100%"]}
+          />
+        )}
+        {!!video?.url && <Video src={video?.url} />}
+        {!!embed && embed}
+      </motion.aside>
+    </Col>
+  )
+
   return (
-    <HeroWrapper {...props} skewBg={bg} skew={skew} pt="4rem" pb="10rem">
+    <HeroWrapper
+      {...props}
+      as={motion.aside}
+      {...animation?.container}
+      ref={intersectionView}
+      skewBg={bg}
+      skew={skew}
+      pt="4rem"
+      pb="10rem"
+    >
       <div className="skew" />
       <Container
         as={Grid}
@@ -52,43 +90,35 @@ function Hero({
         gap={["2rem", "2rem", "4rem"]}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
+        {hasTwoCols && imagePosition === "left" && secondCol}
         <Col span={hasTwoCols ? [12, 12, 12, 6] : [12]}>
-          {cloneElement(title, {
-            sx: {
-              ...(hasTwoCols ? STYLING.headline : STYLING.hero),
-              fontWeight: ["regular", "light"],
-              ...title.props?.sx,
-            },
-          })}
-          <Box mt="2rem">{description}</Box>
+          <motion.aside {...animation?.item}>
+            {cloneElement(title, {
+              sx: {
+                ...(hasTwoCols ? STYLING.headline : STYLING.hero),
+                fontWeight: ["regular", "light"],
+                ...title.props?.sx,
+              },
+            })}
+          </motion.aside>
+          <Box as={motion.aside} {...animation?.item} mt="2rem">
+            {description}
+          </Box>
           {links && (
-            <Stack wrapChildren direction={["column", "row"]} mt="2rem">
+            <Stack
+              as={motion.aside}
+              {...animation?.item}
+              wrapChildren
+              direction={["column", "row"]}
+              mt="2rem"
+            >
               {primaryLink}
               {secondaryLink}
             </Stack>
           )}
-          {children}
+          <motion.aside {...animation?.item}>{children}</motion.aside>
         </Col>
-        {hasTwoCols && (
-          <Col
-            span={[12, 12, 12, 6]}
-            gridRow={["1", "1", "1", "auto"]}
-            order={imagePosition === "left" ? -1 : 1}
-            sx={{ textAlign: "center" }}
-          >
-            {!!image?.url && (
-              <Box
-                as="img"
-                src={image.url}
-                alt={image.alt}
-                title={image.alt}
-                maxWidth={["100%", "50%", "50%", "100%"]}
-              />
-            )}
-            <Video src={video?.url} />
-            {!!embed && embed}
-          </Col>
-        )}
+        {hasTwoCols && imagePosition !== "left" && secondCol}
       </Container>
     </HeroWrapper>
   )

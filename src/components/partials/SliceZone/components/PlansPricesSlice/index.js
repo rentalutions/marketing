@@ -37,7 +37,7 @@ const PlansPricesSlice = ({ slice }) => {
         <Link link={buttonLink}>
           <Button
             forwardedAs="a"
-            variant={buttonIsPrimary && "primary"}
+            variant={buttonIsPrimary ? "primary" : "default"}
             background={cardBackground}
           >
             {buttonText}
