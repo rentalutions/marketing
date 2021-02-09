@@ -4,7 +4,7 @@ import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import { analyzeColor } from "utils/color-scheme"
 
-const EmailCapture = ({
+const EmailCaptureInput = ({
   background,
   inputLabel,
   inputLabelId,
@@ -15,7 +15,7 @@ const EmailCapture = ({
   const buttonRef = useRef()
   const [buttonWidth, setButtonWidth] = useState(0)
   const [inputValue, setInputValue] = useState("")
-  const [_, isDark] = background ? analyzeColor(background) : []
+  const [, isDark] = background ? analyzeColor(background) : []
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -78,4 +78,4 @@ const EmailCapture = ({
   )
 }
 
-export default EmailCapture
+export default EmailCaptureInput
