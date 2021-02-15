@@ -139,10 +139,11 @@ export default function NavBar({
               gap: "2rem",
             }}
           >
-            {defaultLinks.map(({ href, text, target }, idx) => (
+            {defaultLinks.map(({ href, text, id, target }, idx) => (
               <motion.div key={href} {...animation?.item}>
                 <NavBarButton
                   href={href}
+                  id={id}
                   {...getTargetProps(target)}
                   forwardedAs="a"
                   flex="none"
@@ -159,6 +160,7 @@ export default function NavBar({
                 variant="primary"
                 href={primaryLink.href}
                 {...getTargetProps(primaryLink.target)}
+                id={primaryLink.id}
                 forwardedAs="a"
                 flex="0 0 auto"
                 ml="2rem"
