@@ -6,7 +6,7 @@ import { useInViewAnimation } from "utils/animation"
 import SkewBox from "components/molecules/SkewBox"
 import BoxedTitleSection from "components/molecules/BoxedTitleSection"
 import { STYLING } from "config"
-import Picture from "./picture"
+import TestimonialsCarouselItem from "./testimonials-carousel-item"
 
 function TestimonialsCarousel({
   bg,
@@ -133,7 +133,7 @@ function TestimonialsCarousel({
               if (!testimonial) return null
               const { picture, author: itemAuthor } = testimonial
               return (
-                <Picture
+                <TestimonialsCarouselItem
                   // eslint-disable-next-line react/no-array-index-key
                   key={`${itemAuthor}-${itemIndex}`} // no-array-index-key disabled bc the author will repeat when testimonials lenght < 5
                   as={motion.div}

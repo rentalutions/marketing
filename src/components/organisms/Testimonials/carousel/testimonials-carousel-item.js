@@ -1,7 +1,7 @@
 import React from "react"
 import { Box } from "@rent_avail/layout"
 
-function Picture({
+function TestimonialsCarouselItem({
   picture,
   altFallback,
   onClick,
@@ -59,4 +59,4 @@ function Picture({
   )
 }
 
-export default Picture
+export default TestimonialsCarouselItem
