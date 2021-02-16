@@ -1,6 +1,8 @@
 import React, { cloneElement, useCallback, useEffect, useState } from "react"
+import { motion } from "framer-motion"
 import { Box, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
+import { useInViewAnimation } from "utils/animation"
 import SkewBox from "components/molecules/SkewBox"
 import BoxedTitleSection from "components/molecules/BoxedTitleSection"
 import { STYLING } from "config"
@@ -16,6 +18,7 @@ function TestimonialsCarousel({
   orientation = "right",
   testimonialInterval = 3,
   containerWidth,
+  animationPreset = "fadeIn",
   ...props
 }) {
   const [currentInterval, setCurrentInterval] = useState(testimonialInterval)
@@ -25,6 +28,9 @@ function TestimonialsCarousel({
     testimonials.length > activeIndex ? testimonials[activeIndex] : null
   const { quote: Quote, author, titleAndLocation, aditionalInfo } =
     activeTestiomnial || {}
+
+  const [presets, animationIntersectionView] = useInViewAnimation()
+  const animation = presets[animationPreset]
 
   const getSafeIndex = useCallback(
     (desiredIndex) => {
@@ -74,8 +80,16 @@ function TestimonialsCarousel({
   ]
 
   return (
-    <SkewBox bg={bg} {...props}>
+    <SkewBox
+      as={motion.aside}
+      {...animation?.container}
+      bg={bg}
+      {...props}
+    >
       <BoxedTitleSection
+        ref={animationIntersectionView}
+        as={motion.div}
+        {...animation?.container}
         containerWidth={containerWidth}
         orientation={orientation}
         titleBackground={titleBackground}
@@ -98,7 +112,12 @@ function TestimonialsCarousel({
             textAlign: "center",
           }}
         >
-          <Box mt="auto" mx={3}>
+          <Box
+            as={motion.div}
+            {...animation?.item}
+            mt="auto"
+            mx={3}
+          >
             {typeof Quote === "function" ? <Quote /> : Quote}
           </Box>
           <Flex
@@ -114,6 +133,8 @@ function TestimonialsCarousel({
               return (
                 <Picture
                   key={itemAuthor}
+                  as={motion.div}
+                  {...animation?.item}
                   level={level}
                   picture={picture}
                   altFallback={itemAuthor}
@@ -125,7 +146,11 @@ function TestimonialsCarousel({
               )
             })}
           </Flex>
-          <Box mb={1}>
+          <Box
+            as={motion.div}
+            {...animation?.item}
+            mb={1}
+          >
             <Text fontSize="1.5rem" fontWeight="black">
               {author}
             </Text>
