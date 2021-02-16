@@ -37,7 +37,8 @@ function TestimonialsCarousel({
       const { length } = testimonials
       if (!length) return undefined
       const remainder = desiredIndex % length
-      return remainder < 0 ? remainder + length : remainder
+      const safeIndex = remainder < 0 ? remainder + length : remainder
+      return safeIndex
     },
     [testimonials]
   )
@@ -58,23 +59,23 @@ function TestimonialsCarousel({
 
   const carouselItems = [
     {
-      index: getSafeIndex(activeIndex - 2),
+      testimonialIndex: getSafeIndex(activeIndex - 2),
       level: 2,
     },
     {
-      index: getSafeIndex(activeIndex - 1),
+      testimonialIndex: getSafeIndex(activeIndex - 1),
       level: 1,
     },
     {
-      index: getSafeIndex(activeIndex),
+      testimonialIndex: getSafeIndex(activeIndex),
       level: 0,
     },
     {
-      index: getSafeIndex(activeIndex + 1),
+      testimonialIndex: getSafeIndex(activeIndex + 1),
       level: 1,
     },
     {
-      index: getSafeIndex(activeIndex + 2),
+      testimonialIndex: getSafeIndex(activeIndex + 2),
       level: 2,
     },
   ]
@@ -87,7 +88,6 @@ function TestimonialsCarousel({
       {...props}
     >
       <BoxedTitleSection
-        ref={animationIntersectionView}
         as={motion.div}
         {...animation?.container}
         containerWidth={containerWidth}
@@ -104,6 +104,7 @@ function TestimonialsCarousel({
         }
       >
         <Flex
+          ref={animationIntersectionView}
           sx={{
             minHeight: "36rem",
             padding: 2,
@@ -126,20 +127,22 @@ function TestimonialsCarousel({
               gap: 3,
             }}
           >
-            {carouselItems.map(({ index, level }) => {
-              const testimonial = index >= 0 && testimonials[index]
+            {carouselItems.map(({ testimonialIndex, level }, itemIndex) => {
+              const testimonial =
+                testimonialIndex >= 0 && testimonials[testimonialIndex]
               if (!testimonial) return null
               const { picture, author: itemAuthor } = testimonial
               return (
                 <Picture
-                  key={itemAuthor}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`${itemAuthor}-${itemIndex}`} // no-array-index-key disabled bc the author will repeat when testimonials lenght < 5
                   as={motion.div}
                   {...animation?.item}
                   level={level}
                   picture={picture}
                   altFallback={itemAuthor}
                   onClick={() => {
-                    setActiveIndex(index)
+                    setActiveIndex(testimonialIndex)
                     setCurrentInterval(0)
                   }}
                 />
