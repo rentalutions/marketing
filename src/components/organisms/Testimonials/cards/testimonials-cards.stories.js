@@ -1,7 +1,7 @@
 import React from "react"
 import { Text } from "@rent_avail/typography"
 import { Box } from "@rent_avail/layout"
-import { Testimonials } from "./index"
+import TestimonialsCards from "./index"
 
 export default { title: "Components/TestimonialsCards" }
 
@@ -22,7 +22,7 @@ export function Default() {
       picture: { url: "/send-money.png", alt: "" },
       author: "Paul",
       titleAndLocation: "Tenant in Liverpool, UK",
-      quote: Quote,
+      quote: <Text>Lorem ipsum dolor sit amet.</Text>,
     },
     {
       picture: { url: "/state-specific.png", alt: "" },
@@ -44,9 +44,10 @@ export function Default() {
     },
   ]
   return (
-    <Testimonials
+    <TestimonialsCards
       title={<Box as="h2">Testimonials</Box>}
       testimonials={testimonials}
+      py="4rem"
     />
   )
 }
@@ -67,9 +68,10 @@ export function WithTwoCards() {
     },
   ]
   return (
-    <Testimonials
+    <TestimonialsCards
       title={<Box as="h2">Testimonials</Box>}
       testimonials={testimonials}
+      py="4rem"
     />
   )
 }
@@ -150,9 +152,10 @@ export function WithTwelveCards() {
     },
   ]
   return (
-    <Testimonials
+    <TestimonialsCards
       title={<Box as="h2">Testimonials</Box>}
       testimonials={testimonials}
+      py="4rem"
     />
   )
 }

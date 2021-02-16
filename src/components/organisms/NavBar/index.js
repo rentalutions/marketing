@@ -3,6 +3,8 @@ import { Box, Container, Flex } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
 import styled, { createGlobalStyle } from "styled-components"
 import { getTargetProps } from "utils/link"
+import { useInViewAnimation } from "utils/animation"
+import { motion } from "framer-motion"
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -13,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
 const NavBarButton = styled(Button)`
   border: none;
   height: 4rem;
+  display: block;
 `
 
 /**
@@ -29,6 +32,7 @@ const NavBarButton = styled(Button)`
  * @param links - a collection of objects of @type Link
  * @param containerWidth - width in space units to limit Nav Bar width
  * @param sticky - boolean to indicate if NavBar should be sticky. If true - will inject "scroll-padding-top" as global style
+ * @param animationPreset - a string to animate the components coming into view
  * @param props - rest of the props
  * @returns {JSX.Element}
  */
@@ -37,6 +41,7 @@ export default function NavBar({
   links = [],
   containerWidth = "96rem",
   sticky,
+  animationPreset = "fadeIn",
   ...props
 }) {
   const [defaultLinks, primaryLink, pushIndex] = useMemo(() => {
@@ -76,12 +81,18 @@ export default function NavBar({
   const hasPrimary = !!primaryLink
   const hasPush = pushIndex !== -1
 
+  const [presets, intersectionTarget] = useInViewAnimation({ delayChildren: 0 })
+  const animation = presets[animationPreset]
+
   return (
     <Box
+      as={motion.aside}
+      {...animation?.container}
       bg={background}
       position={sticky ? "sticky" : "static"}
       top="0"
       zIndex="1"
+      ref={intersectionTarget}
       {...props}
     >
       <GlobalStyle sticky />
@@ -92,7 +103,8 @@ export default function NavBar({
       >
         <Flex flexDirection="row" width="100%">
           <Box
-            as="a"
+            as={motion.a}
+            {...animation?.item}
             href="https://avail.co"
             sx={{
               display: "block",
@@ -128,29 +140,32 @@ export default function NavBar({
             }}
           >
             {defaultLinks.map(({ href, text, target }, idx) => (
-              <NavBarButton
-                key={href}
-                href={href}
-                {...getTargetProps(target)}
-                forwardedAs="a"
-                flex="none"
-                ml={idx === pushIndex ? "auto" : 0}
-              >
-                {text}
-              </NavBarButton>
+              <motion.div key={href} {...animation?.item}>
+                <NavBarButton
+                  href={href}
+                  {...getTargetProps(target)}
+                  forwardedAs="a"
+                  flex="none"
+                  ml={idx === pushIndex ? "auto" : 0}
+                >
+                  {text}
+                </NavBarButton>
+              </motion.div>
             ))}
           </Flex>
           {hasPrimary && (
-            <NavBarButton
-              variant="primary"
-              href={primaryLink.href}
-              {...getTargetProps(primaryLink.target)}
-              forwardedAs="a"
-              flex="0 0 auto"
-              ml="2rem"
-            >
-              {primaryLink.text}
-            </NavBarButton>
+            <motion.div {...animation?.item}>
+              <NavBarButton
+                variant="primary"
+                href={primaryLink.href}
+                {...getTargetProps(primaryLink.target)}
+                forwardedAs="a"
+                flex="0 0 auto"
+                ml="2rem"
+              >
+                {primaryLink.text}
+              </NavBarButton>
+            </motion.div>
           )}
         </Flex>
       </Container>

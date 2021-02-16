@@ -124,7 +124,7 @@
               "background" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
                   "label" : "Background color"
                 }
@@ -132,7 +132,7 @@
               "color" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Text color"
                 }
@@ -226,7 +226,7 @@
               "background" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
                   "label" : "Background color"
                 }
@@ -234,7 +234,7 @@
               "color" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Text color"
                 }
@@ -299,7 +299,7 @@
               "background" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
                   "label" : "Background color"
                 }
@@ -307,7 +307,7 @@
               "color" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Text color"
                 }
@@ -411,7 +411,7 @@
               "background" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
                   "label" : "Background color"
                 }
@@ -419,7 +419,7 @@
               "color" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Text color"
                 }
@@ -736,7 +736,7 @@
               "background" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
                   "label" : "Background color"
                 }
@@ -744,7 +744,7 @@
               "color" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Text color"
                 }
@@ -760,8 +760,8 @@
               "direction" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "horizontal", "vertical" ],
-                  "default_value" : "horizontal",
+                  "options" : [ "vertical", "horizontal" ],
+                  "default_value" : "vertical",
                   "label" : "Direction"
                 }
               }
@@ -829,10 +829,19 @@
                   "label" : "Button Link"
                 }
               },
+              "buttonIsPrimary" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "Default",
+                  "placeholder_true" : "Primary",
+                  "default_value" : false,
+                  "label" : "Button variant"
+                }
+              },
               "background" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
                   "label" : "Background color"
                 }
@@ -840,7 +849,7 @@
               "color" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Text color"
                 }
@@ -940,7 +949,7 @@
               "background" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
                   "label" : "Background color"
                 }
@@ -948,7 +957,7 @@
               "color" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Text color"
                 }
@@ -956,7 +965,7 @@
               "testimonialBackground" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
                   "label" : "Testimonial Background color"
                 }
@@ -964,7 +973,7 @@
               "testimonialColor" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Testimonial Text color"
                 }

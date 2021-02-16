@@ -3,7 +3,6 @@ import { Award, CheckCircle, Gift } from "react-feather"
 import Button from "components/elements/Button"
 import { Box } from "@rent_avail/layout"
 import { PlansPrices } from "./index"
-import PlanInfo from "./plan-info"
 
 export default { title: "Components/Plans and Prices" }
 
@@ -71,11 +70,15 @@ function planWithImage(p) {
   }
 }
 
-function planWithButton(p) {
+function planWithButton(p, idx) {
   return {
     ...p,
     button: (
-      <Button forwardedAs="a" variant="primary" href="https://avail.co">
+      <Button
+        forwardedAs="a"
+        variant={idx % 2 === 0 ? "primary" : "default"}
+        href="https://avail.co"
+      >
         Button Text
       </Button>
     ),
@@ -203,17 +206,5 @@ export function VerticalWithImageAndButton() {
           }))}
       />
     </Box>
-  )
-}
-
-export function StandAlonePlanInfo() {
-  return (
-    <PlanInfo
-      image={{ url: "/user-card.png", alt: "" }}
-      title="Plan 3"
-      price="$9.99"
-      subtext="Subtext"
-      description="Description"
-    />
   )
 }

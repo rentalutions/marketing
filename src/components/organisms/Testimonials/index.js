@@ -1,2 +1,2 @@
-export { Testimonials as TestimonialsCards } from "./cards"
-export { Testimonials as TestimonialsCarousel } from "./carousel"
+export { default as TestimonialsCards } from "./cards"
+export { default as TestimonialsCarousel } from "./carousel"

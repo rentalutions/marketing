@@ -1,7 +1,7 @@
 import React from "react"
 import { Text } from "@rent_avail/typography"
 import { Box } from "@rent_avail/layout"
-import { Testimonials } from "./index"
+import TestimonialsCarousel from "./index"
 
 export default { title: "Components/TestimonialsCarousel" }
 
@@ -47,7 +47,7 @@ export function Default() {
     },
   ]
   return (
-    <Testimonials
+    <TestimonialsCarousel
       bg="#F9F9F9"
       titleBackground="#E9EDF1"
       skew="right"
@@ -73,7 +73,7 @@ export function WithTwoItems() {
     },
   ]
   return (
-    <Testimonials
+    <TestimonialsCarousel
       bg="#0B2E51"
       color="#FFF"
       titleBackground="#777"
@@ -160,7 +160,7 @@ export function WithTwelveItems() {
     },
   ]
   return (
-    <Testimonials
+    <TestimonialsCarousel
       orientation="left"
       title={<Box as="h2">Testimonials</Box>}
       testimonials={testimonials}

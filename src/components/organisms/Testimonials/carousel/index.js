@@ -6,7 +6,7 @@ import BoxedTitleSection from "components/molecules/BoxedTitleSection"
 import { STYLING } from "config"
 import Picture from "./picture"
 
-function Testimonials({
+function TestimonialsCarousel({
   bg,
   titleBackground,
   title,
@@ -142,4 +142,4 @@ function Testimonials({
   )
 }
 
-export { Testimonials }
+export default TestimonialsCarousel
