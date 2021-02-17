@@ -262,7 +262,7 @@
                   "label" : "Answer",
                   "placeholder" : "It costs nothing! Its free!",
                   "allowTargetBlank" : true,
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
                   "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               }

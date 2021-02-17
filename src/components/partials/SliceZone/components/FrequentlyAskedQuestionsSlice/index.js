@@ -1,6 +1,7 @@
 import React from "react"
 import { FAQ } from "components/organisms/FAQ"
 import { CONTAINER_WIDTHS } from "config"
+import { styleEmbed } from "utils/embed"
 import RichText from "../RichText"
 
 export default function FrequentlyAskedQuestionsSlice({ slice }) {
@@ -10,7 +11,17 @@ export default function FrequentlyAskedQuestionsSlice({ slice }) {
 
   const questions = slice.items.map(({ question, answer }) => ({
     question,
-    answer: <RichText render={answer} />,
+    answer: (
+      <RichText
+        render={styleEmbed(answer, {
+          maxWidth: "65rem",
+          height: "unset",
+          margin: "auto",
+          aspectRatio: "16/9",
+          paddingBottom: 0,
+        })}
+      />
+    ),
   }))
 
   return (
