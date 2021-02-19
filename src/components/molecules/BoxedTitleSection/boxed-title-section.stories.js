@@ -8,18 +8,20 @@ export default {
   title: "Components/BoxedTitleSection",
 }
 
-const Content = () => (
-  <Flex
-    flexDirection="column"
-    p="2rem"
-    height="18rem"
-    textAlign="center"
-    justifyContent="center"
-  >
-    <Box as="h3">Content</Box>
-    <Button>Void</Button>
-  </Flex>
-)
+function Content() {
+  return (
+    <Flex
+      flexDirection="column"
+      p="2rem"
+      height="18rem"
+      textAlign="center"
+      justifyContent="center"
+    >
+      <Box as="h3">Content</Box>
+      <Button>Void</Button>
+    </Flex>
+  )
+}
 
 export function Default() {
   return (

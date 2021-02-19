@@ -31,7 +31,7 @@ function BoxedTitleSection({
       <Box
         flex={1}
         order={orientation === "right" ? 0 : 2}
-        bg={titleBackground}
+        {...(overflow && { bg: titleBackground })}
       />
       <Container
         flex="auto"
