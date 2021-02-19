@@ -5,8 +5,7 @@ import { STYLING } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { getTargetProps } from "utils/link"
 import { Box } from "@rent_avail/layout"
-import ResponsiveEmbed from "components/elements/ResponsiveEmbed"
-import { isValidEmbed } from "utils/embed"
+import Embed from "components/partials/SliceZone/components/Embed"
 import { List, ListItem, OList } from "./components/List"
 import { Text } from "./components/Text"
 import { CustomLabel } from "./components/Label"
@@ -124,22 +123,8 @@ export default function htmlSerializer(props) {
         return <React.Fragment key={key}>{children}</React.Fragment>
       }
       case Elements.embed: {
-        const { oembed, wrapperSx } = element
-        return isValidEmbed(oembed) ? (
-          <ResponsiveEmbed
-            aspect={{ width: oembed.width, height: oembed.height }}
-            {...props}
-            sx={{
-              ...props.sx,
-              ...wrapperSx,
-            }}
-          >
-            {/* eslint-disable-next-line react/no-danger */}
-            <div dangerouslySetInnerHTML={{ __html: oembed.html }} />
-          </ResponsiveEmbed>
-        ) : (
-          "Embed provider not supported"
-        )
+        const { oembed } = element
+        return <Embed embed={oembed} {...props} />
       }
       default:
         return null

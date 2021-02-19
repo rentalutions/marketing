@@ -25,10 +25,11 @@ const Wrapper = ({ sx, children }) => (
 export default function ResponsiveEmbed({
   aspect: { width = 100, height = 100 } = {},
   sx,
+  embedSx,
   children,
 }) {
   return (
-    <Wrapper sx={{ pb: `${(height / width) * 100}%`, ...sx }}>
+    <Wrapper sx={{ pb: `${(height / width) * 100}%`, ...sx, ...embedSx }}>
       {children}
     </Wrapper>
   )

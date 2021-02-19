@@ -19,16 +19,16 @@ function Answer() {
   )
 }
 
-function AnswerWithEmbed() {
+function AnswerWithEmbed(props) {
   return (
     <React.Fragment>
-      <Text>
+      <Text {...props}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
         possimus officiis tenetur, ex tempora repellat quibusdam, ab soluta
         neque incidunt magni earum architecto veritatis rerum optio consectetur
         adipisci minus dicta.
       </Text>
-      <ResponsiveEmbed aspect={{ width: 200, height: 113 }}>
+      <ResponsiveEmbed aspect={{ width: 200, height: 113 }} {...props}>
         {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
         <iframe
           width="200"
@@ -43,9 +43,9 @@ function AnswerWithEmbed() {
   )
 }
 
-function EmbedAnswer() {
+function EmbedAnswer(props) {
   return (
-    <ResponsiveEmbed aspect={{ width: 200, height: 113 }}>
+    <ResponsiveEmbed aspect={{ width: 200, height: 113 }} {...props}>
       {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
       <iframe
         width="200"
