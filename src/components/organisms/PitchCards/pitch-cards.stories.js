@@ -1,6 +1,8 @@
 import React from "react"
 import { Box } from "@rent_avail/layout"
 import ResponsiveEmbed from "components/elements/ResponsiveEmbed"
+import { Text } from "@rent_avail/typography"
+import { Button } from "@rent_avail/controls"
 import { PitchCards } from "./index"
 
 export default { title: "Components/Pitch Cards" }
@@ -46,22 +48,18 @@ const iconSections = sections.map((section, idx) => ({
 }))
 
 const links = [
-  {
-    text: "Advertise across the web >",
-    url: "https://www.avail.co/users/new?intent=listings",
-  },
-  {
-    text: "Find the right tenants >",
-    url: "https://www.avail.co/users/new?intent=applications",
-  },
-  {
-    text: "Start screening applicants >",
-    url: "https://www.avail.co/users/new?intent=applications",
-  },
-  {
-    text: "Send and sign today >",
-    url: "https://www.avail.co/users/new?intent=leases",
-  },
+  <Text as="a" href="https://www.avail.co/users/new?intent=listings">
+    Advertise across the web &gt;
+  </Text>,
+  <Text as="a" href="https://www.avail.co/users/new?intent=applications">
+    Find the right tenants &gt;
+  </Text>,
+  <Text as="a" href="https://www.avail.co/users/new?intent=applications">
+    Start screening applicants &gt;
+  </Text>,
+  <Text as="a" href="https://www.avail.co/users/new?intent=leases">
+    Send and sign today &gt;
+  </Text>,
 ]
 
 const linkSections = iconSections.map((section, idx) => ({
@@ -76,7 +74,8 @@ const buttonLinkSections = sectionData.map(({ title, description }, idx) => ({
     </Box>
   ),
   description,
-  link: { ...links[idx], text: "View sample", button: true },
+  link: <Button>View sample</Button>,
+  variant: "button",
 }))
 
 const videoSections = sections.slice(0, 2).map((section) => ({

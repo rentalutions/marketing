@@ -1,10 +1,6 @@
 import * as React from "react"
-import Link from "next/link"
-import { Button } from "@rent_avail/controls"
 import { Box, Col, Flex } from "@rent_avail/layout"
-import { Text } from "@rent_avail/typography"
 import Video from "components/elements/Video"
-import { getTargetProps } from "utils/link"
 import { STYLING } from "config"
 import { useInViewAnimation } from "utils/animation"
 import { motion } from "framer-motion"
@@ -15,13 +11,17 @@ export function PitchCard({
   icon = null,
   video,
   embed,
+  variant,
   link,
   animationPreset,
   ...props
 }) {
   const [presets, intersectionView] = useInViewAnimation({ threshold: 0.25 })
   const animation = presets[animationPreset]
-  const isButtonVariant = !!link?.button
+
+  /* TODO: this "button variant" either needs to be moved outside of
+      this component or properly implemented via Styled System variants API */
+  const isButtonVariant = variant === "button"
   return (
     <Col
       as={motion.aside}
@@ -78,17 +78,7 @@ export function PitchCard({
           mt={isButtonVariant ? "3rem" : "1.5rem"}
           justifyContent={isButtonVariant ? "center" : "flex-start"}
         >
-          <Link href={link.url} passHref>
-            {isButtonVariant ? (
-              <Button as="a" {...getTargetProps(link.target)}>
-                {link.text}
-              </Button>
-            ) : (
-              <Text as="a" {...getTargetProps(link.target)} color="blue_700">
-                {link.text}
-              </Text>
-            )}
-          </Link>
+          {link}
         </Flex>
       )}
     </Col>

@@ -37,13 +37,17 @@ const Link = ({ link, children, ...props }) => {
     }
   })()
 
+  const wrappedElement = React.cloneElement(children, {
+    ...getTargetProps(target),
+  })
+
   return href ? (
     <NextLink passHref href={href} {...props}>
-      {React.cloneElement(children, {
-        ...getTargetProps(target),
-      })}
+      {wrappedElement}
     </NextLink>
-  ) : null
+  ) : (
+    wrappedElement
+  )
 }
 
 export default Link

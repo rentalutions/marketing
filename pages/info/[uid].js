@@ -93,10 +93,11 @@ const Page = ({ data, uid }) => {
   const navBarLinks =
     data.nav_bar &&
     data.nav_bar.map(
-      ({ buttonText, buttonLink, buttonHash, primary, push }) => ({
+      ({ buttonText, buttonLink, buttonHash, buttonId, primary, push }) => ({
         text: buttonText,
         href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
         target: buttonLink && buttonLink.target,
+        id: buttonId,
         primary,
         push,
       })

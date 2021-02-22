@@ -21,15 +21,14 @@ const HeroSlice = ({ slice }) => {
       color,
       primaryButtonText,
       primaryButtonLink,
+      primaryButtonId,
       secondaryButtonText,
       secondaryButtonLink,
+      secondaryButtonId,
     },
   } = slice
 
   const buttonRef = useRef()
-
-  const showPrimaryButton = primaryButtonText && primaryButtonLink
-  const showSecondaryButton = secondaryButtonText && secondaryButtonLink
 
   return (
     <Hero
@@ -44,13 +43,14 @@ const HeroSlice = ({ slice }) => {
       video={video?.url && video}
       embed={embed?.html && <Embed embed={embed} />}
       primaryLink={
-        showPrimaryButton && (
+        primaryButtonText && (
           <Link link={primaryButtonLink}>
             <Button
               ref={buttonRef}
               forwardedAs="a"
               background={background}
               variant="primary"
+              id={primaryButtonId}
             >
               {primaryButtonText}
             </Button>
@@ -58,9 +58,11 @@ const HeroSlice = ({ slice }) => {
         )
       }
       secondaryLink={
-        showSecondaryButton && (
+        secondaryButtonText && (
           <Link link={secondaryButtonLink}>
-            <Button background={background}>{secondaryButtonText}</Button>
+            <Button background={background} id={secondaryButtonId}>
+              {secondaryButtonText}
+            </Button>
           </Link>
         )
       }

@@ -11,6 +11,7 @@ const ButtonCTASlice = ({ slice }) => {
       title,
       buttonText,
       buttonLink,
+      buttonId,
       background,
       color,
       orientation = "left",
@@ -27,10 +28,14 @@ const ButtonCTASlice = ({ slice }) => {
       skew={skew}
       title={title && <RichText render={title} />}
       button={
-        buttonText &&
-        buttonLink && (
+        buttonText && (
           <Link link={buttonLink}>
-            <Button forwardedAs="a" variant="primary" background={background}>
+            <Button
+              forwardedAs="a"
+              variant="primary"
+              background={background}
+              id={buttonId}
+            >
               {buttonText}
             </Button>
           </Link>

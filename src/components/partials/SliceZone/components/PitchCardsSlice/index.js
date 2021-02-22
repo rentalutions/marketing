@@ -3,16 +3,16 @@ import { Box } from "@rent_avail/layout"
 import { PitchCards } from "components/organisms/PitchCards"
 import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS } from "config"
-import { useUrlResolver } from "components/partials/UrlResolver"
-import RichText from "../RichText"
+import Link from "components/partials/SliceZone/components/Link"
+import { Button } from "@rent_avail/controls"
+import { Text } from "@rent_avail/typography"
 import Embed from "../Embed"
+import RichText from "../RichText"
 
 const PitchCardsSlice = ({ slice }) => {
   const {
     primary: { title, titleImage, centerTitle, description, hash },
   } = slice
-
-  const urlResolver = useUrlResolver()
 
   const sections = slice.items.map(
     (
@@ -25,6 +25,7 @@ const PitchCardsSlice = ({ slice }) => {
         embed,
         linkText,
         linkUrl,
+        linkId,
         linkAsButton,
       },
       idx
@@ -41,16 +42,20 @@ const PitchCardsSlice = ({ slice }) => {
       video,
       embed: embed?.html && <Embed embed={embed} />,
       key: title?.[0]?.text || idx,
-      link:
-        linkText && linkUrl
-          ? {
-              text: linkText,
-              url: urlResolver(linkUrl.url),
-              target:
-                linkUrl.target || (linkUrl.link_type === "Media" && "_blank"),
-              button: linkAsButton,
-            }
-          : null,
+      link: linkText ? (
+        <Link link={linkUrl}>
+          {linkAsButton ? (
+            <Button as="a" id={linkId}>
+              {linkText}
+            </Button>
+          ) : (
+            <Text as="a" id={linkId} color="blue_700">
+              {linkText}
+            </Text>
+          )}
+        </Link>
+      ) : null,
+      variant: linkAsButton && "button",
     })
   )
   const titleText = (
