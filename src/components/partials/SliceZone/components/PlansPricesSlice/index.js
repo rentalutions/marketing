@@ -24,8 +24,7 @@ const PlansPricesSlice = ({ slice }) => {
       features,
       buttonText,
       buttonLink,
-      buttonColor,
-      buttonBackground,
+      buttonId,
       buttonIsPrimary,
       background: cardBackground,
       ...props
@@ -33,12 +32,13 @@ const PlansPricesSlice = ({ slice }) => {
       ...props,
       background: cardBackground,
       features: features && <RichText render={features} />,
-      button: buttonText && buttonLink && (
+      button: buttonText && (
         <Link link={buttonLink}>
           <Button
             forwardedAs="a"
             variant={buttonIsPrimary ? "primary" : "default"}
             background={cardBackground}
+            id={buttonId}
           >
             {buttonText}
           </Button>
