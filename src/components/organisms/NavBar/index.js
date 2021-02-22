@@ -140,14 +140,19 @@ export default function NavBar({
             }}
           >
             {defaultLinks.map(({ href, text, id, target }, idx) => (
-              <motion.div key={href} {...animation?.item}>
+              <motion.div
+                key={href}
+                {...animation?.item}
+                style={{
+                  marginLeft: idx === pushIndex ? "auto" : 0,
+                  flex: "none",
+                }}
+              >
                 <NavBarButton
                   href={href}
                   id={id}
                   {...getTargetProps(target)}
                   forwardedAs="a"
-                  flex="none"
-                  ml={idx === pushIndex ? "auto" : 0}
                 >
                   {text}
                 </NavBarButton>
