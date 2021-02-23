@@ -10,7 +10,19 @@ export default function FrequentlyAskedQuestionsSlice({ slice }) {
 
   const questions = slice.items.map(({ question, answer }) => ({
     question,
-    answer: <RichText render={answer} />,
+    answer: (
+      <RichText
+        render={answer}
+        embedSx={{
+          maxWidth: "65rem",
+          height: "unset",
+          margin: "auto",
+          aspectRatio: "16/9",
+          paddingBottom: 0,
+          marginTop: 1,
+        }}
+      />
+    ),
   }))
 
   return (

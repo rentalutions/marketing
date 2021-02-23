@@ -93,19 +93,7 @@ function FAQ({
                           closed: { height: 0, opacity: 0, marginTop: 0 },
                         }}
                       >
-                        {cloneElement(
-                          typeof Answer === "function" ? <Answer /> : Answer,
-                          {
-                            embedSx: {
-                              maxWidth: "65rem",
-                              height: "unset",
-                              margin: "auto",
-                              aspectRatio: "16/9",
-                              paddingBottom: 0,
-                              marginTop: 1,
-                            },
-                          }
-                        )}
+                        {typeof Answer === "function" ? <Answer /> : Answer}
                       </Box>
                     )}
                   </AnimatePresence>

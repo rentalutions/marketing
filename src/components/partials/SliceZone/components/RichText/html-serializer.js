@@ -124,7 +124,17 @@ export default function htmlSerializer(props) {
       }
       case Elements.embed: {
         const { oembed } = element
-        return <Embed embed={oembed} {...props} />
+        const { sx, embedSx } = props
+        return (
+          <Embed
+            embed={oembed}
+            {...props}
+            sx={{
+              ...sx,
+              ...embedSx,
+            }}
+          />
+        )
       }
       default:
         return null
