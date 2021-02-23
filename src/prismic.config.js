@@ -56,6 +56,6 @@ async function fetchLinks(object, options) {
 }
 
 export async function fetchWithLinks(type, uid, options) {
-  const document = await prismicClient.getByUID("info", uid, options)
+  const document = await prismicClient.getByUID(type, uid, options)
   return fetchLinks(document, options)
 }
