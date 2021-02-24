@@ -1,12 +1,15 @@
-import React, { cloneElement, useCallback, useEffect, useState } from "react"
+import React, { cloneElement } from "react"
 import { motion } from "framer-motion"
 import { Box, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { useInViewAnimation } from "utils/animation"
+
+import { useCarousel } from "components/molecules/Carousel/use-carousel"
 import SkewBox from "components/molecules/SkewBox"
 import BoxedTitleSection from "components/molecules/BoxedTitleSection"
-import { STYLING } from "config"
 import TestimonialsCarouselItem from "./testimonials-carousel-item"
+
+import { STYLING } from "config"
 
 function TestimonialsCarousel({
   bg,
@@ -21,64 +24,13 @@ function TestimonialsCarousel({
   animationPreset = "fadeIn",
   ...props
 }) {
-  const [currentInterval, setCurrentInterval] = useState(testimonialInterval)
+  const [
+    { quote: Quote, author, titleAndLocation, aditionalInfo },
+    visibleItems,
+  ] = useCarousel(testimonials)
 
-  const [activeIndex, setActiveIndex] = useState(0)
-  const activeTestiomnial =
-    testimonials.length > activeIndex ? testimonials[activeIndex] : null
-  const { quote: Quote, author, titleAndLocation, aditionalInfo } =
-    activeTestiomnial || {}
-
-  const [presets, animationIntersectionView] = useInViewAnimation()
+  const [ presets, animationIntersectionView ] = useInViewAnimation()
   const animation = presets[animationPreset]
-
-  const getSafeIndex = useCallback(
-    (desiredIndex) => {
-      const { length } = testimonials
-      if (!length) return undefined
-      const remainder = desiredIndex % length
-      const safeIndex = remainder < 0 ? remainder + length : remainder
-      return safeIndex
-    },
-    [testimonials]
-  )
-
-  useEffect(() => {
-    if (currentInterval) {
-      const timeout = setTimeout(() => {
-        const nextIndex = getSafeIndex(activeIndex + 1)
-        if (nextIndex !== undefined) {
-          setActiveIndex(nextIndex)
-        }
-      }, currentInterval * 1000)
-      return () => {
-        clearInterval(timeout)
-      }
-    }
-  }, [currentInterval, testimonials, activeIndex])
-
-  const carouselItems = [
-    {
-      testimonialIndex: getSafeIndex(activeIndex - 2),
-      level: 2,
-    },
-    {
-      testimonialIndex: getSafeIndex(activeIndex - 1),
-      level: 1,
-    },
-    {
-      testimonialIndex: getSafeIndex(activeIndex),
-      level: 0,
-    },
-    {
-      testimonialIndex: getSafeIndex(activeIndex + 1),
-      level: 1,
-    },
-    {
-      testimonialIndex: getSafeIndex(activeIndex + 2),
-      level: 2,
-    },
-  ]
 
   return (
     <SkewBox
@@ -127,11 +79,8 @@ function TestimonialsCarousel({
               gap: 3,
             }}
           >
-            {carouselItems.map(({ testimonialIndex, level }, itemIndex) => {
-              const testimonial =
-                testimonialIndex >= 0 && testimonials[testimonialIndex]
-              if (!testimonial) return null
-              const { picture, author: itemAuthor } = testimonial
+            {visibleItems.map(({ item, level, selectItem }, itemIndex) => {
+              const { picture, author: itemAuthor } = item
               return (
                 <TestimonialsCarouselItem
                   // eslint-disable-next-line react/no-array-index-key
@@ -141,10 +90,7 @@ function TestimonialsCarousel({
                   level={level}
                   picture={picture}
                   altFallback={itemAuthor}
-                  onClick={() => {
-                    setActiveIndex(testimonialIndex)
-                    setCurrentInterval(0)
-                  }}
+                  onClick={selectItem}
                 />
               )
             })}
