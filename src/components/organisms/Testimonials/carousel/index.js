@@ -7,9 +7,8 @@ import { useInViewAnimation } from "utils/animation"
 import { useCarousel } from "components/molecules/Carousel/use-carousel"
 import SkewBox from "components/molecules/SkewBox"
 import BoxedTitleSection from "components/molecules/BoxedTitleSection"
-import TestimonialsCarouselItem from "./testimonials-carousel-item"
-
 import { STYLING } from "config"
+import TestimonialsCarouselItem from "./testimonials-carousel-item"
 
 function TestimonialsCarousel({
   bg,
@@ -27,18 +26,13 @@ function TestimonialsCarousel({
   const [
     { quote: Quote, author, titleAndLocation, aditionalInfo },
     visibleItems,
-  ] = useCarousel(testimonials)
+  ] = useCarousel(testimonials, { interval: testimonialInterval })
 
-  const [ presets, animationIntersectionView ] = useInViewAnimation()
+  const [presets, animationIntersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
   return (
-    <SkewBox
-      as={motion.aside}
-      {...animation?.container}
-      bg={bg}
-      {...props}
-    >
+    <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
       <BoxedTitleSection
         as={motion.div}
         {...animation?.container}
@@ -65,15 +59,12 @@ function TestimonialsCarousel({
             textAlign: "center",
           }}
         >
-          <Box
-            as={motion.div}
-            {...animation?.item}
-            mt="auto"
-            mx={3}
-          >
+          <Box as={motion.div} {...animation?.item} mt="auto" mx={3}>
             {typeof Quote === "function" ? <Quote /> : Quote}
           </Box>
           <Flex
+            as={motion.div}
+            {...animation?.item}
             justifyContent="center"
             sx={{
               gap: 3,
@@ -85,8 +76,6 @@ function TestimonialsCarousel({
                 <TestimonialsCarouselItem
                   // eslint-disable-next-line react/no-array-index-key
                   key={`${itemAuthor}-${itemIndex}`} // no-array-index-key disabled bc the author will repeat when testimonials lenght < 5
-                  as={motion.div}
-                  {...animation?.item}
                   level={level}
                   picture={picture}
                   altFallback={itemAuthor}
@@ -95,11 +84,7 @@ function TestimonialsCarousel({
               )
             })}
           </Flex>
-          <Box
-            as={motion.div}
-            {...animation?.item}
-            mb={1}
-          >
+          <Box as={motion.div} {...animation?.item} mb={1}>
             <Text fontSize="1.5rem" fontWeight="black">
               {author}
             </Text>

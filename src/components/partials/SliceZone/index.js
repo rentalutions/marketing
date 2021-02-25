@@ -11,7 +11,10 @@ import HowItWorksSlice from "./components/HowItWorksSlice"
 import PitchCardsSlice from "./components/PitchCardsSlice"
 import PlansPricesSlice from "./components/PlansPricesSlice"
 import ShowcaseSlice from "./components/ShowcaseSlice"
-import TestimonialsSlice from "./components/TestimonialsSlice"
+import {
+  TestimonialsCardsSlice,
+  TestimonialsCarouselSlice,
+} from "./components/TestimonialsSlice"
 
 const SliceZone = ({ slices }) => {
   if (!slices) {
@@ -42,9 +45,9 @@ const SliceZone = ({ slices }) => {
         return <ShowcaseSlice key={key} slice={slice} />
       case "testimonials":
       case "testimonials_cards":
-        return <TestimonialsSlice key={key} slice={slice} version="cards" />
+        return <TestimonialsCardsSlice key={key} slice={slice} />
       case "testimonials_carousel":
-        return <TestimonialsSlice key={key} slice={slice} version="carousel" />
+        return <TestimonialsCarouselSlice key={key} slice={slice} />
       default:
         return (
           <Flex
