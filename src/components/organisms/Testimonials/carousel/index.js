@@ -1,6 +1,6 @@
 import React, { cloneElement } from "react"
 import { motion } from "framer-motion"
-import { Box, Flex } from "@rent_avail/layout"
+import { Box, Grid, Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { useInViewAnimation } from "utils/animation"
 
@@ -37,6 +37,7 @@ function TestimonialsCarousel({
         as={motion.div}
         {...animation?.container}
         containerWidth={containerWidth}
+        minHeight="36rem"
         orientation={orientation}
         titleBackground={titleBackground}
         title={
@@ -48,18 +49,29 @@ function TestimonialsCarousel({
             },
           })
         }
+        childrenWrapperProps={{
+          display: "grid",
+        }}
       >
-        <Flex
+        <Grid
           ref={animationIntersectionView}
+          gap={2}
+          gridTemplateColumns="1fr"
+          width={["100%", "100%", "28rem"]}
+          margin={["unset", "unset", "auto auto 1rem 3rem"]}
           sx={{
-            minHeight: "36rem",
-            padding: 2,
-            gap: 2,
-            flexFlow: "column",
             textAlign: "center",
           }}
         >
-          <Box as={motion.div} {...animation?.item} mt="auto" mx={3}>
+          <Box
+            as={motion.div}
+            {...animation?.item}
+            sx={{
+              minHeight: "12rem",
+              alignItems: "end",
+              display: "grid",
+            }}
+          >
             {typeof Quote === "function" ? <Quote /> : Quote}
           </Box>
           <Flex
@@ -84,7 +96,7 @@ function TestimonialsCarousel({
               )
             })}
           </Flex>
-          <Box as={motion.div} {...animation?.item} mb={1}>
+          <Box as={motion.div} {...animation?.item}>
             <Text fontSize="1.5rem" fontWeight="black">
               {author}
             </Text>
@@ -95,7 +107,7 @@ function TestimonialsCarousel({
               {aditionalInfo || "-"}
             </Text>
           </Box>
-        </Flex>
+        </Grid>
       </BoxedTitleSection>
     </SkewBox>
   )

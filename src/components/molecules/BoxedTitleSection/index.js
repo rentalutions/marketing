@@ -9,6 +9,7 @@ function BoxedTitleSection({
   title,
   titleBackground,
   children,
+  childrenWrapperProps,
   ...props
 }) {
   const titleBoxVariants = {
@@ -42,6 +43,7 @@ function BoxedTitleSection({
         px={0}
       >
         <Flex
+          height="100%"
           sx={{
             gap: 1,
             flexFlow: "row wrap",
@@ -52,15 +54,18 @@ function BoxedTitleSection({
             bg={titleBackground}
             alignItems="center"
             borderRadius="2.5rem"
-            padding="4rem 2rem"
+            padding={["4rem 3rem", "4rem 3rem", "2rem 4rem"]}
+            margin={orientation === "left" ? "0 0 0 2rem" : "0 2rem 0 0"}
             {...titleBoxVariants[overflow ? orientation : "noOverflow"]}
           >
             <Box width="fill-available">{title}</Box>
           </Flex>
           <Box
-            width={["100%", "100%", "fit-content"]}
+            width="100%"
+            padding="2rem"
             flex={["auto", "auto", 1]}
             order={orientation === "left" ? ["unset", "unset", -1] : "unset"}
+            {...childrenWrapperProps}
           >
             {children}
           </Box>

@@ -23,7 +23,7 @@ export function Default() {
       author: "Paul",
       titleAndLocation: "Tenant in Liverpool, UK",
       aditionalInfo: "1 Unit",
-      quote: Quote,
+      quote: <Text>Quote</Text>,
     },
     {
       picture: { url: "/state-specific.png", alt: "" },
