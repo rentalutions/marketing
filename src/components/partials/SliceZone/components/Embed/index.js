@@ -1,7 +1,6 @@
 import React from "react"
-import { isValidEmbed } from "utils/embed"
 import ResponsiveEmbed from "components/elements/ResponsiveEmbed"
-import RichText from "components/partials/SliceZone/components/RichText"
+import { isValidEmbed } from "utils/embed"
 
 export default function Embed({ embed, ...props }) {
   return isValidEmbed(embed) ? (
@@ -9,7 +8,8 @@ export default function Embed({ embed, ...props }) {
       aspect={{ width: embed.width, height: embed.height }}
       {...props}
     >
-      <RichText render={[{ type: "embed", oembed: embed }]} />
+      {/* eslint-disable-next-line react/no-danger */}
+      <div dangerouslySetInnerHTML={{ __html: embed.html }} />
     </ResponsiveEmbed>
   ) : (
     "Embed provider not supported"
