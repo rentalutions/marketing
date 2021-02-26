@@ -58,7 +58,7 @@ function TestimonialsCarousel({
           gap={2}
           gridTemplateColumns="1fr"
           width={["100%", "100%", "28rem"]}
-          margin={["unset", "unset", "auto auto 1rem 3rem"]}
+          margin={["unset", "unset", (orientation === "left" ? "auto 3rem 1rem auto" : "auto auto 1rem 3rem")]}
           sx={{
             textAlign: "center",
           }}
