@@ -19,30 +19,30 @@ function Quote() {
 export function Default() {
   const testimonials = [
     {
-      picture: { url: "/send-money.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "Paul",
       titleAndLocation: "Tenant in Liverpool, UK",
-      aditionalInfo: "1 Unit",
+      additionalInfo: "1 Unit",
       quote: <Text>Quote</Text>,
     },
     {
-      picture: { url: "/state-specific.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Jhon",
       titleAndLocation: "Tenant in Liverpool, UK",
       quote: Quote,
     },
     {
-      picture: { url: "/user-card.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "George",
       titleAndLocation: "Tenant in Liverpool, UK",
-      aditionalInfo: "3 Units",
+      additionalInfo: "3 Units",
       quote: Quote,
     },
     {
-      picture: { url: "/property-damage.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Ringo",
       titleAndLocation: "Landlord in Liverpool, UK",
-      aditionalInfo: "4 Units",
+      additionalInfo: "4 Units",
       quote: Quote,
     },
   ]
@@ -60,13 +60,13 @@ export function Default() {
 export function WithTwoItems() {
   const testimonials = [
     {
-      picture: { url: "/property-damage.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "Jules",
       titleAndLocation: "Tenant in Los Angeles, CA",
       quote: Quote,
     },
     {
-      picture: { url: "/send-money.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Vincent",
       titleAndLocation: "Tenant in Redondo Beach, CA",
       quote: Quote,
@@ -74,9 +74,9 @@ export function WithTwoItems() {
   ]
   return (
     <TestimonialsCarousel
-      bg="#0B2E51"
+      bg="blue_700"
       color="#FFF"
-      titleBackground="#777"
+      titleBackground="blue_500"
       skew="left"
       title={<Box as="h2">Testimonials</Box>}
       testimonials={testimonials}
@@ -87,73 +87,73 @@ export function WithTwoItems() {
 export function WithTwelveItems() {
   const testimonials = [
     {
-      picture: { url: "/send-money.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "Danny",
       titleAndLocation: "Landlord in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/state-specific.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Rusty",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/user-card.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "Linus",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/property-damage.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Frank",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/send-money.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "Reuben",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/state-specific.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Virgil",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/user-card.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "Turk",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/property-damage.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Livingston",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/send-money.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "Basher",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/state-specific.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Yen",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/user-card.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-01.jpg", alt: "" },
       author: "Saul",
       titleAndLocation: "Tenant in Las Vegas, NV",
       quote: Quote,
     },
     {
-      picture: { url: "/property-damage.png", alt: "" },
+      picture: { url: "/media/testimonials-sample-02.jpg", alt: "" },
       author: "Tess",
       titleAndLocation: "Landlord in Las Vegas, NV",
       quote: Quote,

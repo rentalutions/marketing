@@ -27,12 +27,9 @@ function TestimonialsCarouselItem({
       {...props}
       sx={{
         ...sx,
-        transform: `scale(${scale})`,
-        "& > .pictureChild": {
-          borderRadius: "50%",
-          width: "100%",
-          height: "100%",
-        },
+        width: `${4 * scale}rem`,
+        height: `${4 * scale}rem`,
+        flex: "none",
       }}
     >
       <Box
@@ -41,9 +38,12 @@ function TestimonialsCarouselItem({
         background={filterColor}
         opacity={opacity}
         sx={{
-          "&:hover": {
-            cursor: "pointer",
-          },
+          cursor: "pointer",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          borderRadius: "50%",
         }}
       />
       {picture && (
@@ -53,6 +53,11 @@ function TestimonialsCarouselItem({
           src={picture.url}
           alt={picture.alt || altFallback}
           title={picture.alt || altFallback}
+          sx={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+          }}
         />
       )}
     </Box>

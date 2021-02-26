@@ -19,13 +19,15 @@ const TestimonialsCarouselSlice = ({ slice }) => {
   } = slice
 
   const testimonials = slice.items.map(
-    ({ picture, author, titleAndLocation, quote, aditionalInfo }) => ({
-      picture,
-      author,
-      titleAndLocation,
-      aditionalInfo,
-      quote: <RichText render={quote} />,
-    })
+    ({ picture, author, titleAndLocation, quote, additionalInfo }) => {
+      return {
+        picture,
+        author,
+        titleAndLocation,
+        additionalInfo,
+        quote: <RichText render={quote} />,
+      }
+    }
   )
 
   return (
@@ -41,6 +43,7 @@ const TestimonialsCarouselSlice = ({ slice }) => {
       orientation={orientation}
       testimonialInterval={testimonialInterval}
       skew={skew}
+      pb="6rem"
     />
   )
 }

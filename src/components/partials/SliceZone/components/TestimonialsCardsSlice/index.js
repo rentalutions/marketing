@@ -17,13 +17,11 @@ const TestimonialsCardsSlice = ({ slice }) => {
       skew,
     },
   } = slice
-
   const testimonials = slice.items.map(
-    ({ picture, author, titleAndLocation, quote, aditionalInfo }) => ({
+    ({ picture, author, titleAndLocation, quote }) => ({
       picture,
       author,
       titleAndLocation,
-      aditionalInfo,
       quote: <RichText render={quote} />,
     })
   )

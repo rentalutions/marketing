@@ -1115,10 +1115,10 @@
                   "placeholder" : "Landlord in Chicago, Illinois"
                 }
               },
-              "aditionalInfo" : {
+              "additionalInfo" : {
                 "type" : "Text",
                 "config" : {
-                  "label" : "Aditional info from the author",
+                  "label" : "Additional info from the author",
                   "placeholder" : "4 Units"
                 }
               },

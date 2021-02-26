@@ -11,10 +11,8 @@ import HowItWorksSlice from "./components/HowItWorksSlice"
 import PitchCardsSlice from "./components/PitchCardsSlice"
 import PlansPricesSlice from "./components/PlansPricesSlice"
 import ShowcaseSlice from "./components/ShowcaseSlice"
-import {
-  TestimonialsCardsSlice,
-  TestimonialsCarouselSlice,
-} from "./components/TestimonialsSlice"
+import TestimonialsCardsSlice from "./components/TestimonialsCardsSlice"
+import TestimonialsCarouselSlice from "./components/TestimonialsCarouselSlice"
 
 const SliceZone = ({ slices }) => {
   if (!slices) {

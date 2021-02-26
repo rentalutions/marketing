@@ -24,7 +24,7 @@ function TestimonialsCarousel({
   ...props
 }) {
   const [
-    { quote: Quote, author, titleAndLocation, aditionalInfo },
+    { quote: Quote, author, titleAndLocation, additionalInfo },
     visibleItems,
   ] = useCarousel(testimonials, { interval: testimonialInterval })
 
@@ -58,7 +58,13 @@ function TestimonialsCarousel({
           gap={2}
           gridTemplateColumns="1fr"
           width={["100%", "100%", "28rem"]}
-          margin={["unset", "unset", (orientation === "left" ? "auto 3rem 1rem auto" : "auto auto 1rem 3rem")]}
+          margin={[
+            "unset",
+            "unset",
+            orientation === "left"
+              ? "auto 3rem 1rem auto"
+              : "auto auto 1rem 3rem",
+          ]}
           sx={{
             textAlign: "center",
           }}
@@ -77,10 +83,8 @@ function TestimonialsCarousel({
           <Flex
             as={motion.div}
             {...animation?.item}
-            justifyContent="center"
-            sx={{
-              gap: 3,
-            }}
+            justifyContent="space-between"
+            alignItems="center"
           >
             {visibleItems.map(({ item, level, selectItem }, itemIndex) => {
               const { picture, author: itemAuthor } = item
@@ -104,7 +108,7 @@ function TestimonialsCarousel({
               {titleAndLocation}
             </Text>
             <Text fontSize="1.3rem" opacity={0.45}>
-              {aditionalInfo || "-"}
+              {additionalInfo || "-"}
             </Text>
           </Box>
         </Grid>
