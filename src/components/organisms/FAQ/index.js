@@ -1,17 +1,26 @@
 import React, { useState, cloneElement } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import styled from "styled-components"
+import { variant } from "styled-system"
 import { useInViewAnimation } from "utils/animation"
 import { Box, Container, Stack } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
 
-const Accordion = styled(Box)`
-  cursor: pointer;
-  &:hover {
-    opacity: 0.75;
-  }
-`
+const Accordion = styled(Box)(
+  {},
+  variant({
+    variants: {
+      opened: {},
+      collapsed: {
+        "&:hover": {
+          cursor: "pointer",
+          opacity: 0.75,
+        },
+      },
+    },
+  })
+)
 
 function FAQ({
   questions,
@@ -68,6 +77,7 @@ function FAQ({
                   p="2rem"
                   bg="blue_100"
                   onClick={() => setOpen(idx)}
+                  variant={isOpen ? "opened" : "collapsed"}
                 >
                   <Text fontWeight="800">{question}</Text>
                   <AnimatePresence>
