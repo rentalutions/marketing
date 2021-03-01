@@ -16,7 +16,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       background,
       skew,
       image,
-      imagePosition,
+      mediaPosition,
       video,
       embed,
       color,
@@ -38,7 +38,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       bg={background}
       skew={skew}
       image={image}
-      imagePosition={imagePosition}
+      mediaPosition={mediaPosition}
       video={video?.url && video}
       embed={embed?.html && <Embed embed={embed} />}
       color={color}

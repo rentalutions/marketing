@@ -84,7 +84,7 @@ export function WithSwap() {
         url: "https://avail-design-site.now.sh/images/building.svg",
         alt: "",
       }}
-      imagePosition="left"
+      mediaPosition="left"
       title={
         <Box as="h1">Feel good about the way you manage your rentals.</Box>
       }
