@@ -486,7 +486,7 @@
                 "config" : {
                   "options" : [ "right", "left" ],
                   "default_value" : "right",
-                  "label" : "Image position"
+                  "label" : "Media position"
                 }
               },
               "emailCaptureLabel" : {
@@ -509,7 +509,7 @@
           "how_it_works" : {
             "type" : "Slice",
             "fieldset" : "How It Works",
-            "description" : "A grid of alternating blocks with images and text",
+            "description" : "A grid of alternating blocks with media and text",
             "icon" : "dashboard",
             "display" : "list",
             "non-repeat" : {
@@ -545,7 +545,7 @@
                   "placeholder_false" : "Right",
                   "placeholder_true" : "Left",
                   "default_value" : false,
-                  "label" : "First section image position"
+                  "label" : "First section media position"
                 }
               }
             },
@@ -596,7 +596,7 @@
           "pitch_cards" : {
             "type" : "Slice",
             "fieldset" : "Pitch Cards",
-            "description" : "A grid of cards with optional images",
+            "description" : "A grid of cards with optional media",
             "icon" : "grid_on",
             "display" : "list",
             "non-repeat" : {
