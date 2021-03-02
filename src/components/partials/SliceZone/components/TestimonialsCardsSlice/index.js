@@ -1,9 +1,9 @@
 import React from "react"
-import { Testimonials } from "components/organisms/Testimonials"
-import { CONTAINER_WIDTHS, STYLING } from "config"
+import { TestimonialsCards } from "components/organisms/Testimonials"
+import { CONTAINER_WIDTHS } from "config"
 import RichText from "../RichText"
 
-const TestimonialsSlice = ({ slice }) => {
+const TestimonialsCardsSlice = ({ slice }) => {
   const {
     primary: {
       title,
@@ -11,10 +11,12 @@ const TestimonialsSlice = ({ slice }) => {
       color,
       testimonialBackground,
       testimonialColor,
+      titleBackground,
+      orientation,
+      testimonialInterval,
       skew,
     },
   } = slice
-
   const testimonials = slice.items.map(
     ({ picture, author, titleAndLocation, quote }) => ({
       picture,
@@ -25,7 +27,7 @@ const TestimonialsSlice = ({ slice }) => {
   )
 
   return (
-    <Testimonials
+    <TestimonialsCards
       title={<RichText render={title} heading />}
       testimonials={testimonials}
       containerWidth={CONTAINER_WIDTHS}
@@ -33,9 +35,12 @@ const TestimonialsSlice = ({ slice }) => {
       color={color}
       testimonialBg={testimonialBackground}
       testimonialColor={testimonialColor}
+      titleBackground={titleBackground}
+      orientation={orientation}
+      testimonialInterval={testimonialInterval}
       skew={skew}
     />
   )
 }
 
-export default TestimonialsSlice
+export default TestimonialsCardsSlice
