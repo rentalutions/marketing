@@ -93,7 +93,8 @@
           "pitch_cards" : [ ],
           "plans_and_prices" : [ ],
           "show_case" : [ ],
-          "testimonials" : [ ]
+          "testimonials" : [ ],
+          "testimonials_carousel" : [ ]
         },
         "choices" : {
           "button_cta" : {
@@ -973,8 +974,8 @@
           },
           "testimonials" : {
             "type" : "Slice",
-            "fieldset" : "Testimonials",
-            "description" : "A list that displays quotes and its authors",
+            "fieldset" : "Testimonials Cards",
+            "description" : "A card list that displays quotes and its authors",
             "icon" : "format_quote",
             "display" : "grid",
             "non-repeat" : {
@@ -1052,6 +1053,115 @@
                 "config" : {
                   "label" : "Title and Location",
                   "placeholder" : "Landlord in Chicago, Illinois"
+                }
+              },
+              "quote" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, rtl",
+                  "label" : "Quote",
+                  "placeholder" : "Lorem ipsum sit dolor amet",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              }
+            }
+          },
+          "testimonials_carousel" : {
+            "type" : "Slice",
+            "fieldset" : "Testimonials Carousel",
+            "description" : "A carousel that displays quotes and its authors",
+            "icon" : "format_quote",
+            "display" : "grid",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Title",
+                  "placeholder" : "Testimonials Title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "titleBackground" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
+                  "default_value" : "blue_100",
+                  "label" : "Slice Title Background color"
+                }
+              },
+              "orientation" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "left", "right" ],
+                  "default_value" : "right",
+                  "label" : "Testimonials Orientation"
+                }
+              },
+              "testimonialInterval": {
+                "type": "Number",
+                "config": {
+                  "label": "Carousel step interval (seconds)",
+                  "min": 0,
+                  "max": 999
+                }
+              },
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "right", "left" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
+                }
+              }
+            },
+            "repeat" : {
+              "picture" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : {
+                    "width" : 48,
+                    "height" : 48
+                  },
+                  "thumbnails" : [ ],
+                  "label" : "Author Picture"
+                }
+              },
+              "author" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Author Name",
+                  "placeholder" : "Jhon Smith"
+                }
+              },
+              "titleAndLocation" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Title and Location",
+                  "placeholder" : "Landlord in Chicago, Illinois"
+                }
+              },
+              "additionalInfo" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Additional info from the author",
+                  "placeholder" : "4 Units"
                 }
               },
               "quote" : {
