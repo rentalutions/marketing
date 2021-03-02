@@ -1,0 +1,9 @@
+directive @client on FIELD
+
+type Query {
+  availAnalytics: AvailAnalytics!
+}
+
+type AvailAnalytics {
+  uuid: String!
+}

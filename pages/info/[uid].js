@@ -14,7 +14,7 @@ import { useRouter } from "next/router"
 import DefaultErrorPage from "next/error"
 import Head from "next/head"
 import { Box, Flex } from "@rent_avail/layout"
-import Analytics from "components/partials/Analytics"
+import AnalyticsTest from "components/partials/AnalyticsTest"
 
 export const getStaticProps = async ({
   preview = null,
@@ -105,7 +105,7 @@ const Page = ({ data, uid }) => {
     )
   return (
     <UrlResolverProvider params={urlResolverParams}>
-      <Analytics />
+      <AnalyticsTest />
       <NextSeo
         title={title}
         description={description}

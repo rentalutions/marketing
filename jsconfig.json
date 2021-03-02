@@ -4,6 +4,7 @@
     "paths": {
       "components/*": ["./src/components/*"],
       "utils/*": ["./src/utils/*"],
+      "graphql/*": ["./src/graphql/*"],
       "config": ["./src/config.js"]
     }
   },
