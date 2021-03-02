@@ -355,7 +355,7 @@
                   "label" : "Embed"
                 }
               },
-              "mediaPosition" : {
+              "imagePosition" : {
                 "type" : "Select",
                 "config" : {
                   "options" : [ "right", "left" ],
@@ -481,12 +481,12 @@
                   "label" : "Embed"
                 }
               },
-              "mediaPosition" : {
+              "imagePosition" : {
                 "type" : "Select",
                 "config" : {
                   "options" : [ "right", "left" ],
                   "default_value" : "right",
-                  "label" : "Media position"
+                  "label" : "Image position"
                 }
               },
               "emailCaptureLabel" : {
@@ -509,7 +509,7 @@
           "how_it_works" : {
             "type" : "Slice",
             "fieldset" : "How It Works",
-            "description" : "A grid of alternating blocks with media and text",
+            "description" : "A grid of alternating blocks with images and text",
             "icon" : "dashboard",
             "display" : "list",
             "non-repeat" : {
@@ -545,7 +545,7 @@
                   "placeholder_false" : "Right",
                   "placeholder_true" : "Left",
                   "default_value" : false,
-                  "label" : "First section media position"
+                  "label" : "First section image position"
                 }
               }
             },
@@ -596,7 +596,7 @@
           "pitch_cards" : {
             "type" : "Slice",
             "fieldset" : "Pitch Cards",
-            "description" : "A grid of cards with optional media",
+            "description" : "A grid of cards with optional images",
             "icon" : "grid_on",
             "display" : "list",
             "non-repeat" : {

@@ -30,7 +30,7 @@ function Hero({
   description,
   title,
   image = null,
-  mediaPosition = "right",
+  imagePosition = "right",
   video,
   embed,
   primaryLink,
@@ -52,7 +52,7 @@ function Hero({
     <Col
       span={[12, 12, 12, 6]}
       gridRow={["1", "1", "1", "auto"]}
-      order={mediaPosition === "left" ? -1 : 1}
+      order={imagePosition === "left" ? -1 : 1}
       sx={{ textAlign: "center" }}
     >
       <motion.aside {...animation?.item}>
@@ -90,7 +90,7 @@ function Hero({
         gap={["2rem", "2rem", "4rem"]}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
-        {hasTwoCols && mediaPosition === "left" && secondCol}
+        {hasTwoCols && imagePosition === "left" && secondCol}
         <Col span={hasTwoCols ? [12, 12, 12, 6] : [12]}>
           <motion.aside {...animation?.item}>
             {cloneElement(title, {
@@ -118,7 +118,7 @@ function Hero({
           )}
           <motion.aside {...animation?.item}>{children}</motion.aside>
         </Col>
-        {hasTwoCols && mediaPosition !== "left" && secondCol}
+        {hasTwoCols && imagePosition !== "left" && secondCol}
       </Container>
     </HeroWrapper>
   )
