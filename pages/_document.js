@@ -33,6 +33,8 @@ export default class Document extends NextDoc {
   render() {
     const GTM_CONTAINER_ID = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID
     const SEGMENT_KEY = process.env.NEXT_PUBLIC_SEGMENT_KEY
+    const AVAIL_BASE_URL =
+      process.env.NEXT_PUBLIC_AVAIL_BASE_URL || "https://www.avail.co"
     return (
       <Html lang="en-US">
         <Head>
@@ -81,6 +83,7 @@ export default class Document extends NextDoc {
               }}
             />
           )}
+          <script src={`${AVAIL_BASE_URL}/api/v2/public/analytics/noop.js`} />
           <link
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&display=swap"
             rel="stylesheet"

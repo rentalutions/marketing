@@ -1,9 +1,9 @@
 directive @client on FIELD
 
 type Query {
-  availAnalytics: AvailAnalytics!
+  analytics: Analytics!
 }
 
-type AvailAnalytics {
+type Analytics {
   uuid: String!
 }

@@ -6,6 +6,8 @@ import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
+import { useQuery } from "@apollo/client"
+import { GET_ANALYTICS_QUERY } from "graphql/queries"
 
 const EmailCaptureSlice = ({ slice }) => {
   const {
@@ -15,6 +17,10 @@ const EmailCaptureSlice = ({ slice }) => {
   const urlResolver = useUrlResolver()
 
   const inputLabelId = useUID()
+
+  const { data, loading, error } = useQuery(GET_ANALYTICS_QUERY)
+
+  console.log(data, loading, error)
 
   return (
     <Container maxWidth={CONTAINER_WIDTHS} my="6rem">

@@ -1,20 +1,27 @@
-import fetchJsonp from "fetch-jsonp"
-import { AVAIL_URL } from "utils/env"
-import { throwServerError } from "@apollo/client"
+import { ApolloError, throwServerError } from "@apollo/client"
 
-async function availAnalyticsResolver() {
+async function analyticsResolver() {
   try {
-    const response = await fetchJsonp(`${AVAIL_URL}/api/v2/public/analytics`)
+    const response = await fetch(`/api/analytics`)
     const body = await response.json()
+    if (!response.ok) {
+      throwServerError(
+        response,
+        body,
+        body?.message || "Unknown request failure"
+      )
+    }
     return { __typename: "Analytics", ...body }
   } catch (error) {
-    throwServerError(null, error, error?.message || "Unknown request failure")
+    throw new ApolloError({
+      errorMessage: error?.message || "Unknown request failure",
+    })
   }
 }
 
 const resolvers = {
   Query: {
-    availAnalytics: availAnalyticsResolver,
+    analytics: analyticsResolver,
   },
 }
 
