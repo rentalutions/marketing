@@ -79,6 +79,7 @@ const Page = ({ data, uid }) => {
     meta_title: title,
     meta_description: description,
     meta_keywords: keywords,
+    background,
     sticky_nav_bar: navBarSticky,
     body: slices,
   } = data
@@ -103,27 +104,29 @@ const Page = ({ data, uid }) => {
       })
     )
   return (
-    <UrlResolverProvider params={urlResolverParams}>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          title,
-          description,
-          url,
-        }}
-        additionalMetaTags={[{ property: "keywords", content: keywords }]}
-      />
-      <NavBarWrapper
-        links={navBarLinks}
-        sticky={navBarSticky}
-        borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
-        containerWidth={CONTAINER_WIDTHS}
-      />
-      <SliceZone slices={slices} />
-      <AvailFooter />
-    </UrlResolverProvider>
+    <Box bg={background}>
+      <UrlResolverProvider params={urlResolverParams}>
+        <NextSeo
+          title={title}
+          description={description}
+          canonical={url}
+          openGraph={{
+            title,
+            description,
+            url,
+          }}
+          additionalMetaTags={[{ property: "keywords", content: keywords }]}
+        />
+        <NavBarWrapper
+          links={navBarLinks}
+          sticky={navBarSticky}
+          borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
+          containerWidth={CONTAINER_WIDTHS}
+        />
+        <SliceZone slices={slices} />
+        <AvailFooter />
+      </UrlResolverProvider>
+    </Box>
   )
 }
 
