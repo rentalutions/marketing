@@ -15,6 +15,14 @@
         "placeholder" : "unique-identifier-eg-homepage"
       }
     },
+    "nav_bar_type" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Avail", "Avail/RDC" ],
+        "default_value" : "Avail",
+        "label" : "Navigation Bar Type"
+      }
+    },
     "sticky_nav_bar" : {
       "type" : "Boolean",
       "config" : {

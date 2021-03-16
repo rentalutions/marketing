@@ -79,6 +79,7 @@ const Page = ({ data, uid }) => {
     meta_title: title,
     meta_description: description,
     meta_keywords: keywords,
+    nav_bar_type: navBarType,
     sticky_nav_bar: navBarSticky,
     body: slices,
   } = data
@@ -117,6 +118,7 @@ const Page = ({ data, uid }) => {
       />
       <NavBarWrapper
         links={navBarLinks}
+        type={navBarType}
         sticky={navBarSticky}
         borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
         containerWidth={CONTAINER_WIDTHS}
