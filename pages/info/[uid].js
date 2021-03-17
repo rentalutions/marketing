@@ -81,6 +81,13 @@ const Page = ({ data, uid }) => {
     meta_keywords: keywords,
     nav_bar_type: navBarType,
     sticky_nav_bar: navBarSticky,
+    primaryButtonText,
+    primaryButtonLink,
+    primaryButtonHash,
+    secondaryButtonText,
+    secondaryButtonLink,
+    secondaryButtonHash,
+    nav_bar: navBar,
     body: slices,
   } = data
 
@@ -91,18 +98,16 @@ const Page = ({ data, uid }) => {
     query_campaign: campaign,
   }) => ({ channel, content, signup_page, campaign }))(data)
 
-  const navBarLinks =
-    data.nav_bar &&
-    data.nav_bar.map(
-      ({ buttonText, buttonLink, buttonHash, buttonId, primary, push }) => ({
-        text: buttonText,
-        href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
-        target: buttonLink && buttonLink.target,
-        id: buttonId,
-        primary,
-        push,
-      })
-    )
+  const navBarLinks = navBar?.map(
+    ({ buttonText, buttonLink, buttonHash, buttonId, primary, push }) => ({
+      text: buttonText,
+      href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
+      target: buttonLink && buttonLink.target,
+      id: buttonId,
+      primary,
+      push,
+    })
+  )
   return (
     <UrlResolverProvider params={urlResolverParams}>
       <NextSeo
@@ -117,11 +122,17 @@ const Page = ({ data, uid }) => {
         additionalMetaTags={[{ property: "keywords", content: keywords }]}
       />
       <NavBarWrapper
-        links={navBarLinks}
-        type={navBarType}
-        sticky={navBarSticky}
         borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
         containerWidth={CONTAINER_WIDTHS}
+        type={navBarType}
+        sticky={navBarSticky}
+        primaryButtonText={primaryButtonText}
+        primaryButtonLink={primaryButtonLink}
+        primaryButtonHash={primaryButtonHash}
+        secondaryButtonText={secondaryButtonText}
+        secondaryButtonLink={secondaryButtonLink}
+        secondaryButtonHash={secondaryButtonHash}
+        links={navBarLinks}
       />
       <SliceZone slices={slices} />
       <AvailFooter />

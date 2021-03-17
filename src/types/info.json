@@ -32,6 +32,50 @@
         "label" : "Sticky nav bar"
       }
     },
+    "primaryButtonText" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Primary Button text",
+        "placeholder" : "E.g. - Sign Up"
+      }
+    },
+    "primaryButtonLink" : {
+      "config" : {
+        "label" : "Primary Button external URL",
+        "placeholder" : "",
+        "allowTargetBlank" : true
+      },
+      "type" : "Link"
+    },
+    "primaryButtonHash" : {
+      "config" : {
+        "label" : "Primary Button hash (jump link)",
+        "placeholder" : "A hash matching the hash in slice you want to link to"
+      },
+      "type" : "Text"
+    },
+    "secondaryButtonText" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Primary Button text",
+        "placeholder" : "E.g. - Log In"
+      }
+    },
+    "secondaryButtonLink" : {
+      "config" : {
+        "label" : "Secondary Button external URL",
+        "placeholder" : "",
+        "allowTargetBlank" : true
+      },
+      "type" : "Link"
+    },
+    "secondaryButtonHash" : {
+      "config" : {
+        "label" : "Secondary Button hash (jump link)",
+        "placeholder" : "A hash matching the hash in slice you want to link to"
+      },
+      "type" : "Text"
+    },
     "nav_bar" : {
       "type" : "Group",
       "config" : {
@@ -71,12 +115,12 @@
               "placeholder_false" : "Default",
               "placeholder_true" : "Primary",
               "default_value" : false,
-              "label" : "Button variant (note: there should be only one primary button)"
+              "label" : "(Avail NavBar only) Button variant (note: there should be only one primary button)"
             }
           },
           "push" : {
             "config" : {
-              "label" : "Button location",
+              "label" : "(Avail NavBar only) Button location",
               "placeholder_false" : "Left",
               "placeholder_true" : "Right",
               "default_value" : false
@@ -84,7 +128,7 @@
             "type" : "Boolean"
           }
         },
-        "label" : "Nav Bar Buttons"
+        "label" : "Nav Bar Buttons (Avail) / Menu Items (Avail/RDC)"
       }
     },
     "body" : {

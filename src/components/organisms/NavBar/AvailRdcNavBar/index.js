@@ -1,20 +1,47 @@
-import React from "react"
-import { Box, Col, Container, Flex, Grid } from "@rent_avail/layout"
+import React, { cloneElement, useMemo } from "react"
+import { Menu as MenuIcon } from "react-feather"
+
 import { Button } from "@rent_avail/controls"
+import { Box, Col, Container, Flex, Grid } from "@rent_avail/layout"
+import { Menu, MenuTarget, MenuList, MenuItem } from "@rent_avail/menu"
+
 import { getTargetProps } from "utils/link"
 import { useInViewAnimation } from "utils/animation"
 import { motion } from "framer-motion"
 
 function AvailRdcNavBar({
   background = "ui_100",
-  defaultLinks = [],
+  menuEntries = [],
   primaryLink,
+  secondaryLink,
   sticky,
   animationPreset = "fadeIn",
   ...props
 }) {
   const [presets, intersectionTarget] = useInViewAnimation({ delayChildren: 0 })
   const animation = presets[animationPreset]
+
+  const primaryLinkProps = useMemo(
+    () => ({
+      id: primaryLink?.id,
+      href: primaryLink?.href,
+      as: "a",
+      ...getTargetProps(primaryLink?.target),
+      children: primaryLink?.text,
+    }),
+    [primaryLink]
+  )
+
+  const secondaryLinkProps = useMemo(
+    () => ({
+      id: secondaryLink?.id,
+      href: secondaryLink?.href,
+      as: "a",
+      ...getTargetProps(secondaryLink?.target),
+      children: secondaryLink?.text,
+    }),
+    [secondaryLink]
+  )
 
   return (
     <Flex
@@ -88,30 +115,22 @@ function AvailRdcNavBar({
                 alignItems: "center",
                 "& > *:not(:first-child)": {
                   marginLeft: "2rem",
-                }
+                },
               }}
             >
-              {defaultLinks.map(({ href, text, id, target }) => (
+              {secondaryLink && (
                 <Box
                   as="motion.li"
                   {...animation?.item}
-                  key={href}
-                  sx={{
-                    display: ["none", "initial"],
-                    flex: "none",
-                  }}
+                  sx={{ display: ["none", "none", "initial"] }}
                 >
                   <Button
                     display="block"
-                    href={href}
-                    id={id}
-                    {...getTargetProps(target)}
-                    as="a"
-                  >
-                    {text}
-                  </Button>
+                    flex="0 0 auto"
+                    {...secondaryLinkProps}
+                  />
                 </Box>
-              ))}
+              )}
               {primaryLink && (
                 <Box
                   as="motion.li"
@@ -121,16 +140,60 @@ function AvailRdcNavBar({
                   <Button
                     variant="primary"
                     display="block"
-                    href={primaryLink.href}
-                    {...getTargetProps(primaryLink.target)}
-                    id={primaryLink.id}
-                    as="a"
                     flex="0 0 auto"
-                  >
-                    {primaryLink.text}
-                  </Button>
+                    {...primaryLinkProps}
+                  />
                 </Box>
               )}
+              <Menu>
+                <MenuTarget>
+                  <Box
+                    as="motion.li"
+                    role="button"
+                    sx={{
+                      color: "blue_500",
+                      cursor: "pointer",
+                      "&:hover": { color: "blue_300" },
+                    }}
+                  >
+                    <MenuIcon />
+                  </Box>
+                </MenuTarget>
+                <MenuList>
+                  <Box
+                    sx={{
+                      fontWeight: 700,
+                      color: "blue_500",
+                      display: ["initial", "initial", "none"],
+                    }}
+                  >
+                    <MenuItem {...primaryLinkProps} />
+                    <Box height="1px" bg="ui_500" />
+                  </Box>
+                  <Box
+                    sx={{
+                      fontWeight: 700,
+                      color: "blue_500",
+                      display: ["initial", "initial", "none"],
+                    }}
+                  >
+                    <MenuItem {...secondaryLinkProps} />
+                    <Box height="1px" bg="ui_500" />
+                  </Box>
+                  {menuEntries.map(({ href, text, id, target }) => (
+                    <Box key={href}>
+                      <MenuItem
+                        href={href}
+                        id={id}
+                        {...getTargetProps(target)}
+                        as="a"
+                      >
+                        {text}
+                      </MenuItem>
+                    </Box>
+                  ))}
+                </MenuList>
+              </Menu>
             </Box>
           </Box>
         </Col>

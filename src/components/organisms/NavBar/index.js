@@ -22,24 +22,61 @@ import AvailRdcNavBar from "./AvailRdcNavBar"
  * @returns {JSX.Element}
  */
 export default function NavBar({
-  type = "Avail",
   background = "ui_100",
-  links = [],
   containerWidth = "96rem",
-  sticky,
   animationPreset = "fadeIn",
+  type = "Avail",
+  sticky,
+  primaryButtonText: pbText,
+  primaryButtonLink: pbLink,
+  primaryButtonHash: pbHash,
+  secondaryButtonText: sbText,
+  secondaryButtonLink: sbLink,
+  secondaryButtonHash: sbHash,
+  links = [],
   ...props
 }) {
-  const [defaultLinks, primaryLink, pushIndex] = useMemo(() => {
-    /** Clone links, since we are going to perform some dirty mutations */
-    const _defaultLinks = [...links]
+  const [
+    defaultLinks,
+    menuEntries,
+    primaryLink,
+    secondaryLink,
+    pushIndex,
+  ] = useMemo(() => {
+    function createLink(id, text, link, hash) {
+      return {
+        id,
+        text,
+        href: hash ? `#${hash.replace(/^#/, "")}` : link?.url,
+        target: link?.target,
+        push: true,
+      }
+    }
 
-    /** Find and remove the primary link from the default links using mutating .splice.
-     * NB: Only the first link with { primary: true } would be treated as such, -
-     * the rest would be considered default links */
-    const primaryLinkIndex = _defaultLinks.findIndex(({ primary }) => primary)
-    const [_primaryLink] =
-      primaryLinkIndex !== -1 ? _defaultLinks.splice(primaryLinkIndex, 1) : []
+    const { _defaultLinks, _menuEntries, _primaryLink } = links.reduce(
+      (acc, current) => {
+        acc._menuEntries.push(current)
+        if (!acc._primaryLink && current.primary) {
+          acc._primaryLink = current
+        } else {
+          acc._defaultLinks.push(current)
+        }
+        return acc
+      },
+      {
+        _defaultLinks: [],
+        _menuEntries: [],
+        _primaryLink:
+          pbText && createLink("nav-primary-bt", pbText, pbLink, pbHash),
+      }
+    )
+
+    const _secondaryLink =
+      sbText && createLink("nav-secondary-bt", sbText, sbLink, sbHash)
+
+    if (_secondaryLink) {
+      _defaultLinks.push(_secondaryLink)
+    }
 
     /** Check if links contain { push: true }. If so, - we will render the default links as "row-reverse",
      * because the expectation would be that links with { push: true } disappear last on smaller devices.
@@ -61,7 +98,13 @@ export default function NavBar({
       )
     }
 
-    return [_defaultLinks, _primaryLink, _pushIndex]
+    return [
+      _defaultLinks,
+      _menuEntries,
+      _primaryLink,
+      _secondaryLink,
+      _pushIndex,
+    ]
   }, [links])
 
   switch (type) {
@@ -69,8 +112,9 @@ export default function NavBar({
       return (
         <AvailRdcNavBar
           background={background}
-          defaultLinks={defaultLinks}
+          menuEntries={menuEntries}
           primaryLink={primaryLink}
+          secondaryLink={secondaryLink}
           sticky={sticky}
           animationPreset={animationPreset}
           {...props}
