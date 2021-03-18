@@ -27,12 +27,8 @@ export default function NavBar({
   animationPreset = "fadeIn",
   type = "Avail",
   sticky,
-  primaryButtonText: pbText,
-  primaryButtonLink: pbLink,
-  primaryButtonHash: pbHash,
-  secondaryButtonText: sbText,
-  secondaryButtonLink: sbLink,
-  secondaryButtonHash: sbHash,
+  primaryButton,
+  secondaryButton,
   links = [],
   ...props
 }) {
@@ -43,7 +39,7 @@ export default function NavBar({
     secondaryLink,
     pushIndex,
   ] = useMemo(() => {
-    function createLink(id, text, link, hash) {
+    function createLink(id, { text, link, hash }) {
       return {
         id,
         text,
@@ -67,12 +63,12 @@ export default function NavBar({
         _defaultLinks: [],
         _menuEntries: [],
         _primaryLink:
-          pbText && createLink("nav-primary-bt", pbText, pbLink, pbHash),
+          primaryButton && createLink("nav-primary-bt", primaryButton),
       }
     )
 
     const _secondaryLink =
-      sbText && createLink("nav-secondary-bt", sbText, sbLink, sbHash)
+      secondaryButton && createLink("nav-secondary-bt", secondaryButton)
 
     if (_secondaryLink) {
       _defaultLinks.push(_secondaryLink)

@@ -81,15 +81,23 @@ const Page = ({ data, uid }) => {
     meta_keywords: keywords,
     nav_bar_type: navBarType,
     sticky_nav_bar: navBarSticky,
-    primaryButtonText,
-    primaryButtonLink,
-    primaryButtonHash,
-    secondaryButtonText,
-    secondaryButtonLink,
-    secondaryButtonHash,
     nav_bar: navBar,
     body: slices,
   } = data
+
+  const primaryButton = (({
+    text: primaryButtonText,
+    link: primaryButtonLink,
+    hash: primaryButtonHash,
+  }) => ({ primaryButtonText, primaryButtonLink, primaryButtonHash }))(data)
+
+  const secondaryButton = (({
+    text: secondaryButtonText,
+    link: secondaryButtonLink,
+    hash: secondaryButtonHash,
+  }) => ({ secondaryButtonText, secondaryButtonLink, secondaryButtonHash }))(
+    data
+  )
 
   const urlResolverParams = (({
     query_channel: channel,
@@ -126,12 +134,8 @@ const Page = ({ data, uid }) => {
         containerWidth={CONTAINER_WIDTHS}
         type={navBarType}
         sticky={navBarSticky}
-        primaryButtonText={primaryButtonText}
-        primaryButtonLink={primaryButtonLink}
-        primaryButtonHash={primaryButtonHash}
-        secondaryButtonText={secondaryButtonText}
-        secondaryButtonLink={secondaryButtonLink}
-        secondaryButtonHash={secondaryButtonHash}
+        primaryButton={primaryButton}
+        secondaryButton={secondaryButton}
         links={navBarLinks}
       />
       <SliceZone slices={slices} />
