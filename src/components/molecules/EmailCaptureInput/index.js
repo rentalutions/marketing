@@ -10,6 +10,7 @@ const EmailCaptureInput = ({
   inputLabelId,
   buttonText,
   buttonUrl,
+  onSubmit,
   queryParamName,
 }) => {
   const buttonRef = useRef()
@@ -17,11 +18,14 @@ const EmailCaptureInput = ({
   const [inputValue, setInputValue] = useState("")
   const [, isDark] = background ? analyzeColor(background) : []
 
-  const onSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const url = new URL(buttonUrl)
     if (queryParamName && inputValue) {
       url.searchParams.append(queryParamName, inputValue)
+    }
+    if (onSubmit) {
+      await onSubmit({ email: inputValue })
     }
     window.location.href = url.toString()
   }
@@ -33,7 +37,7 @@ const EmailCaptureInput = ({
   }, [buttonRef.current])
 
   return (
-    <Box as="form" position="relative" onSubmit={onSubmit}>
+    <Box as="form" position="relative" onSubmit={handleSubmit}>
       <Input
         label={inputLabel}
         labelId={inputLabelId}

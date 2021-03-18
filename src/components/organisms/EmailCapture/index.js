@@ -13,6 +13,7 @@ function EmailCapture({
   buttonText,
   buttonUrl,
   queryParamName,
+  onSubmit,
   animationPreset = "fadeIn",
 }) {
   const [presets, intersectionView] = useInViewAnimation()
@@ -36,6 +37,7 @@ function EmailCapture({
           buttonUrl={buttonUrl}
           queryParamName={queryParamName}
           background={containerBg}
+          onSubmit={onSubmit}
         />
       </motion.aside>
     </Box>
