@@ -91,7 +91,7 @@ function AvailNavBar({
           >
             {defaultLinks.map(({ href, text, id, target }, idx) => (
               <motion.div
-                key={href}
+                key={`${id}-${href}-${text}`}
                 {...animation?.item}
                 style={{
                   marginLeft: idx === pushIndex ? "auto" : 0,

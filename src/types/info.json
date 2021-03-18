@@ -57,7 +57,7 @@
     "secondaryButtonText" : {
       "type" : "Text",
       "config" : {
-        "label" : "Primary Button text",
+        "label" : "Secondary Button text",
         "placeholder" : "E.g. - Log In"
       }
     },

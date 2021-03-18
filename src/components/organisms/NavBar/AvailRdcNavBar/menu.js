@@ -47,7 +47,7 @@ function Menu({ menuEntries, primaryLinkProps, secondaryLinkProps }) {
           <Box height="1px" bg="ui_500" />
         </Box>
         {menuEntries.map(({ href, text, id, target }) => (
-          <Box key={href}>
+          <Box key={`${id}-${href}-${text}`}>
             <MenuItem href={href} id={id} {...getTargetProps(target)} as="a">
               {text}
             </MenuItem>
