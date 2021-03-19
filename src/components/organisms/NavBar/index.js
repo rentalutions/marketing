@@ -39,7 +39,7 @@ export default function NavBar({
     secondaryLink,
     pushIndex,
   ] = useMemo(() => {
-    function createLink(id, { text, link, hash }) {
+    function createLink({ id, text, link, hash }) {
       return {
         id,
         text,
@@ -49,9 +49,8 @@ export default function NavBar({
       }
     }
 
-    const { _defaultLinks, _menuEntries, _primaryLink } = links.reduce(
+    const { _defaultLinks, _primaryLink } = links.reduce(
       (acc, current) => {
-        acc._menuEntries.push(current)
         if (!acc._primaryLink && current.primary) {
           acc._primaryLink = current
         } else {
@@ -61,14 +60,12 @@ export default function NavBar({
       },
       {
         _defaultLinks: [],
-        _menuEntries: [],
-        _primaryLink:
-          primaryButton && createLink("nav-primary-bt", primaryButton),
+        _primaryLink: primaryButton && createLink(primaryButton),
       }
     )
 
-    const _secondaryLink =
-      secondaryButton && createLink("nav-secondary-bt", secondaryButton)
+    const _menuEntries = _defaultLinks.map((a) => a)
+    const _secondaryLink = secondaryButton && createLink(secondaryButton)
 
     if (_secondaryLink) {
       _defaultLinks.push(_secondaryLink)

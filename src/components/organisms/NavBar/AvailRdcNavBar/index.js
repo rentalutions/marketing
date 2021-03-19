@@ -20,24 +20,26 @@ function AvailRdcNavBar({
   const animation = presets[animationPreset]
 
   const primaryLinkProps = useMemo(
-    () => ({
-      id: primaryLink?.id,
-      href: primaryLink?.href,
-      as: "a",
-      ...getTargetProps(primaryLink?.target),
-      children: primaryLink?.text,
-    }),
+    () =>
+      primaryLink && {
+        id: primaryLink?.id,
+        href: primaryLink?.href,
+        as: "a",
+        ...getTargetProps(primaryLink?.target),
+        children: primaryLink?.text,
+      },
     [primaryLink]
   )
 
   const secondaryLinkProps = useMemo(
-    () => ({
-      id: secondaryLink?.id,
-      href: secondaryLink?.href,
-      as: "a",
-      ...getTargetProps(secondaryLink?.target),
-      children: secondaryLink?.text,
-    }),
+    () =>
+      secondaryLink && {
+        id: secondaryLink?.id,
+        href: secondaryLink?.href,
+        as: "a",
+        ...getTargetProps(secondaryLink?.target),
+        children: secondaryLink?.text,
+      },
     [secondaryLink]
   )
 
@@ -69,7 +71,8 @@ function AvailRdcNavBar({
           }}
         >
           <Box
-            as="img"
+            as={motion.img}
+            {...animation?.item}
             src="/rdc-family-logo.svg"
             aria-label="Realtor.com"
             alt="Realtor.com family logo"
@@ -122,7 +125,7 @@ function AvailRdcNavBar({
             >
               {secondaryLink && (
                 <Box
-                  as="motion.li"
+                  as={motion.li}
                   {...animation?.item}
                   sx={{ display: ["none", "none", "initial"] }}
                 >
@@ -137,7 +140,7 @@ function AvailRdcNavBar({
               )}
               {primaryLink && (
                 <Box
-                  as="motion.li"
+                  as={motion.li}
                   {...animation?.item}
                   sx={{ display: ["none", "none", "initial"] }}
                 >

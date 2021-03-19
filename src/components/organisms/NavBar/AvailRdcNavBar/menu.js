@@ -26,26 +26,30 @@ function Menu({ menuEntries, primaryLinkProps, secondaryLinkProps }) {
         </Box>
       </MenuTarget>
       <MenuList>
-        <Box
-          sx={{
-            fontWeight: 700,
-            color: "blue_500",
-            display: ["initial", "initial", "none"],
-          }}
-        >
-          <MenuItem {...primaryLinkProps} />
-          <Box height="1px" bg="ui_500" />
-        </Box>
-        <Box
-          sx={{
-            fontWeight: 700,
-            color: "blue_500",
-            display: ["initial", "initial", "none"],
-          }}
-        >
-          <MenuItem {...secondaryLinkProps} />
-          <Box height="1px" bg="ui_500" />
-        </Box>
+        {primaryLinkProps && (
+          <Box
+            sx={{
+              fontWeight: 700,
+              color: "blue_500",
+              display: ["initial", "initial", "none"],
+            }}
+          >
+            <MenuItem {...primaryLinkProps} />
+            <Box height="1px" bg="ui_500" />
+          </Box>
+        )}
+        {secondaryLinkProps && (
+          <Box
+            sx={{
+              fontWeight: 700,
+              color: "blue_500",
+              display: ["initial", "initial", "none"],
+            }}
+          >
+            <MenuItem {...secondaryLinkProps} />
+            <Box height="1px" bg="ui_500" />
+          </Box>
+        )}
         {menuEntries.map(({ href, text, id, target }) => (
           <Box key={`${id}-${href}-${text}`}>
             <MenuItem href={href} id={id} {...getTargetProps(target)} as="a">

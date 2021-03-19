@@ -39,6 +39,13 @@
         "placeholder" : "E.g. - Sign Up"
       }
     },
+    "primaryButtonId:": {
+      "config" : {
+        "label" : "Primary Button selector ID (optional)",
+        "placeholder" : "ID selector for external tools (eg: navbar_primary_button)"
+      },
+      "type" : "Text"
+    },
     "primaryButtonLink" : {
       "config" : {
         "label" : "Primary Button external URL",
@@ -60,6 +67,13 @@
         "label" : "Secondary Button text",
         "placeholder" : "E.g. - Log In"
       }
+    },
+    "secondaryButtonId:": {
+      "config" : {
+        "label" : "BSecondary utton selector ID (optional)",
+        "placeholder" : "ID selector for external tools (eg: navbar_secondary_button)"
+      },
+      "type" : "Text"
     },
     "secondaryButtonLink" : {
       "config" : {

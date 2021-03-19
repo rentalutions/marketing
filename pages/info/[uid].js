@@ -86,18 +86,30 @@ const Page = ({ data, uid }) => {
   } = data
 
   const primaryButton = (({
+    id: primaryButtonId = "nav-primary-bt",
     text: primaryButtonText,
     link: primaryButtonLink,
     hash: primaryButtonHash,
-  }) => ({ primaryButtonText, primaryButtonLink, primaryButtonHash }))(data)
+  }) =>
+    primaryButtonText && {
+      primaryButtonId,
+      primaryButtonText,
+      primaryButtonLink,
+      primaryButtonHash,
+    })(data)
 
   const secondaryButton = (({
+    id: secondaryButtonId = "nav-secondary-bt",
     text: secondaryButtonText,
     link: secondaryButtonLink,
     hash: secondaryButtonHash,
-  }) => ({ secondaryButtonText, secondaryButtonLink, secondaryButtonHash }))(
-    data
-  )
+  }) =>
+    secondaryButtonText && {
+      secondaryButtonId,
+      secondaryButtonText,
+      secondaryButtonLink,
+      secondaryButtonHash,
+    })(data)
 
   const urlResolverParams = (({
     query_channel: channel,
