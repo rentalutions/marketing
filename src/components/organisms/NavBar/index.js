@@ -8,8 +8,6 @@ import AvailRdcNavBar from "./AvailRdcNavBar"
  * @type {object}
  * @property {string} href - a Link href
  * @property {string | undefined} target - Link target property
- * @property {boolean | undefined} push - specifies if button should be pushed to the right
- * @property {boolean | undefined} primary - indicates primary button. NB: Only one primary button is supported
  */
 
 /**
@@ -32,41 +30,28 @@ export default function NavBar({
   links = [],
   ...props
 }) {
-  const [
-    defaultLinks,
-    menuEntries,
-    primaryLink,
-    secondaryLink,
-  ] = useMemo(() => {
+  const [primaryLink, secondaryLink] = useMemo(() => {
     function createLink({ id, text, link, hash }) {
       return {
         id,
         text,
         href: hash ? `#${hash.replace(/^#/, "")}` : link?.url,
         target: link?.target,
-        push: true,
       }
     }
 
     const _primaryLink = primaryButton && createLink(primaryButton)
     const _secondaryLink = secondaryButton && createLink(secondaryButton)
 
-    const _menuEntries = links
-    const _defaultLinks = links.map((a) => a)
-
-    if (_secondaryLink) {
-      _defaultLinks.push(_secondaryLink)
-    }
-
-    return [_defaultLinks, _menuEntries, _primaryLink, _secondaryLink]
-  }, [links])
+    return [_primaryLink, _secondaryLink]
+  }, [primaryButton, secondaryButton])
 
   switch (type) {
     case "Avail/RDC":
       return (
         <AvailRdcNavBar
           background={background}
-          menuEntries={menuEntries}
+          menuEntries={links}
           primaryLink={primaryLink}
           secondaryLink={secondaryLink}
           sticky={sticky}
@@ -80,8 +65,9 @@ export default function NavBar({
         <AvailNavBar
           background={background}
           containerWidth={containerWidth}
-          defaultLinks={defaultLinks}
+          defaultLinks={links}
           primaryLink={primaryLink}
+          secondaryLink={secondaryLink}
           sticky={sticky}
           animationPreset={animationPreset}
           {...props}

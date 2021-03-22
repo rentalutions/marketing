@@ -22,13 +22,12 @@ function AvailNavBar({
   background = "ui_100",
   defaultLinks = [],
   primaryLink,
+  secondaryLink,
   containerWidth = "96rem",
   sticky,
   animationPreset = "fadeIn",
   ...props
 }) {
-  const hasPrimary = !!primaryLink
-
   const [presets, intersectionTarget] = useInViewAnimation({ delayChildren: 0 })
   const animation = presets[animationPreset]
 
@@ -75,7 +74,7 @@ function AvailNavBar({
           </Box>
           <Flex
             sx={{
-              visibility: hasPrimary ? ["hidden", "visible"] : "visible",
+              visibility: primaryLink ? ["hidden", "visible"] : "visible",
               flexDirection: "row",
               justifyContent: [
                 "flex-end",
@@ -94,7 +93,7 @@ function AvailNavBar({
                 key={`${id}-${href}-${text}`}
                 {...animation?.item}
                 style={{
-                  marginLeft: idx === 0 ? "auto" : "2rem",
+                  marginLeft: idx === 0 ? "0" : "2rem",
                   flex: "none",
                 }}
               >
@@ -109,7 +108,27 @@ function AvailNavBar({
               </motion.div>
             ))}
           </Flex>
-          {hasPrimary && (
+          {secondaryLink && (
+            <Box
+              as={motion.div}
+              {...animation?.item}
+              sx={{
+                visibility: primaryLink ? ["hidden", "visible"] : "visible",
+              }}
+            >
+              <NavBarButton
+                href={secondaryLink.href}
+                {...getTargetProps(secondaryLink.target)}
+                id={secondaryLink.id}
+                forwardedAs="a"
+                flex="0 0 auto"
+                ml="auto"
+              >
+                {secondaryLink.text}
+              </NavBarButton>
+            </Box>
+          )}
+          {primaryLink && (
             <motion.div {...animation?.item}>
               <NavBarButton
                 variant="primary"
