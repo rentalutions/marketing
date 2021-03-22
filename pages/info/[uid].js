@@ -107,13 +107,11 @@ const Page = ({ data, uid }) => {
   }) => ({ channel, content, signup_page, campaign }))(data)
 
   const navBarLinks = navBar?.map(
-    ({ buttonText, buttonLink, buttonHash, buttonId, primary, push }) => ({
+    ({ buttonText, buttonLink, buttonHash, buttonId }) => ({
       text: buttonText,
       href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
       target: buttonLink && buttonLink.target,
       id: buttonId,
-      primary,
-      push,
     })
   )
   return (
