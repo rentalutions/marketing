@@ -48,8 +48,8 @@ function AvailRdcNavBar({
       as={motion.header}
       {...animation?.container}
       ref={intersectionTarget}
-      bg={background}
       sx={{
+        bg: background,
         display: "flex",
         position: sticky ? "sticky" : "static",
         minHeight: "8rem",
