@@ -22,14 +22,12 @@ function AvailNavBar({
   background = "ui_100",
   defaultLinks = [],
   primaryLink,
-  pushIndex,
   containerWidth = "96rem",
   sticky,
   animationPreset = "fadeIn",
   ...props
 }) {
   const hasPrimary = !!primaryLink
-  const hasPush = pushIndex !== -1
 
   const [presets, intersectionTarget] = useInViewAnimation({ delayChildren: 0 })
   const animation = presets[animationPreset]
@@ -78,15 +76,17 @@ function AvailNavBar({
           <Flex
             sx={{
               visibility: hasPrimary ? ["hidden", "visible"] : "visible",
-              flexDirection: hasPush ? "row-reverse" : "row",
-              justifyContent: hasPush
-                ? ["flex-start", "flex-start", "flex-start", "flex-end"]
-                : ["flex-end", "flex-end", "flex-end", "flex-start"],
+              flexDirection: "row",
+              justifyContent: [
+                "flex-end",
+                "flex-end",
+                "flex-end",
+                "flex-start",
+              ],
               flex: "1 1 auto",
               flexWrap: "wrap",
               height: "4rem",
               overflow: "hidden",
-              gap: "2rem",
             }}
           >
             {defaultLinks.map(({ href, text, id, target }, idx) => (
@@ -94,7 +94,7 @@ function AvailNavBar({
                 key={`${id}-${href}-${text}`}
                 {...animation?.item}
                 style={{
-                  marginLeft: idx === pushIndex ? "auto" : 0,
+                  marginLeft: idx === 0 ? "auto" : "2rem",
                   flex: "none",
                 }}
               >

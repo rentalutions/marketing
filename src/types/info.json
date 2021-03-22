@@ -70,7 +70,7 @@
     },
     "secondaryButtonId:": {
       "config" : {
-        "label" : "BSecondary utton selector ID (optional)",
+        "label" : "Secondary Button selector ID (optional)",
         "placeholder" : "ID selector for external tools (eg: navbar_secondary_button)"
       },
       "type" : "Text"
@@ -122,27 +122,9 @@
               "placeholder" : "ID selector for external tools (eg: navbar_button_overview)"
             },
             "type" : "Text"
-          },
-          "primary" : {
-            "type" : "Boolean",
-            "config" : {
-              "placeholder_false" : "Default",
-              "placeholder_true" : "Primary",
-              "default_value" : false,
-              "label" : "(Avail NavBar only) Button variant (note: there should be only one primary button)"
-            }
-          },
-          "push" : {
-            "config" : {
-              "label" : "(Avail NavBar only) Button location",
-              "placeholder_false" : "Left",
-              "placeholder_true" : "Right",
-              "default_value" : false
-            },
-            "type" : "Boolean"
           }
         },
-        "label" : "Nav Bar Buttons (Avail) / Menu Items (Avail/RDC)"
+        "label" : "Nav Bar Default Items"
       }
     },
     "body" : {

@@ -37,7 +37,6 @@ export default function NavBar({
     menuEntries,
     primaryLink,
     secondaryLink,
-    pushIndex,
   ] = useMemo(() => {
     function createLink({ id, text, link, hash }) {
       return {
@@ -49,55 +48,17 @@ export default function NavBar({
       }
     }
 
-    const { _defaultLinks, _primaryLink } = links.reduce(
-      (acc, current) => {
-        if (!acc._primaryLink && current.primary) {
-          acc._primaryLink = current
-        } else {
-          acc._defaultLinks.push(current)
-        }
-        return acc
-      },
-      {
-        _defaultLinks: [],
-        _primaryLink: primaryButton && createLink(primaryButton),
-      }
-    )
-
-    const _menuEntries = _defaultLinks.map((a) => a)
+    const _primaryLink = primaryButton && createLink(primaryButton)
     const _secondaryLink = secondaryButton && createLink(secondaryButton)
+
+    const _menuEntries = links
+    const _defaultLinks = links.map((a) => a)
 
     if (_secondaryLink) {
       _defaultLinks.push(_secondaryLink)
     }
 
-    /** Check if links contain { push: true }. If so, - we will render the default links as "row-reverse",
-     * because the expectation would be that links with { push: true } disappear last on smaller devices.
-     * To achieve that, we will sort the links so that the ones with { push: true } are at the head of the array
-     * and then reverse the array. We will also recalculate "pushIndex" as the last index in this case,
-     * in order to inject "margin-left: auto" at the correct link */
-    let _pushIndex = _defaultLinks.findIndex(({ push }) => push)
-    if (_pushIndex !== -1) {
-      _defaultLinks.sort(({ push: a }, { push: b }) => {
-        if (a === b) return 0
-        return a ? 1 : -1
-      })
-
-      _defaultLinks.reverse()
-
-      _pushIndex = _defaultLinks.reduce(
-        (r, { push }, idx) => (push ? idx : r),
-        -1
-      )
-    }
-
-    return [
-      _defaultLinks,
-      _menuEntries,
-      _primaryLink,
-      _secondaryLink,
-      _pushIndex,
-    ]
+    return [_defaultLinks, _menuEntries, _primaryLink, _secondaryLink]
   }, [links])
 
   switch (type) {
@@ -121,7 +82,6 @@ export default function NavBar({
           containerWidth={containerWidth}
           defaultLinks={defaultLinks}
           primaryLink={primaryLink}
-          pushIndex={pushIndex}
           sticky={sticky}
           animationPreset={animationPreset}
           {...props}

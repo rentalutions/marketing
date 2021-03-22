@@ -44,12 +44,13 @@ function AvailRdcNavBar({
   )
 
   return (
-    <Flex
+    <Box
       as={motion.header}
       {...animation?.container}
       ref={intersectionTarget}
+      bg={background}
       sx={{
-        background,
+        display: "flex",
         position: sticky ? "sticky" : "static",
         minHeight: "8rem",
         top: "0",
@@ -164,7 +165,7 @@ function AvailRdcNavBar({
         </Col>
       </Container>
       <Box flex="1" />
-    </Flex>
+    </Box>
   )
 }
 
