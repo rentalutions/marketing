@@ -19,6 +19,76 @@ export function Default() {
           maiores beatae eius illo. Non esse eius dolores rem in culpa!
         </Text>
       }
+      bg="blue_100"
+    />
+  )
+}
+
+export function WithLeftSkew() {
+  return (
+    <Hero
+      skew="left"
+      title={<Box as="h1">Hero Title</Box>}
+      description={
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vel
+          unde velit maxime officia temporibus, esse repellat explicabo, atque
+          maiores beatae eius illo. Non esse eius dolores rem in culpa!
+        </Text>
+      }
+      bg="blue_100"
+    />
+  )
+}
+
+export function WithNoneSkew() {
+  return (
+    <Hero
+      skew="none"
+      title={<Box as="h1">Hero Title</Box>}
+      description={
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vel
+          unde velit maxime officia temporibus, esse repellat explicabo, atque
+          maiores beatae eius illo. Non esse eius dolores rem in culpa!
+        </Text>
+      }
+      bg="blue_100"
+    />
+  )
+}
+
+export function NoStrech() {
+  return (
+    <Hero
+      stretch={false}
+      title={<Box as="h1">Hero Title</Box>}
+      description={
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vel
+          unde velit maxime officia temporibus, esse repellat explicabo, atque
+          maiores beatae eius illo. Non esse eius dolores rem in culpa!
+        </Text>
+      }
+      bg="blue_100"
+    />
+  )
+}
+
+export function NoStrechNorSkew() {
+  return (
+    <Hero
+      skew="none"
+      stretch={false}
+      title={<Box as="h1">Hero Title</Box>}
+      description={
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vel
+          unde velit maxime officia temporibus, esse repellat explicabo, atque
+          maiores beatae eius illo. Non esse eius dolores rem in culpa!
+        </Text>
+      }
+      bg="blue_100"
     />
   )
 }

@@ -331,9 +331,18 @@
                   "label" : "Skew",
                   "placeholder" : "",
                   "default_value" : "right",
-                  "options" : [ "right", "left" ]
+                  "options" : [ "none", "right", "left" ]
                 },
                 "type" : "Select"
+              },
+              "stretch": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "False",
+                  "placeholder_true": "True",
+                  "default_value": true,
+                  "label": "Stretch"
+                }
               },
               "image" : {
                 "config" : {
@@ -457,9 +466,18 @@
                   "label" : "Skew",
                   "placeholder" : "",
                   "default_value" : "right",
-                  "options" : [ "right", "left" ]
+                  "options" : [ "none", "right", "left" ]
                 },
                 "type" : "Select"
+              },
+              "stretch": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "False",
+                  "placeholder_true": "True",
+                  "default_value": true,
+                  "label": "Stretch"
+                }
               },
               "image" : {
                 "config" : {
