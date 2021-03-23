@@ -15,6 +15,14 @@
         "placeholder" : "unique-identifier-eg-homepage"
       }
     },
+    "nav_bar_type" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Avail", "Avail/RDC" ],
+        "default_value" : "Avail",
+        "label" : "Navigation Bar Type"
+      }
+    },
     "background": {
       "type" : "Select",
       "config" : {
@@ -32,6 +40,64 @@
         "default_value" : true,
         "label" : "Sticky nav bar"
       }
+    },
+    "primaryButtonText" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Primary Button text",
+        "placeholder" : "E.g. - Sign Up"
+      }
+    },
+    "primaryButtonId:": {
+      "config" : {
+        "label" : "Primary Button selector ID (optional)",
+        "placeholder" : "ID selector for external tools (eg: navbar_primary_button)"
+      },
+      "type" : "Text"
+    },
+    "primaryButtonLink" : {
+      "config" : {
+        "label" : "Primary Button external URL",
+        "placeholder" : "",
+        "allowTargetBlank" : true
+      },
+      "type" : "Link"
+    },
+    "primaryButtonHash" : {
+      "config" : {
+        "label" : "Primary Button hash (jump link)",
+        "placeholder" : "A hash matching the hash in slice you want to link to"
+      },
+      "type" : "Text"
+    },
+    "secondaryButtonText" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Secondary Button text",
+        "placeholder" : "E.g. - Log In"
+      }
+    },
+    "secondaryButtonId:": {
+      "config" : {
+        "label" : "Secondary Button selector ID (optional)",
+        "placeholder" : "ID selector for external tools (eg: navbar_secondary_button)"
+      },
+      "type" : "Text"
+    },
+    "secondaryButtonLink" : {
+      "config" : {
+        "label" : "Secondary Button external URL",
+        "placeholder" : "",
+        "allowTargetBlank" : true
+      },
+      "type" : "Link"
+    },
+    "secondaryButtonHash" : {
+      "config" : {
+        "label" : "Secondary Button hash (jump link)",
+        "placeholder" : "A hash matching the hash in slice you want to link to"
+      },
+      "type" : "Text"
     },
     "nav_bar" : {
       "type" : "Group",
@@ -65,27 +131,9 @@
               "placeholder" : "ID selector for external tools (eg: navbar_button_overview)"
             },
             "type" : "Text"
-          },
-          "primary" : {
-            "type" : "Boolean",
-            "config" : {
-              "placeholder_false" : "Default",
-              "placeholder_true" : "Primary",
-              "default_value" : false,
-              "label" : "Button variant (note: there should be only one primary button)"
-            }
-          },
-          "push" : {
-            "config" : {
-              "label" : "Button location",
-              "placeholder_false" : "Left",
-              "placeholder_true" : "Right",
-              "default_value" : false
-            },
-            "type" : "Boolean"
           }
         },
-        "label" : "Nav Bar Buttons"
+        "label" : "Nav Bar Default Items"
       }
     },
     "body" : {

@@ -1910,6 +1910,36 @@
     "@rent_avail/utils" "^0.3.1"
     styled-system "^5.1.5"
 
+"@rent_avail/layout@^0.3.12":
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/@rent_avail/layout/-/layout-0.3.12.tgz#0420a50e3e063a5ad3b8c7dae2cdfe55a23e96d0"
+  integrity sha512-hoalhWLL6XWAxXJj02NCD5WZqyB+m/f5LB64w0rgr+48t00LP9w6p1e4Nw/ToVv9OKPn9WIJCLHbKJUsfkmDSA==
+  dependencies:
+    "@rent_avail/base" "^0.5.0"
+    "@rent_avail/utils" "^0.5.0"
+    styled-system "^5.1.5"
+
+"@rent_avail/menu@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@rent_avail/menu/-/menu-0.2.6.tgz#ad662f6b9a00f30593244a8d847e2ddb7138646e"
+  integrity sha512-AyBTwvDvI6lsUZmCqwE9j+zlKUSizGXb44u4tg0t94CxuwFinp6OtdsAZ4BBsEZ/8hzTRIK51G0EC7Y7+yXgNA==
+  dependencies:
+    "@rent_avail/base" "^0.5.0"
+    "@rent_avail/layout" "^0.3.12"
+    "@rent_avail/popover" "^0.3.6"
+    "@rent_avail/utils" "^0.5.0"
+    styled-system "^5.1.5"
+
+"@rent_avail/popover@^0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@rent_avail/popover/-/popover-0.3.6.tgz#bd5e84648e2174097f9b77c93ad05fd93088e05b"
+  integrity sha512-YRTBqQucB6mR/YTobcxK7CNjCgMv9v2606qbe7KIFGRbqH4J7+EbNEYE/QrK5xBaTRuug8TFY5sskIrAYV0jCw==
+  dependencies:
+    "@rent_avail/base" "^0.5.0"
+    "@rent_avail/layout" "^0.3.12"
+    "@rent_avail/utils" "^0.5.0"
+    dequal "^2.0.2"
+
 "@rent_avail/typography@^0.1.18":
   version "0.1.18"
   resolved "https://registry.yarnpkg.com/@rent_avail/typography/-/typography-0.1.18.tgz#1322f64eabb7648e42881b822240d80ec09030e2"
@@ -1926,6 +1956,15 @@
   dependencies:
     calendar-dates "^2.6.1"
     intersection-observer "^0.11.0"
+    resize-observer-polyfill "^1.5.1"
+
+"@rent_avail/utils@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@rent_avail/utils/-/utils-0.5.0.tgz#b497f160a988506465b9ad078a6f18664c17e17f"
+  integrity sha512-W1pYB66Wr8lROD4IjR6807p8tTQ6TMmpZPeExXPOsth0V1Bxs/H+auGiOBv12HliVvMBSGRRubdXYZibsOOhcQ==
+  dependencies:
+    calendar-dates "^2.6.1"
+    intersection-observer "^0.12.0"
     resize-observer-polyfill "^1.5.1"
 
 "@samverschueren/stream-to-observable@^0.3.0":
@@ -5531,6 +5570,11 @@ deprecation@^2.0.0, deprecation@^2.3.1:
   resolved "https://registry.yarnpkg.com/deprecation/-/deprecation-2.3.1.tgz#6368cbdb40abf3373b525ac87e4a260c3a700919"
   integrity sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==
 
+dequal@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/dequal/-/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
+  integrity sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==
+
 des.js@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.1.tgz#5382142e1bdc53f85d86d53e5f4aa7deb91e0843"
@@ -7768,6 +7812,11 @@ intersection-observer@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.11.0.tgz#f4ea067070326f68393ee161cc0a2ca4c0040c6f"
   integrity sha512-KZArj2QVnmdud9zTpKf279m2bbGfG+4/kn16UU0NL3pTVl52ZHiJ9IRNSsnn6jaHrL9EGLFM5eWjTx2fz/+zoQ==
+
+intersection-observer@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.12.0.tgz#6c84628f67ce8698e5f9ccf857d97718745837aa"
+  integrity sha512-2Vkz8z46Dv401zTWudDGwO7KiGHNDkMv417T5ItcNYfmvHR/1qCTVBO9vwH8zZmQ0WkA/1ARwpysR9bsnop4NQ==
 
 invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
