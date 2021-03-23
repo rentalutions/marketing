@@ -14,6 +14,7 @@ const HeroSlice = ({ slice }) => {
       description,
       background,
       skew,
+      stretch,
       image,
       imagePosition,
       video,
@@ -36,6 +37,7 @@ const HeroSlice = ({ slice }) => {
       description={<RichText render={description} />}
       bg={background}
       skew={skew}
+      stretch={stretch}
       image={image}
       imagePosition={imagePosition}
       color={color}

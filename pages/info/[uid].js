@@ -85,10 +85,26 @@ const Page = ({ data, uid }) => {
     meta_title: title,
     meta_description: description,
     meta_keywords: keywords,
+    nav_bar_type: navBarType,
     background = "ui_100",
     sticky_nav_bar: navBarSticky,
+    nav_bar: navBar,
     body: slices,
   } = data
+
+  const primaryButton = (({
+    primaryButtonId: id = "nav-primary-bt",
+    primaryButtonText: text,
+    primaryButtonLink: link,
+    primaryButtonHash: hash,
+  }) => text && { id, text, link, hash })(data)
+
+  const secondaryButton = (({
+    secondaryButtonId: id = "nav-secondary-bt",
+    secondaryButtonText: text,
+    secondaryButtonLink: link,
+    secondaryButtonHash: hash,
+  }) => text && { id, text, link, hash })(data)
 
   const urlResolverParams = (({
     query_channel: channel,
@@ -97,18 +113,14 @@ const Page = ({ data, uid }) => {
     query_campaign: campaign,
   }) => ({ channel, content, signup_page, campaign }))(data)
 
-  const navBarLinks =
-    data.nav_bar &&
-    data.nav_bar.map(
-      ({ buttonText, buttonLink, buttonHash, buttonId, primary, push }) => ({
-        text: buttonText,
-        href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
-        target: buttonLink && buttonLink.target,
-        id: buttonId,
-        primary,
-        push,
-      })
-    )
+  const navBarLinks = navBar?.map(
+    ({ buttonText, buttonLink, buttonHash, buttonId }) => ({
+      text: buttonText,
+      href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
+      target: buttonLink && buttonLink.target,
+      id: buttonId,
+    })
+  )
   return (
     <React.Fragment>
       <BodyStyles bg={background} />
@@ -125,10 +137,13 @@ const Page = ({ data, uid }) => {
           additionalMetaTags={[{ property: "keywords", content: keywords }]}
         />
         <NavBarWrapper
-          links={navBarLinks}
-          sticky={navBarSticky}
           borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
           containerWidth={CONTAINER_WIDTHS}
+          type={navBarType}
+          sticky={navBarSticky}
+          primaryButton={primaryButton}
+          secondaryButton={secondaryButton}
+          links={navBarLinks}
         />
         <SliceZone slices={slices} />
         <AvailFooter />

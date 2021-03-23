@@ -15,6 +15,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       description,
       background,
       skew,
+      stretch,
       image,
       imagePosition,
       video,
@@ -37,6 +38,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       description={<RichText render={description} />}
       bg={background}
       skew={skew}
+      stretch={stretch}
       image={image}
       imagePosition={imagePosition}
       video={video?.url && video}
