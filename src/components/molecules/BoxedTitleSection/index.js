@@ -28,7 +28,7 @@ function BoxedTitleSection({
   }
 
   return (
-    <Flex my={2}>
+    <Flex py={2}>
       <Box
         flex={1}
         order={orientation === "right" ? 0 : 2}

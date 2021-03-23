@@ -1,32 +1,15 @@
 import React, { cloneElement } from "react"
 import { motion } from "framer-motion"
-import styled from "styled-components"
 import { useInViewAnimation } from "utils/animation"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
+import SkewBox from "components/molecules/SkewBox"
 import Video from "components/elements/Video"
 import { STYLING } from "config"
-
-const HeroWrapper = styled(Box)`
-  position: relative;
-  .skew {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: ${({ theme, skewBg }) =>
-      skewBg ? theme.colors[skewBg] || skewBg : theme.colors.ui_100};
-    z-index: -1;
-    transform: skewY(${({ skew }) => (skew === "right" ? 4 : -4)}deg);
-    transform-origin: top ${({ skew }) => skew};
-  }
-`
 
 function Hero({
   bg,
   skew = "right",
+  stretch = true,
   description,
   title,
   image = null,
@@ -72,20 +55,18 @@ function Hero({
   )
 
   return (
-    <HeroWrapper
+    <SkewBox
       {...props}
       as={motion.aside}
       {...animation?.container}
-      ref={intersectionView}
-      skewBg={bg}
+      bg={bg}
       skew={skew}
-      pt="4rem"
-      pb="10rem"
     >
-      <div className="skew" />
       <Container
+        ref={intersectionView}
         as={Grid}
-        minHeight="calc(90vh - 14rem)"
+        minHeight={stretch && "calc(90vh - 14rem)"}
+        py={skew === "none" && !stretch && "2rem"}
         alignItems="center"
         gap={["2rem", "2rem", "4rem"]}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
@@ -120,7 +101,7 @@ function Hero({
         </Col>
         {hasTwoCols && imagePosition !== "left" && secondCol}
       </Container>
-    </HeroWrapper>
+    </SkewBox>
   )
 }
 

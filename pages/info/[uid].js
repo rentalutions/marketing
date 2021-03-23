@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo"
 import AvailFooter from "components/partials/AvailFooter"
 import SliceZone from "components/partials/SliceZone"
 import NavBar from "components/organisms/NavBar"
-import { useTheme } from "styled-components"
+import { createGlobalStyle, useTheme } from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
 import {
   UrlResolverProvider,
@@ -13,6 +13,7 @@ import {
 import { useRouter } from "next/router"
 import DefaultErrorPage from "next/error"
 import Head from "next/head"
+import { theme } from "@rent_avail/base"
 import { Box, Flex } from "@rent_avail/layout"
 
 export const getStaticProps = async ({
@@ -46,6 +47,12 @@ const NavBarWrapper = ({ links, ...props }) => {
   return <NavBar links={resolvedLinks} {...props} />
 }
 
+const BodyStyles = createGlobalStyle`
+  body {
+    background-color: ${({ bg }) => theme.colors[bg]};
+  }
+`
+
 const Page = ({ data, uid }) => {
   const router = useRouter()
 
@@ -67,7 +74,6 @@ const Page = ({ data, uid }) => {
       </React.Fragment>
     )
   }
-
   const { colors } = useTheme()
 
   const BASE_CANONICAL_URL =
@@ -80,6 +86,7 @@ const Page = ({ data, uid }) => {
     meta_description: description,
     meta_keywords: keywords,
     nav_bar_type: navBarType,
+    background = "ui_100",
     sticky_nav_bar: navBarSticky,
     nav_bar: navBar,
     body: slices,
@@ -115,30 +122,33 @@ const Page = ({ data, uid }) => {
     })
   )
   return (
-    <UrlResolverProvider params={urlResolverParams}>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          title,
-          description,
-          url,
-        }}
-        additionalMetaTags={[{ property: "keywords", content: keywords }]}
-      />
-      <NavBarWrapper
-        borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
-        containerWidth={CONTAINER_WIDTHS}
-        type={navBarType}
-        sticky={navBarSticky}
-        primaryButton={primaryButton}
-        secondaryButton={secondaryButton}
-        links={navBarLinks}
-      />
-      <SliceZone slices={slices} />
-      <AvailFooter />
-    </UrlResolverProvider>
+    <React.Fragment>
+      <BodyStyles bg={background} />
+      <UrlResolverProvider params={urlResolverParams}>
+        <NextSeo
+          title={title}
+          description={description}
+          canonical={url}
+          openGraph={{
+            title,
+            description,
+            url,
+          }}
+          additionalMetaTags={[{ property: "keywords", content: keywords }]}
+        />
+        <NavBarWrapper
+          borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
+          containerWidth={CONTAINER_WIDTHS}
+          type={navBarType}
+          sticky={navBarSticky}
+          primaryButton={primaryButton}
+          secondaryButton={secondaryButton}
+          links={navBarLinks}
+        />
+        <SliceZone slices={slices} />
+        <AvailFooter />
+      </UrlResolverProvider>
+    </React.Fragment>
   )
 }
 

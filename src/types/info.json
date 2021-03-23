@@ -23,6 +23,15 @@
         "label" : "Navigation Bar Type"
       }
     },
+    "background": {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+        "default_value" : "ui_100",
+        "label" : "Background color",
+        "placeholder": "Background Color"
+      }
+    },
     "sticky_nav_bar" : {
       "type" : "Boolean",
       "config" : {
@@ -379,9 +388,18 @@
                   "label" : "Skew",
                   "placeholder" : "",
                   "default_value" : "right",
-                  "options" : [ "right", "left" ]
+                  "options" : [ "none", "right", "left" ]
                 },
                 "type" : "Select"
+              },
+              "stretch": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "False",
+                  "placeholder_true": "True",
+                  "default_value": true,
+                  "label": "Stretch"
+                }
               },
               "image" : {
                 "config" : {
@@ -505,9 +523,18 @@
                   "label" : "Skew",
                   "placeholder" : "",
                   "default_value" : "right",
-                  "options" : [ "right", "left" ]
+                  "options" : [ "none", "right", "left" ]
                 },
                 "type" : "Select"
+              },
+              "stretch": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "False",
+                  "placeholder_true": "True",
+                  "default_value": true,
+                  "label": "Stretch"
+                }
               },
               "image" : {
                 "config" : {
@@ -535,7 +562,7 @@
                 "config" : {
                   "options" : [ "right", "left" ],
                   "default_value" : "right",
-                  "label" : "Image position"
+                  "label" : "Media position"
                 }
               },
               "emailCaptureLabel" : {
@@ -558,7 +585,7 @@
           "how_it_works" : {
             "type" : "Slice",
             "fieldset" : "How It Works",
-            "description" : "A grid of alternating blocks with images and text",
+            "description" : "A grid of alternating blocks with media and text",
             "icon" : "dashboard",
             "display" : "list",
             "non-repeat" : {
@@ -594,7 +621,7 @@
                   "placeholder_false" : "Right",
                   "placeholder_true" : "Left",
                   "default_value" : false,
-                  "label" : "First section image position"
+                  "label" : "First section media position"
                 }
               }
             },
@@ -645,7 +672,7 @@
           "pitch_cards" : {
             "type" : "Slice",
             "fieldset" : "Pitch Cards",
-            "description" : "A grid of cards with optional images",
+            "description" : "A grid of cards with optional media",
             "icon" : "grid_on",
             "display" : "list",
             "non-repeat" : {
