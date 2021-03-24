@@ -1,12 +1,25 @@
 import React from "react"
+import { withDesign } from 'storybook-addon-designs'
+import Link from "next/link"
 import { Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
-import Link from "next/link"
 import { Box } from "@rent_avail/layout"
 import ResponsiveEmbed from "components/elements/ResponsiveEmbed"
 import { Hero } from "./index"
 
-export default { title: "Components/Hero" }
+export default {
+  title: "Components/Hero",
+  component: Hero,
+  decorators: [withDesign],
+}
+
+const parameters = {
+  design: {
+    type: "figma",
+    url:
+      "https://www.figma.com/file/tyf4c9SVsRKSqxTEOyTDkb/Marketing-Components?node-id=6%3A2",
+  },
+}
 
 export function Default() {
   return (
@@ -23,6 +36,7 @@ export function Default() {
     />
   )
 }
+Default.parameters = parameters
 
 export function WithLeftSkew() {
   return (
@@ -40,6 +54,7 @@ export function WithLeftSkew() {
     />
   )
 }
+WithLeftSkew.parameters = parameters
 
 export function WithNoneSkew() {
   return (
@@ -57,6 +72,7 @@ export function WithNoneSkew() {
     />
   )
 }
+WithNoneSkew.parameters = parameters
 
 export function NoStrech() {
   return (
@@ -74,6 +90,7 @@ export function NoStrech() {
     />
   )
 }
+NoStrech.parameters = parameters
 
 export function NoStrechNorSkew() {
   return (
@@ -92,6 +109,7 @@ export function NoStrechNorSkew() {
     />
   )
 }
+NoStrechNorSkew.parameters = parameters
 
 export function WithIllustration() {
   return (
@@ -114,6 +132,7 @@ export function WithIllustration() {
     />
   )
 }
+WithIllustration.parameters = parameters
 
 export function WithBgColor() {
   return (
@@ -144,6 +163,7 @@ export function WithBgColor() {
     />
   )
 }
+WithBgColor.parameters = parameters
 
 export function WithSwap() {
   return (
@@ -172,6 +192,7 @@ export function WithSwap() {
     />
   )
 }
+WithSwap.parameters = parameters
 
 export function WithVideo() {
   return (
@@ -195,6 +216,7 @@ export function WithVideo() {
     />
   )
 }
+WithVideo.parameters = parameters
 
 export function WithEmbed() {
   return (
@@ -228,3 +250,4 @@ export function WithEmbed() {
     />
   )
 }
+WithEmbed.parameters = parameters
