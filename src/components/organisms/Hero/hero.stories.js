@@ -1,5 +1,5 @@
 import React from "react"
-import { withDesign } from 'storybook-addon-designs'
+import { withDesign } from "storybook-addon-designs"
 import Link from "next/link"
 import { Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
