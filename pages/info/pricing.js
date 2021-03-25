@@ -1,14 +1,43 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { Box, Container } from "@rent_avail/layout"
-import { Text, Heading } from "@rent_avail/typography"
+import { theme } from "@rent_avail/base"
+import { Heading } from "@rent_avail/typography"
 import { Check } from "react-feather"
 import { useUrlResolver } from "components/partials/UrlResolver"
+import { createGlobalStyle } from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
 import Button from "components/elements/Button"
 import { PlansPrices } from "components/organisms/PlansPrices"
 import NavBar from "components/organisms/NavBar"
 import AvailFooter from "components/partials/AvailFooter"
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${theme.colors.ui_300};
+  }
+`
+const NavBarWrapper = ({ links, ...props }) => {
+  console.log('!!!', theme)
+  const urlResolver = useUrlResolver()
+  const resolvedLinks = links.map(({ href = "", ...link }) => ({
+    href: href.indexOf("#") !== 0 ? urlResolver(href) : href,
+    ...link,
+  }))
+  return <NavBar links={resolvedLinks} {...props} />
+}
+
+const navBarLinks =
+[{ buttonText: 'Sing up', buttonLink: 'Sing up', buttonHash: 'Sing up', buttonId: 'Sing up', primary: false, push: true }].map(
+  ({ buttonText, buttonLink, buttonHash, buttonId, primary, push }) => ({
+    text: buttonText,
+    href: buttonHash ? `#${buttonHash.replace(/^#/, "")}` : buttonLink.url,
+    target: buttonLink && buttonLink.target,
+    id: buttonId,
+    primary,
+    push,
+  })
+)
 
 function Features() {
   return (
@@ -75,18 +104,10 @@ const plans = [
     price: "$5/unit",
     subtext: "Per Month",
     description: "",
+    background: "blue_100",
     features: FeaturesPlus,
   },
 ]
-
-const NavBarWrapper = ({ links, ...props }) => {
-  const urlResolver = useUrlResolver()
-  const resolvedLinks = links.map(({ href = "", ...link }) => ({
-    href: href.indexOf("#") !== 0 ? urlResolver(href) : href,
-    ...link,
-  }))
-  return <NavBar links={resolvedLinks} {...props} />
-}
 
 function planWithButton(p, idx) {
   return {
@@ -103,15 +124,25 @@ function planWithButton(p, idx) {
   }
 }
 
+const PricingTextItem = ({text, sx}) => <Box sx={{margin: "1rem 0 1rem 0", ...sx}}>
+  <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
+  <span>{text}</span>
+</Box>
+
+const PricingHeaderItem = ({text, sx}) => <Box style={{ margin: "1rem 0 1rem 0" }}>
+  <Heading as={sx}>{text}</Heading>
+</Box>
+
 const Hello = () => {
   return (
     <>
       <NavBarWrapper
-        links={['1', '2']}
+        links={navBarLinks}
         sticky={true}
         borderBottom={`1px solid grey`}
         containerWidth={CONTAINER_WIDTHS}
       />
+      <GlobalStyle />
       <PlansPrices
         direction = "vertical"
         title={<Box as="h1">Free for landlords</Box>}
@@ -126,155 +157,45 @@ const Hello = () => {
         maxWidth={CONTAINER_WIDTHS}
         py="6rem"
       >
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Heading as="h3">Get the tools for every part of the rental cycle.</Heading>
-        </Box>
-        <Box style={{ margin: "2rem 0 1rem 0" }}>
-          <Heading as="h4">Listings</Heading>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Verified landlord badge and for rent sign.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Listings syndicated to Zillow, Trulia, Hotpads, Zumper, Padmapper, Walkscore, Realtor.com, Doorsteps.com, Apartments.com, and ApartmentList.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Social sharing tools and suggested actions.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Custom marketing and portfolio site with tenant portal.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Lead management tools and messaging center.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Schedule showings automatically from any platform or listing partner.</span>
-        </Box>
-        <Box style={{ margin: "2rem 0 1rem 0" }}>
-          <Heading as="h4">Screening</Heading>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Tenant-initiated TransUnion credit reports and background checks.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Nationwide criminal history report.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Nationwide prior eviction reports.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Automated residence and employment reference checks.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Income verification and documentation.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Applicant communication and message center.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Customizable screening questions.</span>
-        </Box>
-        <Box style={{ margin: "2rem 0 1rem 0" }}>
-          <Heading as="h4">Leasing</Heading>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Digital signatures.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>State-specific, lawyer-reviewed lease templates.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Locally-generated clauses, rules, and disclosures powered by LocalAssist.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Unlimited document attachments.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Print and PDF lease generation.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Customizable clauses and rules.</span>
-        </Box>
-        <Box style={{ margin: "2rem 0 1rem 0" }}>
-          <Heading as="h4">Payments</Heading>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Direct-deposit online rent payments.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Specialized deposit and fee collection.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Auto-generated payment receipts and confirmation.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Rent reminders and notifications.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Automatic recurring payment setup.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Next-day payment deposits.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Auto-assessed late fees (one-time or recurring).</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Tenant messaging.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Property-specific bank accounts.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Rent payments reported to credit bureaus with CreditBoost.</span>
-        </Box>
-        <Box style={{ margin: "2rem 0 1rem 0" }}>
-          <Heading as="h4">Maintenance</Heading>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Tenant- and landlord-initiated ticket creation and tracking.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Auto-forwarding to maintenance professionals.</span>
-        </Box>
-        <Box style={{ margin: "1rem 0 1rem 0" }}>
-          <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-          <span>Photo uploads and workflows.</span>
-        </Box>
-        <Box style={{ margin: "4rem 0 1rem 0" }}>
-          <Heading as="h4">Tenants pay for the following:</Heading>
-        </Box>
+        <PricingHeaderItem text={'Get the tools for every part of the rental cycle.'} sx={'h3'}/>
+        <PricingHeaderItem text={'Listings'} sx={'h4'}/>
+        <PricingTextItem text={'Verified landlord badge and for rent sign.'} />
+        <PricingTextItem text={'Listings syndicated to Zillow, Trulia, Hotpads, Zumper, Padmapper, Walkscore, Realtor.com, Doorsteps.com, Apartments.com, and ApartmentList.'} />
+        <PricingTextItem text={'Social sharing tools and suggested actions.'} />
+        <PricingTextItem text={'Custom marketing and portfolio site with tenant portal.'} />
+        <PricingTextItem text={'Lead management tools and messaging center.'} />
+        <PricingTextItem text={'Schedule showings automatically from any platform or listing partner.'} />
+        <PricingHeaderItem text={'Screening'} sx={'h4'}/>
+        <PricingTextItem text={'Tenant-initiated TransUnion credit reports and background checks.'} />
+        <PricingTextItem text={'Nationwide criminal history report.'} />
+        <PricingTextItem text={'Nationwide prior eviction reports.'} />
+        <PricingTextItem text={'Automated residence and employment reference checks.'} />
+        <PricingTextItem text={'Income verification and documentation.'} />
+        <PricingTextItem text={'Applicant communication and message center.'} />
+        <PricingTextItem text={'Customizable screening questions.'} />
+        <PricingHeaderItem text={'Leasing'} sx={'h4'}/>
+        <PricingTextItem text={'Digital signatures.'} />
+        <PricingTextItem text={'State-specific, lawyer-reviewed lease templates.'} />
+        <PricingTextItem text={'Locally-generated clauses, rules, and disclosures powered by LocalAssist.'} />
+        <PricingTextItem text={'Unlimited document attachments.'} />
+        <PricingTextItem text={'Print and PDF lease generation.'} />
+        <PricingTextItem text={'Customizable clauses and rules.'} />
+        <PricingHeaderItem text={'Payments'} sx={'h4'}/>
+        <PricingTextItem text={'Direct-deposit online rent payments.'} />
+        <PricingTextItem text={'Specialized deposit and fee collection.'} />
+        <PricingTextItem text={'Auto-generated payment receipts and confirmation.'} />
+        <PricingTextItem text={'Rent reminders and notifications.'} />
+        <PricingTextItem text={'Automatic recurring payment setup.'} />
+        <PricingTextItem text={'Next-day payment deposits.'} />
+        <PricingTextItem text={'Auto-assessed late fees (one-time or recurring).'} />
+        <PricingTextItem text={'Tenant messaging.'} />
+        <PricingTextItem text={'Property-specific bank accounts.'} />
+        <PricingTextItem text={'Rent payments reported to credit bureaus with CreditBoost.'} />
+        <PricingHeaderItem text={'Maintenance'} sx={'h4'}/>
+        <PricingTextItem text={'Tenant- and landlord-initiated ticket creation and tracking.'} />
+        <PricingTextItem text={'Auto-forwarding to maintenance professionals.'} />
+        <PricingTextItem text={'Photo uploads and workflows.'} />
+        <PricingHeaderItem text={'Tenants pay for the following:'} sx={'h4'}/>
       </Container>
       <AvailFooter />
     </>
