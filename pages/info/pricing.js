@@ -2,11 +2,12 @@ import React from "react"
 import { motion } from "framer-motion"
 import { Box, Container } from "@rent_avail/layout"
 import { theme } from "@rent_avail/base"
-import { Heading } from "@rent_avail/typography"
+import { Text, Heading } from "@rent_avail/typography"
 import { Check } from "react-feather"
 import { createGlobalStyle } from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
 import Button from "components/elements/Button"
+import { ButtonCTA } from "components/organisms/ButtonCTA"
 import { PlansPrices } from "components/organisms/PlansPrices"
 import NavBar from "components/organisms/NavBar"
 import AvailFooter from "components/partials/AvailFooter"
@@ -16,39 +17,23 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${theme.colors.ui_300};
   }
 `
-const links = [
-  {
-    text: "Sing up",
-    href: "https://www.avail.co/users/new",
-    primary: true,
+
+const primaryButton = {
+  text: "Sing up",
+  link: {
+    url: "https://www.avail.co/users/new",
     target: "_blank",
-    push: true,
   },
-]
+}
 
 function Features() {
   return (
     <React.Fragment>
-      <Box>
-        <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-        <span>Syndicated Listings</span>
-      </Box>
-      <Box>
-        <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-        <span>Credit and Criminal Screening</span>
-      </Box>
-      <Box>
-        <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-        <span>State-Specific Leases</span>
-      </Box>
-      <Box>
-        <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-        <span>Online Rent Payments</span>
-      </Box>
-      <Box>
-        <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-        <span>Maintenance Tracking</span>
-      </Box>
+      <PricingTextItem>Syndicated Listings</PricingTextItem>
+      <PricingTextItem>Credit and Criminal Screening</PricingTextItem>
+      <PricingTextItem>State-Specific Leases</PricingTextItem>
+      <PricingTextItem>Online Rent Payments</PricingTextItem>
+      <PricingTextItem>Maintenance Tracking</PricingTextItem>
     </React.Fragment>
   )
 }
@@ -71,7 +56,7 @@ function FeaturesPlus() {
       <Box width="24rem" style={{ margin: "0 0 1rem 6rem" }}>
         <span>Clone and Reuse Custom Lease Agreements</span>
       </Box>
-      <Box width="24rem" style={{ margin: "0 0 1rem 6rem" }}>
+      <Box style={{ margin: "0 0 1rem 6rem" }}>
         <span>Create a Properties Website</span>
       </Box>
     </React.Fragment>
@@ -96,88 +81,110 @@ const plans = [
   },
 ]
 
-function planWithButton(p, idx) {
-  return {
-    ...p,
-    button: (
-      <Button
-        forwardedAs="a"
-        variant={idx % 2 === 0 ? "primary" : "default"}
-        href="https://avail.co"
-      >
-        Get Started
-      </Button>
-    ),
-  }
-}
-
-const PricingTextItem = ({text, sx}) => <Box sx={{margin: "1rem 0 1rem 0", ...sx}}>
+const PricingTextItem = ({style, children}) => <Box sx={{margin: "1rem 0 1rem 0", ...style}}>
   <Check size="1.3334rem" style={{ marginRight: "1rem" }} />
-  <span>{text}</span>
+  <Text style={{display: "inline"}}>{children}</Text>
 </Box>
 
-const PricingHeaderItem = ({text, sx}) => <Box style={{ margin: "1rem 0 1rem 0" }}>
-  <Heading as={sx}>{text}</Heading>
+const PricingHeaderItem = ({as, children}) => <Box style={{ margin: "4rem 0 2rem 0" }}>
+  <Heading as={as}>{children}</Heading>
 </Box>
 
 const Hello = () => {
   return (
     <>
-      <NavBar links={links} sticky />
+      <NavBar links={[primaryButton]} sticky />
       <GlobalStyle />
       <PlansPrices
         direction = "vertical"
         title={<Box as="h1">Free for landlords</Box>}
         subtitle={<Box></Box>}
         link={<a className="link"></a>}
-        plans={plans.map(planWithButton)}
+        plans={plans.map((p, idx) => {
+          return {
+            ...p,
+            button: (
+              <Button
+                forwardedAs="a"
+                variant={idx % 2 === 0 ? "primary" : "default"}
+                href="https://avail.co"
+              >
+                Get Started
+              </Button>
+          )}})
+        }
         containerWidth = {CONTAINER_WIDTHS}
         animationPreset = "fadeIn"
       />
       <Container
         as={motion.aside}
-        maxWidth={CONTAINER_WIDTHS}
+        maxWidth={"70rem"}
         py="6rem"
       >
-        <PricingHeaderItem text={'Get the tools for every part of the rental cycle.'} sx={'h3'}/>
-        <PricingHeaderItem text={'Listings'} sx={'h4'}/>
-        <PricingTextItem text={'Verified landlord badge and for rent sign.'} />
-        <PricingTextItem text={'Listings syndicated to Zillow, Trulia, Hotpads, Zumper, Padmapper, Walkscore, Realtor.com, Doorsteps.com, Apartments.com, and ApartmentList.'} />
-        <PricingTextItem text={'Social sharing tools and suggested actions.'} />
-        <PricingTextItem text={'Custom marketing and portfolio site with tenant portal.'} />
-        <PricingTextItem text={'Lead management tools and messaging center.'} />
-        <PricingTextItem text={'Schedule showings automatically from any platform or listing partner.'} />
-        <PricingHeaderItem text={'Screening'} sx={'h4'}/>
-        <PricingTextItem text={'Tenant-initiated TransUnion credit reports and background checks.'} />
-        <PricingTextItem text={'Nationwide criminal history report.'} />
-        <PricingTextItem text={'Nationwide prior eviction reports.'} />
-        <PricingTextItem text={'Automated residence and employment reference checks.'} />
-        <PricingTextItem text={'Income verification and documentation.'} />
-        <PricingTextItem text={'Applicant communication and message center.'} />
-        <PricingTextItem text={'Customizable screening questions.'} />
-        <PricingHeaderItem text={'Leasing'} sx={'h4'}/>
-        <PricingTextItem text={'Digital signatures.'} />
-        <PricingTextItem text={'State-specific, lawyer-reviewed lease templates.'} />
-        <PricingTextItem text={'Locally-generated clauses, rules, and disclosures powered by LocalAssist.'} />
-        <PricingTextItem text={'Unlimited document attachments.'} />
-        <PricingTextItem text={'Print and PDF lease generation.'} />
-        <PricingTextItem text={'Customizable clauses and rules.'} />
-        <PricingHeaderItem text={'Payments'} sx={'h4'}/>
-        <PricingTextItem text={'Direct-deposit online rent payments.'} />
-        <PricingTextItem text={'Specialized deposit and fee collection.'} />
-        <PricingTextItem text={'Auto-generated payment receipts and confirmation.'} />
-        <PricingTextItem text={'Rent reminders and notifications.'} />
-        <PricingTextItem text={'Automatic recurring payment setup.'} />
-        <PricingTextItem text={'Next-day payment deposits.'} />
-        <PricingTextItem text={'Auto-assessed late fees (one-time or recurring).'} />
-        <PricingTextItem text={'Tenant messaging.'} />
-        <PricingTextItem text={'Property-specific bank accounts.'} />
-        <PricingTextItem text={'Rent payments reported to credit bureaus with CreditBoost.'} />
-        <PricingHeaderItem text={'Maintenance'} sx={'h4'}/>
-        <PricingTextItem text={'Tenant- and landlord-initiated ticket creation and tracking.'} />
-        <PricingTextItem text={'Auto-forwarding to maintenance professionals.'} />
-        <PricingTextItem text={'Photo uploads and workflows.'} />
-        <PricingHeaderItem text={'Tenants pay for the following:'} sx={'h4'}/>
+        <PricingHeaderItem as="h3">Get the tools for every part of the rental cycle.</PricingHeaderItem>
+        <PricingHeaderItem as="h4">Listings</PricingHeaderItem>
+        <PricingTextItem>Verified landlord badge and for rent sign.</PricingTextItem>
+        <PricingTextItem>Listings syndicated to Zillow, Trulia, Hotpads, Zumper, Padmapper, Walkscore, Realtor.com, Doorsteps.com, Apartments.com, and ApartmentList.</PricingTextItem>
+        <PricingTextItem>Social sharing tools and suggested actions.</PricingTextItem>
+        <PricingTextItem>Custom marketing and portfolio site with tenant portal.</PricingTextItem>
+        <PricingTextItem>Lead management tools and messaging center.</PricingTextItem>
+        <PricingTextItem>Schedule showings automatically from any platform or listing partner.</PricingTextItem>
+        <PricingHeaderItem as="h4">Screening</PricingHeaderItem>
+        <PricingTextItem>Tenant-initiated TransUnion credit reports and background checks.</PricingTextItem>
+        <PricingTextItem>Nationwide criminal history report.</PricingTextItem>
+        <PricingTextItem>Nationwide prior eviction reports.</PricingTextItem>
+        <PricingTextItem>Automated residence and employment reference checks.</PricingTextItem>
+        <PricingTextItem>Income verification and documentation.</PricingTextItem>
+        <PricingTextItem>Applicant communication and message center.</PricingTextItem>
+        <PricingTextItem>Customizable screening questions.</PricingTextItem>
+        <PricingHeaderItem as="h4">Leasing</PricingHeaderItem>
+        <PricingTextItem>Digital signatures.</PricingTextItem>
+        <PricingTextItem>State-specific, lawyer-reviewed lease templates.</PricingTextItem>
+        <PricingTextItem>Locally-generated clauses, rules, and disclosures powered by LocalAssist.</PricingTextItem>
+        <PricingTextItem>Unlimited document attachments.</PricingTextItem>
+        <PricingTextItem>Print and PDF lease generation.</PricingTextItem>
+        <PricingTextItem>Customizable clauses and rules.</PricingTextItem>
+        <PricingHeaderItem as="h4">Payments</PricingHeaderItem>
+        <PricingTextItem>Direct-deposit online rent payments.</PricingTextItem>
+        <PricingTextItem>Specialized deposit and fee collection.</PricingTextItem>
+        <PricingTextItem>Auto-generated payment receipts and confirmation.</PricingTextItem>
+        <PricingTextItem>Rent reminders and notifications.</PricingTextItem>
+        <PricingTextItem>Automatic recurring payment setup.</PricingTextItem>
+        <PricingTextItem>Next-day payment deposits.</PricingTextItem>
+        <PricingTextItem>Auto-assessed late fees (one-time or recurring).</PricingTextItem>
+        <PricingTextItem>Tenant messaging.</PricingTextItem>
+        <PricingTextItem>Property-specific bank accounts.</PricingTextItem>
+        <PricingTextItem>Rent payments reported to credit bureaus with CreditBoost.</PricingTextItem>
+        <PricingHeaderItem as="h4">Maintenance</PricingHeaderItem>
+        <PricingTextItem>Tenant- and landlord-initiated ticket creation and tracking.</PricingTextItem>
+        <PricingTextItem>Auto-forwarding to maintenance professionals.</PricingTextItem>
+        <PricingTextItem>Photo uploads and workflows.</PricingTextItem>
+        <PricingHeaderItem as="h4">Tenants pay for the following:</PricingHeaderItem>
+        <Box width="60rem" style={{ margin: "1rem 0 1rem 0" }}>
+          <span><b>Application Fees</b><br></br>Credit, criminal background, and eviction checks cost $30 each or can be bundled together for $55. Landlords choose the required reports for each applicant.</span>
+        </Box>
+        <Box width="60rem" style={{ margin: "1rem 0 1rem 0" }}>
+          <span><b>Payment Fees</b><br></br>For landlords on the Unlimited Plus Plan, there are no fees when tenants pay from a bank account. With the Unlimited (free) Plan, tenants would pay $2.50 per bank transfer. If a credit or debit card is used, a 3.5% processing fee is added to tenant payments regardless of subscription plan.</span>
+        </Box>
+        <Box width="60rem" style={{ margin: "1rem 0 1rem 0" }}>
+          <span><b>Renters Insurance</b><br></br>Avail makes it easy for Tenants to purchase insurance through Lemonade Inc. This rate varies based on the tenant and the property.</span>
+        </Box>
+        <ButtonCTA
+          title={
+            <Box color="blue_500">
+              <Box as="h3">Ready to get started?</Box>
+              <Heading color="blue_300" as="h4">
+                Sign up for the Unlimited Plan today.
+              </Heading>
+            </Box>
+          }
+          button={
+            <Button forwardedAs="a" variant="primary" href="https://avail.co">
+              Start now
+            </Button>
+          }
+          orientation="left"
+        />
       </Container>
       <AvailFooter />
     </>
