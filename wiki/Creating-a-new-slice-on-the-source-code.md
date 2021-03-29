@@ -41,6 +41,11 @@ Example: `src/types/info.json` (This is the source file for the content type nam
 
 <img width="1749" alt="New slice JSON diff example" src="https://user-images.githubusercontent.com/22528445/112215039-e6c34900-8bed-11eb-9acc-02744c07b1cd.png">
 
+### Syncing Prismic with the source code
+> **If you update custom type definitions directly on the JSON file of the source code, make sure to also update it on Prismic.**
+
+The instructions on how to do it can be find on [this wiki page](https://github.com/rentalutions/marketing/wiki/Syncing-Prismic-with-the-source-code).
+
 ## Creating the slice partial
 The higher level component for the slice.
 > Should be created at `src/components/partials/SliceZone/components/{SliceName}/`
