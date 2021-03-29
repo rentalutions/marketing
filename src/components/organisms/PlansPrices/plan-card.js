@@ -11,7 +11,6 @@ const PlanContainer = styled(Flex)(
     gap: "2rem",
     "& > *": {
       minHeight: "fit-content",
-      minWidth: "fit-content",
     },
   },
   variant({
