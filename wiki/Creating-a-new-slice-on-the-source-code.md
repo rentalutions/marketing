@@ -53,7 +53,7 @@ It is also responsible for handling the usage of slice level components/function
 
 The slice partial should receive as prop an object called `slice`. On this object should be all the properties passed by Prismic to the slice.
 
-<img width="1749" alt="New slice partial component" src="https://user-images.githubusercontent.com/22528445/112215039-e6c34900-8bed-11eb-9acc-02744c07b1cd.png">
+<img width="1119" alt="New slice partial component" src="https://user-images.githubusercontent.com/22528445/112866436-6a15ec00-907f-11eb-95b4-5916e49ef518.png">
 
 ## Creating the slice organism
 An organism component that should handle the rendering of the slice.
@@ -132,7 +132,7 @@ export function WithLeftOrientation() {
 > ```
 > If it doesn't work only by following these steps, make sure you have the `storybook-addon-designs` package added to your application and present on `addons` property from `.storybook/main.js`.
 
-<img width="1749" alt="Organism's storybook example" src="https://user-images.githubusercontent.com/22528445/112215039-e6c34900-8bed-11eb-9acc-02744c07b1cd.png">
+<img width="1385" alt="Organism's storybook example" src="https://user-images.githubusercontent.com/22528445/112867134-296aa280-9080-11eb-813e-8c771a474e7c.png">
 
 ### Creating the organism components
 
@@ -148,7 +148,7 @@ Also, prefer to have isolable/repeatable layout patterns created on auxiliary co
 
 > Auxiliary component should be created at `src/components/organisms/{OrganismName}/{component-name}.js`
 
-<img width="1749" alt="New organism component" src="https://user-images.githubusercontent.com/22528445/112215039-e6c34900-8bed-11eb-9acc-02744c07b1cd.png">
+<img width="1068" alt="New organism component" src="https://user-images.githubusercontent.com/22528445/112866540-86b22400-907f-11eb-8b4b-faf12a7f0231.png">
 
 ## Creating possible molecules and elements
 
@@ -169,7 +169,8 @@ The case condition should be the slice name, as defined on the custom type JSON 
 
 The case return should be the slice partial. Make sure to pass the `key` and `slice` variables to it as props.
 
-<img width="1749" alt="New slice mapped in SliceZone" src="https://user-images.githubusercontent.com/22528445/112215039-e6c34900-8bed-11eb-9acc-02744c07b1cd.png">
+<img width="959" alt="New slice mapped in SliceZone" src="https://user-images.githubusercontent.com/22528445/112867388-7e0e1d80-9080-11eb-9fe3-852c748f0b2c.png">
+
 
 # See also
 ## Creating a new slice on Prismic
