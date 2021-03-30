@@ -1,5 +1,5 @@
 import React from "react"
-import { fetchWithLinks, prismicClient } from "src/prismic.config"
+import { prismicClient } from "src/prismic.config"
 import { NextSeo } from "next-seo"
 import AvailFooter from "components/partials/AvailFooter"
 import SliceZone from "components/partials/SliceZone"
@@ -20,7 +20,7 @@ export const getStaticProps = async ({
   previewData = {},
   params: { uid },
 }) => {
-  const data = await fetchWithLinks("info", uid, { ...previewData })
+  const data = await prismicClient.getByUID("info", uid, { ...previewData })
   return {
     props: {
       preview,
