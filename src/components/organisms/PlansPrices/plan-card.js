@@ -9,20 +9,16 @@ import { variant } from "styled-system"
 const PlanContainer = styled(Flex)(
   {
     gap: "2rem",
-    "& > *": {
-      minHeight: "fit-content",
-      minWidth: "fit-content",
-    },
   },
   variant({
     prop: "direction",
     variants: {
       vertical: {
-        flexFlow: "row wrap",
+        flexFlow: ["column", "column", "row"],
         width: "100%",
       },
       horizontal: {
-        flexFlow: "column wrap",
+        flexFlow: "column",
         height: "100%",
       },
     },
