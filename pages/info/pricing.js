@@ -5,7 +5,6 @@ import { theme } from "@rent_avail/base"
 import { Text, Heading } from "@rent_avail/typography"
 import { Check } from "react-feather"
 import { createGlobalStyle } from "styled-components"
-import { CONTAINER_WIDTHS } from "config"
 import Button from "components/elements/Button"
 import { ButtonCTA } from "components/organisms/ButtonCTA"
 import { PlansPrices } from "components/organisms/PlansPrices"
@@ -166,7 +165,6 @@ const Pricing = () => {
             </Button>
           ),
         }))}
-        containerWidth={CONTAINER_WIDTHS}
         animationPreset="fadeIn"
       />
       <Container maxWidth={"70rem"} py="6rem">
