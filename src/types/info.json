@@ -1307,14 +1307,14 @@
       "utm_source": {
         "type": "Text",
         "config": {
-          "label": "Sorce (sets source cookie)",
+          "label": "Source (sets source cookie)",
           "placeholder": "E.g. - biggerpockets"
         }
       },
       "utm_medium": {
         "type": "Text",
         "config": {
-          "label": "Sorce (sets medium cookie)",
+          "label": "Medium (sets medium cookie)",
           "placeholder": "E.g. - podcast"
         }
       }
