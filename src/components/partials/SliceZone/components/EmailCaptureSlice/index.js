@@ -6,6 +6,7 @@ import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
+import { useAnalytics } from "utils/analytics"
 
 const EmailCaptureSlice = ({ slice }) => {
   const {
@@ -13,8 +14,10 @@ const EmailCaptureSlice = ({ slice }) => {
   } = slice
 
   const urlResolver = useUrlResolver()
-
   const inputLabelId = useUID()
+  const { identify } = useAnalytics()
+
+  const handleSubmit = (values) => identify(values)
 
   return (
     <Container maxWidth={CONTAINER_WIDTHS} my="6rem">
@@ -33,6 +36,7 @@ const EmailCaptureSlice = ({ slice }) => {
           buttonText={buttonText}
           buttonUrl={urlResolver("https://www.avail.co/users/new")}
           queryParamName="email"
+          onSubmit={handleSubmit}
         />
       </Container>
     </Container>
