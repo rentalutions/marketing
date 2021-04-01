@@ -19,6 +19,10 @@ const EmailCaptureSlice = ({ slice }) => {
 
   const handleSubmit = (values) => identify(values)
 
+  const captureRedirectUrl = `${
+    process.env.NEXT_PUBLIC_AVAIL_BASE_URL || "https://www.avail.co"
+  }/users/new`
+
   return (
     <Container maxWidth={CONTAINER_WIDTHS} my="6rem">
       {hash && <Anchor hash={hash} />}
@@ -34,7 +38,7 @@ const EmailCaptureSlice = ({ slice }) => {
           inputLabel={label}
           inputLabelId={inputLabelId}
           buttonText={buttonText}
-          buttonUrl={urlResolver("https://www.avail.co/users/new")}
+          buttonUrl={urlResolver(captureRedirectUrl)}
           queryParamName="email"
           onSubmit={handleSubmit}
         />
