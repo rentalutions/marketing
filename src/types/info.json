@@ -1303,20 +1303,20 @@
       "config" : {
         "label" : "Campaign (sets campaign cookie)",
         "placeholder" : "E.g. - tenant_feature_landing"
-      },
-      "utm_source": {
-        "type": "Text",
-        "config": {
-          "label": "Source (sets source cookie)",
-          "placeholder": "E.g. - biggerpockets"
-        }
-      },
-      "utm_medium": {
-        "type": "Text",
-        "config": {
-          "label": "Medium (sets medium cookie)",
-          "placeholder": "E.g. - podcast"
-        }
+      }
+    },
+    "utm_source": {
+      "type": "Text",
+      "config": {
+        "label": "Source (sets source cookie)",
+        "placeholder": "E.g. - biggerpockets"
+      }
+    },
+    "utm_medium": {
+      "type": "Text",
+      "config": {
+        "label": "Medium (sets medium cookie)",
+        "placeholder": "E.g. - podcast"
       }
     }
   }

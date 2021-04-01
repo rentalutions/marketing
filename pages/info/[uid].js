@@ -106,12 +106,23 @@ const Page = ({ data, uid }) => {
     secondaryButtonHash: hash,
   }) => text && { id, text, link, hash })(data)
 
+  /* eslint-disable camelcase */
   const urlResolverParams = (({
     query_channel: channel,
-    query_content: content,
-    query_signup_page: signup_page, // eslint-disable-line camelcase
-    query_campaign: campaign,
-  }) => ({ channel, content, signup_page, campaign }))(data)
+    query_content,
+    query_signup_page: signup_page,
+    query_campaign,
+    utm_source: query_source,
+    utm_medium: query_medium,
+  }) => ({
+    channel,
+    query_content,
+    signup_page,
+    query_campaign,
+    query_source,
+    query_medium,
+  }))(data)
+  /* eslint-enable camelcase */
 
   const navBarLinks = navBar?.map(
     ({ buttonText, buttonLink, buttonHash, buttonId }) => ({
