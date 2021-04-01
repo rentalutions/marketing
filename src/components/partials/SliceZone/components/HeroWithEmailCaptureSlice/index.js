@@ -63,6 +63,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
             buttonUrl={urlResolver(captureRedirectUrl)}
             onSubmit={handleSubmit}
             queryParamName="email"
+            analyticsParamName="Email"
           />
         </Box>
       )}

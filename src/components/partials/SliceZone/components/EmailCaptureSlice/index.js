@@ -40,6 +40,7 @@ const EmailCaptureSlice = ({ slice }) => {
           buttonText={buttonText}
           buttonUrl={urlResolver(captureRedirectUrl)}
           queryParamName="email"
+          analyticsParamName="Email"
           onSubmit={handleSubmit}
         />
       </Container>
