@@ -6,8 +6,7 @@ import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
-import { analyticsVar, useAnalytics } from "utils/analytics"
-import { useReactiveVar } from "@apollo/client"
+import { useAnalytics } from "utils/analytics"
 import Embed from "../Embed"
 
 const HeroWithEmailCaptureSlice = ({ slice }) => {
@@ -29,8 +28,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
   } = slice
 
   const urlResolver = useUrlResolver()
-  const analyticsParams = useReactiveVar(analyticsVar)
-  const { identify } = useAnalytics(analyticsParams)
+  const { identify } = useAnalytics()
   const inputLabelId = useUID()
 
   const isEmailCapture = emailCaptureLabel && emailCaptureButtonText

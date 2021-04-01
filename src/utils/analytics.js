@@ -1,6 +1,6 @@
 /* global analytics */
 import { useCallback, useEffect, useRef } from "react"
-import { makeVar, useQuery } from "@apollo/client"
+import { makeVar, useQuery, useReactiveVar } from "@apollo/client"
 import { GET_ANALYTICS_QUERY } from "graphql/queries"
 import fromEntries from "fromentries"
 
@@ -31,6 +31,7 @@ const TRAITS_MAP = {
 }
 
 function extractTraits(params) {
+  if (!params || Object.keys(params).length === 0) return {}
   return Object.entries(TRAITS_MAP).reduce((res, [key, value]) => {
     if (params[value]) {
       res[key] = params[value]
@@ -48,6 +49,7 @@ function extractTraitsFromLocation(location) {
 export function useAnalytics(params) {
   const segmentRef = useRef()
   const locationRef = useRef()
+  const analyticsVarParams = useReactiveVar(analyticsVar)
 
   const { data } = useQuery(GET_ANALYTICS_QUERY)
 
@@ -66,6 +68,7 @@ export function useAnalytics(params) {
               {
                 ...traits,
                 ...extractTraits(params),
+                ...extractTraits(analyticsVarParams),
                 ...extractTraitsFromLocation(locationRef.current),
               },
               resolve
