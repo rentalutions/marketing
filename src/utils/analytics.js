@@ -67,7 +67,7 @@ export function useAnalytics(params) {
               uuid,
               {
                 ...traits,
-                ...extractTraits(params),
+                ...extractTraits({ channel: "direct", ...params }),
                 ...extractTraits(analyticsVarParams),
                 ...extractTraitsFromLocation(locationRef.current),
               },
