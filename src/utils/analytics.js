@@ -1,11 +1,12 @@
 /* global analytics */
-
 import { useCallback, useEffect, useRef } from "react"
-import { useQuery } from "@apollo/client"
+import { makeVar, useQuery, useReactiveVar } from "@apollo/client"
 import { GET_ANALYTICS_QUERY } from "graphql/queries"
 import fromEntries from "fromentries"
 
-const LOCATION_TRAITS_MAP = {
+export const analyticsVar = makeVar({})
+
+const TRAITS_MAP = {
   gclid: "gclid",
   msclkid: "msclkid",
   Keyword: "utm_term",
@@ -16,6 +17,7 @@ const LOCATION_TRAITS_MAP = {
   Medium: "utm_medium",
   "Ad Group": "ad_group",
   Content: "utm_content",
+  "Signup Page": "signup_page",
   "Conversion Gclid": "gclid",
   "Conversion Msclkid": "msclkid",
   "Conversion Keyword": "utm_term",
@@ -28,11 +30,9 @@ const LOCATION_TRAITS_MAP = {
   "Conversion Content": "utm_content",
 }
 
-function extractTraitsFromLocation(location) {
-  if (!location?.href) return {}
-  const url = new URL(location.href)
-  const params = fromEntries(url.searchParams)
-  return Object.entries(LOCATION_TRAITS_MAP).reduce((res, [key, value]) => {
+function extractTraits(params) {
+  if (!params || Object.keys(params).length === 0) return {}
+  return Object.entries(TRAITS_MAP).reduce((res, [key, value]) => {
     if (params[value]) {
       res[key] = params[value]
     }
@@ -40,9 +40,16 @@ function extractTraitsFromLocation(location) {
   }, {})
 }
 
-export function useAnalytics() {
+function extractTraitsFromLocation(location) {
+  if (!location?.href) return {}
+  const url = new URL(location.href)
+  return extractTraits(fromEntries(url.searchParams))
+}
+
+export function useAnalytics(params) {
   const segmentRef = useRef()
   const locationRef = useRef()
+  const analyticsVarParams = useReactiveVar(analyticsVar)
 
   const { data } = useQuery(GET_ANALYTICS_QUERY)
 
@@ -58,7 +65,12 @@ export function useAnalytics() {
           try {
             segment.identify(
               uuid,
-              { ...traits, ...extractTraitsFromLocation(locationRef.current) },
+              {
+                ...traits,
+                ...extractTraits(params),
+                ...extractTraits(analyticsVarParams),
+                ...extractTraitsFromLocation(locationRef.current),
+              },
               resolve
             )
           } catch (e) {

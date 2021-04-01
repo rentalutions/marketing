@@ -3,18 +3,16 @@ import { prismicClient } from "src/prismic.config"
 import { NextSeo } from "next-seo"
 import AvailFooter from "components/partials/AvailFooter"
 import SliceZone from "components/partials/SliceZone"
-import NavBar from "components/organisms/NavBar"
 import { createGlobalStyle, useTheme } from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
-import {
-  UrlResolverProvider,
-  useUrlResolver,
-} from "components/partials/UrlResolver"
+import { UrlResolverProvider } from "components/partials/UrlResolver"
 import { useRouter } from "next/router"
 import DefaultErrorPage from "next/error"
 import Head from "next/head"
 import { theme } from "@rent_avail/base"
 import { Box, Flex } from "@rent_avail/layout"
+import PageNavBar from "components/partials/PageNavBar"
+import { analyticsVar } from "utils/analytics"
 
 export const getStaticProps = async ({
   preview = null,
@@ -36,15 +34,6 @@ export const getStaticPaths = async () => {
   const pages = await prismicClient.query("", { pageSize: 100 })
   const paths = pages.results.map((p) => `/info/${p.uid}`)
   return { paths, fallback: true }
-}
-
-const NavBarWrapper = ({ links, ...props }) => {
-  const urlResolver = useUrlResolver()
-  const resolvedLinks = links.map(({ href = "", ...link }) => ({
-    href: href.indexOf("#") !== 0 ? urlResolver(href) : href,
-    ...link,
-  }))
-  return <NavBar links={resolvedLinks} {...props} />
 }
 
 const BodyStyles = createGlobalStyle`
@@ -124,6 +113,8 @@ const Page = ({ data, uid }) => {
   }))(data)
   /* eslint-enable camelcase */
 
+  analyticsVar({ ...analyticsVar(), ...urlResolverParams })
+
   const navBarLinks = navBar?.map(
     ({ buttonText, buttonLink, buttonHash, buttonId }) => ({
       text: buttonText,
@@ -147,7 +138,7 @@ const Page = ({ data, uid }) => {
           }}
           additionalMetaTags={[{ property: "keywords", content: keywords }]}
         />
-        <NavBarWrapper
+        <PageNavBar
           borderBottom={navBarSticky ? `1px solid ${colors.ui_500}` : "none"}
           containerWidth={CONTAINER_WIDTHS}
           type={navBarType}
