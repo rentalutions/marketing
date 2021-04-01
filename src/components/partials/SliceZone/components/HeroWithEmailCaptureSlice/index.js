@@ -35,6 +35,10 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
 
   const handleSubmit = (values) => identify(values)
 
+  const captureRedirectUrl = `${
+    process.env.NEXT_PUBLIC_AVAIL_BASE_URL || "https://www.avail.co"
+  }/users/new`
+
   return (
     <Hero
       title={<RichText render={title} />}
@@ -56,7 +60,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
             inputLabel={emailCaptureLabel}
             inputLabelId={inputLabelId}
             buttonText={emailCaptureButtonText}
-            buttonUrl={urlResolver("https://www.avail.co/users/new")}
+            buttonUrl={urlResolver(captureRedirectUrl)}
             onSubmit={handleSubmit}
             queryParamName="email"
           />
