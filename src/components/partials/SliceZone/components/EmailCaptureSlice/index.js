@@ -6,7 +6,8 @@ import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
-import { useAnalytics } from "utils/analytics"
+import { analyticsVar, useAnalytics } from "utils/analytics"
+import { useReactiveVar } from "@apollo/client"
 
 const EmailCaptureSlice = ({ slice }) => {
   const {
@@ -15,7 +16,8 @@ const EmailCaptureSlice = ({ slice }) => {
 
   const urlResolver = useUrlResolver()
   const inputLabelId = useUID()
-  const { identify } = useAnalytics()
+  const analyticsParams = useReactiveVar(analyticsVar)
+  const { identify } = useAnalytics(analyticsParams)
 
   const handleSubmit = (values) => identify(values)
 
