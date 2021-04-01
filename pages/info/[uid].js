@@ -109,18 +109,18 @@ const Page = ({ data, uid }) => {
   /* eslint-disable camelcase */
   const urlResolverParams = (({
     query_channel: channel,
-    query_content,
+    query_content: utm_content,
     query_signup_page: signup_page,
-    query_campaign,
-    utm_source: query_source,
-    utm_medium: query_medium,
+    query_campaign: utm_campaign,
+    query_source: utm_source,
+    query_medium: utm_medium,
   }) => ({
-    channel,
-    query_content,
     signup_page,
-    query_campaign,
-    query_source,
-    query_medium,
+    channel,
+    utm_content,
+    utm_campaign,
+    utm_source,
+    utm_medium,
   }))(data)
   /* eslint-enable camelcase */
 
