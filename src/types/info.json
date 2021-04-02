@@ -263,6 +263,13 @@
                   "placeholder" : "E.g. - Get Started"
                 },
                 "type" : "Text"
+              },
+              "redirectUrl" : {
+                "config" : {
+                  "label" : "Redirect URL (optional)",
+                  "placeholder" : "E.g. - https://www.avail.co/users/new"
+                },
+                "type" : "Text"
               }
             },
             "repeat" : { }
@@ -576,6 +583,13 @@
                 "config" : {
                   "label" : "Email capture button text",
                   "placeholder" : "E.g. - Start Now"
+                },
+                "type" : "Text"
+              },
+              "emailCaptureRedirectUrl" : {
+                "config" : {
+                  "label" : "Email capture redirect URL (optional)",
+                  "placeholder" : "E.g. - https://www.avail.co/users/new"
                 },
                 "type" : "Text"
               }
