@@ -3,7 +3,7 @@
   "name": "@rent_avail/marketing",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 4000",
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
