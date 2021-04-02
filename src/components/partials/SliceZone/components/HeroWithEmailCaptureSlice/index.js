@@ -7,6 +7,7 @@ import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
 import { useAnalytics } from "utils/analytics"
+import { AVAIL_BASE_URL } from "utils/env"
 import Embed from "../Embed"
 
 const HeroWithEmailCaptureSlice = ({ slice }) => {
@@ -24,6 +25,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       color,
       emailCaptureLabel,
       emailCaptureButtonText,
+      emailCaptureRedirectUrl,
     },
   } = slice
 
@@ -35,9 +37,15 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
 
   const handleSubmit = (values) => identify(values)
 
-  const captureRedirectUrl = `${
-    process.env.NEXT_PUBLIC_AVAIL_BASE_URL || "https://www.avail.co"
-  }/users/new`
+  let captureRedirectUrl
+  let queryParamName
+
+  if (emailCaptureRedirectUrl) {
+    captureRedirectUrl = emailCaptureRedirectUrl
+  } else {
+    captureRedirectUrl = `${AVAIL_BASE_URL}/users/new`
+    queryParamName = "email"
+  }
 
   return (
     <Hero
@@ -62,7 +70,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
             buttonText={emailCaptureButtonText}
             buttonUrl={urlResolver(captureRedirectUrl)}
             onSubmit={handleSubmit}
-            queryParamName="email"
+            queryParamName={queryParamName}
             analyticsParamName="Email"
           />
         </Box>
