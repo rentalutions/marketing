@@ -6,6 +6,7 @@ import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
+import { useAnalytics } from "utils/analytics"
 import Embed from "../Embed"
 
 const HeroWithEmailCaptureSlice = ({ slice }) => {
@@ -27,10 +28,16 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
   } = slice
 
   const urlResolver = useUrlResolver()
+  const { identify } = useAnalytics()
+  const inputLabelId = useUID()
 
   const isEmailCapture = emailCaptureLabel && emailCaptureButtonText
 
-  const inputLabelId = useUID()
+  const handleSubmit = (values) => identify(values)
+
+  const captureRedirectUrl = `${
+    process.env.NEXT_PUBLIC_AVAIL_BASE_URL || "https://www.avail.co"
+  }/users/new`
 
   return (
     <Hero
@@ -53,8 +60,10 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
             inputLabel={emailCaptureLabel}
             inputLabelId={inputLabelId}
             buttonText={emailCaptureButtonText}
-            buttonUrl={urlResolver("https://www.avail.co/users/new")}
+            buttonUrl={urlResolver(captureRedirectUrl)}
+            onSubmit={handleSubmit}
             queryParamName="email"
+            analyticsParamName="Email"
           />
         </Box>
       )}

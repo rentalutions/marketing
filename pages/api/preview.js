@@ -1,16 +1,16 @@
 import { prismicClient, linkResolver } from "src/prismic.config"
 
-export const fixCookies = (res) => {
+export function fixCookies(res) {
   const cookies = res.getHeader("Set-Cookie")
   res.setHeader(
     "Set-Cookie",
-    cookies.map((cookie) => {
-      return cookie.replace("Secure;", "").replace("SameSite=None", "")
-    })
+    cookies.map((cookie) =>
+      cookie.replace("Secure;", "").replace("SameSite=None", "")
+    )
   )
 }
 
-const preview = async (req, res) => {
+async function preview(req, res) {
   const { token: ref, documentId } = req.query
 
   // Check the token parameter against the Prismic SDK
