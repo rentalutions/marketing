@@ -46,6 +46,7 @@ function Hero({
             alt={image.alt}
             title={image.alt}
             maxWidth={["100%", "50%", "50%", "100%"]}
+            {...image?.props}
           />
         )}
         {!!video?.url && <Video src={video?.url} />}

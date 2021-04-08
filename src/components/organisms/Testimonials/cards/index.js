@@ -165,7 +165,7 @@ function TestimonialsCards({
               forwardedAs={motion.div}
               {...animation?.container}
             >
-              {testimonials.map(
+              {testimonials?.map(
                 ({ picture, author, titleAndLocation, quote: Quote }, idx) => (
                   <Testimonial
                     as={motion.div}

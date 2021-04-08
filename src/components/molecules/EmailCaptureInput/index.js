@@ -55,6 +55,7 @@ const EmailCaptureInput = ({
         }}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        type="email"
       />
       <Box
         position={["static", "absolute"]}
