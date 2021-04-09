@@ -1,4 +1,4 @@
-import { fixCookies } from "./preview"
+import { fixCookies } from "./preview.api"
 
 function exit(req, res) {
   // Exit the current user from "Preview Mode". This function accepts no args.
