@@ -23,13 +23,13 @@
         "label" : "Navigation Bar Type"
       }
     },
-    "background": {
+    "background" : {
       "type" : "Select",
       "config" : {
         "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
         "default_value" : "ui_100",
         "label" : "Background color",
-        "placeholder": "Background Color"
+        "placeholder" : "Background Color"
       }
     },
     "sticky_nav_bar" : {
@@ -48,7 +48,7 @@
         "placeholder" : "E.g. - Sign Up"
       }
     },
-    "primaryButtonId:": {
+    "primaryButtonId:" : {
       "config" : {
         "label" : "Primary Button selector ID (optional)",
         "placeholder" : "ID selector for external tools (eg: navbar_primary_button)"
@@ -77,7 +77,7 @@
         "placeholder" : "E.g. - Log In"
       }
     },
-    "secondaryButtonId:": {
+    "secondaryButtonId:" : {
       "config" : {
         "label" : "Secondary Button selector ID (optional)",
         "placeholder" : "ID selector for external tools (eg: navbar_secondary_button)"
@@ -263,6 +263,13 @@
                   "placeholder" : "E.g. - Get Started"
                 },
                 "type" : "Text"
+              },
+              "redirectUrl" : {
+                "config" : {
+                  "label" : "Redirect URL (optional)",
+                  "placeholder" : "E.g. - https://www.avail.co/users/new"
+                },
+                "type" : "Text"
               }
             },
             "repeat" : { }
@@ -392,13 +399,13 @@
                 },
                 "type" : "Select"
               },
-              "stretch": {
-                "type": "Boolean",
-                "config": {
-                  "placeholder_false": "False",
-                  "placeholder_true": "True",
-                  "default_value": true,
-                  "label": "Stretch"
+              "stretch" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "False",
+                  "placeholder_true" : "True",
+                  "default_value" : true,
+                  "label" : "Stretch"
                 }
               },
               "image" : {
@@ -527,13 +534,13 @@
                 },
                 "type" : "Select"
               },
-              "stretch": {
-                "type": "Boolean",
-                "config": {
-                  "placeholder_false": "False",
-                  "placeholder_true": "True",
-                  "default_value": true,
-                  "label": "Stretch"
+              "stretch" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "False",
+                  "placeholder_true" : "True",
+                  "default_value" : true,
+                  "label" : "Stretch"
                 }
               },
               "image" : {
@@ -576,6 +583,13 @@
                 "config" : {
                   "label" : "Email capture button text",
                   "placeholder" : "E.g. - Start Now"
+                },
+                "type" : "Text"
+              },
+              "emailCaptureRedirectUrl" : {
+                "config" : {
+                  "label" : "Email capture redirect URL (optional)",
+                  "placeholder" : "E.g. - https://www.avail.co/users/new"
                 },
                 "type" : "Text"
               }
@@ -1189,12 +1203,12 @@
                   "label" : "Testimonials Orientation"
                 }
               },
-              "testimonialInterval": {
-                "type": "Number",
-                "config": {
-                  "label": "Carousel step interval (seconds)",
-                  "min": 0,
-                  "max": 999
+              "testimonialInterval" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "Carousel step interval (seconds)",
+                  "min" : 0,
+                  "max" : 999
                 }
               },
               "skew" : {
@@ -1303,6 +1317,20 @@
       "config" : {
         "label" : "Campaign (sets campaign cookie)",
         "placeholder" : "E.g. - tenant_feature_landing"
+      }
+    },
+    "query_source" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Source (sets source cookie)",
+        "placeholder" : "E.g. - biggerpockets"
+      }
+    },
+    "query_medium" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Medium (sets medium cookie)",
+        "placeholder" : "E.g. - podcast"
       }
     }
   }

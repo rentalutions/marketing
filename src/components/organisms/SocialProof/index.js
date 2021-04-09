@@ -1,13 +1,6 @@
 import * as React from "react"
-import styled from "styled-components"
 import { Text, Heading } from "@rent_avail/typography"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
-
-// const NumberGrid = styled(Container)`
-//   display: grid;
-//   grid-template-columns: repeat(1fr, 3);
-//   gap: 2rem;
-// `
 
 function BigNumbers({ numbers, ...props }) {
   return (
@@ -32,16 +25,16 @@ function BigNumbers({ numbers, ...props }) {
 function Testimonials({ quotes, ...props }) {
   return (
     <Box {...props}>
-      <Container></Container>
+      <Container />
     </Box>
   )
 }
 
-function SocialProof({ numbers, quotes, ...props }) {
+function SocialProof({ numbers, quotes, backgroundImage, ...props }) {
   return (
     <Box
       {...props}
-      backgroundImage={props.backgroundImage || "/social-proof-map.png"}
+      backgroundImage={backgroundImage || "/social-proof-map.png"}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
     >
@@ -51,4 +44,4 @@ function SocialProof({ numbers, quotes, ...props }) {
   )
 }
 
-export { BigNumbers, Testimonials, SocialProof }
+export { BigNumbers, SocialProof }

@@ -6,15 +6,29 @@ import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
+import { useAnalytics } from "utils/analytics"
+import { AVAIL_BASE_URL } from "utils/env"
 
 const EmailCaptureSlice = ({ slice }) => {
   const {
-    primary: { title, hash, label, buttonText },
+    primary: { title, hash, label, redirectUrl, buttonText },
   } = slice
 
   const urlResolver = useUrlResolver()
-
   const inputLabelId = useUID()
+  const { identify } = useAnalytics()
+
+  const handleSubmit = (values) => identify(values)
+
+  let captureRedirectUrl
+  let queryParamName
+
+  if (redirectUrl) {
+    captureRedirectUrl = redirectUrl
+  } else {
+    captureRedirectUrl = `${AVAIL_BASE_URL}/users/new`
+    queryParamName = "email"
+  }
 
   return (
     <Container maxWidth={CONTAINER_WIDTHS} my="6rem">
@@ -31,8 +45,10 @@ const EmailCaptureSlice = ({ slice }) => {
           inputLabel={label}
           inputLabelId={inputLabelId}
           buttonText={buttonText}
-          buttonUrl={urlResolver("https://www.avail.co/users/new")}
-          queryParamName="email"
+          buttonUrl={urlResolver(captureRedirectUrl)}
+          queryParamName={queryParamName}
+          analyticsParamName="Email"
+          onSubmit={handleSubmit}
         />
       </Container>
     </Container>

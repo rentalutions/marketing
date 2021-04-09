@@ -14,7 +14,6 @@ const Wrapper = styled(Box)`
     height: 100%;
     background: ${({ theme, skewBg }) =>
       skewBg ? theme.colors[skewBg] || skewBg : theme.colors.ui_100};
-    z-index: -1;
     transform: skewY(${({ skew }) => (skew === "right" ? 4 : -4)}deg);
     transform-origin: top ${({ skew }) => skew};
   }

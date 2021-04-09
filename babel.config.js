@@ -9,6 +9,7 @@ module.exports = {
           components: "./src/components",
           utils: "./src/utils",
           config: "./src/config",
+          graphql: "./src/graphql",
         },
       },
     ],
