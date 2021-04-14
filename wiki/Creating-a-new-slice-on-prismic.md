@@ -1,5 +1,5 @@
 # Creating slice definitions on Prismic Custom Types
-> *This page will explain how to create a new slice on a pre-existing Prismic Custom Type. If you need to create a new Custom Type, follow [these instructions](https://github.com/rentalutions/marketing/wiki/Creating-a-new-custom-type) first.*
+> *This page will explain how to create a new slice on a pre-existing Prismic Custom Type. If you need to create a new Custom Type, follow [these instructions](/wiki/Creating-a-new-custom-type.md) first.*
 
 > *The Prismic URL's included on this page are linking to Avail Marketing Staging repository. If you're working on a different repository, make sure to adapt the URL base path when following a link from here.*
 
@@ -19,10 +19,10 @@ To add a new slice, click the `Add a slice` item on the `Slice zone` stack, afte
 To add fields to existing slices, first select the slice you want to edit on the `Slice zone` stack, and then drag the field type from the `Build Mode` section of the right menu to the slice. This can be done both for regular fields and repeatable zone items.
 
 ## Using the JSON editor to import the slice definitions
-By selecting the `JSON editor` tab on the right menu, you should see the whole JSON content that holds the Content Type definitions. This content may be fully replaced by the most recent versioned JSON file for the content type (if you don't know what this file is, see the first section of [this page](https://github.com/rentalutions/marketing/wiki/Creating-a-new-slice-on-the-source-code)), or can be updated only with the diffs related to the slice you want to add.
+By selecting the `JSON editor` tab on the right menu, you should see the whole JSON content that holds the Content Type definitions. This content may be fully replaced by the most recent versioned JSON file for the content type (if you don't know what this file is, see the first section of [this page](/wiki/Creating-a-new-slice-on-the-source-code.md)), or can be updated only with the diffs related to the slice you want to add.
 
 Prefer that last approach - adding just the new slice diffs on the JSON file - if the slice creation on the source code is still in progress (was not merged on `staging` yet).
 
 # See also
 ## Creating a new slice on the source code
-In order to make a slice fully attend to our expectations on the CMS, its components and definitions also have to be created on the source code. You can check how to do it by reading [this wiki page](https://github.com/rentalutions/marketing/wiki/Creating-a-new-slice-on-the-source-code).
+In order to make a slice fully attend to our expectations on the CMS, its components and definitions also have to be created on the source code. You can check how to do it by reading [this wiki page](/wiki/Creating-a-new-slice-on-the-source-code.md).

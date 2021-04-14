@@ -12,9 +12,9 @@ The content for the new JSON file should be an object containing the following k
 >>
 >> `fieldset`: should be "Slice zone"
 >>
->> `config`: should be an object with `labels` and `choices` keys. Both properties will have as keys the existing slices for the content type. They must be properly filled when creating those slices (instructions can be find on the first section of [this wiki page](https://github.com/rentalutions/marketing/wiki/Creating-a-new-slice-on-the-source-code))
+>> `config`: should be an object with `labels` and `choices` keys. Both properties will have as keys the existing slices for the content type. They must be properly filled when creating those slices (instructions can be find on the first section of [this wiki page](/wiki/Creating-a-new-slice-on-the-source-code.md))
 >
-> The other properties for `Page` should be the page options/fields. They may be created just like other [regular fields](https://github.com/rentalutions/marketing/wiki/Creating-fields).
+> The other properties for `Page` should be the page options/fields. They may be created just like other [regular fields](/wiki/Creating-fields.md).
 
 `SEO Metadata`: Should be an object with `meta_title`, `meta_description` and `meta_keywords` keys.
 > The properties for `SEO Metadata` will allow content creators to define how the page's meta tags should be set.

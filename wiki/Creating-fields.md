@@ -76,4 +76,4 @@ If you're creating it as a field for a repeatable slice item, add it (alphabetic
 ## Syncing Prismic with the source code
 > **If you update custom type definitions directly on the JSON file of the source code, make sure to also update it on Prismic.**
 
-The instructions on how to do it can be find on [this wiki page](https://github.com/rentalutions/marketing/wiki/Syncing-Prismic-with-the-source-code).
+The instructions on how to do it can be find on [this wiki page](/wiki/Syncing-Prismic-with-the-source-code.md).

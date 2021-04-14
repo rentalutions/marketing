@@ -1,5 +1,5 @@
 # Creating the slice definitions and components on the source code
-> *This page will explain how to create a new slice on a pre-existing Prismic Custom Type. If you need to create a new Custom Type, follow [these instructions](https://github.com/rentalutions/marketing/wiki/Creating-a-new-custom-type) first.*
+> *This page will explain how to create a new slice on a pre-existing Prismic Custom Type. If you need to create a new Custom Type, follow [these instructions](/wiki/Creating-a-new-custom-type.md) first.*
 
 ## Editing the current `.json` file for the custom type that will support the new slice
 
@@ -37,14 +37,14 @@ Example: `src/types/info.json` (This is the source file for the content type nam
 > 
 > `repeat`: Fields that should compose together a single repeatable card/item 
 > 
-**To learn how to create both repeatable and non repeatable fields, follow the instructions of [this page](https://github.com/rentalutions/marketing/wiki/Creating-fields).**
+**To learn how to create both repeatable and non repeatable fields, follow the instructions of [this page](/wiki/Creating-fields.md).**
 
 <img width="1749" alt="New slice JSON diff example" src="https://user-images.githubusercontent.com/22528445/112215039-e6c34900-8bed-11eb-9acc-02744c07b1cd.png">
 
 ### Syncing Prismic with the source code
 > **If you update custom type definitions directly on the JSON file of the source code, make sure to also update it on Prismic.**
 
-The instructions on how to do it can be find on [this wiki page](https://github.com/rentalutions/marketing/wiki/Syncing-Prismic-with-the-source-code).
+The instructions on how to do it can be find on [this wiki page](/wiki/Syncing-Prismic-with-the-source-code.md).
 
 ## Creating the slice partial
 The higher level component for the slice.
@@ -111,7 +111,7 @@ export function WithLeftOrientation() {
 > }
 > ```
 > 
-> * Add the `design` property on the `parameters` of the exported components, this property must have `type` and `url` keys. The `type` property expects a string and on our case must be defined with `"figma"`, the `url` property also expects a string, that should be the exported link for the Figma frame. If you don't have the Figma link, learn on [this page](https://github.com/rentalutions/marketing/wiki/Exporting-figma-frames) how to export it.
+> * Add the `design` property on the `parameters` of the exported components, this property must have `type` and `url` keys. The `type` property expects a string and on our case must be defined with `"figma"`, the `url` property also expects a string, that should be the exported link for the Figma frame. If you don't have the Figma link, learn on [this page](/wiki/Exporting-figma-frames.md) how to export it.
 > 
 > ```js
 > const parameters = {
@@ -179,4 +179,4 @@ The case return should be the slice partial. Make sure to pass the `key` and `sl
 
 # See also
 ## Creating a new slice on Prismic
-In order to make a slice fully attend to our expectations on the CMS, its definitions also have to be created on Prismic. You can check how to do it by reading [this wiki page](https://github.com/rentalutions/marketing/wiki/Creating-a-new-slice-on-prismic).
+In order to make a slice fully attend to our expectations on the CMS, its definitions also have to be created on Prismic. You can check how to do it by reading [this wiki page](/wiki/Creating-a-new-slice-on-prismic.md).
