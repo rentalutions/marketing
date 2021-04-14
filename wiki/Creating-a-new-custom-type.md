@@ -80,8 +80,8 @@ The content for the new JSON file should be an object containing the following k
 
 ## Syncing Prismic with the source code
 > **If you create the custom type definitions directly on the JSON file of the source code, make sure to update its content on Prismic.**
->
-> Follow the instructions on the next section to create the content type on Prismic (or select it on the first step, if it was already created), open the JSON editor by selecting the `JSON editor` tab on the right menu, paste there the versioned content of JSON file and click the `Save` button on the top-right corner.
+
+Follow the instructions on the next section to create the content type on Prismic (or select it on the first step, if it was already created), open the JSON editor by selecting the `JSON editor` tab on the right menu, paste there the versioned content of JSON file and click the `Save` button on the top-right corner.
 
 # Creating a new Custom Type on Prismic UI Custom Types
 > *The Prismic URL's included on this page are linking to Avail Marketing Staging repository. If you're working on a different repository, make sure to adapt the URL base path when following a link from here.*
@@ -102,4 +102,4 @@ Click the `Create new custom type` button.
 Prismic UI makes possible to define all the configurations for old or for recently created custom types. This can also be done by directly editing its JSON content, like explained on the first section of this wiki page.
 
 ## Syncing the source code with Prismic
-> **If you use Primic UI's build mode to create the custom type definitions, make sure to commit on the source code the resulted JSON content, that can be displayed by selecting the `JSON editor` tab on the right menu.**
+**If you use Primic UI's build mode to create the custom type definitions, make sure to commit on the source code the resulted JSON content, that can be displayed by selecting the `JSON editor` tab on the right menu.**
