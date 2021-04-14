@@ -32,7 +32,7 @@ const cases = [
   },
 ]
 
-export function HomeShowcase(props) {
+function HomeShowcase(props) {
   return (
     <Showcase
       {...props}
@@ -58,3 +58,5 @@ export function HomeShowcase(props) {
     />
   )
 }
+
+export default HomeShowcase

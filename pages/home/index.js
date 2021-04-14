@@ -12,7 +12,7 @@ import { CONTAINER_WIDTHS } from "config"
 import HomeHero from "./components/home-hero"
 import HomeHowItWorks from "./components/home-how-it-works"
 import HomeTestimonials from "./components/home-testimonials"
-import { HomeShowcase } from "./components/home-showcase"
+import HomeShowcase from "./components/home-showcase"
 import HomeEmailCapture from "./components/home-email-capture"
 
 const primaryButton = {
