@@ -1,11 +1,18 @@
 import React, { useMemo } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@rent_avail/controls"
-import { Box, Col, Container, Flex, Grid } from "@rent_avail/layout"
+import { Box, Col, Container, Grid } from "@rent_avail/layout"
 
 import { getTargetProps } from "utils/link"
 import { useInViewAnimation } from "utils/animation"
+import { createGlobalStyle } from "styled-components"
 import Menu from "./menu"
+
+const GlobalStyle = createGlobalStyle`
+  :root {
+    scroll-padding-top: ${({ sticky }) => (sticky ? "10rem" : "0")};
+  }
+`
 
 function AvailRdcNavBar({
   background = "ui_100",
@@ -58,6 +65,7 @@ function AvailRdcNavBar({
       }}
       {...props}
     >
+      <GlobalStyle sticky />
       <Box flex="1" bg="blue_900" />
       <Container as={Grid} gap="0" flex="1 0 100%" px={0}>
         <Col
@@ -159,6 +167,7 @@ function AvailRdcNavBar({
                 menuEntries={menuEntries}
                 primaryLinkProps={primaryLinkProps}
                 secondaryLinkProps={secondaryLinkProps}
+                parentRef={intersectionTarget}
               />
             </Box>
           </Box>
