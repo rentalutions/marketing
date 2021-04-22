@@ -7,6 +7,7 @@ import { BREAKPOINTS, DEFAULT_SEO } from "config"
 import { UIDReset } from "react-uid"
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client"
 import resolvers from "graphql/resolvers"
+import AnalyticsGlobals from "components/partials/AnalyticsGlobals"
 
 const marketingTheme = {
   ...theme,
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={marketingTheme}>
       <ApolloProvider client={apolloClient}>
+        <AnalyticsGlobals />
         <DefaultSeo {...DEFAULT_SEO} />
         <Reset />
         <GlobalStyles />

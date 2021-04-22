@@ -93,5 +93,5 @@ export function useAnalytics(params) {
     locationRef.current = window?.location
   }, [])
 
-  return { identify }
+  return { analytics: data?.analytics, identify }
 }
