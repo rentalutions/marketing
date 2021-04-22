@@ -5,35 +5,35 @@ import RichText from "components/partials/SliceZone/components/RichText"
 import { TestimonialsCards } from "components/organisms/Testimonials"
 
 const TESTIMONIALS_PROPS = {
-  title: "Listen to our tenant friends",
+  title: "See what landlords are saying about Avail",
   testimonials: [
     {
-      author: "David",
-      titleAndLocation: "Renter in Phoenix",
+      author: "Andrew Bergler",
+      titleAndLocation: "Landlord in Illinois, 1 Unit",
       quote:
-        "Because Avail allows me to re-use my application, I was able to send it to other landlords without paying an extra fee when applying to multiple properties.",
-      picture: {
-        url: "/testimonials/Character-David.jpeg",
-        alt: "User Image",
-      },
-    },
-    {
-      author: "Andrew",
-      titleAndLocation: "Renter in Chicago",
-      quote:
-        "I used to pay my landlord by check every month, but now paying my rent has never been easier! I set up automatic payments to ensure I paid on time — no more late fees for me!",
+        "I’ve used Avail for about a year now and couldn’t be more satisfied! I’m a first time landlord and Avail has really helped me with the process. Easy to use website and customer service that is outstanding! Thank you Avail!",
       picture: {
         url: "/testimonials/Character-Andrew.jpeg",
         alt: "User Image",
       },
     },
     {
-      author: "Amy",
-      titleAndLocation: "Renter in Chicago",
+      author: "Kevin and Jackie White",
+      titleAndLocation: "Landlords in Colorado, 2 units",
       quote:
-        "Maintenance requests are sent right to my landlord and his maintenance person. I know that with Avail my issues will be communicated and addressed quickly.",
+        "It’s affordable and easy to use. We love the advertising process and online dashboard, our tenants love the free online rent payment and online lease signing. Thank you Avail!",
       picture: {
-        url: "/testimonials/Character-Amy.jpeg",
+        url: "/testimonials/Character-Kathleen.jpeg",
+        alt: "User Image",
+      },
+    },
+    {
+      author: "Polly",
+      titleAndLocation: "Landlord in Florida, 1 unit",
+      quote:
+        "This is a helpful website for new landlords like me. I was totally ignorant of the entire renting process until I found Avail. And whenever I had a question, their support team was there to help. Thank you Avail!",
+      picture: {
+        url: "/testimonials/Character-Angela.jpeg",
         alt: "User Image",
       },
     },
