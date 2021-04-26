@@ -92,6 +92,6 @@ export function useAnalytics(params) {
     }
     locationRef.current = window?.location
   }, [])
-
+  console.log(data)
   return { analytics: data?.analytics, identify }
 }

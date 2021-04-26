@@ -1,7 +1,8 @@
 import objectHash from "object-hash"
 import { ApolloError, throwServerError } from "@apollo/client"
+import LRU from "lru-cache"
 
-const IN_PROGRESS_REQUESTS = {}
+const inProgressRequestsCache = new LRU({ maxAge: 1000 * 5 })
 
 function parseBody(input) {
   if (/^\s*<!doctype/i.test(input)) {
@@ -47,12 +48,12 @@ export async function makeResolverRequest(url, method = "GET", body = null) {
     params.body = JSON.stringify(body)
   }
   const hash = objectHash(params)
-
-  if (!IN_PROGRESS_REQUESTS[hash]) {
-    IN_PROGRESS_REQUESTS[hash] = execRequest(params).then((result) => {
-      delete IN_PROGRESS_REQUESTS[hash]
-      return result
-    })
+  let request = inProgressRequestsCache.get(hash)
+  if (!request) {
+    request = execRequest(params).finally(() =>
+      inProgressRequestsCache.del(hash)
+    )
+    inProgressRequestsCache.set(hash, request)
   }
-  return IN_PROGRESS_REQUESTS[hash]
+  return request
 }
