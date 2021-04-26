@@ -1,22 +1,8 @@
-import { ApolloError, throwServerError } from "@apollo/client"
+import { makeResolverRequest } from "graphql/resolvers/client"
 
 async function analyticsResolver() {
-  try {
-    const response = await fetch(`/api/analytics`)
-    const body = await response.json()
-    if (!response.ok) {
-      throwServerError(
-        response,
-        body,
-        body?.message || "Unknown request failure"
-      )
-    }
-    return { __typename: "Analytics", ...body }
-  } catch (error) {
-    throw new ApolloError({
-      errorMessage: error?.message || "Unknown request failure",
-    })
-  }
+  const analytics = await makeResolverRequest(`/api/analytics`)
+  return { __typename: "Analytics", ...analytics }
 }
 
 const resolvers = {
