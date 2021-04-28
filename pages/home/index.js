@@ -9,14 +9,14 @@ import AvailFooter from "components/partials/AvailFooter"
 
 import { CONTAINER_WIDTHS } from "config"
 
-import TenantFeaturesHero from "./components/tenants-features-hero"
-import TenantFeaturesCards from "./components/tenants-features-cards"
-import TenantFeaturesHowItWorks from "./components/tenants-features-how-it-works"
-import TenantFeaturesTestimonials from "./components/tenants-features-testimonials"
-import TenantFeaturesEmailCapture from "./components/tenants-features-email-capture"
+import HomeHero from "./components/home-hero"
+import HomeHowItWorks from "./components/home-how-it-works"
+import HomeTestimonials from "./components/home-testimonials"
+import HomeShowcase from "./components/home-showcase"
+import HomeEmailCapture from "./components/home-email-capture"
 
 const primaryButton = {
-  text: "Sign up",
+  text: "Try Now",
   link: {
     url: "https://www.avail.co/users/new",
     target: "_blank",
@@ -36,6 +36,16 @@ const links = [
     text: "Pricing",
     href: "/pricing",
     target: "_blank",
+  },
+  {
+    text: "Features",
+    href: "/tenants/features",
+    target: "_blank",
+  },
+  {
+    text: "Use Cases",
+    href: "#use-cases",
+    target: "_self",
   },
 ]
 
@@ -68,11 +78,11 @@ const TenantFeatures = () => {
         links={links}
       />
       <Box bg="ui_300" pb="18rem">
-        <TenantFeaturesHero primaryButtonLink={primaryButton?.link} />
-        <TenantFeaturesCards mt={3} />
-        <TenantFeaturesHowItWorks mt={3} py={6} />
-        <TenantFeaturesTestimonials mt={6} />
-        <TenantFeaturesEmailCapture mt={4} />
+        <HomeHero mb="20rem" />
+        <HomeHowItWorks id="use-cases" />
+        <HomeTestimonials />
+        <HomeShowcase mt={8} />
+        <HomeEmailCapture mt={8} />
       </Box>
       <AvailFooter />
     </React.Fragment>

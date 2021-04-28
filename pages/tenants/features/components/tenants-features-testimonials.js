@@ -1,11 +1,7 @@
-import React, { useMemo, useRef } from "react"
+import React, { useMemo } from "react"
 
-import Button from "components/elements/Button"
-import { Hero } from "components/organisms/Hero"
 import RichText from "components/partials/SliceZone/components/RichText"
-import Link from "components/partials/SliceZone/components/Link"
 
-import { CONTAINER_WIDTHS } from "config"
 import { TestimonialsCards } from "components/organisms/Testimonials"
 
 const TESTIMONIALS_PROPS = {
@@ -14,7 +10,8 @@ const TESTIMONIALS_PROPS = {
     {
       author: "David",
       titleAndLocation: "Renter in Phoenix",
-      quote: "Because Avail allows me to re-use my application, I was able to send it to other landlords without paying an extra fee when applying to multiple properties.",
+      quote:
+        "Because Avail allows me to re-use my application, I was able to send it to other landlords without paying an extra fee when applying to multiple properties.",
       picture: {
         url: "/testimonials/Character-David.jpeg",
         alt: "User Image",
@@ -23,7 +20,8 @@ const TESTIMONIALS_PROPS = {
     {
       author: "Andrew",
       titleAndLocation: "Renter in Chicago",
-      quote: "I used to pay my landlord by check every month, but now paying my rent has never been easier! I set up automatic payments to ensure I paid on time — no more late fees for me!",
+      quote:
+        "I used to pay my landlord by check every month, but now paying my rent has never been easier! I set up automatic payments to ensure I paid on time — no more late fees for me!",
       picture: {
         url: "/testimonials/Character-Andrew.jpeg",
         alt: "User Image",
@@ -32,7 +30,8 @@ const TESTIMONIALS_PROPS = {
     {
       author: "Amy",
       titleAndLocation: "Renter in Chicago",
-      quote: "Maintenance requests are sent right to my landlord and his maintenance person. I know that with Avail my issues will be communicated and addressed quickly.",
+      quote:
+        "Maintenance requests are sent right to my landlord and his maintenance person. I know that with Avail my issues will be communicated and addressed quickly.",
       picture: {
         url: "/testimonials/Character-Amy.jpeg",
         alt: "User Image",
@@ -42,37 +41,43 @@ const TESTIMONIALS_PROPS = {
 }
 
 const TenantFeaturesTestimonials = (props) => {
-  const testimonials = useMemo(() => TESTIMONIALS_PROPS.testimonials.map(({ quote, ...rest }) => ({
-    ...rest,
-    quote: <RichText
-      render={[
-        {
-          text: quote,
-          type: "paragraph",
-          spans: [],
-        },
-      ]}
+  const testimonials = useMemo(() =>
+    TESTIMONIALS_PROPS.testimonials.map(({ quote, ...rest }) => ({
+      ...rest,
+      quote: (
+        <RichText
+          render={[
+            {
+              text: quote,
+              type: "paragraph",
+              spans: [],
+            },
+          ]}
+        />
+      ),
+    }))
+  )
+  return (
+    <TestimonialsCards
+      {...props}
+      bg="gold_500"
+      testimonialBg="gold_100"
+      color="blue_900"
+      skew="left"
+      title={
+        <RichText
+          render={[
+            {
+              text: TESTIMONIALS_PROPS.title,
+              type: "heading1",
+              spans: [],
+            },
+          ]}
+        />
+      }
+      testimonials={testimonials}
     />
-  })))
-  return <TestimonialsCards
-    {...props}
-    bg="gold_500"
-    testimonialBg="gold_100"
-    color="blue_900"
-    skew="left"
-    title={
-      <RichText
-        render={[
-          {
-            text: TESTIMONIALS_PROPS.title,
-            type: "heading1",
-            spans: [],
-          },
-        ]}
-      />
-    }
-    testimonials={testimonials}
-  />
+  )
 }
 
 export default TenantFeaturesTestimonials

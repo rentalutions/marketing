@@ -12,7 +12,7 @@ const HERO_PROPS = {
   description:
     "The Avail resident portal gives you 24-hour access to pay rent, submit maintenance requests, improve your credit, and much more. Renting has never been so easy.",
   image: {
-    url: "/tenant_hero.png",
+    url: "/tenants/features/hero.png",
     alt: "Tenant hero",
   },
 }

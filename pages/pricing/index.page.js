@@ -135,7 +135,7 @@ const Pricing = () => {
   const title = "Pricing Plans & Features | Avail"
   const description =
     "View pricing plans for Avail online landlord software. Avail helps landlords manage rental properties, find and screen tenants, create leases and collect rent."
-  const url = "http://info.avail.co/info/pricing"
+  const url = "http://info.avail.co/pricing"
   return (
     <React.Fragment>
       <NextSeo

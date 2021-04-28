@@ -6,7 +6,7 @@ import Icon from "components/elements/Icon"
 
 const Showcase = ({
   copy,
-  image = {},
+  image,
   cases,
   caseInterval,
   containerWidth,
@@ -30,7 +30,7 @@ const Showcase = ({
   const [presets, intersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
-  const imageCol = (
+  const imageCol = image && (
     <Col gridColumn={["span 12", "span 12", "span 5"]}>
       <motion.aside {...animation?.item}>
         <Box
@@ -58,7 +58,9 @@ const Showcase = ({
           gridAutoFlow="row dense"
         >
           {flip && imageCol}
-          <Col gridColumn={["span 12", "span 12", "span 7"]}>
+          <Col
+            gridColumn={image ? ["span 12", "span 12", "span 7"] : "span 12"}
+          >
             {copy && (
               <Box as={motion.aside} {...animation?.item}>
                 {copy}
