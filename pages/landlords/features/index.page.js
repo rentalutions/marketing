@@ -9,11 +9,11 @@ import AvailFooter from "components/partials/AvailFooter"
 
 import { CONTAINER_WIDTHS } from "config"
 
-import TenantFeaturesHero from "./components/tenants-features-hero"
-import TenantFeaturesCards from "./components/tenants-features-cards"
-import TenantFeaturesHowItWorks from "./components/tenants-features-how-it-works"
-import TenantFeaturesTestimonials from "./components/tenants-features-testimonials"
-import TenantFeaturesEmailCapture from "./components/tenants-features-email-capture"
+import LandlordsFeaturesHero from "./components/landlords-features-hero"
+import LandlordsFeaturesCards from "./components/landlords-features-cards"
+import LandlordsFeaturesHowItWorks from "./components/landlords-features-how-it-works"
+import LandlordsFeaturesTestimonials from "./components/landlords-features-testimonials"
+import LandlordsFeaturesEmailCapture from "./components/landlords-features-email-capture"
 
 const primaryButton = {
   text: "Sign up",
@@ -34,20 +34,20 @@ const secondaryButton = {
 const links = [
   {
     text: "Pricing",
-    href: "/pricing",
+    href: "/info/pricing",
     target: "_blank",
   },
   {
-    text: "For Landlords",
-    href: "/landlords/features",
+    text: "For Tenants",
+    href: "/tenants/features",
     target: "_blank",
   },
 ]
 
-const TenantFeatures = () => {
-  const title = "Tenant Features | Avail"
+const LandlordsFeatures = () => {
+  const title = "Landlords Features | Avail"
   const description = ""
-  const url = "http://info.avail.co/tenants/features"
+  const url = "http://info.avail.co/landlords/features"
 
   const { colors } = useTheme()
 
@@ -73,15 +73,15 @@ const TenantFeatures = () => {
         links={links}
       />
       <Box bg="ui_300" pb="18rem">
-        <TenantFeaturesHero primaryButtonLink={primaryButton?.link} />
-        <TenantFeaturesCards mt={3} />
-        <TenantFeaturesHowItWorks mt={3} py={6} />
-        <TenantFeaturesTestimonials mt={6} />
-        <TenantFeaturesEmailCapture mt={4} />
+        <LandlordsFeaturesHero primaryButtonLink={primaryButton?.link} />
+        <LandlordsFeaturesCards mt={3} />
+        <LandlordsFeaturesHowItWorks mt={3} py={6} />
+        <LandlordsFeaturesTestimonials mt={6} />
+        <LandlordsFeaturesEmailCapture mt={4} />
       </Box>
       <AvailFooter />
     </React.Fragment>
   )
 }
 
-export default TenantFeatures
+export default LandlordsFeatures
