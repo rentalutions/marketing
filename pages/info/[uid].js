@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { prismicClient } from "src/prismic.config"
 import { NextSeo } from "next-seo"
 import AvailFooter from "components/partials/AvailFooter"
@@ -44,6 +44,7 @@ const BodyStyles = createGlobalStyle`
 
 const Page = ({ data, uid }) => {
   const router = useRouter()
+  const { colors } = useTheme()
 
   if (router.isFallback) {
     return (
@@ -63,7 +64,6 @@ const Page = ({ data, uid }) => {
       </React.Fragment>
     )
   }
-  const { colors } = useTheme()
 
   const BASE_CANONICAL_URL =
     process.env.NEXT_PUBLIC_BASE_CANONICAL_URL || "https://info.avail.co"
@@ -113,8 +113,6 @@ const Page = ({ data, uid }) => {
   }))(data)
   /* eslint-enable camelcase */
 
-  analyticsVar({ ...analyticsVar(), ...urlResolverParams })
-
   const navBarLinks = navBar?.map(
     ({ buttonText, buttonLink, buttonHash, buttonId }) => ({
       text: buttonText,
@@ -123,6 +121,11 @@ const Page = ({ data, uid }) => {
       id: buttonId,
     })
   )
+
+  useEffect(() => {
+    analyticsVar({ ...analyticsVar(), ...urlResolverParams })
+  }, [urlResolverParams])
+
   return (
     <React.Fragment>
       <BodyStyles bg={background} />

@@ -46,7 +46,7 @@ function extractTraitsFromLocation(location) {
   return extractTraits(fromEntries(url.searchParams))
 }
 
-export function useAnalytics(params) {
+export function useAnalytics(defaultParams) {
   const segmentRef = useRef()
   const locationRef = useRef()
   const analyticsVarParams = useReactiveVar(analyticsVar)
@@ -67,7 +67,7 @@ export function useAnalytics(params) {
               uuid,
               {
                 ...traits,
-                ...extractTraits({ channel: "direct", ...params }),
+                ...extractTraits({ channel: "direct", ...defaultParams }),
                 ...extractTraits(analyticsVarParams),
                 ...extractTraitsFromLocation(locationRef.current),
               },
