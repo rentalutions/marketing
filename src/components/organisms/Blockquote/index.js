@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { Box, Container } from "@rent_avail/layout"
 import { useInViewAnimation } from "utils/animation"
 import { STYLING } from "config"
-import DoubleQuotes from "./doubleQuotes"
+import DoubleQuotes from "./double-quotes"
 
 function Blockquote({
   content,
