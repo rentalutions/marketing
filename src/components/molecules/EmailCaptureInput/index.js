@@ -14,7 +14,6 @@ const EmailCaptureInput = ({
   buttonUrl,
   onSubmit,
   queryParamName,
-  analyticsParamName,
 }) => {
   const buttonRef = useRef()
   const [buttonWidth, setButtonWidth] = useState(0)
@@ -32,8 +31,8 @@ const EmailCaptureInput = ({
     if (queryParamName && inputValue) {
       url.searchParams.append(queryParamName, inputValue)
     }
-    if (onSubmit && analyticsParamName && inputValue) {
-      await onSubmit({ [analyticsParamName]: inputValue })
+    if (onSubmit && inputValue) {
+      await onSubmit({ email: inputValue })
     }
     window.location.href = url.toString()
   }

@@ -13,7 +13,6 @@ function EmailCapture({
   buttonText,
   buttonUrl,
   queryParamName,
-  analyticsParamName,
   onSubmit,
   animationPreset = "fadeIn",
 }) {
@@ -37,7 +36,6 @@ function EmailCapture({
           buttonText={buttonText}
           buttonUrl={buttonUrl}
           queryParamName={queryParamName}
-          analyticsParamName={analyticsParamName}
           background={containerBg}
           onSubmit={onSubmit}
         />

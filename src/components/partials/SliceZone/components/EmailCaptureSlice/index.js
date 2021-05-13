@@ -16,9 +16,17 @@ const EmailCaptureSlice = ({ slice }) => {
 
   const urlResolver = useUrlResolver()
   const inputLabelId = useUID()
-  const { identify } = useAnalytics()
+  const { identify, track } = useAnalytics()
 
-  const handleSubmit = (values) => identify(values)
+  const handleSubmit = async ({ email }) => {
+    const traits = { Email: email }
+    await identify(traits)
+    await track("Marketing Site Form Submission", {
+      Type: "Email Capture",
+      Location: "Email Capture Slice",
+      ...traits,
+    })
+  }
 
   let captureRedirectUrl
   let queryParamName

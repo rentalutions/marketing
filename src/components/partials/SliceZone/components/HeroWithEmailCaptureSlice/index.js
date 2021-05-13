@@ -30,12 +30,20 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
   } = slice
 
   const urlResolver = useUrlResolver()
-  const { identify } = useAnalytics()
+  const { identify, track } = useAnalytics()
   const inputLabelId = useUID()
 
   const isEmailCapture = emailCaptureLabel && emailCaptureButtonText
 
-  const handleSubmit = (values) => identify(values)
+  const handleSubmit = async ({ email }) => {
+    const traits = { Email: email }
+    await identify(traits)
+    await track("Marketing Site Form Submission", {
+      type: "Email Capture",
+      location: "Hero w/ Email Capture Slice",
+      ...traits,
+    })
+  }
 
   let captureRedirectUrl
   let queryParamName
@@ -71,7 +79,6 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
             buttonUrl={urlResolver(captureRedirectUrl)}
             onSubmit={handleSubmit}
             queryParamName={queryParamName}
-            analyticsParamName="Email"
           />
         </Box>
       )}
