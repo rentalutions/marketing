@@ -2,6 +2,8 @@ import React from "react"
 import { Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { useTheme } from "styled-components"
+
+import BlockquoteSlice from "./components/BlockquoteSlice"
 import ButtonCTASlice from "./components/ButtonCTASlice"
 import EmailCaptureSlice from "./components/EmailCaptureSlice"
 import FAQSlice from "./components/FrequentlyAskedQuestionsSlice"
@@ -22,6 +24,8 @@ const SliceZone = ({ slices }) => {
   return slices.map((slice, idx) => {
     const key = `${slice.slice_type}-${slice.version}-${idx}`
     switch (slice.slice_type) {
+      case "blockquote":
+        return <BlockquoteSlice key={key} slice={slice} />
       case "button_cta":
         return <ButtonCTASlice key={key} slice={slice} />
       case "email_capture":
