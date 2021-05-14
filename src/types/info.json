@@ -203,14 +203,6 @@
                   "default_value" : "left",
                   "label" : "Text Align"
                 }
-              },
-              "skew" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "none", "right", "left" ],
-                  "default_value" : "none",
-                  "label" : "Skew"
-                }
               }
             }
           },
@@ -274,6 +266,14 @@
                   "options" : [ "left", "top", "right", "bottom" ],
                   "default_value" : "left",
                   "label" : "Text Orientation"
+                }
+              },
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "right", "left" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
                 }
               }
             }
