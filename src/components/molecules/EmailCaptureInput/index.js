@@ -3,6 +3,13 @@ import Input from "@rent_avail/input"
 import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import { analyzeColor } from "utils/color-scheme"
+import styled from "styled-components"
+import { Checkbox as AvailCheckbox } from "@rent_avail/controls"
+import { sx } from "@rent_avail/base"
+
+const Checkbox = styled(AvailCheckbox)`
+  ${sx}
+`
 
 const INPUT_ERROR_MESSAGE = "Please enter valid email."
 
@@ -14,11 +21,15 @@ const EmailCaptureInput = ({
   buttonUrl,
   onSubmit,
   queryParamName,
+  optInCopy,
+  optInContext,
 }) => {
   const buttonRef = useRef()
   const [buttonWidth, setButtonWidth] = useState(0)
   const [inputValue, setInputValue] = useState("")
   const [inputError, setInputError] = useState()
+  const [optIn, setOptIn] = useState(true)
+
   const [, isDark] = background ? analyzeColor(background) : []
 
   const handleSubmit = async (e) => {
@@ -32,7 +43,7 @@ const EmailCaptureInput = ({
       url.searchParams.append(queryParamName, inputValue)
     }
     if (onSubmit && inputValue) {
-      await onSubmit({ email: inputValue })
+      await onSubmit({ email: inputValue, optIn, optInContext })
     }
     window.location.href = url.toString()
   }
@@ -45,6 +56,10 @@ const EmailCaptureInput = ({
   const handleInputChange = (e) => {
     setInputValue(e.target.value)
     setInputError(undefined)
+  }
+
+  const handleOptInChange = (e) => {
+    setOptIn(e.target.checked)
   }
 
   useEffect(() => {
@@ -85,7 +100,6 @@ const EmailCaptureInput = ({
       />
       <Box
         position={["static", "absolute"]}
-        mt={["1.5rem", 0]}
         top="calc(1rem + 2px)"
         right="1rem"
         ref={buttonRef}
@@ -101,6 +115,20 @@ const EmailCaptureInput = ({
           {buttonText}
         </Button>
       </Box>
+      {optInCopy && optInContext && (
+        <Checkbox
+          sx={{
+            mt: ["2rem", 0],
+            "& input:checked ~ .input__target": {
+              borderColor: isDark ? "ui_100" : "blue_500",
+            },
+          }}
+          defaultChecked={optIn}
+          onChange={handleOptInChange}
+        >
+          {optInCopy}
+        </Checkbox>
+      )}
     </Box>
   )
 }

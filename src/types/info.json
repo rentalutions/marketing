@@ -270,6 +270,23 @@
                   "placeholder" : "E.g. - https://www.avail.co/users/new"
                 },
                 "type" : "Text"
+              },
+              "optInContext" : {
+                "config" : {
+                  "label" : "Opt In Context (required to show opt in)",
+                  "placeholder" : "Email Capture Opt In, - e.g. The Landing"
+                },
+                "type" : "Text"
+              },
+              "optInCopy" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Opt In Copy (required to show opt in)",
+                  "placeholder" : "Opt In Copy",
+                  "labels" : [ "body__emphasis", "body", "small" ]
+                }
               }
             },
             "repeat" : { }
@@ -592,6 +609,23 @@
                   "placeholder" : "E.g. - https://www.avail.co/users/new"
                 },
                 "type" : "Text"
+              },
+              "emailCaptureOptInContext" : {
+                "config" : {
+                  "label" : "Opt In Context (required to show opt in)",
+                  "placeholder" : "Email Capture Opt In, - e.g. The Landing"
+                },
+                "type" : "Text"
+              },
+              "emailCaptureOptInCopy" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Opt In Copy (required to show opt in)",
+                  "placeholder" : "Opt In Copy",
+                  "labels" : [ "body__emphasis", "body", "small" ]
+                }
               }
             },
             "repeat" : { }

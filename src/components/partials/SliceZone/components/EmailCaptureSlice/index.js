@@ -6,27 +6,28 @@ import Anchor from "components/elements/Anchor"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
-import { useAnalytics } from "utils/analytics"
+import { useEmailCaptureTracking } from "utils/analytics"
 import { AVAIL_BASE_URL } from "utils/env"
 
 const EmailCaptureSlice = ({ slice }) => {
   const {
-    primary: { title, hash, label, redirectUrl, buttonText },
+    primary: {
+      title,
+      hash,
+      label,
+      redirectUrl,
+      buttonText,
+      optInCopy,
+      optInContext,
+    },
   } = slice
 
   const urlResolver = useUrlResolver()
   const inputLabelId = useUID()
-  const { identify, track } = useAnalytics()
 
-  const handleSubmit = async ({ email }) => {
-    const traits = { Email: email }
-    await identify(traits)
-    await track("Marketing Site Form Submission", {
-      Type: "Email Capture",
-      Location: "Email Capture Slice",
-      ...traits,
-    })
-  }
+  const [handleSubmit] = useEmailCaptureTracking({
+    Location: "Email Capture Slice",
+  })
 
   let captureRedirectUrl
   let queryParamName
@@ -57,6 +58,8 @@ const EmailCaptureSlice = ({ slice }) => {
           queryParamName={queryParamName}
           analyticsParamName="Email"
           onSubmit={handleSubmit}
+          optInContext={optInContext}
+          optInCopy={<RichText render={optInCopy} />}
         />
       </Container>
     </Container>

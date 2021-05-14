@@ -118,3 +118,26 @@ export function useAnalytics(defaultParams) {
   }, [])
   return { analytics: data?.analytics, identify, track }
 }
+
+export function useEmailCaptureTracking(defaultProperties) {
+  const { identify, track } = useAnalytics()
+
+  const handleSubmit = useCallback(
+    async ({ email, optInContext, optIn }) => {
+      const traits = {
+        Email: email,
+        "Email Capture Opt In": optInContext || undefined,
+        "Email Capture Opt In Checked": optInContext ? optIn : undefined,
+      }
+      await identify(traits)
+      await track("Marketing Site Form Submission", {
+        Type: "Email Capture",
+        ...defaultProperties,
+        ...traits,
+      })
+    },
+    [identify, track]
+  )
+
+  return [handleSubmit]
+}
