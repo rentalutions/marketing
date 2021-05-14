@@ -56,7 +56,6 @@ const EmailCaptureSlice = ({ slice }) => {
           buttonText={buttonText}
           buttonUrl={urlResolver(captureRedirectUrl)}
           queryParamName={queryParamName}
-          analyticsParamName="Email"
           onSubmit={handleSubmit}
           optInContext={optInContext}
           optInCopy={<RichText render={optInCopy} />}
