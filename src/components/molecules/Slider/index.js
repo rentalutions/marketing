@@ -1,19 +1,13 @@
 import React, { useRef } from "react"
-import styled from "styled-components"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "react-feather"
 
-import { Box, Stack } from "@rent_avail/layout"
+import { Box } from "@rent_avail/layout"
 
 import { useInViewAnimation } from "utils/animation"
 
 import ControlChevron from "./control-chevron"
 import useSlider from "./use-slider"
-
-const ItemsStack = styled(Stack)`
-  position: relative;
-  display: inline-flex;
-`
 
 function Slider({
   animationPreset = "fadeIn",
@@ -53,29 +47,32 @@ function Slider({
           },
         }}
       >
-        <ItemsStack
-          wrapChildren
-          direction={["row"]}
+        <Box
           sx={{
-            "& > *:last-child": {
-              marginRight: 0,
+            position: "relative",
+            display: "inline-flex",
+            flexDirection: ["row"],
+            "& > *:not(:last-child)": {
+              marginRight: "2rem",
             },
           }}
           forwardedAs={motion.div}
           {...animation?.container}
         >
           {React.Children.map(children, (child, idx) => (
-            <Box
-              flex="1 0 auto"
-              as={motion.div}
-              {...animation?.item}
-              {...child.props}
-              ref={(el) => {
-                childrenRef.current[idx] = el
-              }}
-            />
+            <Box display="inline-block">
+              <Box
+                flex="1 0 auto"
+                as={motion.div}
+                {...animation?.item}
+                {...child.props}
+                ref={(el) => {
+                  childrenRef.current[idx] = el
+                }}
+              />
+            </Box>
           ))}
-        </ItemsStack>
+        </Box>
       </Box>
       {scrollControl.shouldShow && (
         <Box
