@@ -1,7 +1,5 @@
 import React from "react"
 
-import { Box } from "@rent_avail/layout"
-
 import StaticBasePage from "components/static/StaticBasePage"
 import TenantFeaturesHero from "./components/tenants-features-hero"
 import TenantFeaturesCards from "./components/tenants-features-cards"
@@ -15,14 +13,13 @@ const TenantFeatures = () => {
       title="Tenant Features | Avail"
       description=""
       url="https://www.avail.co/tenants/features"
+      background="ui_300"
     >
-      <Box bg="ui_300" pb="18rem">
-        <TenantFeaturesHero />
-        <TenantFeaturesCards mt={3} />
-        <TenantFeaturesHowItWorks mt={3} py={6} />
-        <TenantFeaturesTestimonials mt={6} />
-        <TenantFeaturesEmailCapture mt={4} />
-      </Box>
+      <TenantFeaturesHero />
+      <TenantFeaturesCards my={6} />
+      <TenantFeaturesHowItWorks my={6} py={6} />
+      <TenantFeaturesTestimonials my={6} />
+      <TenantFeaturesEmailCapture my={6} />
     </StaticBasePage>
   )
 }
