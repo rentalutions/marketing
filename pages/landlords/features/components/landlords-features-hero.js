@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from "react"
+import React from "react"
 
 import Button from "components/elements/Button"
 import { Hero } from "components/organisms/Hero"
@@ -17,18 +17,7 @@ const HERO_PROPS = {
   },
 }
 
-const TenantFeaturesHero = ({ primaryButtonLink }) => {
-  const buttonRef = useRef()
-  const primaryButton = useMemo(
-    () =>
-      primaryButtonLink && {
-        id: "tenants-features-hero-prim-btn",
-        text: "Try it for free",
-        link: primaryButtonLink,
-      },
-    [primaryButtonLink]
-  )
-
+const TenantFeaturesHero = () => {
   return (
     <Hero
       title={
@@ -64,19 +53,15 @@ const TenantFeaturesHero = ({ primaryButtonLink }) => {
       overflow="hidden"
       color="blue_900"
       primaryLink={
-        primaryButton && (
-          <Link link={primaryButton.link}>
-            <Button
-              ref={buttonRef}
-              forwardedAs="a"
-              variant="primary"
-              id={primaryButton.id}
-              background="blue_500"
-            >
-              {primaryButton.text}
-            </Button>
-          </Link>
-        )
+        <Link
+          link={{
+            url: "https://www.avail.co/users/new",
+          }}
+        >
+          <Button forwardedAs="a" variant="primary">
+            Try It For Free
+          </Button>
+        </Link>
       }
     />
   )
