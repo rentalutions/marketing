@@ -8,8 +8,13 @@ import { motion } from "framer-motion"
 function EmailCapture({
   containerBg,
   title,
+  inputLabel,
+  inputLabelId,
+  buttonText,
+  buttonUrl,
+  queryParamName,
+  onSubmit,
   animationPreset = "fadeIn",
-  ...props
 }) {
   const [presets, intersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
@@ -25,7 +30,15 @@ function EmailCapture({
         </motion.aside>
       )}
       <motion.aside {...animation?.item}>
-        <EmailCaptureInput background={containerBg} {...props} />
+        <EmailCaptureInput
+          inputLabel={inputLabel}
+          inputLabelId={inputLabelId}
+          buttonText={buttonText}
+          buttonUrl={buttonUrl}
+          queryParamName={queryParamName}
+          background={containerBg}
+          onSubmit={onSubmit}
+        />
       </motion.aside>
     </Box>
   )
