@@ -6,7 +6,7 @@ import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
-import { useAnalytics } from "utils/analytics"
+import { useEmailCaptureTracking } from "utils/analytics"
 import { AVAIL_BASE_URL } from "utils/env"
 import Embed from "../Embed"
 
@@ -26,16 +26,19 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       emailCaptureLabel,
       emailCaptureButtonText,
       emailCaptureRedirectUrl,
+      emailCaptureOptInContext,
+      emailCaptureOptInCopy,
     },
   } = slice
 
   const urlResolver = useUrlResolver()
-  const { identify } = useAnalytics()
   const inputLabelId = useUID()
 
   const isEmailCapture = emailCaptureLabel && emailCaptureButtonText
 
-  const handleSubmit = (values) => identify(values)
+  const [handleSubmit] = useEmailCaptureTracking({
+    Location: "Hero w/ Email Capture Slice",
+  })
 
   let captureRedirectUrl
   let queryParamName
@@ -71,7 +74,8 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
             buttonUrl={urlResolver(captureRedirectUrl)}
             onSubmit={handleSubmit}
             queryParamName={queryParamName}
-            analyticsParamName="Email"
+            optInContext={emailCaptureOptInContext}
+            optInCopy={<RichText render={emailCaptureOptInCopy} />}
           />
         </Box>
       )}

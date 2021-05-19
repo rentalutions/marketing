@@ -46,7 +46,7 @@ function extractTraitsFromLocation(location) {
   return extractTraits(fromEntries(url.searchParams))
 }
 
-export function useAnalytics(params) {
+export function useAnalytics(defaultParams) {
   const segmentRef = useRef()
   const locationRef = useRef()
   const analyticsVarParams = useReactiveVar(analyticsVar)
@@ -54,7 +54,7 @@ export function useAnalytics(params) {
   const { data } = useQuery(GET_ANALYTICS_QUERY)
 
   const identify = useCallback(
-    async (traits) => {
+    (traits) => {
       if (segmentRef.current && data?.analytics?.uuid) {
         const segment = segmentRef.current
         const {
@@ -67,7 +67,7 @@ export function useAnalytics(params) {
               uuid,
               {
                 ...traits,
-                ...extractTraits({ channel: "direct", ...params }),
+                ...extractTraits({ channel: "direct", ...defaultParams }),
                 ...extractTraits(analyticsVarParams),
                 ...extractTraitsFromLocation(locationRef.current),
               },
@@ -79,6 +79,30 @@ export function useAnalytics(params) {
           }
         })
       }
+      console.warn("Identify call not performed due to missing dependencies")
+      return Promise.resolve()
+    },
+    [data, segmentRef.current]
+  )
+
+  const track = useCallback(
+    (eventName, properties) => {
+      if (segmentRef.current && data?.analytics?.uuid) {
+        const segment = segmentRef.current
+        const {
+          analytics: { uuid },
+        } = data
+
+        return new Promise((resolve, reject) => {
+          try {
+            segment.track(eventName, properties, { userId: uuid }, resolve)
+          } catch (e) {
+            console.error(e)
+            reject(e)
+          }
+        })
+      }
+      console.warn("Track call not performed due to missing dependencies")
       return Promise.resolve()
     },
     [data, segmentRef.current]
@@ -92,5 +116,28 @@ export function useAnalytics(params) {
     }
     locationRef.current = window?.location
   }, [])
-  return { analytics: data?.analytics, identify }
+  return { analytics: data?.analytics, identify, track }
+}
+
+export function useEmailCaptureTracking(defaultProperties) {
+  const { identify, track } = useAnalytics()
+
+  const handleSubmit = useCallback(
+    async ({ email, optInContext, optIn }) => {
+      const traits = {
+        Email: email,
+        "Email Capture Opt In": optInContext || undefined,
+        "Email Capture Opt In Checked": optInContext ? optIn : undefined,
+      }
+      await identify(traits)
+      await track("Marketing Site Form Submission", {
+        Type: "Email Capture",
+        ...defaultProperties,
+        ...traits,
+      })
+    },
+    [identify, track]
+  )
+
+  return [handleSubmit]
 }
