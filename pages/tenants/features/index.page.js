@@ -11,7 +11,7 @@ const TenantFeatures = () => {
   return (
     <StaticBasePage
       title="Tenant Features | Avail"
-      description=""
+      description="Avail makes renting easier. Pay rent, submit maintenance requests, boost your credit score, and manage all of your renting tasks online."
       url="https://www.avail.co/tenants/features"
       background="ui_300"
     >

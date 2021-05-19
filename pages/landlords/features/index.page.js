@@ -11,7 +11,7 @@ const LandlordsFeatures = () => {
   return (
     <StaticBasePage
       title="Landlords Features | Avail"
-      description=""
+      description="Manage your rental property with free landlord software to simplify the way you find, screen, and manage tenants."
       url="https://info.avail.co/landlords/features"
       background="ui_300"
     >
