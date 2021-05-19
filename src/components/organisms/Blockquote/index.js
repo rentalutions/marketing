@@ -9,7 +9,7 @@ function Blockquote({
   content,
   quoteColor = "green_100",
   textColor = "blue_500",
-  textAlign = "left",
+  alignment = "left",
   containerWidth,
   animationPreset = "fadeIn",
   ...props
@@ -20,17 +20,24 @@ function Blockquote({
   return (
     <Box as={motion.aside} {...animation?.container} {...props}>
       <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
-        <Box
-          sx={{
-            position: "absolute",
-            marginLeft: "2rem",
-            width: "7rem",
-          }}
-        >
-          <DoubleQuotes fill={quoteColor} />
+        <Box sx={{ position: "relative" }}>
+          <Box
+            sx={{
+              position: "absolute",
+              width: "7rem",
+              [alignment]: "2rem",
+              top: "-2rem",
+            }}
+          >
+            <DoubleQuotes fill={quoteColor} />
+          </Box>
         </Box>
         {content && (
-          <Box as={motion.aside} {...animation?.item} sx={{ textAlign }}>
+          <Box
+            as={motion.aside}
+            {...animation?.item}
+            sx={{ textAlign: alignment }}
+          >
             {cloneElement(content, {
               sx: {
                 color: textColor,

@@ -23,7 +23,7 @@ export function AlignRight() {
   return (
     <Box width="100%" py="4rem" background="#F9F9F9">
       <Blockquote
-        textAlign="right"
+        alignment="right"
         content={
           <Box as="h1">
             Eque porro quisquam est qui dolorem ipsum quia dolor sit amet,

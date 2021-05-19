@@ -5,7 +5,7 @@ import { CONTAINER_WIDTHS } from "config"
 
 const BlockquoteSlice = ({ slice }) => {
   const {
-    primary: { content, background, quoteColor, textColor, textAlign = "left" },
+    primary: { content, background, quoteColor, textColor, alignment = "left" },
   } = slice
 
   return (
@@ -15,7 +15,7 @@ const BlockquoteSlice = ({ slice }) => {
       bg={background === "transparent" ? undefined : background}
       quoteColor={quoteColor}
       textColor={textColor}
-      textAlign={textAlign}
+      alignment={alignment}
     />
   )
 }
