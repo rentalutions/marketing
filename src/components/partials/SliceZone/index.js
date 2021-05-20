@@ -23,29 +23,35 @@ const SliceZone = ({ slices }) => {
     const key = `${slice.slice_type}-${slice.version}-${idx}`
     switch (slice.slice_type) {
       case "button_cta":
-        return <ButtonCTASlice key={key} slice={slice} />
+        return <ButtonCTASlice key={key} slice={slice} sliceIndex={idx} />
       case "email_capture":
-        return <EmailCaptureSlice key={key} slice={slice} />
+        return <EmailCaptureSlice key={key} slice={slice} sliceIndex={idx} />
       case "faq":
-        return <FAQSlice key={key} slice={slice} />
+        return <FAQSlice key={key} slice={slice} sliceIndex={idx} />
       case "hero":
-        return <HeroSlice key={key} slice={slice} />
+        return <HeroSlice key={key} slice={slice} sliceIndex={idx} />
       case "hero_unit":
       case "hero_email_capture":
-        return <HeroWithEmailCaptureSlice key={key} slice={slice} />
+        return (
+          <HeroWithEmailCaptureSlice key={key} slice={slice} sliceIndex={idx} />
+        )
       case "how_it_works":
-        return <HowItWorksSlice key={key} slice={slice} />
+        return <HowItWorksSlice key={key} slice={slice} sliceIndex={idx} />
       case "pitch_cards":
-        return <PitchCardsSlice key={key} slice={slice} />
+        return <PitchCardsSlice key={key} slice={slice} sliceIndex={idx} />
       case "plans_and_prices":
-        return <PlansPricesSlice key={key} slice={slice} />
+        return <PlansPricesSlice key={key} slice={slice} sliceIndex={idx} />
       case "show_case":
-        return <ShowcaseSlice key={key} slice={slice} />
+        return <ShowcaseSlice key={key} slice={slice} sliceIndex={idx} />
       case "testimonials":
       case "testimonials_cards":
-        return <TestimonialsCardsSlice key={key} slice={slice} />
+        return (
+          <TestimonialsCardsSlice key={key} slice={slice} sliceIndex={idx} />
+        )
       case "testimonials_carousel":
-        return <TestimonialsCarouselSlice key={key} slice={slice} />
+        return (
+          <TestimonialsCarouselSlice key={key} slice={slice} sliceIndex={idx} />
+        )
       default:
         return (
           <Flex

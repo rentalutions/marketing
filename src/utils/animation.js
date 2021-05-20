@@ -72,8 +72,8 @@ export function useAnimation({
       item: null,
     },
     fadeIn: makePreset({
-      container: null,
-      item: null,
+      initial: { opacity: 0, y: "1rem" },
+      final: { opacity: 1, y: "0rem" },
     }),
     fadeOut: makePreset({
       initial: { opacity: 1, y: "0rem" },

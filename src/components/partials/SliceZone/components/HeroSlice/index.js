@@ -8,7 +8,7 @@ import { CONTAINER_WIDTHS } from "config"
 import Image from "next/image"
 import Embed from "../Embed"
 
-const HeroSlice = ({ slice }) => {
+const HeroSlice = ({ slice, sliceIndex }) => {
   const {
     primary: {
       title,
@@ -39,6 +39,7 @@ const HeroSlice = ({ slice }) => {
       bg={background}
       skew={skew}
       stretch={stretch}
+      animationPreset={sliceIndex === 0 ? "none" : undefined}
       image={
         image?.url && (
           <Image

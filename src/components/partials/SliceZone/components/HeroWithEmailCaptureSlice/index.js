@@ -11,7 +11,7 @@ import { AVAIL_BASE_URL } from "utils/env"
 import Image from "next/image"
 import Embed from "../Embed"
 
-const HeroWithEmailCaptureSlice = ({ slice }) => {
+const HeroWithEmailCaptureSlice = ({ slice, sliceIndex }) => {
   const {
     primary: {
       title,
@@ -76,6 +76,7 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       embed={embed?.html && <Embed embed={embed} />}
       color={color}
       containerWidth={CONTAINER_WIDTHS}
+      animationPreset={sliceIndex === 0 ? "none" : undefined}
     >
       {isEmailCapture && (
         <Box pt="2rem">

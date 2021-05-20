@@ -68,7 +68,7 @@ const Showcase = ({
             >
               {cases.map(({ icon, copy }, idx) => (
                 <Box
-                  key={copy}
+                  key={icon}
                   color={idx === activeCase ? "blue_500" : "ui_500"}
                   sx={{
                     transition: "color 500ms ease-in-out",

@@ -35,6 +35,7 @@ function PageNavBar({ links, primaryButton, secondaryButton, ...props }) {
       links={resolvedLinks}
       primaryButton={resolveButton(primaryButton)}
       secondaryButton={resolveButton(secondaryButton)}
+      animationPreset="none"
       availLogo={
         <Image
           src="/logo-wordmark.svg"
