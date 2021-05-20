@@ -31,8 +31,8 @@ export default class Document extends NextDoc {
   }
 
   render() {
-    const GTM_CONTAINER_ID = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID
-    const SEGMENT_KEY = process.env.NEXT_PUBLIC_SEGMENT_KEY
+    const GTM_CONTAINER_ID = false
+    const SEGMENT_KEY = false
     const AVAIL_BASE_URL =
       process.env.NEXT_PUBLIC_AVAIL_BASE_URL || "https://www.avail.co"
     return (
