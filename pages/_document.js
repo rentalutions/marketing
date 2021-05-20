@@ -83,7 +83,10 @@ export default class Document extends NextDoc {
               }}
             />
           )}
-          <script src={`${AVAIL_BASE_URL}/api/v2/public/analytics/noop.js`} />
+          <script
+            async
+            src={`${AVAIL_BASE_URL}/api/v2/public/analytics/noop.js`}
+          />
           <link
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&display=swap"
             rel="stylesheet"
