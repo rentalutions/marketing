@@ -3,25 +3,6 @@ import React, { useMemo } from "react"
 import AvailNavBar from "./AvailNavBar"
 import AvailRdcNavBar from "./AvailRdcNavBar"
 
-/**
- * @typedef Link
- * @type {object}
- * @property {string} href - a Link href
- * @property {string | undefined} target - Link target property
- */
-
-/**
- * @param background - a background color in the theme format, e.g. - "ui_100" for white
- * @param links - a collection of objects of @type Link
- * @param containerWidth - width in space units to limit Nav Bar width
- * @param type
- * @param primaryButton
- * @param secondaryButton
- * @param sticky - boolean to indicate if NavBar should be sticky. If true - will inject "scroll-padding-top" as global style
- * @param animationPreset - a string to animate the components coming into view
- * @param props - rest of the props
- * @returns {JSX.Element}
- */
 export default function NavBar({
   background = "ui_100",
   containerWidth = "96rem",
@@ -30,6 +11,8 @@ export default function NavBar({
   sticky,
   primaryButton,
   secondaryButton,
+  availLogo,
+  rdcLogo,
   links = [],
   ...props
 }) {
@@ -59,6 +42,8 @@ export default function NavBar({
           secondaryLink={secondaryLink}
           sticky={sticky}
           animationPreset={animationPreset}
+          availLogo={availLogo}
+          rdcLogo={rdcLogo}
           {...props}
         />
       )
@@ -73,6 +58,7 @@ export default function NavBar({
           secondaryLink={secondaryLink}
           sticky={sticky}
           animationPreset={animationPreset}
+          availLogo={availLogo}
           {...props}
         />
       )

@@ -8,6 +8,7 @@ import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
 import { useEmailCaptureTracking } from "utils/analytics"
 import { AVAIL_BASE_URL } from "utils/env"
+import Image from "next/image"
 import Embed from "../Embed"
 
 const HeroWithEmailCaptureSlice = ({ slice }) => {
@@ -57,7 +58,19 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       bg={background}
       skew={skew}
       stretch={stretch}
-      image={image}
+      image={
+        image?.url && (
+          <Image
+            src={image.url}
+            width={image.dimensions.width}
+            height={image.dimensions.height}
+            alt={image.alt}
+            title={image.alt}
+            layout="intrinsic"
+            priority
+          />
+        )
+      }
       imagePosition={imagePosition}
       video={video?.url && video}
       embed={embed?.html && <Embed embed={embed} />}

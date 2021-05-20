@@ -25,8 +25,7 @@ function Hero({
 }) {
   const links = primaryLink || secondaryLink
   const hasVideo = !!(video?.url || embed)
-  const hasImage = !!image?.url
-  const hasTwoCols = hasImage || hasVideo
+  const hasTwoCols = !!image || hasVideo
 
   const [presets, intersectionView] = useInViewAnimation({ delayChildren: 0 })
   const animation = presets[animationPreset]
@@ -38,19 +37,19 @@ function Hero({
       order={imagePosition === "left" ? -1 : 1}
       sx={{ textAlign: "center" }}
     >
-      <motion.aside {...animation?.item}>
-        {!!image?.url && (
-          <Box
-            as="img"
-            src={image.url}
-            alt={image.alt}
-            title={image.alt}
-            maxWidth={["100%", "50%", "50%", "100%"]}
-          />
+      <Box
+        as={motion.aside}
+        {...animation?.item}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        {!!image && (
+          <Box sx={{ maxWidth: ["100%", "50%", "50%", "100%"], flex: "1 0" }}>
+            {image}
+          </Box>
         )}
         {!!video?.url && <Video src={video?.url} />}
         {!!embed && embed}
-      </motion.aside>
+      </Box>
     </Col>
   )
 

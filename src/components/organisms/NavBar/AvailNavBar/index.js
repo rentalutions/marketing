@@ -25,6 +25,7 @@ function AvailNavBar({
   secondaryLink,
   containerWidth = "96rem",
   sticky,
+  availLogo,
   animationPreset = "fadeIn",
   ...props
 }) {
@@ -56,21 +57,13 @@ function AvailNavBar({
             sx={{
               display: "block",
               overflow: "hidden",
-              width: ["4rem", "4rem", "auto"],
+              width: ["4rem", "4rem", "195px"],
               height: "4rem",
               flex: "0 0 auto",
               mr: "2rem",
             }}
           >
-            <Box
-              as="img"
-              src="/logo-wordmark.svg"
-              aria-label="Avail"
-              alt="Avail"
-              title="Avail"
-              height={48}
-              width={195}
-            />
+            {availLogo}
           </Box>
           <Flex
             sx={{

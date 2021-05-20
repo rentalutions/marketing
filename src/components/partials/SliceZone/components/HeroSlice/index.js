@@ -5,6 +5,7 @@ import RichText from "components/partials/SliceZone/components/RichText"
 import Link from "components/partials/SliceZone/components/Link"
 import Button from "components/elements/Button"
 import { CONTAINER_WIDTHS } from "config"
+import Image from "next/image"
 import Embed from "../Embed"
 
 const HeroSlice = ({ slice }) => {
@@ -38,7 +39,19 @@ const HeroSlice = ({ slice }) => {
       bg={background}
       skew={skew}
       stretch={stretch}
-      image={image}
+      image={
+        image?.url && (
+          <Image
+            src={image.url}
+            width={image.dimensions.width}
+            height={image.dimensions.height}
+            alt={image.alt}
+            title={image.alt}
+            layout="intrinsic"
+            priority
+          />
+        )
+      }
       imagePosition={imagePosition}
       color={color}
       containerWidth={CONTAINER_WIDTHS}
