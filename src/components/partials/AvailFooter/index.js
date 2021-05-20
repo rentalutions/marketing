@@ -14,6 +14,7 @@ import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useInViewAnimation } from "utils/animation"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 const FooterLinks = styled(Box)`
   margin-top: 3rem;
@@ -103,12 +104,12 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
                   mt="0"
                   href={urlResolver("https://www.avail.co/")}
                 >
-                  <Box
-                    as="img"
+                  <Image
                     src="/logo-glyph.svg"
-                    width="4rem"
-                    height="4rem"
+                    width={48}
+                    height={48}
                     alt="Avail Logo"
+                    title="Avail"
                   />
                 </FooterIcon>
                 <FooterIcon

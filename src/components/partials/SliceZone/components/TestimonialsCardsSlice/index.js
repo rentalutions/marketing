@@ -1,6 +1,7 @@
 import React from "react"
 import { TestimonialsCards } from "components/organisms/Testimonials"
 import { CONTAINER_WIDTHS } from "config"
+import Image from "next/image"
 import RichText from "../RichText"
 
 const TestimonialsCardsSlice = ({ slice }) => {
@@ -19,7 +20,15 @@ const TestimonialsCardsSlice = ({ slice }) => {
   } = slice
   const testimonials = slice.items.map(
     ({ picture, author, titleAndLocation, quote }) => ({
-      picture,
+      picture: picture?.url && (
+        <Image
+          src={picture.url}
+          width={picture.dimensions.width}
+          height={picture.dimensions.height}
+          alt={picture.alt}
+          title={picture.title}
+        />
+      ),
       author,
       titleAndLocation,
       quote: <RichText render={quote} />,

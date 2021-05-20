@@ -6,6 +6,7 @@ import { CONTAINER_WIDTHS } from "config"
 import Link from "components/partials/SliceZone/components/Link"
 import { Button } from "@rent_avail/controls"
 import { Text } from "@rent_avail/typography"
+import Image from "next/image"
 import Embed from "../Embed"
 import RichText from "../RichText"
 
@@ -38,7 +39,15 @@ const PitchCardsSlice = ({ slice }) => {
         />
       ),
       description: <RichText render={description} />,
-      icon,
+      icon: icon?.url && (
+        <Image
+          src={icon.url}
+          width={icon.dimensions.width}
+          height={icon.dimensions.height}
+          alt={icon.alt}
+          title={icon.alt}
+        />
+      ),
       video,
       embed: embed?.html && <Embed embed={embed} />,
       key: title?.[0]?.text || idx,
@@ -66,23 +75,39 @@ const PitchCardsSlice = ({ slice }) => {
     />
   )
   const titleWithImage = titleImage?.url && (
-    <Box textAlign={centerTitle ? "center" : "inherit"}>
+    <Box
+      sx={{
+        textAlign: centerTitle ? "center" : "inherit",
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "center",
+        mt: "-1rem",
+      }}
+    >
       <RichText
-        display="inline-block"
-        verticalAlign="bottom"
-        color="blue_500"
+        sx={{
+          color: "blue_500",
+          mt: "1rem",
+        }}
         render={title}
       />
       <Box
-        as="img"
-        display="inline-block"
-        verticalAlign="bottom"
-        src={titleImage.url}
-        alt={titleImage.alt}
-        title={titleImage.alt}
-        ml="1rem"
-        sx={{ transform: "translateY(-10%)" }}
-      />
+        sx={{
+          transform: "translateY(-10%)",
+          mt: "1rem",
+          ml: "1rem",
+        }}
+      >
+        <Image
+          src={titleImage.url}
+          width={titleImage.dimensions.width}
+          height={titleImage.dimensions.height}
+          alt={titleImage.alt}
+          title={titleImage.alt}
+          priority
+        />
+      </Box>
     </Box>
   )
   return (

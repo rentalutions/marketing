@@ -57,15 +57,10 @@ function TestimonialsCards({
                   <Box flex={1}>
                     {typeof Quote === "function" ? <Quote /> : Quote}
                   </Box>
-                  {picture && picture.url && (
-                    <Box
-                      as="img"
-                      src={picture.url}
-                      alt={picture.alt}
-                      title={picture.alt}
-                      width="4rem"
-                      sx={{ borderRadius: "50%" }}
-                    />
+                  {!!picture && (
+                    <Box width="4rem" sx={{ "& img": { borderRadius: "50%" } }}>
+                      {picture}
+                    </Box>
                   )}
                   <Box>
                     <h5>{author}</h5>
