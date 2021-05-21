@@ -2,17 +2,29 @@ import React from "react"
 import { Flex } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { useTheme } from "styled-components"
-import ButtonCTASlice from "./components/ButtonCTASlice"
-import EmailCaptureSlice from "./components/EmailCaptureSlice"
-import FAQSlice from "./components/FrequentlyAskedQuestionsSlice"
-import HeroSlice from "./components/HeroSlice"
-import HeroWithEmailCaptureSlice from "./components/HeroWithEmailCaptureSlice"
-import HowItWorksSlice from "./components/HowItWorksSlice"
-import PitchCardsSlice from "./components/PitchCardsSlice"
-import PlansPricesSlice from "./components/PlansPricesSlice"
-import ShowcaseSlice from "./components/ShowcaseSlice"
-import TestimonialsCardsSlice from "./components/TestimonialsCardsSlice"
-import TestimonialsCarouselSlice from "./components/TestimonialsCarouselSlice"
+import dynamic from "next/dynamic"
+
+const ButtonCTASlice = dynamic(() => import("./components/ButtonCTASlice"))
+const EmailCaptureSlice = dynamic(() =>
+  import("./components/EmailCaptureSlice")
+)
+const FAQSlice = dynamic(() =>
+  import("./components/FrequentlyAskedQuestionsSlice")
+)
+const HeroSlice = dynamic(() => import("./components/HeroSlice"))
+const HeroWithEmailCaptureSlice = dynamic(() =>
+  import("./components/HeroWithEmailCaptureSlice")
+)
+const HowItWorksSlice = dynamic(() => import("./components/HowItWorksSlice"))
+const PitchCardsSlice = dynamic(() => import("./components/PitchCardsSlice"))
+const PlansPricesSlice = dynamic(() => import("./components/PlansPricesSlice"))
+const ShowcaseSlice = dynamic(() => import("./components/ShowcaseSlice"))
+const TestimonialsCardsSlice = dynamic(() =>
+  import("./components/TestimonialsCardsSlice")
+)
+const TestimonialsCarouselSlice = dynamic(() =>
+  import("./components/TestimonialsCarouselSlice")
+)
 
 const SliceZone = ({ slices }) => {
   if (!slices) {

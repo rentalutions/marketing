@@ -1,7 +1,8 @@
 import React, { useMemo } from "react"
+import dynamic from "next/dynamic"
 
-import AvailNavBar from "./AvailNavBar"
-import AvailRdcNavBar from "./AvailRdcNavBar"
+const AvailNavBar = dynamic(() => import("./AvailNavBar"))
+const AvailRdcNavBar = dynamic(() => import("./AvailRdcNavBar"))
 
 export default function NavBar({
   background = "ui_100",
