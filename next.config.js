@@ -3,4 +3,7 @@ module.exports = {
     domains: ["images.prismic.io"],
     deviceSizes: [480, 720, 960, 1080, 1200, 1440],
   },
+  future: {
+    webpack5: true,
+  },
 }

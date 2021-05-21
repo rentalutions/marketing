@@ -105,7 +105,6 @@ const PitchCardsSlice = ({ slice }) => {
           height={titleImage.dimensions.height}
           alt={titleImage.alt}
           title={titleImage.alt}
-          priority
         />
       </Box>
     </Box>
