@@ -13,6 +13,7 @@ import { theme } from "@rent_avail/base"
 import { Box, Flex } from "@rent_avail/layout"
 import PageNavBar from "components/partials/PageNavBar"
 import { AnalyticsContext } from "utils/analytics/context"
+import { useAnalyticsScript } from "utils/analytics/script"
 
 export const getStaticProps = async ({
   preview = null,
@@ -45,6 +46,7 @@ const BodyStyles = createGlobalStyle`
 const Page = ({ data, uid }) => {
   const router = useRouter()
   const { colors } = useTheme()
+  useAnalyticsScript()
   const { analyticsPageParams, setAnalyticsPageParams } = useContext(
     AnalyticsContext
   )

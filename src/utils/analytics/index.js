@@ -3,13 +3,11 @@ import {
   extractTraits,
   extractTraitsFromLocation,
 } from "utils/analytics/traits"
-import { useAnalyticsScript } from "utils/analytics/script"
 import { AnalyticsContext } from "utils/analytics/context"
 
 export function useAnalytics(defaultParams) {
   const segmentRef = useRef()
   const locationRef = useRef()
-  useAnalyticsScript()
   const { analytics, analyticsPageParams } = useContext(AnalyticsContext)
 
   const identify = useCallback(
