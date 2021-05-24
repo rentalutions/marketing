@@ -4,6 +4,28 @@ import { Text } from "@rent_avail/typography"
 import { useTheme } from "styled-components"
 import dynamic from "next/dynamic"
 
+const ButtonCTASlice = dynamic(() => import("./components/ButtonCTASlice"))
+const EmailCaptureSlice = dynamic(() =>
+  import("./components/EmailCaptureSlice")
+)
+const FAQSlice = dynamic(() =>
+  import("./components/FrequentlyAskedQuestionsSlice")
+)
+const HeroSlice = dynamic(() => import("./components/HeroSlice"))
+const HeroWithEmailCaptureSlice = dynamic(() =>
+  import("./components/HeroWithEmailCaptureSlice")
+)
+const HowItWorksSlice = dynamic(() => import("./components/HowItWorksSlice"))
+const PitchCardsSlice = dynamic(() => import("./components/PitchCardsSlice"))
+const PlansPricesSlice = dynamic(() => import("./components/PlansPricesSlice"))
+const ShowcaseSlice = dynamic(() => import("./components/ShowcaseSlice"))
+const TestimonialsCardsSlice = dynamic(() =>
+  import("./components/TestimonialsCardsSlice")
+)
+const TestimonialsCarouselSlice = dynamic(() =>
+  import("./components/TestimonialsCarouselSlice")
+)
+
 const SliceZone = ({ slices }) => {
   if (!slices) {
     return null
@@ -12,78 +34,36 @@ const SliceZone = ({ slices }) => {
   return slices.map((slice, idx) => {
     const key = `${slice.slice_type}-${slice.version}-${idx}`
     switch (slice.slice_type) {
-      case "button_cta": {
-        const ButtonCTASlice = dynamic(() =>
-          import("./components/ButtonCTASlice")
-        )
+      case "button_cta":
         return <ButtonCTASlice key={key} slice={slice} sliceIndex={idx} />
-      }
-      case "email_capture": {
-        const EmailCaptureSlice = dynamic(() =>
-          import("./components/EmailCaptureSlice")
-        )
+      case "email_capture":
         return <EmailCaptureSlice key={key} slice={slice} sliceIndex={idx} />
-      }
-      case "faq": {
-        const FAQSlice = dynamic(() =>
-          import("./components/FrequentlyAskedQuestionsSlice")
-        )
+      case "faq":
         return <FAQSlice key={key} slice={slice} sliceIndex={idx} />
-      }
-      case "hero": {
-        const HeroSlice = dynamic(() => import("./components/HeroSlice"))
+      case "hero":
         return <HeroSlice key={key} slice={slice} sliceIndex={idx} />
-      }
       case "hero_unit":
-      case "hero_email_capture": {
-        const HeroWithEmailCaptureSlice = dynamic(() =>
-          import("./components/HeroWithEmailCaptureSlice")
-        )
+      case "hero_email_capture":
         return (
           <HeroWithEmailCaptureSlice key={key} slice={slice} sliceIndex={idx} />
         )
-      }
-      case "how_it_works": {
-        const HowItWorksSlice = dynamic(() =>
-          import("./components/HowItWorksSlice")
-        )
+      case "how_it_works":
         return <HowItWorksSlice key={key} slice={slice} sliceIndex={idx} />
-      }
-      case "pitch_cards": {
-        const PitchCardsSlice = dynamic(() =>
-          import("./components/PitchCardsSlice")
-        )
+      case "pitch_cards":
         return <PitchCardsSlice key={key} slice={slice} sliceIndex={idx} />
-      }
-      case "plans_and_prices": {
-        const PlansPricesSlice = dynamic(() =>
-          import("./components/PlansPricesSlice")
-        )
+      case "plans_and_prices":
         return <PlansPricesSlice key={key} slice={slice} sliceIndex={idx} />
-      }
-      case "show_case": {
-        const ShowcaseSlice = dynamic(() =>
-          import("./components/ShowcaseSlice")
-        )
+      case "show_case":
         return <ShowcaseSlice key={key} slice={slice} sliceIndex={idx} />
-      }
       case "testimonials":
-      case "testimonials_cards": {
-        const TestimonialsCardsSlice = dynamic(() =>
-          import("./components/TestimonialsCardsSlice")
-        )
+      case "testimonials_cards":
         return (
           <TestimonialsCardsSlice key={key} slice={slice} sliceIndex={idx} />
         )
-      }
-      case "testimonials_carousel": {
-        const TestimonialsCarouselSlice = dynamic(() =>
-          import("./components/TestimonialsCarouselSlice")
-        )
+      case "testimonials_carousel":
         return (
           <TestimonialsCarouselSlice key={key} slice={slice} sliceIndex={idx} />
         )
-      }
       default:
         return (
           <Flex
