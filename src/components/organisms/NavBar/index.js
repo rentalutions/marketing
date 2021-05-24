@@ -1,9 +1,6 @@
 import React, { useMemo } from "react"
 import dynamic from "next/dynamic"
 
-const AvailNavBar = dynamic(() => import("./AvailNavBar"))
-const AvailRdcNavBar = dynamic(() => import("./AvailRdcNavBar"))
-
 export default function NavBar({
   background = "ui_100",
   containerWidth = "96rem",
@@ -34,7 +31,8 @@ export default function NavBar({
   }, [primaryButton, secondaryButton])
 
   switch (type) {
-    case "Avail/RDC":
+    case "Avail/RDC": {
+      const AvailRdcNavBar = dynamic(() => import("./AvailRdcNavBar"))
       return (
         <AvailRdcNavBar
           background={background}
@@ -48,8 +46,10 @@ export default function NavBar({
           {...props}
         />
       )
+    }
     case "Avail":
-    default:
+    default: {
+      const AvailNavBar = dynamic(() => import("./AvailNavBar"))
       return (
         <AvailNavBar
           background={background}
@@ -63,5 +63,6 @@ export default function NavBar({
           {...props}
         />
       )
+    }
   }
 }
