@@ -165,7 +165,7 @@
               "content" : {
                 "type" : "StructuredText",
                 "config" : {
-                  "single": "paragraph, strong, em",
+                  "multi": "paragraph, strong, em",
                   "allowTargetBlank" : true,
                   "label" : "Content",
                   "placeholder" : "Lorem ipsum sit dolor amet",
