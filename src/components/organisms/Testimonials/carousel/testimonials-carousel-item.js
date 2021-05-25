@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { Box } from "@rent_avail/layout"
 
 function TestimonialsCarouselItem({
@@ -11,12 +11,12 @@ function TestimonialsCarouselItem({
   sx,
   ...props
 }) {
-  const [opacity, scale] = (() => {
+  const [opacity, scale] = useMemo(() => {
     if (level >= 3) return [0.9, 0.5625]
     if (level === 2) return [0.75, 0.625]
     if (level === 1) return [0.5, 0.75]
     return [0, 1]
-  })()
+  }, [level])
 
   return (
     <Box
