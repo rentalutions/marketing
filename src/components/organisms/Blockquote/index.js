@@ -22,6 +22,8 @@ function Blockquote({
       <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
         <Box sx={{ position: "relative" }}>
           <Box
+            as={motion.div}
+            {...animation?.item}
             sx={{
               position: "absolute",
               width: "7rem",
