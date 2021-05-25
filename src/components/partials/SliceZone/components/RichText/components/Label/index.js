@@ -31,7 +31,7 @@ const IconLabel = ({ icon: Icon, children, ...props }) => (
   </React.Fragment>
 )
 
-export const CustomLabel = ({ label, children }) => {
+export const CustomLabel = ({ label, children, ...props }) => {
   switch (label) {
     case "icon__award":
       return <IconLabel icon={Award}>{children}</IconLabel>
@@ -56,6 +56,7 @@ export const CustomLabel = ({ label, children }) => {
         Text,
         {
           as: "span",
+          ...props,
           ...getLabelProps(label),
         },
         children
