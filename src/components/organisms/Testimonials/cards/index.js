@@ -1,10 +1,11 @@
 import React, { cloneElement, useRef } from "react"
 import { motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
-import { Container, Box, Card } from "@rent_avail/layout"
+import { Container, Box } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import SkewBox from "components/molecules/SkewBox"
-import { Slider } from "components/molecules/Slider"
+import Card from "components/elements/Card"
+import Slider from "components/molecules/Slider"
 import { STYLING } from "config"
 
 function TestimonialsCards({
@@ -43,15 +44,6 @@ function TestimonialsCards({
                   sx={{
                     bg: testimonialBg,
                     color: testimonialColor,
-                    width: "26rem",
-                    height: "100%",
-                    display: "flex",
-                    gap: "1rem",
-                    flexFlow: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    borderRadius: "12px",
                   }}
                 >
                   <Box flex={1}>

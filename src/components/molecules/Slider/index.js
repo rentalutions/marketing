@@ -12,6 +12,7 @@ import useSlider from "./use-slider"
 function Slider({
   animationPreset = "fadeIn",
   containerRef = useRef(),
+  alignItems = "stretch",
   itemProps,
   children,
   ...props
@@ -62,14 +63,20 @@ function Slider({
           {React.Children.map(children, (child, idx) => (
             <Box display="inline-block">
               <Box
-                flex="1 0 auto"
                 as={motion.div}
+                sx={{
+                  flex: "1 0 auto",
+                  display: "flex",
+                  alignItems,
+                  height: "100%",
+                }}
                 {...animation?.item}
-                {...child.props}
                 ref={(el) => {
                   childrenRef.current[idx] = el
                 }}
-              />
+              >
+                {child}
+              </Box>
             </Box>
           ))}
         </Box>
@@ -91,4 +98,4 @@ function Slider({
   )
 }
 
-export { Slider }
+export default Slider

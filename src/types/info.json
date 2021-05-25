@@ -141,6 +141,7 @@
       "fieldset" : "Slice zone",
       "config" : {
         "labels" : {
+          "article_list" : [ ],
           "button_cta" : [ ],
           "email_capture" : [ ],
           "faq" : [ ],
@@ -154,6 +155,115 @@
           "testimonials_carousel" : [ ]
         },
         "choices" : {
+          "article_list" : {
+            "type" : "Slice",
+            "fieldset" : "Article List",
+            "description" : "An article list section is used to display articles or a list of documents (guides)",
+            "icon" : "library_books",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              }
+            },
+            "repeat" : {
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "title" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Article title",
+                  "placeholder" : "Lorem ipsum"
+                }
+              },
+              "content" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "Card content",
+                  "placeholder" : "Nam mattis sapien sit amet justo aliquam venenatis.",
+                  "allowTargetBlank" : true,
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Link to the full article"
+                }
+              },
+              "image" : {
+                "config" : {
+                  "label" : "Article thumbnail",
+                  "constraint" : { },
+                  "thumbnails" : [ ]
+                },
+                "type" : "Image"
+              },
+              "imageBackground" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "transparent",
+                  "label" : "Background color"
+                }
+              },
+              "actionType": {
+                "config" : {
+                  "label" : "Action type",
+                  "placeholder" : "",
+                  "default_value" : "link",
+                  "options" : [ "none", "link", "button" ]
+                },
+                "type" : "Select"
+              },
+              "actionLabel" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Action label",
+                  "placeholder" : "Read More"
+                }
+              }
+            }
+          },
           "button_cta" : {
             "type" : "Slice",
             "fieldset" : "Button/CTA",
