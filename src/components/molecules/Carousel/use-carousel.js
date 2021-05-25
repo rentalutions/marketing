@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
-function useCarousel(items, {
-  interval = 3,
-  disableIntervalOnSelect = true,
-} = {}) {
-  const [ currentInterval, setCurrentInterval ] = useState(interval)
-  const [ activeIndex, setActiveIndex ] = useState(0)
+function useCarousel(
+  items,
+  { visibleItemsLenght = 5, interval = 3, disableIntervalOnSelect = true } = {}
+) {
+  const [currentInterval, setCurrentInterval] = useState(interval)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   const getSafeIndex = useCallback(
     (desiredIndex) => {
@@ -32,30 +32,33 @@ function useCarousel(items, {
     }
   }, [currentInterval, items, activeIndex])
 
-  function visibleItem(fromActiveIndex) {
-    const index = getSafeIndex(activeIndex + fromActiveIndex)
-    return {
-      item: items.length > index ? items[index] : {},
-      level: Math.abs(fromActiveIndex),
-      selectItem: () => {
-        setActiveIndex(index)
-        if (disableIntervalOnSelect) {
-          setCurrentInterval(0)
-        }
-      },
-    }
-  }
+  const visibleItem = useCallback(
+    (index = activeIndex) => {
+      const safeIndex = getSafeIndex(index)
+      return {
+        item: items.length > safeIndex ? items[safeIndex] : {},
+        level: Math.abs(index - activeIndex),
+        selectItem: () => {
+          setActiveIndex(safeIndex)
+          if (disableIntervalOnSelect) {
+            setCurrentInterval(0)
+          }
+        },
+      }
+    },
+    [getSafeIndex, activeIndex, setActiveIndex, setCurrentInterval]
+  )
 
-  const activeItem = items.length > activeIndex ? items[activeIndex] : {}
-  const visibleItems = [
-    visibleItem(-2),
-    visibleItem(-1),
-    visibleItem(0),
-    visibleItem(1),
-    visibleItem(2),
-  ]
+  const { item: activeItem } = useMemo(visibleItem, [visibleItem])
+  const visibleItems = useMemo(
+    () =>
+      Array(visibleItemsLenght)
+        .fill(activeIndex - Math.floor(visibleItemsLenght / 2))
+        .map((v, i) => visibleItem(v + i)),
+    [visibleItemsLenght, activeIndex, visibleItem]
+  )
 
-  return [ activeItem, visibleItems ]
+  return [activeItem, visibleItems]
 }
 
 export { useCarousel }
