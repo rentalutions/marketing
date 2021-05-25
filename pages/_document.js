@@ -32,6 +32,12 @@ export default class Document extends NextDoc {
 
   render() {
     const GTM_CONTAINER_ID = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID
+    const GTM_AUTH = process.env.NEXT_PUBLIC_GTM_AUTH
+    const GTM_PREVIEW = process.env.NEXT_PUBLIC_GTM_PREVIEW
+    const GTM_PREVIEW_PARAMS =
+      GTM_AUTH && GTM_PREVIEW
+        ? `&gtm_auth=${GTM_AUTH}&gtm_preview=${GTM_PREVIEW}&gtm_cookies_win=x`
+        : ""
     const SEGMENT_KEY = process.env.NEXT_PUBLIC_SEGMENT_KEY
     return (
       <Html lang="en-US">
@@ -42,7 +48,7 @@ export default class Document extends NextDoc {
                 __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl+'${GTM_PREVIEW_PARAMS}';f.parentNode.insertBefore(j,f);
            })(window,document,'script','dataLayer','${GTM_CONTAINER_ID}');`.replace(
                   /(\r\n|\n|\r|\t)/gm,
                   ""
