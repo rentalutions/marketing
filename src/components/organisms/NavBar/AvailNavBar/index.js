@@ -63,7 +63,7 @@ function AvailNavBar({
               mr: "2rem",
             }}
           >
-            {availLogo}
+            <Box width="195px">{availLogo}</Box>
           </Box>
           <Flex
             sx={{
