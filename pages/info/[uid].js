@@ -12,8 +12,7 @@ import Head from "next/head"
 import { theme } from "@rent_avail/base"
 import { Box, Flex } from "@rent_avail/layout"
 import PageNavBar from "components/partials/PageNavBar"
-import { AnalyticsContext } from "utils/analytics/context"
-import { useAnalyticsScript } from "utils/analytics/script"
+import { useAnalytics } from "utils/analytics"
 
 export const getStaticProps = async ({
   preview = null,
@@ -46,10 +45,8 @@ const BodyStyles = createGlobalStyle`
 const Page = ({ data, uid }) => {
   const router = useRouter()
   const { colors } = useTheme()
-  useAnalyticsScript()
-  const { analyticsPageParams, setAnalyticsPageParams } = useContext(
-    AnalyticsContext
-  )
+
+  const { setAnalytics } = useAnalytics()
 
   if (router.isFallback) {
     return (
@@ -101,7 +98,7 @@ const Page = ({ data, uid }) => {
   }) => text && { id, text, link, hash })(data)
 
   /* eslint-disable camelcase */
-  const urlResolverParams = useMemo(() => {
+  const pageAnalyticsParams = useMemo(() => {
     return {
       channel: data.query_channel,
       utm_content: data.query_content,
@@ -123,13 +120,16 @@ const Page = ({ data, uid }) => {
   )
 
   useEffect(() => {
-    setAnalyticsPageParams({ ...analyticsPageParams, ...urlResolverParams })
-  }, [urlResolverParams])
+    setAnalytics((prevAnalytics) => ({
+      ...prevAnalytics,
+      ...pageAnalyticsParams,
+    }))
+  }, [pageAnalyticsParams])
 
   return (
     <React.Fragment>
       <BodyStyles bg={background} />
-      <UrlResolverProvider params={urlResolverParams}>
+      <UrlResolverProvider params={pageAnalyticsParams}>
         <NextSeo
           title={title}
           description={description}

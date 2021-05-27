@@ -4,15 +4,17 @@ import {
   extractTraitsFromLocation,
 } from "utils/analytics/traits"
 import { AnalyticsContext } from "utils/analytics/context"
+import { useAnalyticsScript } from "utils/analytics/script"
 
 export function useAnalytics(defaultParams) {
   const segmentRef = useRef()
   const locationRef = useRef()
-  const { analytics, analyticsPageParams } = useContext(AnalyticsContext)
+  const { analytics, setAnalytics } = useContext(AnalyticsContext)
+  useAnalyticsScript()
 
   const identify = useCallback(
     async (traits) => {
-      const { uuid } = analytics
+      const { uuid, ...params } = analytics
       if (segmentRef.current && uuid) {
         const segment = segmentRef.current
         return new Promise((resolve, reject) => {
@@ -22,7 +24,7 @@ export function useAnalytics(defaultParams) {
               {
                 ...traits,
                 ...extractTraits({ channel: "direct", ...defaultParams }),
-                ...extractTraits(analyticsPageParams),
+                ...extractTraits(params),
                 ...extractTraitsFromLocation(locationRef.current),
               },
               resolve
@@ -67,7 +69,7 @@ export function useAnalytics(defaultParams) {
     }
     locationRef.current = window?.location
   }, [])
-  return { analytics, identify, track }
+  return { analytics, setAnalytics, identify, track }
 }
 
 export function useEmailCaptureTracking(defaultProperties) {
