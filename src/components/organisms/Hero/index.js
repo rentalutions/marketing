@@ -48,7 +48,7 @@ function Hero({
           </Box>
         )}
         {!!video?.url && <Video src={video?.url} />}
-        {!!embed && embed}
+        {!!embed && <Box sx={{ flex: "1 0" }}>{embed}</Box>}
       </Box>
     </Col>
   )
