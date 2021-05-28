@@ -2,6 +2,7 @@ import React from "react"
 import Anchor from "components/elements/Anchor"
 import { HowItWorks } from "components/organisms/HowItWorks"
 import { CONTAINER_WIDTHS, STYLING } from "config"
+import Image from "next/image"
 import Embed from "../Embed"
 import RichText from "../RichText"
 
@@ -19,7 +20,15 @@ const HowItWorksSlice = ({ slice }) => {
           <RichText render={description} />
         </React.Fragment>
       ),
-      image,
+      image: image?.url && (
+        <Image
+          src={image.url}
+          width={image.dimensions.width}
+          height={image.dimensions.height}
+          alt={image.alt}
+          title={image.title}
+        />
+      ),
       video,
       embed: embed?.html && <Embed embed={embed} />,
     })

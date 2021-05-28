@@ -2,6 +2,7 @@ import React from "react"
 import Showcase from "components/organisms/Showcase"
 import { CONTAINER_WIDTHS, STYLING } from "config"
 import Anchor from "components/elements/Anchor"
+import Image from "next/image"
 import RichText from "../RichText"
 
 const ShowcaseSlice = ({ slice }) => {
@@ -27,7 +28,17 @@ const ShowcaseSlice = ({ slice }) => {
             <RichText render={description} />
           </React.Fragment>
         }
-        image={image}
+        image={
+          image?.url && (
+            <Image
+              src={image.url}
+              width={image.dimensions.width}
+              height={image.dimensions.height}
+              alt={image.alt}
+              title={image.title}
+            />
+          )
+        }
         cases={cases}
         caseInterval={4000}
         containerWidth={CONTAINER_WIDTHS}

@@ -36,10 +36,10 @@ const sections = sectionData.map(({ title, description }) => ({
 }))
 
 const icons = [
-  { url: "/send-money.png", alt: "" },
-  { url: "/state-specific.png", alt: "" },
-  { url: "/user-card.png", alt: "" },
-  { url: "/property-damage.png", alt: "" },
+  <img src="/send-money.png" width="100%" alt="" />,
+  <img src="/state-specific.png" width="100%" alt="" />,
+  <img src="/user-card.png" width="100%" alt="" />,
+  <img src="/property-damage.png" width="100%" alt="" />,
 ]
 
 const iconSections = sections.map((section, idx) => ({

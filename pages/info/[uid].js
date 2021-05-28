@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useContext, useEffect, useMemo } from "react"
 import { prismicClient } from "src/prismic.config"
 import { NextSeo } from "next-seo"
 import AvailFooter from "components/partials/AvailFooter"
@@ -12,7 +12,7 @@ import Head from "next/head"
 import { theme } from "@rent_avail/base"
 import { Box, Flex } from "@rent_avail/layout"
 import PageNavBar from "components/partials/PageNavBar"
-import { analyticsVar } from "utils/analytics"
+import { useAnalytics } from "utils/analytics"
 
 export const getStaticProps = async ({
   preview = null,
@@ -46,6 +46,8 @@ const Page = ({ data, uid }) => {
   const router = useRouter()
   const { colors } = useTheme()
 
+  const { setAnalytics } = useAnalytics()
+
   if (router.isFallback) {
     return (
       <Flex justifyContent="center" alignItems="center" height="100vh">
@@ -74,6 +76,7 @@ const Page = ({ data, uid }) => {
     meta_title: title,
     meta_description: description,
     meta_keywords: keywords,
+    meta_image: image,
     nav_bar_type: navBarType,
     background = "ui_100",
     sticky_nav_bar: navBarSticky,
@@ -96,21 +99,16 @@ const Page = ({ data, uid }) => {
   }) => text && { id, text, link, hash })(data)
 
   /* eslint-disable camelcase */
-  const urlResolverParams = (({
-    query_channel: channel,
-    query_content: utm_content,
-    query_signup_page: signup_page,
-    query_campaign: utm_campaign,
-    query_source: utm_source,
-    query_medium: utm_medium,
-  }) => ({
-    signup_page,
-    channel,
-    utm_content,
-    utm_campaign,
-    utm_source,
-    utm_medium,
-  }))(data)
+  const pageAnalyticsParams = useMemo(() => {
+    return {
+      channel: data.query_channel,
+      utm_content: data.query_content,
+      signup_page: data.query_signup_page,
+      utm_campaign: data.query_campaign,
+      utm_source: data.query_source,
+      utm_medium: data.query_medium,
+    }
+  }, [data])
   /* eslint-enable camelcase */
 
   const navBarLinks = navBar?.map(
@@ -123,13 +121,16 @@ const Page = ({ data, uid }) => {
   )
 
   useEffect(() => {
-    analyticsVar({ ...analyticsVar(), ...urlResolverParams })
-  }, [urlResolverParams])
+    setAnalytics((prevAnalytics) => ({
+      ...prevAnalytics,
+      ...pageAnalyticsParams,
+    }))
+  }, [pageAnalyticsParams])
 
   return (
     <React.Fragment>
       <BodyStyles bg={background} />
-      <UrlResolverProvider params={urlResolverParams}>
+      <UrlResolverProvider params={pageAnalyticsParams}>
         <NextSeo
           title={title}
           description={description}
@@ -138,6 +139,7 @@ const Page = ({ data, uid }) => {
             title,
             description,
             url,
+            ...(image && image.url && { images: [image] }),
           }}
           additionalMetaTags={[{ property: "keywords", content: keywords }]}
         />
