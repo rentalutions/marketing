@@ -7,7 +7,17 @@ import Link from "../Link"
 
 const ArticleListSlice = ({ slice }) => {
   const {
-    primary: { title, background, color, skew },
+    primary: {
+      title,
+      background,
+      color,
+      skew,
+      readMoreCardBackground,
+      readMoreCardColor,
+      readMoreCardContent,
+      readMoreCardLink,
+      readMoreCardActionLabel,
+    },
   } = slice
   const articles = slice.items.map(
     (
@@ -42,6 +52,20 @@ const ArticleListSlice = ({ slice }) => {
       ...article,
     })
   )
+  const readMoreCard = {
+    bg: readMoreCardBackground,
+    color: readMoreCardColor,
+    content: (
+      <Box>
+        <RichText render={readMoreCardContent} />
+      </Box>
+    ),
+    action: {
+      type: "button",
+      label: readMoreCardActionLabel,
+    },
+    link: (props) => <Link link={readMoreCardLink} {...props} />,
+  }
 
   return (
     <ArticleList
@@ -49,7 +73,7 @@ const ArticleListSlice = ({ slice }) => {
       bg={background}
       color={color}
       title={title && <RichText render={title} />}
-      articles={articles}
+      articles={[...articles, readMoreCard]}
       skew={skew}
     />
   )

@@ -187,6 +187,46 @@
                   "default_value" : "ui_900",
                   "label" : "Text color"
                 }
+              },
+              "readMoreCardBackground" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "blue_100",
+                  "label" : "Background color for 'Read More' card"
+                }
+              },
+              "readMoreCardColor" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color for 'Read More' card"
+                }
+              },
+              "readMoreCardContent" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "'Read More' card content",
+                  "placeholder" : "Nam mattis sapien sit amet justo aliquam venenatis.",
+                  "allowTargetBlank" : true,
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "readMoreCardLink" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Link to the articles page"
+                }
+              },
+              "readMoreCardActionLabel" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Action label for 'Read More' card",
+                  "placeholder" : "Read More"
+                }
               }
             },
             "repeat" : {

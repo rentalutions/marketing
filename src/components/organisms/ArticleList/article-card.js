@@ -1,40 +1,10 @@
-import React, { cloneElement, memo } from "react"
-import NextLink from "next/link"
+import React, { cloneElement } from "react"
 import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import Card from "components/elements/Card"
+import ArticleLink from "./article-link"
 
-function ArticleCard({
-  bg,
-  link: Link,
-  image,
-  title,
-  content,
-  action,
-  ...props
-}) {
-  const HandledLink = memo((linkProps) =>
-    typeof Link === "function" ? (
-      <Link {...linkProps} />
-    ) : (
-      <NextLink passHref href={Link.href} {...linkProps} />
-    )
-  )
-  const Image = memo(({ url, alt, ...imageProps }) => (
-    <HandledLink>
-      <Box as="a" width="100%" height="50%" maxHeight="16rem" {...imageProps}>
-        <Box
-          as="img"
-          src={url}
-          alt={alt}
-          title={alt}
-          height="100%"
-          maxWidth="100%"
-        />
-      </Box>
-    </HandledLink>
-  ))
-
+function ArticleCard({ bg, link, image, title, content, action, ...props }) {
   return (
     <Card
       bg={bg}
@@ -47,7 +17,20 @@ function ArticleCard({
       }}
       {...props}
     >
-      {image && <Image {...image} />}
+      {image && (
+        <ArticleLink link={link}>
+          <Box as="a" width="100%" height="50%" maxHeight="16rem" {...image}>
+            <Box
+              as="img"
+              src={image.url}
+              alt={image.alt}
+              title={image.alt}
+              height="100%"
+              maxWidth="100%"
+            />
+          </Box>
+        </ArticleLink>
+      )}
       <Box
         height="100%"
         width="100%"
@@ -62,7 +45,7 @@ function ArticleCard({
           <Box
             bg="green_500"
             width="fit-content"
-            mb="0.5rem"
+            mb="0.667rem"
             px="1rem"
             borderRadius="1rem"
           >
@@ -71,14 +54,14 @@ function ArticleCard({
         )}
         {cloneElement(content, {
           flex: 1,
-          mb: "0.5rem",
+          mb: "0.667rem",
           sx: {
             textAlign: "left",
             ...content.props?.sx,
           },
         })}
         {action && (
-          <HandledLink>
+          <ArticleLink link={link}>
             {action.type === "button" ? (
               <Button background={bg} forwardAs="Box" as="a">
                 {action.label}
@@ -86,7 +69,7 @@ function ArticleCard({
             ) : (
               <a className="link">{action.label}</a>
             )}
-          </HandledLink>
+          </ArticleLink>
         )}
       </Box>
     </Card>

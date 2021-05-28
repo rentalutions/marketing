@@ -15,6 +15,7 @@ function ArticleList({
   containerWidth,
   animationPreset = "fadeIn",
   title,
+  description,
   articles = [],
   ...props
 }) {
@@ -34,7 +35,16 @@ function ArticleList({
             ...animation?.item,
             sx: {
               ...title.props?.sx,
-              ...STYLING.headline,
+              ...STYLING.title,
+            },
+          })}
+        {description &&
+          cloneElement(description, {
+            as: motion.aside,
+            ...animation?.item,
+            sx: {
+              ...description.props?.sx,
+              ...STYLING.subtitle,
             },
           })}
         <Slider containerRef={containerIntersectionView} mt={2}>

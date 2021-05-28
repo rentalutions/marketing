@@ -8,7 +8,13 @@ export function Default() {
   return (
     <Box width="100%" py="4rem" background="#F9F9F9">
       <ArticleList
-        title={<Box as="h1">Recent Articles</Box>}
+        title={<Box as="h2">Recent Articles</Box>}
+        description={
+          <Box as="h3">
+            Join the 219,042+ landlords who use Avail to responsibly manage
+            their properties.
+          </Box>
+        }
         articles={[
           {
             image: {
