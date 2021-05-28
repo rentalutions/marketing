@@ -76,6 +76,7 @@ const Page = ({ data, uid }) => {
     meta_title: title,
     meta_description: description,
     meta_keywords: keywords,
+    meta_image: image,
     nav_bar_type: navBarType,
     background = "ui_100",
     sticky_nav_bar: navBarSticky,
@@ -138,6 +139,7 @@ const Page = ({ data, uid }) => {
             title,
             description,
             url,
+            ...(image && image.url && { images: [image] }),
           }}
           additionalMetaTags={[{ property: "keywords", content: keywords }]}
         />

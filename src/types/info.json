@@ -1374,6 +1374,14 @@
       "config" : {
         "label" : "Meta keywords"
       }
+    },
+    "meta_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Meta Image"
+      }
     }
   },
   "URL params" : {
