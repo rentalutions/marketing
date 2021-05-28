@@ -6,11 +6,12 @@ import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
 import { useUID } from "react-uid"
-import { useAnalytics } from "utils/analytics"
+import { useEmailCaptureTracking } from "utils/analytics"
 import { AVAIL_BASE_URL } from "utils/env"
+import Image from "next/image"
 import Embed from "../Embed"
 
-const HeroWithEmailCaptureSlice = ({ slice }) => {
+const HeroWithEmailCaptureSlice = ({ slice, sliceIndex }) => {
   const {
     primary: {
       title,
@@ -26,16 +27,19 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       emailCaptureLabel,
       emailCaptureButtonText,
       emailCaptureRedirectUrl,
+      emailCaptureOptInContext,
+      emailCaptureOptInCopy,
     },
   } = slice
 
   const urlResolver = useUrlResolver()
-  const { identify } = useAnalytics()
   const inputLabelId = useUID()
 
   const isEmailCapture = emailCaptureLabel && emailCaptureButtonText
 
-  const handleSubmit = (values) => identify(values)
+  const [handleSubmit] = useEmailCaptureTracking({
+    Location: "Hero w/ Email Capture Slice",
+  })
 
   let captureRedirectUrl
   let queryParamName
@@ -54,12 +58,25 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
       bg={background}
       skew={skew}
       stretch={stretch}
-      image={image}
+      image={
+        image?.url && (
+          <Image
+            src={image.url}
+            width={image.dimensions.width}
+            height={image.dimensions.height}
+            alt={image.alt}
+            title={image.alt}
+            layout="intrinsic"
+            priority
+          />
+        )
+      }
       imagePosition={imagePosition}
       video={video?.url && video}
       embed={embed?.html && <Embed embed={embed} />}
       color={color}
       containerWidth={CONTAINER_WIDTHS}
+      animationPreset={sliceIndex === 0 ? "none" : undefined}
     >
       {isEmailCapture && (
         <Box pt="2rem">
@@ -71,7 +88,8 @@ const HeroWithEmailCaptureSlice = ({ slice }) => {
             buttonUrl={urlResolver(captureRedirectUrl)}
             onSubmit={handleSubmit}
             queryParamName={queryParamName}
-            analyticsParamName="Email"
+            optInContext={emailCaptureOptInContext}
+            optInCopy={<RichText render={emailCaptureOptInCopy} />}
           />
         </Box>
       )}

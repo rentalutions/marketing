@@ -89,15 +89,7 @@ function HowItWorksSection({
         {copy}
       </Col>
       <Col as={motion.aside} {...animation?.item} gridColumn={imageColumn}>
-        {image?.url && (
-          <Box
-            as="img"
-            src={image.url}
-            alt={image.alt}
-            title={image.alt}
-            maxWidth="100%"
-          />
-        )}
+        {!!image && <Box maxWidth="100%">{image}</Box>}
         {!!video?.url && <Video src={video.url} width="100%" />}
         {!!embed && <Box>{embed}</Box>}
       </Col>

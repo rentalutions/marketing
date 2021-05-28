@@ -141,6 +141,7 @@
       "fieldset" : "Slice zone",
       "config" : {
         "labels" : {
+          "blockquote" : [ ],
           "button_cta" : [ ],
           "email_capture" : [ ],
           "faq" : [ ],
@@ -154,6 +155,57 @@
           "testimonials_carousel" : [ ]
         },
         "choices" : {
+          "blockquote": {
+            "type" : "Slice",
+            "fieldset" : "Blockquote",
+            "description" : "A box that displays a text content styled as a quote",
+            "icon" : "format_quote",
+            "display" : "list",
+            "non-repeat" : {
+              "content" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi": "paragraph, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Content",
+                  "placeholder" : "Lorem ipsum sit dolor amet",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "transparent",
+                  "label" : "Background color"
+                }
+              },
+              "quoteColor" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "green_100", "green_300", "green_500", "green_700", "green_900", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "green_100",
+                  "label" : "Quote symbol color"
+                }
+              },
+              "textColor" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "blue_500",
+                  "label" : "Text color"
+                }
+              },
+              "textAlign" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "left", "right" ],
+                  "default_value" : "left",
+                  "label" : "Text Align"
+                }
+              }
+            }
+          },
           "button_cta" : {
             "type" : "Slice",
             "fieldset" : "Button/CTA",
@@ -270,6 +322,23 @@
                   "placeholder" : "E.g. - https://www.avail.co/users/new"
                 },
                 "type" : "Text"
+              },
+              "optInContext" : {
+                "config" : {
+                  "label" : "Opt In Context (required to show opt in)",
+                  "placeholder" : "Email Capture Opt In, - e.g. The Landing"
+                },
+                "type" : "Text"
+              },
+              "optInCopy" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Opt In Copy (required to show opt in)",
+                  "placeholder" : "Opt In Copy",
+                  "labels" : [ "body__emphasis", "body", "small" ]
+                }
               }
             },
             "repeat" : { }
@@ -592,6 +661,23 @@
                   "placeholder" : "E.g. - https://www.avail.co/users/new"
                 },
                 "type" : "Text"
+              },
+              "emailCaptureOptInContext" : {
+                "config" : {
+                  "label" : "Opt In Context (required to show opt in)",
+                  "placeholder" : "Email Capture Opt In, - e.g. The Landing"
+                },
+                "type" : "Text"
+              },
+              "emailCaptureOptInCopy" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Opt In Copy (required to show opt in)",
+                  "placeholder" : "Opt In Copy",
+                  "labels" : [ "body__emphasis", "body", "small" ]
+                }
               }
             },
             "repeat" : { }
@@ -1287,6 +1373,14 @@
       "type" : "Text",
       "config" : {
         "label" : "Meta keywords"
+      }
+    },
+    "meta_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Meta Image"
       }
     }
   },
