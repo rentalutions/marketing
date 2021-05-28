@@ -19,10 +19,7 @@ const basicSections = [
         </p>
       </React.Fragment>
     ),
-    image: {
-      url: "/feature-image.svg",
-      alt: "",
-    },
+    image: <img src="/feature-image.svg" width="100%" alt="" />,
   },
   {
     copy: (
@@ -38,10 +35,7 @@ const basicSections = [
         </p>
       </React.Fragment>
     ),
-    image: {
-      url: "/feature-image.svg",
-      alt: "",
-    },
+    image: <img src="/feature-image.svg" width="100%" alt="" />,
   },
 ]
 

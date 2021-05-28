@@ -3,7 +3,6 @@ import { Box } from "@rent_avail/layout"
 
 function TestimonialsCarouselItem({
   picture,
-  altFallback,
   onClick,
   size = "4rem",
   filterColor = "white",
@@ -33,7 +32,6 @@ function TestimonialsCarouselItem({
       }}
     >
       <Box
-        className="pictureChild"
         position="absolute"
         background={filterColor}
         opacity={opacity}
@@ -44,21 +42,22 @@ function TestimonialsCarouselItem({
           bottom: 0,
           left: 0,
           borderRadius: "50%",
+          zIndex: 1,
         }}
       />
-      {picture && (
+      {!!picture && (
         <Box
-          as="img"
-          className="pictureChild"
-          src={picture.url}
-          alt={picture.alt || altFallback}
-          title={picture.alt || altFallback}
           sx={{
             width: "100%",
             height: "100%",
-            borderRadius: "50%",
+            "& img": {
+              borderRadius: "50%",
+              zIndex: 0,
+            },
           }}
-        />
+        >
+          {picture}
+        </Box>
       )}
     </Box>
   )

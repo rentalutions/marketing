@@ -18,7 +18,7 @@ function TestimonialsCarousel({
   testimonialBg,
   testimonialColor,
   orientation = "right",
-  testimonialInterval = 3,
+  testimonialInterval = 10,
   containerWidth,
   animationPreset = "fadeIn",
   ...props
@@ -94,22 +94,27 @@ function TestimonialsCarousel({
                   key={`${itemAuthor}-${itemIndex}`} // no-array-index-key disabled bc the author will repeat when testimonials lenght < 5
                   level={level}
                   picture={picture}
-                  altFallback={itemAuthor}
                   onClick={selectItem}
                 />
               )
             })}
           </Flex>
           <Box as={motion.div} {...animation?.item}>
-            <Text fontSize="1.5rem" fontWeight="black">
-              {author}
-            </Text>
-            <Text fontSize="1.3rem" opacity={0.45}>
-              {titleAndLocation}
-            </Text>
-            <Text fontSize="1.3rem" opacity={0.45}>
-              {additionalInfo || "-"}
-            </Text>
+            {!!author && (
+              <Text fontSize="1.5rem" fontWeight="black">
+                {author}
+              </Text>
+            )}
+            {!!titleAndLocation && (
+              <Text fontSize="1.3rem" opacity={0.45}>
+                {titleAndLocation}
+              </Text>
+            )}
+            {!!additionalInfo && (
+              <Text fontSize="1.3rem" opacity={0.45}>
+                {additionalInfo}
+              </Text>
+            )}
           </Box>
         </Grid>
       </BoxedTitleSection>

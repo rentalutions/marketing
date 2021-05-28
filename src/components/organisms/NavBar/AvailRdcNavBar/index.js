@@ -21,6 +21,8 @@ function AvailRdcNavBar({
   secondaryLink,
   sticky,
   animationPreset = "fadeIn",
+  availLogo,
+  rdcLogo,
   ...props
 }) {
   const [presets, intersectionTarget] = useInViewAnimation({ delayChildren: 0 })
@@ -73,21 +75,19 @@ function AvailRdcNavBar({
           bg="blue_900"
           sx={{
             display: "flex",
-            padding: "2rem 4rem 2rem 2rem",
+            padding: ["2rem 3rem 2rem 2rem", "2rem 4rem 2rem 2rem"],
             justifyContent: "flex-end",
             alignItems: "center",
             clipPath: `polygon(0 0, calc(100% - 2rem) 0, 100% 100%, 0% 100%)`,
           }}
         >
           <Box
-            as={motion.img}
+            as={motion.aside}
             {...animation?.item}
-            src="/rdc-family-logo.svg"
-            aria-label="Realtor.com"
-            alt="Realtor.com family logo"
-            title="Realtor.com"
-            sx={{ maxHeight: ["2rem", "3rem"] }}
-          />
+            sx={{ width: ["87px", "131px"], height: ["2rem", "3rem"] }}
+          >
+            {rdcLogo}
+          </Box>
         </Col>
         <Col
           span={[7, 8, 9]}
@@ -105,19 +105,13 @@ function AvailRdcNavBar({
             sx={{
               display: "block",
               overflow: "hidden",
+              width: ["97px", "146px"],
               height: ["2rem", "3rem"],
               flex: "0 0 auto",
               mr: "2rem",
             }}
           >
-            <Box
-              as="img"
-              src="/logo-wordmark.svg"
-              aria-label="Avail"
-              alt="Avail company logo"
-              title="Avail"
-              height={["2rem", "3rem"]}
-            />
+            {availLogo}
           </Box>
           <Box as="nav" id="primary-nav" sx={{ ml: "auto" }}>
             <Box
