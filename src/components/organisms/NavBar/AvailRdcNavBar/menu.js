@@ -9,9 +9,14 @@ import {
 } from "@rent_avail/menu"
 import { getTargetProps } from "utils/link"
 
-function Menu({ menuEntries, primaryLinkProps, secondaryLinkProps }) {
+function Menu({
+  menuEntries,
+  primaryLinkProps,
+  secondaryLinkProps,
+  parentRef,
+}) {
   return (
-    <AvailMenu>
+    <AvailMenu parentRef={parentRef}>
       <MenuTarget>
         <Box
           as="motion.li"
@@ -34,7 +39,7 @@ function Menu({ menuEntries, primaryLinkProps, secondaryLinkProps }) {
               display: ["initial", "initial", "none"],
             }}
           >
-            <MenuItem {...primaryLinkProps} />
+            <MenuItem closeOnClick {...primaryLinkProps} />
             <Box height="1px" bg="ui_500" />
           </Box>
         )}
@@ -46,13 +51,19 @@ function Menu({ menuEntries, primaryLinkProps, secondaryLinkProps }) {
               display: ["initial", "initial", "none"],
             }}
           >
-            <MenuItem {...secondaryLinkProps} />
+            <MenuItem closeOnClick close {...secondaryLinkProps} />
             <Box height="1px" bg="ui_500" />
           </Box>
         )}
         {menuEntries.map(({ href, text, id, target }) => (
           <Box key={`${id}-${href}-${text}`}>
-            <MenuItem href={href} id={id} {...getTargetProps(target)} as="a">
+            <MenuItem
+              closeOnClick
+              href={href}
+              id={id}
+              {...getTargetProps(target)}
+              as="a"
+            >
               {text}
             </MenuItem>
           </Box>

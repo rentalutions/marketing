@@ -31,15 +31,10 @@ export function PitchCard({
       ref={intersectionView}
       {...animation?.container}
     >
-      {icon?.url && (
-        <Box
-          as={motion.img}
-          {...animation?.item}
-          src={icon.url}
-          alt={icon.alt}
-          title={icon.alt}
-          width="10rem"
-        />
+      {!!icon && (
+        <Box as={motion.aside} {...animation?.item} width="10rem">
+          {icon}
+        </Box>
       )}
       {!!video?.url && (
         <motion.aside {...animation?.item}>

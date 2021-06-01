@@ -23,7 +23,18 @@ export function Default() {
   ]
   return (
     <React.Fragment>
-      <NavBar links={links} sticky />
+      <NavBar
+        availLogo={
+          <img
+            src="/logo-wordmark.svg"
+            aria-label="Avail"
+            alt="Avail"
+            title="Avail"
+          />
+        }
+        links={links}
+        sticky
+      />
       <Container maxWidth="96rem">
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae
@@ -88,7 +99,29 @@ export function AvailRDC() {
   ]
   return (
     <React.Fragment>
-      <NavBar type="Avail/RDC" links={links} sticky />
+      <NavBar
+        availLogo={
+          <img
+            src="/logo-wordmark.svg"
+            aria-label="Avail"
+            alt="Avail"
+            title="Avail"
+            width="100%"
+          />
+        }
+        rdcLogo={
+          <img
+            src="/rdc-family-logo.svg"
+            aria-label="Realtor.com"
+            alt="Realtor.com family logo"
+            title="Realtor.com"
+            width="100%"
+          />
+        }
+        type="Avail/RDC"
+        links={links}
+        sticky
+      />
       <Container maxWidth="96rem">
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae

@@ -13,7 +13,8 @@ function EmailCapture({
   buttonText,
   buttonUrl,
   queryParamName,
-  analyticsParamName,
+  optInContext,
+  optInCopy,
   onSubmit,
   animationPreset = "fadeIn",
 }) {
@@ -37,8 +38,9 @@ function EmailCapture({
           buttonText={buttonText}
           buttonUrl={buttonUrl}
           queryParamName={queryParamName}
-          analyticsParamName={analyticsParamName}
           background={containerBg}
+          optInContext={optInContext}
+          optInCopy={optInCopy}
           onSubmit={onSubmit}
         />
       </motion.aside>

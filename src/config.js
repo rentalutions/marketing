@@ -36,7 +36,7 @@ export const STYLING = {
 export const DEFAULT_SEO = {
   openGraph: {
     type: "business.business",
-    site_name: "Rentalutions, Inc., dba Avail",
+    site_name: "Avail, part of the Realtor.com network",
     images: [
       {
         url:

@@ -6,7 +6,7 @@ import Icon from "components/elements/Icon"
 
 const Showcase = ({
   copy,
-  image,
+  image = null,
   cases,
   caseInterval,
   containerWidth,
@@ -30,16 +30,10 @@ const Showcase = ({
   const [presets, intersectionView] = useInViewAnimation()
   const animation = presets[animationPreset]
 
-  const imageCol = image && (
+  const imageCol = !!image && (
     <Col gridColumn={["span 12", "span 12", "span 5"]}>
       <motion.aside {...animation?.item}>
-        <Box
-          as="img"
-          src={image.url}
-          alt={image.alt}
-          title={image.alt}
-          maxWidth="22rem"
-        />
+        <Box maxWidth="22rem">{image}</Box>
       </motion.aside>
     </Col>
   )
@@ -76,7 +70,7 @@ const Showcase = ({
             >
               {cases.map(({ icon, copy }, idx) => (
                 <Box
-                  key={copy}
+                  key={icon}
                   color={idx === activeCase ? "blue_500" : "ui_500"}
                   sx={{
                     transition: "color 500ms ease-in-out",

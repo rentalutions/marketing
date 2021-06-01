@@ -51,10 +51,13 @@ export function Default() {
           </Text>
         </React.Fragment>
       }
-      image={{
-        url: "https://s3.amazonaws.com/rentalutions-assets/marketing/safe.png",
-        alt: "",
-      }}
+      image={
+        <img
+          src="https://s3.amazonaws.com/rentalutions-assets/marketing/safe.png"
+          width="100%"
+          alt=""
+        />
+      }
       cases={cases}
       caseInterval={4000}
       flip
