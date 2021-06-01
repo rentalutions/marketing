@@ -31,14 +31,14 @@ export default class Document extends NextDoc {
   }
 
   render() {
-    const GTM_CONTAINER_ID = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID
+    const GTM_CONTAINER_ID = false // process.env.NEXT_PUBLIC_GTM_CONTAINER_ID
     const GTM_AUTH = process.env.NEXT_PUBLIC_GTM_AUTH
     const GTM_PREVIEW = process.env.NEXT_PUBLIC_GTM_PREVIEW
     const GTM_PREVIEW_PARAMS =
       GTM_AUTH && GTM_PREVIEW
         ? `&gtm_auth=${GTM_AUTH}&gtm_preview=${GTM_PREVIEW}&gtm_cookies_win=x`
         : ""
-    const SEGMENT_KEY = process.env.NEXT_PUBLIC_SEGMENT_KEY
+    const SEGMENT_KEY = false // process.env.NEXT_PUBLIC_SEGMENT_KEY
     return (
       <Html lang="en-US">
         <Head>
