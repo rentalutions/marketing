@@ -1,31 +1,13 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { Box, Container, Flex } from "@rent_avail/layout"
-import { theme } from "@rent_avail/base"
 import { Text, Heading } from "@rent_avail/typography"
 import { Check } from "react-feather"
-import { createGlobalStyle } from "styled-components"
 import Button from "components/elements/Button"
 import { ButtonCTA } from "components/organisms/ButtonCTA"
 import { PlansPrices } from "components/organisms/PlansPrices"
-import NavBar from "components/organisms/NavBar"
-import AvailFooter from "components/partials/AvailFooter"
 import { useInViewAnimation } from "utils/animation"
-import { NextSeo } from "next-seo"
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${theme.colors.ui_300};
-  }
-`
-
-const primaryButton = {
-  text: "Sign up",
-  link: {
-    url: "https://www.avail.co/users/new",
-    target: "_blank",
-  },
-}
+import StaticBasePage from "components/static/StaticBasePage"
 
 function Features() {
   return (
@@ -132,24 +114,13 @@ const Pricing = () => {
     threshold: 0.25,
   })
   const animation = presets.fadeIn
-  const title = "Pricing Plans & Features | Avail"
-  const description =
-    "View pricing plans for Avail online landlord software. Avail helps landlords manage rental properties, find and screen tenants, create leases and collect rent."
-  const url = "http://info.avail.co/pricing"
   return (
-    <React.Fragment>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          title,
-          description,
-          url,
-        }}
-      />
-      <NavBar primaryButton={primaryButton} sticky />
-      <GlobalStyle />
+    <StaticBasePage
+      title="Pricing Plans & Features | Avail"
+      description="View pricing plans for Avail online landlord software. Avail helps landlords manage rental properties, find and screen tenants, create leases and collect rent."
+      url="https://info.avail.co/pricing"
+      background="ui_300"
+    >
       <PlansPrices
         direction="vertical"
         title={<Box as="h1">Free for landlords</Box>}
@@ -315,8 +286,7 @@ const Pricing = () => {
           orientation="left"
         />
       </Container>
-      <AvailFooter />
-    </React.Fragment>
+    </StaticBasePage>
   )
 }
 

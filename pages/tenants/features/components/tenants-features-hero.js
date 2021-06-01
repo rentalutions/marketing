@@ -17,18 +17,7 @@ const HERO_PROPS = {
   },
 }
 
-const TenantFeaturesHero = ({ primaryButtonLink }) => {
-  const buttonRef = useRef()
-  const primaryButton = useMemo(
-    () =>
-      primaryButtonLink && {
-        id: "tenants-features-hero-prim-btn",
-        text: "Join Today",
-        link: primaryButtonLink,
-      },
-    [primaryButtonLink]
-  )
-
+const TenantFeaturesHero = () => {
   return (
     <Hero
       title={
@@ -66,18 +55,15 @@ const TenantFeaturesHero = ({ primaryButtonLink }) => {
       overflow="hidden"
       color="blue_900"
       primaryLink={
-        primaryButton && (
-          <Link link={primaryButton.link}>
-            <Button
-              ref={buttonRef}
-              forwardedAs="a"
-              variant="primary"
-              id={primaryButton.id}
-            >
-              {primaryButton.text}
-            </Button>
-          </Link>
-        )
+        <Link
+          link={{
+            url: "https://www.avail.co/users/new",
+          }}
+        >
+          <Button forwardedAs="a" variant="primary">
+            Join Today
+          </Button>
+        </Link>
       }
     />
   )
