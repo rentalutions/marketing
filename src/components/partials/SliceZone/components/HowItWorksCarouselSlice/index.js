@@ -1,13 +1,13 @@
 import React from "react"
 import Anchor from "components/elements/Anchor"
-import { HowItWorks } from "components/organisms/HowItWorks"
+import { HowItWorksCarousel } from "components/organisms/HowItWorks"
 import { CONTAINER_WIDTHS } from "config"
 import RichText from "../RichText"
-import howItWorksSliceSection from "./how-it-works-slice-section"
+import howItWorksSliceSection from "../HowItWorksSlice/how-it-works-slice-section"
 
-const HowItWorksSlice = ({ slice }) => {
+const HowItWorksCarouselSlice = ({ slice }) => {
   const {
-    primary: { title, background, flip, hash },
+    primary: { title, background, color, flip, hash, stepInterval, skew },
   } = slice
   const sections = slice.items.map((props, idx) =>
     howItWorksSliceSection({ idx, ...props })
@@ -15,17 +15,19 @@ const HowItWorksSlice = ({ slice }) => {
   return (
     <React.Fragment>
       {hash && <Anchor hash={hash} />}
-      <HowItWorks
+      <HowItWorksCarousel
         title={<RichText render={title} />}
         sections={sections}
+        stepInterval={stepInterval}
         bg={background}
+        color={color}
+        skew={skew}
         containerWidth={CONTAINER_WIDTHS}
         py="5rem"
         alternate={flip ? (idx) => idx % 2 === 0 : undefined}
-        color={background === "blue_500" ? "blue_100" : "inherit"}
       />
     </React.Fragment>
   )
 }
 
-export default HowItWorksSlice
+export default HowItWorksCarouselSlice

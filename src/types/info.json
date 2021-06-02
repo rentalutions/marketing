@@ -148,6 +148,7 @@
           "hero" : [ ],
           "hero_unit" : [ ],
           "how_it_works" : [ ],
+          "how_it_works_carousel" : [ ],
           "pitch_cards" : [ ],
           "plans_and_prices" : [ ],
           "show_case" : [ ],
@@ -722,6 +723,118 @@
                   "placeholder_true" : "Left",
                   "default_value" : false,
                   "label" : "First section media position"
+                }
+              }
+            },
+            "repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Section title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Description",
+                  "placeholder" : "Section description",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "video" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "media",
+                  "label" : "Video (Media Library or S3)"
+                }
+              },
+              "embed" : {
+                "type" : "Embed",
+                "config" : {
+                  "label" : "Embed"
+                }
+              },
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Section image"
+                }
+              }
+            }
+          },
+          "how_it_works_carousel" : {
+            "type" : "Slice",
+            "fieldset" : "How It W. Carousel",
+            "description" : "A carousel that displays blocks with media and text",
+            "icon" : "view_carousel",
+            "display" : "list",
+            "non-repeat" : {
+              "hash" : {
+                "config" : {
+                  "label" : "Jump link hash",
+                  "placeholder" : "A hash to link to this slice, e.g. - overview"
+                },
+                "type" : "Text"
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "background" : {
+                "config" : {
+                  "label" : "Background color",
+                  "placeholder" : "",
+                  "default_value" : "transparent",
+                  "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ]
+                },
+                "type" : "Select"
+              },
+              "color" : {
+                "config" : {
+                  "label" : "Text color",
+                  "placeholder" : "",
+                  "default_value" : "ui_900",
+                  "options" : ["ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ]
+                },
+                "type" : "Select"
+              },
+              "flip" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "Right",
+                  "placeholder_true" : "Left",
+                  "default_value" : false,
+                  "label" : "First section media position"
+                }
+              },
+              "stepInterval" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "Carousel step interval (seconds)",
+                  "min" : 0,
+                  "max" : 999
+                }
+              },
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "right", "left" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
                 }
               }
             },

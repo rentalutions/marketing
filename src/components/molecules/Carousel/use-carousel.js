@@ -58,7 +58,7 @@ function useCarousel(
     [visibleItemsLenght, activeIndex, visibleItem]
   )
 
-  return [activeItem, visibleItems]
+  return [activeItem, visibleItems, activeIndex]
 }
 
 export { useCarousel }

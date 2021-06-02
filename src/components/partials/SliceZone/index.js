@@ -17,6 +17,9 @@ const HeroWithEmailCaptureSlice = dynamic(() =>
   import("./components/HeroWithEmailCaptureSlice")
 )
 const HowItWorksSlice = dynamic(() => import("./components/HowItWorksSlice"))
+const HowItWorksCarouselSlice = dynamic(() =>
+  import("./components/HowItWorksCarouselSlice")
+)
 const PitchCardsSlice = dynamic(() => import("./components/PitchCardsSlice"))
 const PlansPricesSlice = dynamic(() => import("./components/PlansPricesSlice"))
 const ShowcaseSlice = dynamic(() => import("./components/ShowcaseSlice"))
@@ -52,6 +55,10 @@ const SliceZone = ({ slices }) => {
         )
       case "how_it_works":
         return <HowItWorksSlice key={key} slice={slice} sliceIndex={idx} />
+      case "how_it_works_carousel":
+        return (
+          <HowItWorksCarouselSlice key={key} slice={slice} sliceIndex={idx} />
+        )
       case "pitch_cards":
         return <PitchCardsSlice key={key} slice={slice} sliceIndex={idx} />
       case "plans_and_prices":
