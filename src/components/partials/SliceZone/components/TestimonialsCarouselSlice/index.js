@@ -1,6 +1,7 @@
 import React from "react"
 import { TestimonialsCarousel } from "components/organisms/Testimonials"
 import { CONTAINER_WIDTHS } from "config"
+import Image from "next/image"
 import RichText from "../RichText"
 
 const TestimonialsCarouselSlice = ({ slice }) => {
@@ -21,7 +22,15 @@ const TestimonialsCarouselSlice = ({ slice }) => {
   const testimonials = slice.items.map(
     ({ picture, author, titleAndLocation, quote, additionalInfo }) => {
       return {
-        picture,
+        picture: picture?.url && (
+          <Image
+            src={picture.url}
+            width={picture.dimensions.width}
+            height={picture.dimensions.height}
+            alt={author || picture.alt}
+            title={author || picture.title}
+          />
+        ),
         author,
         titleAndLocation,
         additionalInfo,

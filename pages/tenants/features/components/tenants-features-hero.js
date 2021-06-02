@@ -6,6 +6,7 @@ import RichText from "components/partials/SliceZone/components/RichText"
 import Link from "components/partials/SliceZone/components/Link"
 
 import { CONTAINER_WIDTHS } from "config"
+import Image from "next/image"
 
 const HERO_PROPS = {
   title: "An Online Portal to Make Renting Easy",
@@ -14,17 +15,20 @@ const HERO_PROPS = {
   image: {
     url: "/tenants/features/hero.png",
     alt: "Tenant hero",
+    width: 581,
+    height: 413,
   },
 }
 
 const TenantFeaturesHero = () => {
+  const { title, description, image } = HERO_PROPS
   return (
     <Hero
       title={
         <RichText
           render={[
             {
-              text: HERO_PROPS.title,
+              text: title,
               type: "heading1",
               spans: [],
             },
@@ -36,7 +40,7 @@ const TenantFeaturesHero = () => {
           sx={{ color: "blue_500" }}
           render={[
             {
-              text: HERO_PROPS.description,
+              text: description,
               type: "paragraph",
               spans: [],
             },
@@ -48,10 +52,14 @@ const TenantFeaturesHero = () => {
       skew="left"
       stretch
       imagePosition="right"
-      image={{
-        ...HERO_PROPS.image,
-        props: { maxWidth: ["100%", "100%", "100%", "160%"] },
-      }}
+      image={
+        <Image
+          src={image.url}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+        />
+      }
       overflow="hidden"
       color="blue_900"
       primaryLink={

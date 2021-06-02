@@ -3,6 +3,7 @@ import React, { useMemo } from "react"
 import RichText from "components/partials/SliceZone/components/RichText"
 
 import { TestimonialsCarousel } from "components/organisms/Testimonials"
+import Image from "next/image"
 
 const TESTIMONIALS_PROPS = {
   title: "What Our Users Are Saying",
@@ -16,6 +17,8 @@ const TESTIMONIALS_PROPS = {
       picture: {
         url: "/testimonials/Character-Mark.jpeg",
         alt: "User Image",
+        width: 200,
+        height: 200,
       },
     },
     {
@@ -27,6 +30,8 @@ const TESTIMONIALS_PROPS = {
       picture: {
         url: "/testimonials/Character-Erica.jpeg",
         alt: "User Image",
+        width: 200,
+        height: 201,
       },
     },
     {
@@ -38,6 +43,8 @@ const TESTIMONIALS_PROPS = {
       picture: {
         url: "/testimonials/Character-Mindy.jpeg",
         alt: "User Image",
+        width: 200,
+        height: 206,
       },
     },
     {
@@ -48,6 +55,8 @@ const TESTIMONIALS_PROPS = {
       picture: {
         url: "/testimonials/Character-Andrew.jpeg",
         alt: "User Image",
+        width: 200,
+        height: 201,
       },
     },
   ],
@@ -55,8 +64,16 @@ const TESTIMONIALS_PROPS = {
 
 const HomeTestimonials = (props) => {
   const testimonials = useMemo(() =>
-    TESTIMONIALS_PROPS.testimonials.map(({ quote, ...rest }) => ({
+    TESTIMONIALS_PROPS.testimonials.map(({ quote, picture, ...rest }) => ({
       ...rest,
+      picture: (
+        <Image
+          src={picture.url}
+          alt={picture.alt}
+          width={picture.width}
+          height={picture.height}
+        />
+      ),
       quote: (
         <RichText
           render={[

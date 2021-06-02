@@ -1,10 +1,11 @@
+/* TODO: Refactor as How It Works slice, use slice-compatible data structure */
+
 import React from "react"
 
 import { Hero } from "components/organisms/Hero"
 import RichText from "components/partials/SliceZone/components/RichText"
-import Link from "components/partials/SliceZone/components/Link"
-
 import { CONTAINER_WIDTHS } from "config"
+import Image from "next/image"
 
 const SECTIONS_PROPS = [
   {
@@ -19,10 +20,14 @@ const SECTIONS_PROPS = [
       url: "https://www.avail.co/landlords/rental-listings",
       target: "_blank",
     },
-    image: {
-      url: "/home/feature_listings.png",
-      alt: "List your property with Avail",
-    },
+    image: (
+      <Image
+        src="/home/feature_listings.png"
+        alt="List your property with Avail"
+        width={588}
+        height={443}
+      />
+    ),
   },
   {
     title:
@@ -36,10 +41,14 @@ const SECTIONS_PROPS = [
       url: "https://www.avail.co/landlords/online-rental-applications",
       target: "_blank",
     },
-    image: {
-      url: "/home/feature_renter_profile.png",
-      alt: "Renter profile",
-    },
+    image: (
+      <Image
+        src="/home/feature_renter_profile.png"
+        alt="Renter profile"
+        width={589}
+        height={457}
+      />
+    ),
   },
   {
     title:
@@ -53,10 +62,14 @@ const SECTIONS_PROPS = [
       url: "https://www.avail.co/landlords/credit-and-background-check",
       target: "_blank",
     },
-    image: {
-      url: "/home/feature_screening.png",
-      alt: "Comprehensive background checks",
-    },
+    image: (
+      <Image
+        src="/home/feature_screening.png"
+        alt="Comprehensive background checks"
+        width={588}
+        height={348}
+      />
+    ),
   },
   {
     title:
@@ -70,10 +83,14 @@ const SECTIONS_PROPS = [
       url: "https://www.avail.co/landlords/rental-lease-agreement",
       target: "_blank",
     },
-    image: {
-      url: "/home/feature_leasing.png",
-      alt: "Local Assist helps make writing leases easy",
-    },
+    image: (
+      <Image
+        src="/home/feature_leasing.png"
+        alt="Local Assist helps make writing leases easy"
+        width={588}
+        height={432}
+      />
+    ),
   },
   {
     title:
@@ -88,10 +105,14 @@ const SECTIONS_PROPS = [
       url: "https://www.avail.co/landlords/online-rent-collection",
       target: "_blank",
     },
-    image: {
-      url: "/home/feature_payments.png",
-      alt: "Collect rent and deposits",
-    },
+    image: (
+      <Image
+        src="/home/feature_payments.png"
+        alt="Collect rent and deposits"
+        width={700}
+        height={729}
+      />
+    ),
   },
   {
     title:
@@ -104,10 +125,14 @@ const SECTIONS_PROPS = [
       url: "https://www.avail.co/landlords/maintenance-tracking",
       target: "_blank",
     },
-    image: {
-      url: "/home/feature_maintenance.png",
-      alt: "Easily track maintenance requests",
-    },
+    image: (
+      <Image
+        src="/home/feature_maintenance.png"
+        alt="Easily track maintenance requests"
+        width={920}
+        height={709}
+      />
+    ),
   },
 ]
 

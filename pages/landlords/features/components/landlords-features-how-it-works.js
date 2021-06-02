@@ -2,6 +2,7 @@ import React from "react"
 
 import { HowItWorks } from "components/organisms/HowItWorks"
 import RichText from "components/partials/SliceZone/components/RichText"
+import Image from "next/image"
 
 import { CONTAINER_WIDTHS } from "config"
 
@@ -10,6 +11,8 @@ const SECTIONS = [
     image: {
       url: "/feature_overview_pages/simply_life.png",
       alt: "Reduce redundancy",
+      width: 540,
+      height: 311,
     },
     title: "Simplify Life as a Landlord",
     description:
@@ -19,6 +22,8 @@ const SECTIONS = [
     image: {
       url: "/feature_overview_pages/landlord_feature_landing.png",
       alt: "Simply renting",
+      width: 540,
+      height: 346,
     },
     title: "Easily Connect with Tenants",
     description:
@@ -28,6 +33,8 @@ const SECTIONS = [
     image: {
       url: "/feature_overview_pages/confident_professional_landlord.png",
       alt: "Improve credit",
+      width: 540,
+      height: 311,
     },
     title: "Be a Confident and Professional Landlord",
     description:
@@ -38,7 +45,14 @@ const SECTIONS = [
 const TenantFeaturesHowItWorks = (props) => {
   const sections = SECTIONS.map(({ image, title, description }) => ({
     uid: title,
-    image,
+    image: (
+      <Image
+        src={image.url}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+      />
+    ),
     copy: (
       <RichText
         sx={{ color: "blue_700" }}

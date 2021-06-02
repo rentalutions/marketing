@@ -1,9 +1,0 @@
-directive @client on FIELD
-
-type Query {
-  analytics: Analytics!
-}
-
-type Analytics {
-  uuid: String!
-}
