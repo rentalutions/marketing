@@ -7,12 +7,15 @@ import Link from "components/partials/SliceZone/components/Link"
 import RichText from "components/partials/SliceZone/components/RichText"
 
 import { CONTAINER_WIDTHS } from "config"
+import Image from "next/image"
 
 const SECTIONS = [
   {
     icon: {
       url: "/feature_icons/renter-profile.png",
       alt: "Renter profile",
+      width: 154,
+      height: 155,
     },
     title: "Renter Profile",
     description:
@@ -26,6 +29,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/rent_deposits_or_fees.png",
       alt: "Rent deposits or fees",
+      width: 154,
+      height: 155,
     },
     title: "Online Rent Payments",
     description:
@@ -39,6 +44,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/credit-boost.png",
       alt: "Credit boost",
+      width: 154,
+      height: 155,
     },
     title: "CreditBoost",
     description:
@@ -52,6 +59,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/247_document_storage.png",
       alt: "247 document storage",
+      width: 154,
+      height: 155,
     },
     title: "Online Leases",
     description:
@@ -65,6 +74,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/maintenance.png",
       alt: "Maintenance",
+      width: 154,
+      height: 154,
     },
     title: "Maintenance Tickets",
     description:
@@ -79,7 +90,14 @@ const SECTIONS = [
 const TenantFeaturesCards = (props) => {
   const sections = SECTIONS.map(({ icon, title, description, link }) => ({
     key: title,
-    icon,
+    icon: (
+      <Image
+        src={icon.url}
+        alt={icon.alt}
+        width={icon.width}
+        height={icon.height}
+      />
+    ),
     title: (
       <RichText
         sx={{ color: "blue_900" }}
