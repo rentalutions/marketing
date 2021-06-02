@@ -1,6 +1,7 @@
 import React from "react"
 import Showcase from "components/organisms/Showcase/index"
 import { Heading, Text } from "@rent_avail/typography"
+import Image from "next/image"
 
 const cases = [
   {
@@ -48,10 +49,7 @@ function HomeShowcase(props) {
           </Text>
         </React.Fragment>
       }
-      image={{
-        url: "/home/safe.png",
-        alt: "Safe",
-      }}
+      image={<Image src="/home/safe.png" alt="Safe" width={640} height={640} />}
       cases={cases}
       caseInterval={4000}
       flip

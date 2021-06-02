@@ -17,9 +17,9 @@ const TenantFeatures = () => {
     >
       <HomeHero mb="20rem" />
       <HomeHowItWorks id="use-cases" />
-      {/*<HomeTestimonials />*/}
-      {/*<HomeShowcase my={6} />*/}
-      {/*<HomeEmailCapture my={6} />*/}
+      <HomeTestimonials />
+      <HomeShowcase my={6} />
+      <HomeEmailCapture my={6} />
     </StaticBasePage>
   )
 }
