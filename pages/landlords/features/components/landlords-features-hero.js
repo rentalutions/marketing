@@ -4,6 +4,7 @@ import Button from "components/elements/Button"
 import { Hero } from "components/organisms/Hero"
 import RichText from "components/partials/SliceZone/components/RichText"
 import Link from "components/partials/SliceZone/components/Link"
+import Image from "next/image"
 
 import { CONTAINER_WIDTHS } from "config"
 
@@ -14,10 +15,13 @@ const HERO_PROPS = {
   image: {
     url: "/landlord_hero.png",
     alt: "Landlords hero",
+    width: 648,
+    height: 792,
   },
 }
 
 const TenantFeaturesHero = () => {
+  const { title, description, image } = HERO_PROPS
   return (
     <Hero
       title={
@@ -25,7 +29,7 @@ const TenantFeaturesHero = () => {
           sx={{ color: "ui_300" }}
           render={[
             {
-              text: HERO_PROPS.title,
+              text: title,
               type: "heading1",
               spans: [],
             },
@@ -37,7 +41,7 @@ const TenantFeaturesHero = () => {
           sx={{ color: "ui_300" }}
           render={[
             {
-              text: HERO_PROPS.description,
+              text: description,
               type: "paragraph",
               spans: [],
             },
@@ -49,7 +53,14 @@ const TenantFeaturesHero = () => {
       skew="left"
       stretch
       imagePosition="right"
-      image={HERO_PROPS.image}
+      image={
+        <Image
+          src={image.url}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+        />
+      }
       overflow="hidden"
       color="blue_900"
       primaryLink={

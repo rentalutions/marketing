@@ -8,12 +8,15 @@ import Link from "components/partials/SliceZone/components/Link"
 import RichText from "components/partials/SliceZone/components/RichText"
 
 import { CONTAINER_WIDTHS } from "config"
+import Image from "next/image"
 
 const SECTIONS = [
   {
     icon: {
       url: "/feature_icons/listing-status.png",
       alt: "Listing status",
+      width: 154,
+      height: 154,
     },
     title: "One-Click Listings",
     description: [
@@ -28,6 +31,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/screening.png",
       alt: "Screening",
+      width: 154,
+      height: 155,
     },
     title: "Simple Rental Applications",
     description: [
@@ -48,6 +53,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/application.png",
       alt: "Application",
+      width: 154,
+      height: 154,
     },
     title: "Credit & Background Checks",
     description: [
@@ -68,6 +75,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/e-signature.png",
       alt: "E signature",
+      width: 155,
+      height: 155,
     },
     title: "Online Leases",
     description: [
@@ -89,6 +98,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/tenant-paying-landlord.png",
       alt: "Tenant paying landlord",
+      width: 154,
+      height: 155,
     },
     title: "Online Rent Collection",
     description: [
@@ -112,6 +123,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/maintenance.png",
       alt: "Maintenance",
+      width: 154,
+      height: 154,
     },
     title: "Maintenance Tickets",
     description: [
@@ -126,6 +139,8 @@ const SECTIONS = [
     icon: {
       url: "/feature_icons/247_document_storage.png",
       alt: "247 document storage",
+      width: 154,
+      height: 155,
     },
     title: "Resident Portal",
     description: [
@@ -141,7 +156,14 @@ const SECTIONS = [
 const TenantFeaturesCards = (props) => {
   const sections = SECTIONS.map(({ icon, title, description, link }) => ({
     key: title,
-    icon,
+    icon: (
+      <Image
+        src={icon.url}
+        alt={icon.alt}
+        width={icon.width}
+        height={icon.height}
+      />
+    ),
     title: (
       <RichText
         sx={{ color: "blue_900" }}
