@@ -5,6 +5,7 @@ import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"
 import Video from "components/elements/Video"
 import { STYLING } from "config"
+import HeroBackground from "components/organisms/Hero/hero-background"
 
 function Hero({
   bg,
@@ -21,16 +22,19 @@ function Hero({
   containerWidth,
   animationPreset = "fadeIn",
   children,
+  sx,
   ...props
 }) {
   const links = primaryLink || secondaryLink
+  const hasBackground = image && imagePosition.includes("background")
   const hasVideo = !!(video?.url || embed)
-  const hasTwoCols = !!image || hasVideo
+
+  const hasTwoCols = (!!image && !hasBackground) || hasVideo
 
   const [presets, intersectionView] = useInViewAnimation({ delayChildren: 0 })
   const animation = presets[animationPreset]
 
-  const secondCol = (
+  const secondCol = hasTwoCols && (
     <Col
       span={[12, 12, 12, 6]}
       gridRow={["1", "1", "1", "auto"]}
@@ -60,14 +64,27 @@ function Hero({
       {...animation?.container}
       bg={bg}
       skew={skew}
+      sx={{ pt: 0, ...sx }}
     >
+      {hasBackground && (
+        <HeroBackground
+          image={image}
+          imagePosition={imagePosition}
+          color={bg}
+        />
+      )}
       <Container
         ref={intersectionView}
         as={Grid}
-        minHeight={stretch && "calc(90vh - 14rem)"}
-        py={skew === "none" && !stretch && "2rem"}
-        alignItems="center"
-        gap={["2rem", "2rem", "4rem"]}
+        sx={{
+          boxSizing: "border-box",
+          position: "relative",
+          pt: hasBackground ? "24vh" : "2rem",
+          pb: "2rem",
+          minHeight: stretch ? "calc(90vh - 14rem)" : "0",
+          gap: ["2rem", "2rem", "4rem"],
+          alignItems: "center",
+        }}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
         {hasTwoCols && imagePosition === "left" && secondCol}
