@@ -13,7 +13,6 @@ function HowItWorksCarousel({
   title,
   eyebrow,
   sections = [],
-  alternate = (idx) => idx % 2 !== 0,
   stepInterval,
   containerWidth,
   animationPreset = "fadeIn",
@@ -61,7 +60,7 @@ function HowItWorksCarousel({
         {activeItem && (
           <HowItWorksSection
             {...activeItem}
-            flip={alternate(sections.indexOf(activeItem))}
+            flip={false}
             animationPreset={animationPreset}
             carouselControl={{
               shouldShow: true,

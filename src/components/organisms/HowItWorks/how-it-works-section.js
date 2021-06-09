@@ -44,7 +44,7 @@ function HowItWorksSection({
             as={ChevronLeft}
             visibility={carouselControl?.shouldShow ? "visible" : "hidden"}
             enabled={carouselControl?.leftEnabled}
-            onClick={carouselControl?.clickLeft}
+            onClick={carouselControl?.leftEnabled && carouselControl?.clickLeft}
             sx={{
               width: "4rem",
               strokeWidth: "3",
@@ -58,7 +58,7 @@ function HowItWorksSection({
             as={ChevronRight}
             visibility={carouselControl?.shouldShow ? "visible" : "hidden"}
             enabled={carouselControl?.rightEnabled}
-            onClick={carouselControl?.clickRight}
+            onClick={carouselControl?.rightEnabled && carouselControl?.clickRight}
             sx={{
               width: "4rem",
               strokeWidth: "3",
