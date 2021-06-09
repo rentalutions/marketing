@@ -5,7 +5,7 @@ import RichText from "../RichText"
 
 export default function FrequentlyAskedQuestionsSlice({ slice }) {
   const {
-    primary: { background, color, title, description, eyebrow },
+    primary: { background, color, title, description, eyebrow, outro },
   } = slice
 
   const questions = slice.items.map(({ question, answer }) => ({
@@ -30,6 +30,7 @@ export default function FrequentlyAskedQuestionsSlice({ slice }) {
       title={title?.[0]?.text && <RichText render={title} />}
       description={description?.[0]?.text && <RichText render={description} />}
       eyebrow={eyebrow?.[0]?.text && <RichText render={eyebrow} />}
+      outro={outro?.[0]?.text && <RichText render={outro} />}
       questions={questions}
       containerWidth={CONTAINER_WIDTHS}
       bg={background}

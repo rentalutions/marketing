@@ -96,6 +96,7 @@ export function Default() {
           consectetur adipisci minus dicta.
         </Text>
       }
+      outro={<Text>Outro</Text>}
       questions={questions}
       py="4rem"
     />
