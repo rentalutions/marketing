@@ -1,1351 +1,1830 @@
 {
-  "Page" : {
-    "name" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1",
-        "label" : "Name in CMS",
-        "placeholder" : "Page name as it appears in CMS"
+  "Page": {
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Name in CMS",
+        "placeholder": "Page name as it appears in CMS"
       }
     },
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "UID",
-        "placeholder" : "unique-identifier-eg-homepage"
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "unique-identifier-eg-homepage"
       }
     },
-    "nav_bar_type" : {
-      "type" : "Select",
-      "config" : {
-        "options" : [ "Avail", "Avail/RDC" ],
-        "default_value" : "Avail",
-        "label" : "Navigation Bar Type"
+    "nav_bar_type": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "Avail",
+          "Avail/RDC"
+        ],
+        "label": "Navigation Bar Type"
       }
     },
-    "background" : {
-      "type" : "Select",
-      "config" : {
-        "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-        "default_value" : "ui_100",
-        "label" : "Background color",
-        "placeholder" : "Background Color"
+    "background": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "ui_100",
+          "ui_300",
+          "ui_500",
+          "ui_700",
+          "ui_900",
+          "blue_100",
+          "blue_300",
+          "blue_500",
+          "blue_700",
+          "blue_900"
+        ],
+        "label": "Background color",
+        "placeholder": "Background Color"
       }
     },
-    "sticky_nav_bar" : {
-      "type" : "Boolean",
-      "config" : {
-        "placeholder_false" : "No",
-        "placeholder_true" : "Yes",
-        "default_value" : true,
-        "label" : "Sticky nav bar"
+    "sticky_nav_bar": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "No",
+        "placeholder_true": "Yes",
+        "default_value": true,
+        "label": "Sticky nav bar"
       }
     },
-    "primaryButtonText" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Primary Button text",
-        "placeholder" : "E.g. - Sign Up"
+    "primaryButtonText": {
+      "type": "Text",
+      "config": {
+        "label": "Primary Button text",
+        "placeholder": "E.g. - Sign Up"
       }
     },
-    "primaryButtonId:" : {
-      "config" : {
-        "label" : "Primary Button selector ID (optional)",
-        "placeholder" : "ID selector for external tools (eg: navbar_primary_button)"
+    "primaryButtonId:": {
+      "config": {
+        "label": "Primary Button selector ID (optional)",
+        "placeholder": "ID selector for external tools (eg: navbar_primary_button)"
       },
-      "type" : "Text"
+      "type": "Text"
     },
-    "primaryButtonLink" : {
-      "config" : {
-        "label" : "Primary Button external URL",
-        "placeholder" : "",
-        "allowTargetBlank" : true
+    "primaryButtonLink": {
+      "config": {
+        "label": "Primary Button external URL",
+        "placeholder": "",
+        "allowTargetBlank": true
       },
-      "type" : "Link"
+      "type": "Link"
     },
-    "primaryButtonHash" : {
-      "config" : {
-        "label" : "Primary Button hash (jump link)",
-        "placeholder" : "A hash matching the hash in slice you want to link to"
+    "primaryButtonHash": {
+      "config": {
+        "label": "Primary Button hash (jump link)",
+        "placeholder": "A hash matching the hash in slice you want to link to"
       },
-      "type" : "Text"
+      "type": "Text"
     },
-    "secondaryButtonText" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Secondary Button text",
-        "placeholder" : "E.g. - Log In"
+    "secondaryButtonText": {
+      "type": "Text",
+      "config": {
+        "label": "Secondary Button text",
+        "placeholder": "E.g. - Log In"
       }
     },
-    "secondaryButtonId:" : {
-      "config" : {
-        "label" : "Secondary Button selector ID (optional)",
-        "placeholder" : "ID selector for external tools (eg: navbar_secondary_button)"
+    "secondaryButtonId:": {
+      "config": {
+        "label": "Secondary Button selector ID (optional)",
+        "placeholder": "ID selector for external tools (eg: navbar_secondary_button)"
       },
-      "type" : "Text"
+      "type": "Text"
     },
-    "secondaryButtonLink" : {
-      "config" : {
-        "label" : "Secondary Button external URL",
-        "placeholder" : "",
-        "allowTargetBlank" : true
+    "secondaryButtonLink": {
+      "config": {
+        "label": "Secondary Button external URL",
+        "placeholder": "",
+        "allowTargetBlank": true
       },
-      "type" : "Link"
+      "type": "Link"
     },
-    "secondaryButtonHash" : {
-      "config" : {
-        "label" : "Secondary Button hash (jump link)",
-        "placeholder" : "A hash matching the hash in slice you want to link to"
+    "secondaryButtonHash": {
+      "config": {
+        "label": "Secondary Button hash (jump link)",
+        "placeholder": "A hash matching the hash in slice you want to link to"
       },
-      "type" : "Text"
+      "type": "Text"
     },
-    "nav_bar" : {
-      "type" : "Group",
-      "config" : {
-        "fields" : {
-          "buttonText" : {
-            "config" : {
-              "label" : "Button text",
-              "placeholder" : "E.g. - Overview"
+    "nav_bar": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "buttonText": {
+            "config": {
+              "label": "Button text",
+              "placeholder": "E.g. - Overview"
             },
-            "type" : "Text"
+            "type": "Text"
           },
-          "buttonLink" : {
-            "config" : {
-              "label" : "Button external URL",
-              "placeholder" : "",
-              "allowTargetBlank" : true
+          "buttonLink": {
+            "config": {
+              "label": "Button external URL",
+              "placeholder": "",
+              "allowTargetBlank": true
             },
-            "type" : "Link"
+            "type": "Link"
           },
-          "buttonHash" : {
-            "config" : {
-              "label" : "Button hash (jump link)",
-              "placeholder" : "A hash matching the hash in slice you want to link to"
+          "buttonHash": {
+            "config": {
+              "label": "Button hash (jump link)",
+              "placeholder": "A hash matching the hash in slice you want to link to"
             },
-            "type" : "Text"
+            "type": "Text"
           },
-          "buttonId" : {
-            "config" : {
-              "label" : "Button selector ID (optional)",
-              "placeholder" : "ID selector for external tools (eg: navbar_button_overview)"
+          "buttonId": {
+            "config": {
+              "label": "Button selector ID (optional)",
+              "placeholder": "ID selector for external tools (eg: navbar_button_overview)"
             },
-            "type" : "Text"
+            "type": "Text"
           }
         },
-        "label" : "Nav Bar Default Items"
+        "label": "Nav Bar Default Items"
       }
     },
-    "body" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
-      "config" : {
-        "labels" : {
-          "blockquote" : [ ],
-          "button_cta" : [ ],
-          "email_capture" : [ ],
-          "faq" : [ ],
-          "hero" : [ ],
-          "hero_unit" : [ ],
-          "how_it_works" : [ ],
-          "pitch_cards" : [ ],
-          "plans_and_prices" : [ ],
-          "show_case" : [ ],
-          "testimonials" : [ ],
-          "testimonials_carousel" : [ ]
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "blockquote": [],
+          "button_cta": [],
+          "email_capture": [],
+          "faq": [],
+          "hero": [],
+          "hero_unit": [],
+          "how_it_works": [],
+          "pitch_cards": [],
+          "plans_and_prices": [],
+          "show_case": [],
+          "testimonials": [],
+          "testimonials_carousel": []
         },
-        "choices" : {
+        "choices": {
           "blockquote": {
-            "type" : "Slice",
-            "fieldset" : "Blockquote",
-            "description" : "A box that displays a text content styled as a quote",
-            "icon" : "format_quote",
-            "display" : "list",
-            "non-repeat" : {
-              "content" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi": "paragraph, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Content",
-                  "placeholder" : "Lorem ipsum sit dolor amet",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+            "type": "Slice",
+            "fieldset": "Blockquote",
+            "description": "A box that displays a text content styled as a quote",
+            "icon": "format_quote",
+            "display": "list",
+            "non-repeat": {
+              "content": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Content",
+                  "placeholder": "Lorem ipsum sit dolor amet",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "transparent",
-                  "label" : "Background color"
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "transparent",
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Background color"
                 }
               },
-              "quoteColor" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "green_100", "green_300", "green_500", "green_700", "green_900", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "green_100",
-                  "label" : "Quote symbol color"
+              "quoteColor": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "green_100",
+                    "green_300",
+                    "green_500",
+                    "green_700",
+                    "green_900",
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Quote symbol color"
                 }
               },
-              "textColor" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "blue_500",
-                  "label" : "Text color"
+              "textColor": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Text color"
                 }
               },
-              "textAlign" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "left", "right" ],
-                  "default_value" : "left",
-                  "label" : "Text Align"
-                }
-              }
-            }
-          },
-          "button_cta" : {
-            "type" : "Slice",
-            "fieldset" : "Button/CTA",
-            "description" : "A skewable box that displays a button and its title",
-            "icon" : "call_to_action",
-            "display" : "list",
-            "non-repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
-                }
-              },
-              "buttonText" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Button Text",
-                  "placeholder" : "Get Started"
-                }
-              },
-              "buttonLink" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Button Link"
-                }
-              },
-              "buttonId" : {
-                "config" : {
-                  "label" : "Button selector ID (optional)",
-                  "placeholder" : "ID selector for external tools (eg: landing_cta_button_10003)"
-                },
-                "type" : "Text"
-              },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_100",
-                  "label" : "Background color"
-                }
-              },
-              "color" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_900",
-                  "label" : "Text color"
-                }
-              },
-              "orientation" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "left", "top", "right", "bottom" ],
-                  "default_value" : "left",
-                  "label" : "Text Orientation"
-                }
-              },
-              "skew" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "none", "right", "left" ],
-                  "default_value" : "none",
-                  "label" : "Skew"
+              "textAlign": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "left",
+                    "right"
+                  ],
+                  "label": "Text Align"
                 }
               }
             }
           },
-          "email_capture" : {
-            "type" : "Slice",
-            "fieldset" : "Email Capture",
-            "description" : "An email capture block with title",
-            "icon" : "email",
-            "display" : "list",
-            "non-repeat" : {
-              "hash" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Jump link hash",
-                  "placeholder" : "A hash to link to this slice, e.g. - overview"
+          "button_cta": {
+            "type": "Slice",
+            "fieldset": "Button/CTA",
+            "description": "A skewable box that displays a button and its title",
+            "icon": "call_to_action",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "buttonText": {
+                "type": "Text",
+                "config": {
+                  "label": "Button Text",
+                  "placeholder": "Get Started"
                 }
               },
-              "label" : {
-                "config" : {
-                  "label" : "Input label",
-                  "placeholder" : "E.g. - Enter your email"
+              "buttonLink": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Button Link"
+                }
+              },
+              "buttonId": {
+                "config": {
+                  "label": "Button selector ID (optional)",
+                  "placeholder": "ID selector for external tools (eg: landing_cta_button_10003)"
                 },
-                "type" : "Text"
+                "type": "Text"
               },
-              "buttonText" : {
-                "config" : {
-                  "label" : "Button text",
-                  "placeholder" : "E.g. - Get Started"
-                },
-                "type" : "Text"
-              },
-              "redirectUrl" : {
-                "config" : {
-                  "label" : "Redirect URL (optional)",
-                  "placeholder" : "E.g. - https://www.avail.co/users/new"
-                },
-                "type" : "Text"
-              },
-              "optInContext" : {
-                "config" : {
-                  "label" : "Opt In Context (required to show opt in)",
-                  "placeholder" : "Email Capture Opt In, - e.g. The Landing"
-                },
-                "type" : "Text"
-              },
-              "optInCopy" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Opt In Copy (required to show opt in)",
-                  "placeholder" : "Opt In Copy",
-                  "labels" : [ "body__emphasis", "body", "small" ]
-                }
-              }
-            },
-            "repeat" : { }
-          },
-          "faq" : {
-            "type" : "Slice",
-            "fieldset" : "FAQ",
-            "description" : "A box that displays frequently asked questions and its answers",
-            "icon" : "help_outline",
-            "display" : "list",
-            "non-repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Background color"
                 }
               },
-              "description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Description",
-                  "placeholder" : "Description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "color": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Text color"
                 }
               },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_100",
-                  "label" : "Background color"
+              "orientation": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "left",
+                    "top",
+                    "right",
+                    "bottom"
+                  ],
+                  "label": "Text Orientation"
                 }
               },
-              "color" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_900",
-                  "label" : "Text color"
-                }
-              },
-              "eyebrow" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Eyebrow",
-                  "placeholder" : "Eyebrow"
-                }
-              }
-            },
-            "repeat" : {
-              "question" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Question",
-                  "placeholder" : "How much does it costs?"
-                }
-              },
-              "answer" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "label" : "Answer",
-                  "placeholder" : "It costs nothing! Its free!",
-                  "allowTargetBlank" : true,
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "skew": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "none",
+                    "right",
+                    "left"
+                  ],
+                  "label": "Skew"
                 }
               }
             }
           },
-          "hero" : {
-            "type" : "Slice",
-            "fieldset" : "Hero",
-            "description" : "A hero unit with action buttons",
-            "icon" : "chrome_reader_mode",
-            "display" : "list",
-            "non-repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+          "email_capture": {
+            "type": "Slice",
+            "fieldset": "Email Capture",
+            "description": "An email capture block with title",
+            "icon": "email",
+            "display": "list",
+            "non-repeat": {
+              "hash": {
+                "type": "Text",
+                "config": {
+                  "label": "Jump link hash",
+                  "placeholder": "A hash to link to this slice, e.g. - overview"
                 }
               },
-              "description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Description",
-                  "placeholder" : "Description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_100",
-                  "label" : "Background color"
-                }
-              },
-              "color" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_900",
-                  "label" : "Text color"
-                }
-              },
-              "skew" : {
-                "config" : {
-                  "label" : "Skew",
-                  "placeholder" : "",
-                  "default_value" : "right",
-                  "options" : [ "none", "right", "left" ]
+              "label": {
+                "config": {
+                  "label": "Input label",
+                  "placeholder": "E.g. - Enter your email"
                 },
-                "type" : "Select"
+                "type": "Text"
               },
-              "stretch" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "False",
-                  "placeholder_true" : "True",
-                  "default_value" : true,
-                  "label" : "Stretch"
-                }
-              },
-              "image" : {
-                "config" : {
-                  "label" : "Image",
-                  "constraint" : { },
-                  "thumbnails" : [ ]
+              "buttonText": {
+                "config": {
+                  "label": "Button text",
+                  "placeholder": "E.g. - Get Started"
                 },
-                "type" : "Image"
+                "type": "Text"
               },
-              "video" : {
-                "type" : "Link",
-                "config" : {
-                  "select" : "media",
-                  "label" : "Video (Media Library or S3)"
-                }
-              },
-              "embed" : {
-                "type" : "Embed",
-                "config" : {
-                  "label" : "Embed"
-                }
-              },
-              "imagePosition" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "right", "left" ],
-                  "default_value" : "right",
-                  "label" : "Image position"
-                }
-              },
-              "primaryButtonText" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Primary Button Text",
-                  "placeholder" : "Get Started"
-                }
-              },
-              "primaryButtonLink" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Primary Button Link"
-                }
-              },
-              "primaryButtonId" : {
-                "config" : {
-                  "label" : "Primary button selector ID (optional)",
-                  "placeholder" : "ID selector for external tools (eg: features_100003_hero_button_1)"
+              "redirectUrl": {
+                "config": {
+                  "label": "Redirect URL (optional)",
+                  "placeholder": "E.g. - https://www.avail.co/users/new"
                 },
-                "type" : "Text"
+                "type": "Text"
               },
-              "secondaryButtonText" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Secondary Button Text",
-                  "placeholder" : "Get Started"
-                }
-              },
-              "secondaryButtonLink" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Secondary Button Link"
-                }
-              },
-              "secondaryButtonId" : {
-                "config" : {
-                  "label" : "Secondary button selector ID (optional)",
-                  "placeholder" : "ID selector for external tools (eg: features_100003_hero_button_2)"
+              "optInContext": {
+                "config": {
+                  "label": "Opt In Context (required to show opt in)",
+                  "placeholder": "Email Capture Opt In, - e.g. The Landing"
                 },
-                "type" : "Text"
+                "type": "Text"
+              },
+              "optInCopy": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Opt In Copy (required to show opt in)",
+                  "placeholder": "Opt In Copy",
+                  "labels": [
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
+                }
               }
             },
-            "repeat" : { }
+            "repeat": {}
           },
-          "hero_unit" : {
-            "type" : "Slice",
-            "fieldset" : "Hero w/ Email Capture",
-            "description" : "A hero unit with email capture",
-            "icon" : "chrome_reader_mode",
-            "display" : "list",
-            "non-repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+          "faq": {
+            "type": "Slice",
+            "fieldset": "FAQ",
+            "description": "A box that displays frequently asked questions and its answers",
+            "icon": "help_outline",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Description",
-                  "placeholder" : "Description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Description",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_100",
-                  "label" : "Background color"
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Background color"
                 }
               },
-              "color" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_900",
-                  "label" : "Text color"
+              "color": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Text color"
                 }
               },
-              "skew" : {
-                "config" : {
-                  "label" : "Skew",
-                  "placeholder" : "",
-                  "default_value" : "right",
-                  "options" : [ "none", "right", "left" ]
-                },
-                "type" : "Select"
-              },
-              "stretch" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "False",
-                  "placeholder_true" : "True",
-                  "default_value" : true,
-                  "label" : "Stretch"
+              "eyebrow": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Eyebrow",
+                  "placeholder": "Eyebrow"
                 }
               },
-              "image" : {
-                "config" : {
-                  "label" : "Image",
-                  "constraint" : { },
-                  "thumbnails" : [ ]
-                },
-                "type" : "Image"
-              },
-              "video" : {
-                "type" : "Link",
-                "config" : {
-                  "select" : "media",
-                  "label" : "Video (Media Library or S3)"
-                }
-              },
-              "embed" : {
-                "type" : "Embed",
-                "config" : {
-                  "label" : "Embed"
-                }
-              },
-              "imagePosition" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "right", "left" ],
-                  "default_value" : "right",
-                  "label" : "Media position"
-                }
-              },
-              "emailCaptureLabel" : {
-                "config" : {
-                  "label" : "Email capture label",
-                  "placeholder" : "E.g. - Enter your email"
-                },
-                "type" : "Text"
-              },
-              "emailCaptureButtonText" : {
-                "config" : {
-                  "label" : "Email capture button text",
-                  "placeholder" : "E.g. - Start Now"
-                },
-                "type" : "Text"
-              },
-              "emailCaptureRedirectUrl" : {
-                "config" : {
-                  "label" : "Email capture redirect URL (optional)",
-                  "placeholder" : "E.g. - https://www.avail.co/users/new"
-                },
-                "type" : "Text"
-              },
-              "emailCaptureOptInContext" : {
-                "config" : {
-                  "label" : "Opt In Context (required to show opt in)",
-                  "placeholder" : "Email Capture Opt In, - e.g. The Landing"
-                },
-                "type" : "Text"
-              },
-              "emailCaptureOptInCopy" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Opt In Copy (required to show opt in)",
-                  "placeholder" : "Opt In Copy",
-                  "labels" : [ "body__emphasis", "body", "small" ]
+              "outro": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, rtl",
+                  "allowTargetBlank": true,
+                  "label": "Outro",
+                  "placeholder": "Outro"
                 }
               }
             },
-            "repeat" : { }
-          },
-          "how_it_works" : {
-            "type" : "Slice",
-            "fieldset" : "How It Works",
-            "description" : "A grid of alternating blocks with media and text",
-            "icon" : "dashboard",
-            "display" : "list",
-            "non-repeat" : {
-              "hash" : {
-                "config" : {
-                  "label" : "Jump link hash",
-                  "placeholder" : "A hash to link to this slice, e.g. - overview"
-                },
-                "type" : "Text"
-              },
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+            "repeat": {
+              "question": {
+                "type": "Text",
+                "config": {
+                  "label": "Question",
+                  "placeholder": "How much does it costs?"
                 }
               },
-              "background" : {
-                "config" : {
-                  "label" : "Background color",
-                  "placeholder" : "",
-                  "default_value" : "transparent",
-                  "options" : [ "transparent", "blue_500" ]
-                },
-                "type" : "Select"
-              },
-              "flip" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "Right",
-                  "placeholder_true" : "Left",
-                  "default_value" : false,
-                  "label" : "First section media position"
-                }
-              }
-            },
-            "repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Section title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
-                }
-              },
-              "description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Description",
-                  "placeholder" : "Section description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
-                }
-              },
-              "video" : {
-                "type" : "Link",
-                "config" : {
-                  "select" : "media",
-                  "label" : "Video (Media Library or S3)"
-                }
-              },
-              "embed" : {
-                "type" : "Embed",
-                "config" : {
-                  "label" : "Embed"
-                }
-              },
-              "image" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Section image"
+              "answer": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Answer",
+                  "placeholder": "It costs nothing! Its free!",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,embed",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               }
             }
           },
-          "pitch_cards" : {
-            "type" : "Slice",
-            "fieldset" : "Pitch Cards",
-            "description" : "A grid of cards with optional media",
-            "icon" : "grid_on",
-            "display" : "list",
-            "non-repeat" : {
-              "hash" : {
-                "config" : {
-                  "label" : "Jump link hash",
-                  "placeholder" : "A hash to link to this slice, e.g. - overview"
-                },
-                "type" : "Text"
-              },
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+          "hero": {
+            "type": "Slice",
+            "fieldset": "Hero",
+            "description": "A hero unit with action buttons",
+            "icon": "chrome_reader_mode",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "titleImage" : {
-                "config" : {
-                  "label" : "Title image",
-                  "constraint" : { },
-                  "thumbnails" : [ ]
-                },
-                "type" : "Image"
-              },
-              "centerTitle" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "No",
-                  "placeholder_true" : "Yes",
-                  "default_value" : false,
-                  "label" : "Center title"
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Description",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Description",
-                  "placeholder" : "Description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Background color"
+                }
+              },
+              "color": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Text color"
+                }
+              },
+              "skew": {
+                "config": {
+                  "label": "Skew",
+                  "placeholder": "",
+                  "options": [
+                    "none",
+                    "right",
+                    "left"
+                  ]
+                },
+                "type": "Select"
+              },
+              "stretch": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "False",
+                  "placeholder_true": "True",
+                  "default_value": true,
+                  "label": "Stretch"
+                }
+              },
+              "image": {
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                },
+                "type": "Image"
+              },
+              "video": {
+                "type": "Link",
+                "config": {
+                  "select": "media",
+                  "label": "Video (Media Library or S3)"
+                }
+              },
+              "embed": {
+                "type": "Embed",
+                "config": {
+                  "label": "Embed"
+                }
+              },
+              "imagePosition": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "right",
+                    "left"
+                  ],
+                  "label": "Image position"
+                }
+              },
+              "primaryButtonText": {
+                "type": "Text",
+                "config": {
+                  "label": "Primary Button Text",
+                  "placeholder": "Get Started"
+                }
+              },
+              "primaryButtonLink": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Primary Button Link"
+                }
+              },
+              "primaryButtonId": {
+                "config": {
+                  "label": "Primary button selector ID (optional)",
+                  "placeholder": "ID selector for external tools (eg: features_100003_hero_button_1)"
+                },
+                "type": "Text"
+              },
+              "secondaryButtonText": {
+                "type": "Text",
+                "config": {
+                  "label": "Secondary Button Text",
+                  "placeholder": "Get Started"
+                }
+              },
+              "secondaryButtonLink": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Secondary Button Link"
+                }
+              },
+              "secondaryButtonId": {
+                "config": {
+                  "label": "Secondary button selector ID (optional)",
+                  "placeholder": "ID selector for external tools (eg: features_100003_hero_button_2)"
+                },
+                "type": "Text"
+              }
+            },
+            "repeat": {}
+          },
+          "hero_unit": {
+            "type": "Slice",
+            "fieldset": "Hero w/ Email Capture",
+            "description": "A hero unit with email capture",
+            "icon": "chrome_reader_mode",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Description",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
+                }
+              },
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Background color"
+                }
+              },
+              "color": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Text color"
+                }
+              },
+              "skew": {
+                "config": {
+                  "label": "Skew",
+                  "placeholder": "",
+                  "options": [
+                    "none",
+                    "right",
+                    "left"
+                  ]
+                },
+                "type": "Select"
+              },
+              "stretch": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "False",
+                  "placeholder_true": "True",
+                  "default_value": true,
+                  "label": "Stretch"
+                }
+              },
+              "image": {
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                },
+                "type": "Image"
+              },
+              "video": {
+                "type": "Link",
+                "config": {
+                  "select": "media",
+                  "label": "Video (Media Library or S3)"
+                }
+              },
+              "embed": {
+                "type": "Embed",
+                "config": {
+                  "label": "Embed"
+                }
+              },
+              "imagePosition": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "right",
+                    "left"
+                  ],
+                  "label": "Media position"
+                }
+              },
+              "emailCaptureLabel": {
+                "config": {
+                  "label": "Email capture label",
+                  "placeholder": "E.g. - Enter your email"
+                },
+                "type": "Text"
+              },
+              "emailCaptureButtonText": {
+                "config": {
+                  "label": "Email capture button text",
+                  "placeholder": "E.g. - Start Now"
+                },
+                "type": "Text"
+              },
+              "emailCaptureRedirectUrl": {
+                "config": {
+                  "label": "Email capture redirect URL (optional)",
+                  "placeholder": "E.g. - https://www.avail.co/users/new"
+                },
+                "type": "Text"
+              },
+              "emailCaptureOptInContext": {
+                "config": {
+                  "label": "Opt In Context (required to show opt in)",
+                  "placeholder": "Email Capture Opt In, - e.g. The Landing"
+                },
+                "type": "Text"
+              },
+              "emailCaptureOptInCopy": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Opt In Copy (required to show opt in)",
+                  "placeholder": "Opt In Copy",
+                  "labels": [
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               }
             },
-            "repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Card title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
-                }
-              },
-              "centerTitle" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "No",
-                  "placeholder_true" : "Yes",
-                  "default_value" : false,
-                  "label" : "Center title"
-                }
-              },
-              "description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Description",
-                  "placeholder" : "Card description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
-                }
-              },
-              "icon" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Card image"
-                }
-              },
-              "linkText" : {
-                "config" : {
-                  "label" : "Link text",
-                  "placeholder" : "E.g. - Check report"
+            "repeat": {}
+          },
+          "how_it_works": {
+            "type": "Slice",
+            "fieldset": "How It Works",
+            "description": "A grid of alternating blocks with media and text",
+            "icon": "dashboard",
+            "display": "list",
+            "non-repeat": {
+              "hash": {
+                "config": {
+                  "label": "Jump link hash",
+                  "placeholder": "A hash to link to this slice, e.g. - overview"
                 },
-                "type" : "Text"
+                "type": "Text"
               },
-              "linkUrl" : {
-                "config" : {
-                  "label" : "Link URL",
-                  "placeholder" : "",
-                  "allowTargetBlank" : true
-                },
-                "type" : "Link"
-              },
-              "linkId" : {
-                "config" : {
-                  "label" : "Link selector ID (optional)",
-                  "placeholder" : "ID selector for external tools (eg: features_link_pay_any_landlord)"
-                },
-                "type" : "Text"
-              },
-              "linkAsButton" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "Link",
-                  "placeholder_true" : "Button",
-                  "default_value" : false,
-                  "label" : "Link type"
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "video" : {
-                "type" : "Link",
-                "config" : {
-                  "select" : "media",
-                  "label" : "Video (Media Library or S3)"
+              "background": {
+                "config": {
+                  "label": "Background color",
+                  "placeholder": "",
+                  "options": [
+                    "transparent",
+                    "blue_500"
+                  ]
+                },
+                "type": "Select"
+              },
+              "flip": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Right",
+                  "placeholder_true": "Left",
+                  "default_value": false,
+                  "label": "First section media position"
+                }
+              }
+            },
+            "repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Section title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "embed" : {
-                "type" : "Embed",
-                "config" : {
-                  "label" : "Embed"
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Section description",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
+                }
+              },
+              "video": {
+                "type": "Link",
+                "config": {
+                  "select": "media",
+                  "label": "Video (Media Library or S3)"
+                }
+              },
+              "embed": {
+                "type": "Embed",
+                "config": {
+                  "label": "Embed"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Section image"
                 }
               }
             }
           },
-          "plans_and_prices" : {
-            "type" : "Slice",
-            "fieldset" : "Plans and Prices",
-            "description" : "A list that displays cards containing plans descriptions and prices",
-            "icon" : "card_membership",
-            "display" : "grid",
-            "non-repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-                  "label" : "Title",
-                  "placeholder" : "Title"
+          "pitch_cards": {
+            "type": "Slice",
+            "fieldset": "Pitch Cards",
+            "description": "A grid of cards with optional media",
+            "icon": "grid_on",
+            "display": "list",
+            "non-repeat": {
+              "hash": {
+                "config": {
+                  "label": "Jump link hash",
+                  "placeholder": "A hash to link to this slice, e.g. - overview"
+                },
+                "type": "Text"
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "subtitle" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-                  "label" : "Subtitle",
-                  "placeholder" : "Subtitle"
+              "titleImage": {
+                "config": {
+                  "label": "Title image",
+                  "constraint": {},
+                  "thumbnails": []
+                },
+                "type": "Image"
+              },
+              "centerTitle": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "No",
+                  "placeholder_true": "Yes",
+                  "default_value": false,
+                  "label": "Center title"
                 }
               },
-              "linkText" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Link Text",
-                  "placeholder" : "See more"
-                }
-              },
-              "link" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Link",
-                  "placeholder" : "link"
-                }
-              },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_100",
-                  "label" : "Background color"
-                }
-              },
-              "color" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_900",
-                  "label" : "Text color"
-                }
-              },
-              "skew" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "none", "left", "right" ],
-                  "default_value" : "none",
-                  "label" : "Skew"
-                }
-              },
-              "direction" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "vertical", "horizontal" ],
-                  "default_value" : "vertical",
-                  "label" : "Direction"
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Description",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               }
             },
-            "repeat" : {
-              "image" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : {
-                    "width" : 70,
-                    "height" : 70
+            "repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Card title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
+                }
+              },
+              "centerTitle": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "No",
+                  "placeholder_true": "Yes",
+                  "default_value": false,
+                  "label": "Center title"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Card description",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
+                }
+              },
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Card image"
+                }
+              },
+              "linkText": {
+                "config": {
+                  "label": "Link text",
+                  "placeholder": "E.g. - Check report"
+                },
+                "type": "Text"
+              },
+              "linkUrl": {
+                "config": {
+                  "label": "Link URL",
+                  "placeholder": "",
+                  "allowTargetBlank": true
+                },
+                "type": "Link"
+              },
+              "linkId": {
+                "config": {
+                  "label": "Link selector ID (optional)",
+                  "placeholder": "ID selector for external tools (eg: features_link_pay_any_landlord)"
+                },
+                "type": "Text"
+              },
+              "linkAsButton": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Link",
+                  "placeholder_true": "Button",
+                  "default_value": false,
+                  "label": "Link type"
+                }
+              },
+              "video": {
+                "type": "Link",
+                "config": {
+                  "select": "media",
+                  "label": "Video (Media Library or S3)"
+                }
+              },
+              "embed": {
+                "type": "Embed",
+                "config": {
+                  "label": "Embed"
+                }
+              }
+            }
+          },
+          "plans_and_prices": {
+            "type": "Slice",
+            "fieldset": "Plans and Prices",
+            "description": "A list that displays cards containing plans descriptions and prices",
+            "icon": "card_membership",
+            "display": "grid",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+                  "label": "Title",
+                  "placeholder": "Title"
+                }
+              },
+              "subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "label": "Subtitle",
+                  "placeholder": "Subtitle"
+                }
+              },
+              "linkText": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Text",
+                  "placeholder": "See more"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Link",
+                  "placeholder": "link"
+                }
+              },
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Background color"
+                }
+              },
+              "color": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Text color"
+                }
+              },
+              "skew": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "none",
+                    "left",
+                    "right"
+                  ],
+                  "label": "Skew"
+                }
+              },
+              "direction": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "vertical",
+                    "horizontal"
+                  ],
+                  "label": "Direction"
+                }
+              }
+            },
+            "repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 70,
+                    "height": 70
                   },
-                  "thumbnails" : [ ],
-                  "label" : "Image"
+                  "thumbnails": [],
+                  "label": "Image"
                 }
               },
-              "title" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Title",
-                  "placeholder" : "Unlimited Plus"
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Unlimited Plus"
                 }
               },
-              "price" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Price",
-                  "placeholder" : "$9,90/mo"
+              "price": {
+                "type": "Text",
+                "config": {
+                  "label": "Price",
+                  "placeholder": "$9,90/mo"
                 }
               },
-              "subtext" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Subtext",
-                  "placeholder" : "Price Subtext"
+              "subtext": {
+                "type": "Text",
+                "config": {
+                  "label": "Subtext",
+                  "placeholder": "Price Subtext"
                 }
               },
-              "description" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Description",
-                  "placeholder" : "Plan Description"
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "Plan Description"
                 }
               },
-              "features" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-                  "label" : "Features",
-                  "placeholder" : "Features",
-                  "labels" : [ "icon__award", "icon__box", "icon__bullet", "icon__checkmark", "icon__checkcircle", "icon__dash", "icon__gift" ]
+              "features": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "label": "Features",
+                  "placeholder": "Features",
+                  "labels": [
+                    "icon__award",
+                    "icon__box",
+                    "icon__bullet",
+                    "icon__checkmark",
+                    "icon__checkcircle",
+                    "icon__dash",
+                    "icon__gift"
+                  ]
                 }
               },
-              "buttonText" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Button Text",
-                  "placeholder" : "Button Text"
+              "buttonText": {
+                "type": "Text",
+                "config": {
+                  "label": "Button Text",
+                  "placeholder": "Button Text"
                 }
               },
-              "buttonLink" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Button Link"
+              "buttonLink": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Button Link"
                 }
               },
-              "buttonId" : {
-                "config" : {
-                  "label" : "Button selector ID (optional)",
-                  "placeholder" : "ID selector for external tools (eg: screening_plans_extra_button)"
+              "buttonId": {
+                "config": {
+                  "label": "Button selector ID (optional)",
+                  "placeholder": "ID selector for external tools (eg: screening_plans_extra_button)"
                 },
-                "type" : "Text"
+                "type": "Text"
               },
-              "buttonIsPrimary" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "Default",
-                  "placeholder_true" : "Primary",
-                  "default_value" : false,
-                  "label" : "Button variant"
+              "buttonIsPrimary": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Default",
+                  "placeholder_true": "Primary",
+                  "default_value": false,
+                  "label": "Button variant"
                 }
               },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_100",
-                  "label" : "Background color"
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Background color"
                 }
               },
-              "color" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_900",
-                  "label" : "Text color"
+              "color": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Text color"
                 }
               }
             }
           },
-          "show_case" : {
-            "type" : "Slice",
-            "fieldset" : "Showcase",
-            "description" : "A feature showcase with clickable icons",
-            "icon" : "branding_watermark",
-            "display" : "list",
-            "non-repeat" : {
-              "hash" : {
-                "config" : {
-                  "label" : "Jump link hash",
-                  "placeholder" : "A hash to link to this slice, e.g. - overview"
+          "show_case": {
+            "type": "Slice",
+            "fieldset": "Showcase",
+            "description": "A feature showcase with clickable icons",
+            "icon": "branding_watermark",
+            "display": "list",
+            "non-repeat": {
+              "hash": {
+                "config": {
+                  "label": "Jump link hash",
+                  "placeholder": "A hash to link to this slice, e.g. - overview"
                 },
-                "type" : "Text"
+                "type": "Text"
               },
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+                  "allowTargetBlank": true,
+                  "label": "Title",
+                  "placeholder": "Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
-                  "allowTargetBlank" : true,
-                  "label" : "Description",
-                  "placeholder" : "Description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Description",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "image" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Image"
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
                 }
               },
-              "flip" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "Right",
-                  "placeholder_true" : "Left",
-                  "default_value" : false,
-                  "label" : "Image position"
+              "flip": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Right",
+                  "placeholder_true": "Left",
+                  "default_value": false,
+                  "label": "Image position"
                 }
               }
             },
-            "repeat" : {
-              "icon" : {
-                "config" : {
-                  "label" : "Icon",
-                  "placeholder" : "",
-                  "default_value" : "Code",
-                  "options" : [ "Code", "Cpu", "Clock" ]
+            "repeat": {
+              "icon": {
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "",
+                  "options": [
+                    "Code",
+                    "Cpu",
+                    "Clock"
+                  ]
                 },
-                "type" : "Select"
+                "type": "Select"
               },
-              "copy" : {
-                "config" : {
-                  "label" : "Copy",
-                  "placeholder" : "",
-                  "allowTargetBlank" : true,
-                  "multi" : "paragraph, strong, em, hyperlink, list-item, o-list-item",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "copy": {
+                "config": {
+                  "label": "Copy",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 },
-                "type" : "StructuredText"
+                "type": "StructuredText"
               }
             }
           },
-          "testimonials" : {
-            "type" : "Slice",
-            "fieldset" : "Testimonials Cards",
-            "description" : "A card list that displays quotes and its authors",
-            "icon" : "format_quote",
-            "display" : "grid",
-            "non-repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-                  "label" : "Title",
-                  "placeholder" : "Testimonials Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+          "testimonials": {
+            "type": "Slice",
+            "fieldset": "Testimonials Cards",
+            "description": "A card list that displays quotes and its authors",
+            "icon": "format_quote",
+            "display": "grid",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+                  "label": "Title",
+                  "placeholder": "Testimonials Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_100",
-                  "label" : "Background color"
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Background color"
                 }
               },
-              "color" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_900",
-                  "label" : "Text color"
+              "color": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Text color"
                 }
               },
-              "testimonialBackground" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_100",
-                  "label" : "Testimonial Background color"
+              "testimonialBackground": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Testimonial Background color"
                 }
               },
-              "testimonialColor" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_900",
-                  "label" : "Testimonial Text color"
+              "testimonialColor": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "ui_700",
+                    "ui_900",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500",
+                    "blue_700",
+                    "blue_900"
+                  ],
+                  "label": "Testimonial Text color"
                 }
               },
-              "skew" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "none", "right", "left" ],
-                  "default_value" : "none",
-                  "label" : "Skew"
+              "skew": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "none",
+                    "right",
+                    "left"
+                  ],
+                  "label": "Skew"
                 }
               }
             },
-            "repeat" : {
-              "picture" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : {
-                    "width" : 48,
-                    "height" : 48
+            "repeat": {
+              "picture": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 48,
+                    "height": 48
                   },
-                  "thumbnails" : [ ],
-                  "label" : "Author Picture"
+                  "thumbnails": [],
+                  "label": "Author Picture"
                 }
               },
-              "author" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Author Name",
-                  "placeholder" : "Jhon Smith"
+              "author": {
+                "type": "Text",
+                "config": {
+                  "label": "Author Name",
+                  "placeholder": "Jhon Smith"
                 }
               },
-              "titleAndLocation" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Title and Location",
-                  "placeholder" : "Landlord in Chicago, Illinois"
+              "titleAndLocation": {
+                "type": "Text",
+                "config": {
+                  "label": "Title and Location",
+                  "placeholder": "Landlord in Chicago, Illinois"
                 }
               },
-              "quote" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, rtl",
-                  "label" : "Quote",
-                  "placeholder" : "Lorem ipsum sit dolor amet",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "quote": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,rtl",
+                  "label": "Quote",
+                  "placeholder": "Lorem ipsum sit dolor amet",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               }
             }
           },
-          "testimonials_carousel" : {
-            "type" : "Slice",
-            "fieldset" : "Testimonials Carousel",
-            "description" : "A carousel that displays quotes and its authors",
-            "icon" : "format_quote",
-            "display" : "grid",
-            "non-repeat" : {
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-                  "label" : "Title",
-                  "placeholder" : "Testimonials Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+          "testimonials_carousel": {
+            "type": "Slice",
+            "fieldset": "Testimonials Carousel",
+            "description": "A carousel that displays quotes and its authors",
+            "icon": "format_quote",
+            "display": "grid",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+                  "label": "Title",
+                  "placeholder": "Testimonials Title",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               },
-              "background" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
-                  "default_value" : "ui_100",
-                  "label" : "Background color"
+              "background": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500"
+                  ],
+                  "label": "Background color"
                 }
               },
-              "color" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_900", "ui_700", "ui_500", "ui_300", "ui_100" ],
-                  "default_value" : "ui_900",
-                  "label" : "Text color"
+              "color": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_900",
+                    "ui_700",
+                    "ui_500",
+                    "ui_300",
+                    "ui_100"
+                  ],
+                  "label": "Text color"
                 }
               },
-              "titleBackground" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "ui_100", "ui_300", "ui_500", "blue_100", "blue_300", "blue_500" ],
-                  "default_value" : "blue_100",
-                  "label" : "Slice Title Background color"
+              "titleBackground": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "ui_100",
+                    "ui_300",
+                    "ui_500",
+                    "blue_100",
+                    "blue_300",
+                    "blue_500"
+                  ],
+                  "label": "Slice Title Background color"
                 }
               },
-              "orientation" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "left", "right" ],
-                  "default_value" : "right",
-                  "label" : "Testimonials Orientation"
+              "orientation": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "left",
+                    "right"
+                  ],
+                  "label": "Testimonials Orientation"
                 }
               },
-              "testimonialInterval" : {
-                "type" : "Number",
-                "config" : {
-                  "label" : "Carousel step interval (seconds)",
-                  "min" : 0,
-                  "max" : 999
+              "testimonialInterval": {
+                "type": "Number",
+                "config": {
+                  "label": "Carousel step interval (seconds)",
+                  "min": 0,
+                  "max": 999
                 }
               },
-              "skew" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "none", "right", "left" ],
-                  "default_value" : "none",
-                  "label" : "Skew"
+              "skew": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "none",
+                    "right",
+                    "left"
+                  ],
+                  "label": "Skew"
                 }
               }
             },
-            "repeat" : {
-              "picture" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : {
-                    "width" : 48,
-                    "height" : 48
+            "repeat": {
+              "picture": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 48,
+                    "height": 48
                   },
-                  "thumbnails" : [ ],
-                  "label" : "Author Picture"
+                  "thumbnails": [],
+                  "label": "Author Picture"
                 }
               },
-              "author" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Author Name",
-                  "placeholder" : "Jhon Smith"
+              "author": {
+                "type": "Text",
+                "config": {
+                  "label": "Author Name",
+                  "placeholder": "Jhon Smith"
                 }
               },
-              "titleAndLocation" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Title and Location",
-                  "placeholder" : "Landlord in Chicago, Illinois"
+              "titleAndLocation": {
+                "type": "Text",
+                "config": {
+                  "label": "Title and Location",
+                  "placeholder": "Landlord in Chicago, Illinois"
                 }
               },
-              "additionalInfo" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Additional info from the author",
-                  "placeholder" : "4 Units"
+              "additionalInfo": {
+                "type": "Text",
+                "config": {
+                  "label": "Additional info from the author",
+                  "placeholder": "4 Units"
                 }
               },
-              "quote" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, rtl",
-                  "label" : "Quote",
-                  "placeholder" : "Lorem ipsum sit dolor amet",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+              "quote": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,rtl",
+                  "label": "Quote",
+                  "placeholder": "Lorem ipsum sit dolor amet",
+                  "labels": [
+                    "hero",
+                    "headline",
+                    "title",
+                    "subtitle",
+                    "body__emphasis",
+                    "body",
+                    "small"
+                  ]
                 }
               }
             }
@@ -1354,77 +1833,77 @@
       }
     }
   },
-  "SEO Metadata" : {
-    "meta_title" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Meta Title",
-        "placeholder" : "My title for Search Engine"
+  "SEO Metadata": {
+    "meta_title": {
+      "type": "Text",
+      "config": {
+        "label": "Meta Title",
+        "placeholder": "My title for Search Engine"
       }
     },
-    "meta_description" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Meta Description",
-        "placeholder" : "The description that will appear in search engine"
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta Description",
+        "placeholder": "The description that will appear in search engine"
       }
     },
-    "meta_keywords" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Meta keywords"
+    "meta_keywords": {
+      "type": "Text",
+      "config": {
+        "label": "Meta keywords"
       }
     },
-    "meta_image" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "Meta Image"
+    "meta_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Meta Image"
       }
     }
   },
-  "URL params" : {
-    "query_channel" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Channel (sets the channel and keyword cookies)",
-        "placeholder" : "E.g. - email"
+  "URL params": {
+    "query_channel": {
+      "type": "Text",
+      "config": {
+        "label": "Channel (sets the channel and keyword cookies)",
+        "placeholder": "E.g. - email"
       }
     },
-    "query_content" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Content (sets the content cookie)",
-        "placeholder" : "E.g. - credit_checks"
+    "query_content": {
+      "type": "Text",
+      "config": {
+        "label": "Content (sets the content cookie)",
+        "placeholder": "E.g. - credit_checks"
       }
     },
-    "query_signup_page" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Signup page (sets signup_page cookie)",
-        "placeholder" : "E.g. - listings"
+    "query_signup_page": {
+      "type": "Text",
+      "config": {
+        "label": "Signup page (sets signup_page cookie)",
+        "placeholder": "E.g. - listings"
       }
     },
-    "query_campaign" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Campaign (sets campaign cookie)",
-        "placeholder" : "E.g. - tenant_feature_landing"
+    "query_campaign": {
+      "type": "Text",
+      "config": {
+        "label": "Campaign (sets campaign cookie)",
+        "placeholder": "E.g. - tenant_feature_landing"
       }
     },
-    "query_source" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Source (sets source cookie)",
-        "placeholder" : "E.g. - biggerpockets"
+    "query_source": {
+      "type": "Text",
+      "config": {
+        "label": "Source (sets source cookie)",
+        "placeholder": "E.g. - biggerpockets"
       }
     },
-    "query_medium" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Medium (sets medium cookie)",
-        "placeholder" : "E.g. - podcast"
+    "query_medium": {
+      "type": "Text",
+      "config": {
+        "label": "Medium (sets medium cookie)",
+        "placeholder": "E.g. - podcast"
       }
     }
   }
