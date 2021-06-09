@@ -1,6 +1,9 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { Box, Col, Grid } from "@rent_avail/layout"
+import { Box, Col, Flex, Grid } from "@rent_avail/layout"
+import { ChevronLeft, ChevronRight } from "react-feather"
+
+import ControlChevron from "components/elements/ControlChevron"
 import Video from "components/elements/Video"
 import { useInViewAnimation } from "utils/animation"
 
@@ -12,6 +15,7 @@ function HowItWorksSection({
   flip,
   animationPreset,
   mb,
+  carouselControl,
 }) {
   const copyColumn = ["span 12", flip ? "7 / span 6" : "1 / span 6"]
   const imageColumn = ["span 12", flip ? "1 / span 6" : "7 / span 6"]
@@ -35,9 +39,33 @@ function HowItWorksSection({
         {copy}
       </Col>
       <Col as={motion.aside} {...animation?.item} gridColumn={imageColumn}>
-        {!!image && <Box maxWidth="100%">{image}</Box>}
-        {!!video?.url && <Video src={video.url} width="100%" />}
-        {!!embed && <Box>{embed}</Box>}
+        <Flex sx={{ alignItems: "center" }}>
+          <ControlChevron
+            as={ChevronLeft}
+            visibility={carouselControl?.shouldShow ? "visible" : "hidden"}
+            enabled={carouselControl?.leftEnabled}
+            onClick={carouselControl?.clickLeft}
+            sx={{
+              width: "4rem",
+              strokeWidth: "3",
+              color: carouselControl?.color
+            }}
+          />
+          {!!image && <Box maxWidth="100%">{image}</Box>}
+          {!!video?.url && <Video src={video.url} width="100%" />}
+          {!!embed && <Box>{embed}</Box>}
+          <ControlChevron
+            as={ChevronRight}
+            visibility={carouselControl?.shouldShow ? "visible" : "hidden"}
+            enabled={carouselControl?.rightEnabled}
+            onClick={carouselControl?.clickRight}
+            sx={{
+              width: "4rem",
+              strokeWidth: "3",
+              color: carouselControl?.color
+            }}
+          />
+        </Flex>
       </Col>
     </Grid>
   )

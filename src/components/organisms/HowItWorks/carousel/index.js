@@ -1,4 +1,4 @@
-import React, { cloneElement } from "react"
+import React, { cloneElement, useMemo } from "react"
 import { motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
 import { Box, Container } from "@rent_avail/layout"
@@ -23,12 +23,16 @@ function HowItWorksCarousel({
   const [presets, intersectionView] = useInViewAnimation({ threshold: 0.05 })
   const animation = presets[animationPreset]
 
-  const [activeItem, visibleItems, activeIndex] = useCarousel(sections, {
+  const [activeItem, visibleItems, activeIndex, navigateToItem] = useCarousel(sections, {
     visibleItemsLenght: sections.length,
     interval: stepInterval,
   })
 
   const [_, isDark] = bg ? analyzeColor(bg) : []
+  const colorScheme = useMemo(
+    () => isDark ? ["blue_300", "ui_100"] : ["blue_100", "blue_500"],
+    [isDark],
+  )
 
   return (
     <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
@@ -59,6 +63,14 @@ function HowItWorksCarousel({
             {...activeItem}
             flip={alternate(sections.indexOf(activeItem))}
             animationPreset={animationPreset}
+            carouselControl={{
+              shouldShow: true,
+              color: colorScheme[1],
+              leftEnabled: activeIndex > 0,
+              clickLeft: () => {navigateToItem(-1)},
+              rightEnabled: activeIndex < sections.length - 1,
+              clickRight: () => {navigateToItem(1)},
+            }}
           />
         )}
         <Box as={motion.aside} {...animation?.item}>
@@ -69,11 +81,7 @@ function HowItWorksCarousel({
             .map((section) => (
               <Box
                 sx={{
-                  bg: (isDark
-                    ? ["blue_300", "ui_100"]
-                    : ["blue_100", "blue_500"])[
-                    +(sections[activeIndex] === section)
-                  ],
+                  bg: colorScheme[+(sections[activeIndex] === section)],
                   width: "1.25rem",
                   height: "1.25rem",
                   m: 1,
