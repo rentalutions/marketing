@@ -22,15 +22,18 @@ function HowItWorksCarousel({
   const [presets, intersectionView] = useInViewAnimation({ threshold: 0.05 })
   const animation = presets[animationPreset]
 
-  const [activeItem, visibleItems, activeIndex, navigateToItem] = useCarousel(sections, {
-    visibleItemsLenght: sections.length,
-    interval: stepInterval,
-  })
+  const [activeItem, visibleItems, activeIndex, navigateToItem] = useCarousel(
+    sections,
+    {
+      visibleItemsLenght: sections.length,
+      interval: stepInterval,
+    }
+  )
 
   const [_, isDark] = bg ? analyzeColor(bg) : []
   const colorScheme = useMemo(
-    () => isDark ? ["blue_300", "ui_100"] : ["blue_100", "blue_500"],
-    [isDark],
+    () => (isDark ? ["blue_300", "ui_100"] : ["blue_100", "blue_500"]),
+    [isDark]
   )
 
   return (
@@ -66,9 +69,13 @@ function HowItWorksCarousel({
               shouldShow: true,
               color: colorScheme[1],
               leftEnabled: activeIndex > 0,
-              clickLeft: () => {navigateToItem(-1)},
+              clickLeft: () => {
+                navigateToItem(-1)
+              },
               rightEnabled: activeIndex < sections.length - 1,
-              clickRight: () => {navigateToItem(1)},
+              clickRight: () => {
+                navigateToItem(1)
+              },
             }}
           />
         )}

@@ -58,12 +58,15 @@ function useCarousel(
     [visibleItemsLenght, activeIndex, visibleItem]
   )
 
-  const navigateToItem = useCallback((indexFromActive) => {
-    setActiveIndex(getSafeIndex(activeIndex+indexFromActive))
-    if (disableIntervalOnSelect) {
-      setCurrentInterval(0)
-    }
-  }, [setActiveIndex, getSafeIndex, activeIndex])
+  const navigateToItem = useCallback(
+    (indexFromActive) => {
+      setActiveIndex(getSafeIndex(activeIndex + indexFromActive))
+      if (disableIntervalOnSelect) {
+        setCurrentInterval(0)
+      }
+    },
+    [setActiveIndex, getSafeIndex, activeIndex]
+  )
 
   return [activeItem, visibleItems, activeIndex, navigateToItem]
 }

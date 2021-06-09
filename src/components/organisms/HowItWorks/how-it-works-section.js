@@ -48,7 +48,7 @@ function HowItWorksSection({
             sx={{
               width: "4rem",
               strokeWidth: "3",
-              color: carouselControl?.color
+              color: carouselControl?.color,
             }}
           />
           {!!image && <Box maxWidth="100%">{image}</Box>}
@@ -58,11 +58,13 @@ function HowItWorksSection({
             as={ChevronRight}
             visibility={carouselControl?.shouldShow ? "visible" : "hidden"}
             enabled={carouselControl?.rightEnabled}
-            onClick={carouselControl?.rightEnabled && carouselControl?.clickRight}
+            onClick={
+              carouselControl?.rightEnabled && carouselControl?.clickRight
+            }
             sx={{
               width: "4rem",
               strokeWidth: "3",
-              color: carouselControl?.color
+              color: carouselControl?.color,
             }}
           />
         </Flex>

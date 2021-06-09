@@ -10,10 +10,15 @@ function ControlChevron({ enabled, sx, ...props }) {
       opacity: 1,
     },
   }
-  return <Box {...props} sx={{
-    ...(enabled ? enabledStyle : disabledStyle),
-    ...sx,
-  }} />
+  return (
+    <Box
+      {...props}
+      sx={{
+        ...(enabled ? enabledStyle : disabledStyle),
+        ...sx,
+      }}
+    />
+  )
 }
 
 export default ControlChevron
