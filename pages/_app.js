@@ -5,6 +5,7 @@ import { DefaultSeo } from "next-seo"
 import { BREAKPOINTS, DEFAULT_SEO } from "config"
 import { UIDReset } from "react-uid"
 import { AnalyticsProvider } from "utils/analytics/context"
+import { LazyMotion, domAnimation } from "framer-motion"
 import dynamic from "next/dynamic"
 
 const PreviewWarning = dynamic(() =>
@@ -25,7 +26,9 @@ export default function App({ Component, pageProps }) {
         <Reset />
         {preview && <PreviewWarning />}
         <UIDReset prefix="uid_">
-          <Component {...pageProps} />
+          <LazyMotion features={domAnimation}>
+            <Component {...pageProps} />
+          </LazyMotion>
         </UIDReset>
       </AnalyticsProvider>
     </ThemeProvider>
