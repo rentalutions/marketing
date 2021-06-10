@@ -49,12 +49,25 @@ function useCarousel(
     [getSafeIndex, activeIndex, setActiveIndex, setCurrentInterval]
   )
 
-  const { item: activeItem } = useMemo(visibleItem, [visibleItem])
-  const visibleItems = useMemo(
+  const { activeItem, visibleItems } = useMemo(
     () =>
       Array(visibleItemsLenght)
-        .fill(activeIndex - Math.floor(visibleItemsLenght / 2))
-        .map((v, i) => visibleItem(v + i)),
+        .fill(activeIndex - Math.floor(visibleItemsLenght / 2)) // -2 -2 -2 -2 -2
+        .reduce(
+          (returnObj, lowerVisibleIdx, fromLowerIdx) => {
+            const fromActiveIndex = lowerVisibleIdx + fromLowerIdx // -2 -1 0 1 2
+            const currentItem = visibleItem(fromActiveIndex)
+            returnObj.visibleItems.push(currentItem)
+            console.log(currentItem.level !== 0, currentItem)
+            return currentItem.level !== 0
+              ? returnObj
+              : {
+                  activeItem: currentItem.item,
+                  visibleItems: returnObj.visibleItems,
+                }
+          },
+          { activeItem: undefined, visibleItems: [] }
+        ),
     [visibleItemsLenght, activeIndex, visibleItem]
   )
 

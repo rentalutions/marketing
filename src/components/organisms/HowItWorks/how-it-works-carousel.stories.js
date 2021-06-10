@@ -9,7 +9,7 @@ const basicSections = [
     copy: (
       <React.Fragment>
         <Heading as="h3" mb="2rem">
-          Look at our amazing feature.
+          Lorem ipsum dolor sit amet
         </Heading>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
@@ -25,13 +25,14 @@ const basicSections = [
     copy: (
       <React.Fragment>
         <Heading as="h3" mb="2rem">
-          Look at our amazing feature.
+          Suspendisse ut diam diam
         </Heading>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          magnam odio architecto sed dolorem dolores sit, laboriosam debitis
-          saepe quo doloribus. Ab, odio corrupti! Ratione nulla dolor id
-          veritatis tempora.
+          Sed at consequat dolor. Integer auctor, nulla nec ullamcorper
+          sagittis, eros nulla pellentesque eros, ut bibendum turpis nulla sit
+          amet nulla. Cras luctus turpis at tincidunt eleifend. Duis laoreet
+          pulvinar nisi quis ultricies. Pellentesque aliquam elementum urna
+          vitae rhoncus.
         </p>
       </React.Fragment>
     ),
@@ -41,13 +42,13 @@ const basicSections = [
     copy: (
       <React.Fragment>
         <Heading as="h3" mb="2rem">
-          Look at our amazing feature.
+          Quisque mattis porttitor purus
         </Heading>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          magnam odio architecto sed dolorem dolores sit, laboriosam debitis
-          saepe quo doloribus. Ab, odio corrupti! Ratione nulla dolor id
-          veritatis tempora.
+          Nulla sed pharetra velit. Praesent in pretium erat. Integer a urna
+          efficitur, feugiat orci et, ultrices eros. Quisque tempus vulputate
+          nisi non rhoncus. Mauris facilisis vitae urna eu mollis. Quisque
+          venenatis ut leo et malesuada.
         </p>
       </React.Fragment>
     ),
@@ -57,13 +58,13 @@ const basicSections = [
     copy: (
       <React.Fragment>
         <Heading as="h3" mb="2rem">
-          Look at our amazing feature.
+          Nullam justo est
         </Heading>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          magnam odio architecto sed dolorem dolores sit, laboriosam debitis
-          saepe quo doloribus. Ab, odio corrupti! Ratione nulla dolor id
-          veritatis tempora.
+          Proin ut neque id purus luctus placerat et sed tortor. Donec vitae
+          eros sodales, euismod nibh sed, consequat ante. Integer tempus
+          pharetra ligula, a ultrices nibh congue ut. Praesent laoreet mattis
+          turpis in tempor. Donec auctor massa sed hendrerit venenatis.
         </p>
       </React.Fragment>
     ),
@@ -73,13 +74,14 @@ const basicSections = [
     copy: (
       <React.Fragment>
         <Heading as="h3" mb="2rem">
-          Look at our amazing feature.
+          Maecenas quis venenatis erat
         </Heading>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          magnam odio architecto sed dolorem dolores sit, laboriosam debitis
-          saepe quo doloribus. Ab, odio corrupti! Ratione nulla dolor id
-          veritatis tempora.
+          Curabitur volutpat tempus nisl, quis facilisis quam cursus nec. In
+          malesuada ultrices odio efficitur egestas. Duis ac placerat nisl. Ut
+          magna ante, aliquet non egestas et, pretium vel orci. Integer tortor
+          tortor, dictum nec arcu at, tempor lacinia leo. Vivamus faucibus
+          mauris metus. Integer et mi odio.
         </p>
       </React.Fragment>
     ),
@@ -89,13 +91,12 @@ const basicSections = [
     copy: (
       <React.Fragment>
         <Heading as="h3" mb="2rem">
-          Look at our amazing feature.
+          Suspendisse potenti
         </Heading>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          magnam odio architecto sed dolorem dolores sit, laboriosam debitis
-          saepe quo doloribus. Ab, odio corrupti! Ratione nulla dolor id
-          veritatis tempora.
+          Quisque quis libero consequat, pharetra nibh quis, interdum neque.
+          Vivamus eget ipsum nec nunc ultrices fringilla vulputate eu quam.
+          Pellentesque imperdiet lobortis purus
         </p>
       </React.Fragment>
     ),
