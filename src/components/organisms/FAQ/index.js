@@ -67,11 +67,6 @@ function FAQ({
             <Box mb="1rem">{description}</Box>
           </motion.aside>
         )}
-        {outro && (
-          <motion.aside {...animation?.item}>
-            <Box mb="2rem">{outro}</Box>
-          </motion.aside>
-        )}
         <Stack>
           {questions.map(({ question, answer: Answer }, idx) => {
             const isOpen = idx === openIdx
@@ -108,6 +103,11 @@ function FAQ({
             )
           })}
         </Stack>
+        {outro && (
+          <motion.aside {...animation?.item}>
+            <Box mb="2rem">{outro}</Box>
+          </motion.aside>
+        )}
       </Container>
     </Box>
   )
