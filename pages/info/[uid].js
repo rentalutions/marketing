@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from "react"
+import React, { useEffect, useMemo } from "react"
 import { prismicClient } from "src/prismic.config"
 import { NextSeo } from "next-seo"
 import AvailFooter from "components/partials/AvailFooter"
@@ -7,12 +7,14 @@ import { createGlobalStyle, useTheme } from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
 import { UrlResolverProvider } from "components/partials/UrlResolver"
 import { useRouter } from "next/router"
-import DefaultErrorPage from "next/error"
 import Head from "next/head"
 import { theme } from "@rent_avail/base"
 import { Box, Flex } from "@rent_avail/layout"
 import PageNavBar from "components/partials/PageNavBar"
 import { useAnalytics } from "utils/analytics"
+import dynamic from "next/dynamic"
+
+const DefaultErrorPage = dynamic(() => import("next/error"))
 
 export const getStaticProps = async ({
   preview = null,

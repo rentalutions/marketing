@@ -1,8 +1,23 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
 import { Box, Col, Container, Flex, Grid } from "@rent_avail/layout"
-import Icon from "components/elements/Icon"
+import { Clock, Code, Cpu } from "react-feather"
+
+const ShowcaseIcon = ({ name, ...props }) => {
+  const IconComponent = useMemo(() => {
+    switch (name) {
+      case "Cpu":
+        return Cpu
+      case "Clock":
+        return Clock
+      default:
+      case "Code":
+        return Code
+    }
+  }, [name])
+  return <IconComponent {...props} />
+}
 
 const Showcase = ({
   copy,
@@ -76,7 +91,7 @@ const Showcase = ({
                   }}
                   onClick={() => setActiveCase(idx)}
                 >
-                  <Icon name={icon} width="48px" height="48px" />
+                  <ShowcaseIcon name={icon} width="48px" height="48px" />
                 </Box>
               ))}
             </Flex>

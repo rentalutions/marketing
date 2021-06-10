@@ -7,7 +7,6 @@ const AvailRdcNavBar = dynamic(() => import("./AvailRdcNavBar"))
 export default function NavBar({
   background = "ui_100",
   containerWidth = "96rem",
-  animationPreset = "fadeIn",
   type = "Avail",
   sticky,
   primaryButton,
@@ -42,7 +41,6 @@ export default function NavBar({
           primaryLink={primaryLink}
           secondaryLink={secondaryLink}
           sticky={sticky}
-          animationPreset={animationPreset}
           availLogo={availLogo}
           rdcLogo={rdcLogo}
           {...props}
@@ -58,7 +56,6 @@ export default function NavBar({
           primaryLink={primaryLink}
           secondaryLink={secondaryLink}
           sticky={sticky}
-          animationPreset={animationPreset}
           availLogo={availLogo}
           {...props}
         />
