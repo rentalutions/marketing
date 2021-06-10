@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
 import { Box, Col, Container, Flex, Grid } from "@rent_avail/layout"
 import { Clock, Code, Cpu } from "react-feather"
