@@ -365,7 +365,13 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
               rel="noreferrer"
               href="https://www.houselogic.com/?cid=eo_rl_rcom_ftr"
             >
-              <img alt="Houselogic" src="/houselogic_badge.svg" />
+              <Image
+                alt="Houselogic Logo"
+                src="/houselogic_badge.svg"
+                width={204}
+                height={60}
+                title="Houselogic"
+              />
             </Box>
             <Box
               as={motion.a}
@@ -374,7 +380,13 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
               rel="noreferrer"
               href="https://www.realtor.com/"
             >
-              <img alt="Realtor.com" src="/realtor_badge.svg" />
+              <Image
+                alt="Realtor.com Logo"
+                src="/realtor_badge.svg"
+                width={204}
+                height={60}
+                title="Realtor.com"
+              />
             </Box>
           </Box>
           <Box>
