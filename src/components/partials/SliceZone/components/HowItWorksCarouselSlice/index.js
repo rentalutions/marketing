@@ -24,7 +24,7 @@ const HowItWorksCarouselSlice = ({ slice }) => {
         skew={skew}
         containerWidth={CONTAINER_WIDTHS}
         py="5rem"
-        alternate={flip ? (idx) => idx % 2 === 0 : undefined}
+        alternate={() => flip}
       />
     </React.Fragment>
   )

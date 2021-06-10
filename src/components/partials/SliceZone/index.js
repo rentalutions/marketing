@@ -16,7 +16,9 @@ const HeroSlice = dynamic(() => import("./components/HeroSlice"))
 const HeroWithEmailCaptureSlice = dynamic(() =>
   import("./components/HeroWithEmailCaptureSlice")
 )
-const HowItWorksSlice = dynamic(() => import("./components/HowItWorksSlice"))
+const HowItWorksSectionsSlice = dynamic(() =>
+  import("./components/HowItWorksSectionsSlice")
+)
 const HowItWorksCarouselSlice = dynamic(() =>
   import("./components/HowItWorksCarouselSlice")
 )
@@ -54,7 +56,10 @@ const SliceZone = ({ slices }) => {
           <HeroWithEmailCaptureSlice key={key} slice={slice} sliceIndex={idx} />
         )
       case "how_it_works":
-        return <HowItWorksSlice key={key} slice={slice} sliceIndex={idx} />
+      case "how_it_works_sections":
+        return (
+          <HowItWorksSectionsSlice key={key} slice={slice} sliceIndex={idx} />
+        )
       case "how_it_works_carousel":
         return (
           <HowItWorksCarouselSlice key={key} slice={slice} sliceIndex={idx} />

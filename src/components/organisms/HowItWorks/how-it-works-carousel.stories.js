@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Heading } from "@rent_avail/typography"
-import { HowItWorksCarousel } from "./index"
+import { HowItWorksCarousel } from "./how-it-works-carousel"
 
 export default { title: "Components/How It Works (Carousel)" }
 
@@ -121,7 +121,7 @@ export function WithFlip() {
     <HowItWorksCarousel
       mt="4rem"
       eyebrow="Learn more."
-      alternate={(idx) => idx % 2 === 0}
+      alternate={() => true}
       bg="blue_500"
       color="blue_100"
       p="0 0 4rem"

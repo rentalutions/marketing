@@ -1,2 +1,2 @@
-export { HowItWorks } from "./slices"
-export { HowItWorksCarousel } from "./carousel"
+export { HowItWorksSections } from "./how-it-works-sections"
+export { HowItWorksCarousel } from "./how-it-works-carousel"

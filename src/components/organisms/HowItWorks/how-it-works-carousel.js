@@ -7,12 +7,13 @@ import SkewBox from "components/molecules/SkewBox"
 import { useCarousel } from "components/molecules/Carousel/use-carousel"
 import { analyzeColor } from "utils/color-scheme"
 import { STYLING } from "config"
-import { HowItWorksSection } from "../how-it-works-section"
+import { HowItWorksSection } from "./how-it-works-section"
 
 function HowItWorksCarousel({
   title,
   eyebrow,
   sections = [],
+  alternate = () => false,
   stepInterval,
   containerWidth,
   animationPreset = "fadeIn",
@@ -63,7 +64,7 @@ function HowItWorksCarousel({
         {activeItem && (
           <HowItWorksSection
             {...activeItem}
-            flip={false}
+            flip={alternate()}
             animationPreset={animationPreset}
             carouselControl={{
               shouldShow: true,

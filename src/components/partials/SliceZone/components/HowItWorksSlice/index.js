@@ -1,11 +1,11 @@
 import React from "react"
 import Anchor from "components/elements/Anchor"
-import { HowItWorks } from "components/organisms/HowItWorks"
+import { HowItWorksSections } from "components/organisms/HowItWorks"
 import { CONTAINER_WIDTHS } from "config"
 import RichText from "../RichText"
 import howItWorksSliceSection from "./how-it-works-slice-section"
 
-const HowItWorksSlice = ({ slice }) => {
+const HowItWorksSectionsSlice = ({ slice }) => {
   const {
     primary: { title, background, flip, hash },
   } = slice
@@ -15,7 +15,7 @@ const HowItWorksSlice = ({ slice }) => {
   return (
     <React.Fragment>
       {hash && <Anchor hash={hash} />}
-      <HowItWorks
+      <HowItWorksSections
         title={<RichText render={title} />}
         sections={sections}
         bg={background}
@@ -28,4 +28,4 @@ const HowItWorksSlice = ({ slice }) => {
   )
 }
 
-export default HowItWorksSlice
+export default HowItWorksSectionsSlice

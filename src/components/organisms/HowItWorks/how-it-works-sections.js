@@ -4,9 +4,9 @@ import { useInViewAnimation } from "utils/animation"
 import { Box, Container } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { STYLING } from "config"
-import { HowItWorksSection } from "../how-it-works-section"
+import { HowItWorksSection } from "./how-it-works-section"
 
-function HowItWorks({
+function HowItWorksSections({
   title,
   eyebrow,
   sections = [],
@@ -58,4 +58,4 @@ function HowItWorks({
   )
 }
 
-export { HowItWorks }
+export { HowItWorksSections }
