@@ -45,10 +45,10 @@ function PlansPrices({
         as={motion.aside}
         {...animation?.container}
         ref={intersectionView}
-        maxWidth={containerWidth}
+        maxWidth={["unset", "unset", "75%", "75%", "54rem"]}
         py="6rem"
       >
-        <Box textAlign="center">
+        <Box textAlign="left">
           {title && (
             <motion.aside {...animation?.item}>
               {cloneElement(title, {
@@ -72,10 +72,11 @@ function PlansPrices({
             </motion.aside>
           )}
           <PlansGrid direction={direction} gap="2rem" my="2rem">
-            {plans.map((plan) => (
+            {plans.map((plan, index) => (
               <PlanCard
                 direction={direction}
                 animationPreset={animationPreset}
+                shadow={index === 0 ? true : false}
                 key={plan.title}
                 {...plan}
               />

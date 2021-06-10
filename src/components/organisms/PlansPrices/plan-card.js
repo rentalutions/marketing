@@ -5,6 +5,7 @@ import React, { cloneElement } from "react"
 import { Text } from "@rent_avail/typography"
 import { useInViewAnimation } from "utils/animation"
 import styled from "styled-components"
+import { boxShadow, variant } from "styled-system"
 import {
   Award
 } from "react-feather"
@@ -46,6 +47,7 @@ export default function PlanCard({
   specialOffer,
   color,
   direction,
+  shadow,
   animationPreset = "fadeIn",
 }) {
   const [presets, intersectionView] = useInViewAnimation({
@@ -60,6 +62,7 @@ export default function PlanCard({
       {...animation?.container}
       flex="auto"
       bg={background}
+      sx={{ boxShadow : shadow ? 2 : 'none' }}
       color={color}
       border="none"
       ref={intersectionView}
@@ -73,7 +76,7 @@ export default function PlanCard({
         <Flex
           flex="1"
           flexDirection="column"
-          alignItems="center"
+          alignItems="flex-start"
           sx={{
             gap: "1rem",
           }}
