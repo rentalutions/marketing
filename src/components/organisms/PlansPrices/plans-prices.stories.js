@@ -43,7 +43,7 @@ const plans = [
     subtext: "Subtext",
     description: "Description",
     features: Features,
-    specialOffer: true,
+    specialOffer: "Special Offer",
   },
   {
     title: "Unlimited",
@@ -51,11 +51,9 @@ const plans = [
     subtext: "Subtext",
     description: "Description",
     features: Features,
-    specialOffer: false,
   },
   {
     title: "Unlimited Plus",
-    specialOffer: false,
     price: "$9.99",
     subtext: "Subtext",
     description: "Description",
