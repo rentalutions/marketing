@@ -96,7 +96,15 @@ export function Default() {
           consectetur adipisci minus dicta.
         </Text>
       }
-      outro={<Text>Outro</Text>}
+      outro={
+        <Text>
+          <em>Still have questions?</em> Visit our{" "}
+          <a href="#" className="link">
+            FAQ page
+          </a>{" "}
+          for more helpful information.
+        </Text>
+      }
       questions={questions}
       py="4rem"
     />
