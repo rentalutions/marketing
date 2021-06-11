@@ -24,6 +24,7 @@ const Accordion = styled(Box)(
 
 function FAQ({
   questions,
+  outro,
   eyebrow,
   title,
   description,
@@ -63,7 +64,7 @@ function FAQ({
         )}
         {description && (
           <motion.aside {...animation?.item}>
-            <Box mb="2rem">{description}</Box>
+            <Box mb="1rem">{description}</Box>
           </motion.aside>
         )}
         <Stack>
@@ -102,6 +103,11 @@ function FAQ({
             )
           })}
         </Stack>
+        {outro && (
+          <motion.aside {...animation?.item}>
+            <Box mb="2rem">{outro}</Box>
+          </motion.aside>
+        )}
       </Container>
     </Box>
   )
