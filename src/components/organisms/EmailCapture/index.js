@@ -15,6 +15,7 @@ function EmailCapture({
   queryParamName,
   optInContext,
   optInCopy,
+  outro,
   onSubmit,
   animationPreset = "fadeIn",
 }) {
@@ -42,6 +43,7 @@ function EmailCapture({
           optInContext={optInContext}
           optInCopy={optInCopy}
           onSubmit={onSubmit}
+          outro={outro}
         />
       </motion.aside>
     </Box>

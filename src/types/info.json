@@ -339,6 +339,15 @@
                   "placeholder" : "Opt In Copy",
                   "labels" : [ "body__emphasis", "body", "small" ]
                 }
+              },
+              "outro": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Outro",
+                  "placeholder": "Outro"
+                }
               }
             },
             "repeat" : { }
@@ -677,6 +686,15 @@
                   "label" : "Opt In Copy (required to show opt in)",
                   "placeholder" : "Opt In Copy",
                   "labels" : [ "body__emphasis", "body", "small" ]
+                }
+              },
+              "emailCaptureOutro": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Email Capture Outro",
+                  "placeholder": "Email Capture Outro"
                 }
               }
             },
