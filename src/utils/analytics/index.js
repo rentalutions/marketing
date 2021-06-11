@@ -43,12 +43,17 @@ export function useAnalytics(defaultParams) {
 
   const track = useCallback(
     async (eventName, properties) => {
-      const { uuid } = analytics
+      const { uuid, pageUid, pageName } = analytics
       if (segmentRef.current && uuid) {
         const segment = segmentRef.current
         return new Promise((resolve, reject) => {
           try {
-            segment.track(eventName, properties, { userId: uuid }, resolve)
+            segment.track(
+              eventName,
+              { "Page UID": pageUid, "Page Name": pageName, ...properties },
+              { userId: uuid },
+              resolve
+            )
           } catch (e) {
             console.error(e)
             reject(e)
