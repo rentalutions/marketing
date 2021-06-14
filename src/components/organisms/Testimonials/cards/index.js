@@ -25,17 +25,19 @@ function TestimonialsCards({
   return (
     <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
       <Container ref={containerRef} maxWidth={containerWidth}>
-        <Box
-          as={motion.aside}
-          {...animation?.item}
-          ref={animationIntersectionView}
-        >
+        <Box ref={animationIntersectionView}>
           {title &&
             cloneElement(title, {
               sx: { ...STYLING.headline, ...title?.props?.sx },
               mb: "2rem",
+              as: motion.aside,
+              ...animation?.item,
             })}
-          <Slider containerRef={containerRef}>
+          <Slider
+            as={motion.div}
+            {...animation?.item}
+            containerRef={containerRef}
+          >
             {testimonials?.map(
               ({ picture, author, titleAndLocation, quote: Quote }) => (
                 <Card

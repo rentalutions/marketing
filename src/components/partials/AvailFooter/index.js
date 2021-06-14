@@ -333,24 +333,66 @@ const AvailFooter = () => {
           p="2.667rem 2rem"
           fontSize="1.334rem"
         >
-          <Flex mb="1rem">
-            <Text
-              color="blue_100"
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplate: "auto / 1fr 1fr",
+              float: "right",
+              gap: "1.5rem",
+              img: {
+                width: "100%",
+              },
+            }}
+          >
+            <Box
               as="a"
-              href={urlResolver("https://www.avail.co/privacy")}
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.houselogic.com/?cid=eo_rl_rcom_ftr"
             >
-              Privacy
-            </Text>
-            <Text mx=".5rem">|</Text>
-            <Text
-              color="blue_100"
+              <Image
+                alt="Houselogic Logo"
+                src="/houselogic_badge.svg"
+                width={204}
+                height={60}
+                title="Houselogic"
+              />
+            </Box>
+            <Box
               as="a"
-              href={urlResolver("https://www.avail.co/terms")}
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.realtor.com/"
             >
-              Terms
-            </Text>
-          </Flex>
-          <Box>© 2011—{currentYear} Avail, All Rights Reserved.</Box>
+              <Image
+                alt="Realtor.com Logo"
+                src="/realtor_badge.svg"
+                width={204}
+                height={60}
+                title="Realtor.com"
+              />
+            </Box>
+          </Box>
+          <Box>
+            <Box mb="1rem" sx={{ "a,p": { display: "inline-block" } }}>
+              <Text
+                color="blue_100"
+                as="a"
+                href={urlResolver("https://www.avail.co/privacy")}
+              >
+                Privacy
+              </Text>
+              <Text mx=".5rem">|</Text>
+              <Text
+                color="blue_100"
+                as="a"
+                href={urlResolver("https://www.avail.co/terms")}
+              >
+                Terms
+              </Text>
+            </Box>
+            <Box>© 2011—{currentYear} Avail, All Rights Reserved.</Box>
+          </Box>
         </Box>
       </Box>
     </Box>

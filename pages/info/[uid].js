@@ -83,6 +83,7 @@ const Page = ({ data, uid }) => {
     background = "ui_100",
     sticky_nav_bar: navBarSticky,
     nav_bar: navBar,
+    name,
     body: slices,
   } = data
 
@@ -109,6 +110,8 @@ const Page = ({ data, uid }) => {
       utm_campaign: data.query_campaign,
       utm_source: data.query_source,
       utm_medium: data.query_medium,
+      pageName: name?.[0]?.text,
+      pageUid: `info/${uid}`,
     }
   }, [data])
   /* eslint-enable camelcase */

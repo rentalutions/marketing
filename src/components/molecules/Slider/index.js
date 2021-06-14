@@ -29,12 +29,7 @@ function Slider({
   })
 
   return (
-    <Box
-      as={motion.aside}
-      {...animation?.item}
-      ref={animationIntersectionView}
-      {...props}
-    >
+    <Box ref={animationIntersectionView} {...props}>
       <Box
         ref={scrollRef}
         sx={{
@@ -56,7 +51,7 @@ function Slider({
               marginRight: "2rem",
             },
           }}
-          forwardedAs={motion.div}
+          as={motion.div}
           {...animation?.container}
         >
           {React.Children.map(children, (child, idx) => (
@@ -74,19 +69,18 @@ function Slider({
           ))}
         </Box>
       </Box>
-      {scrollControl.shouldShow && (
-        <Box
-          sx={{
-            textAlign: "right",
-            "> *": {
-              margin: "1rem",
-            },
-          }}
-        >
-          <ControlChevron as={ChevronLeft} {...scrollControl.leftControl} />
-          <ControlChevron as={ChevronRight} {...scrollControl.rightControl} />
-        </Box>
-      )}
+      <Box
+        sx={{
+          textAlign: "right",
+          "> *": {
+            margin: "1rem",
+          },
+          visibility: scrollControl.shouldShow ? "visible" : "hidden",
+        }}
+      >
+        <ControlChevron as={ChevronLeft} {...scrollControl.leftControl} />
+        <ControlChevron as={ChevronRight} {...scrollControl.rightControl} />
+      </Box>
     </Box>
   )
 }
