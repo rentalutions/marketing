@@ -32,7 +32,7 @@ const PlansPricesSlice = ({ slice }) => {
     }) => ({
       ...props,
       background: cardBackground,
-      specialOffer: specialOffer.length > 0 && (
+      specialOffer: specialOffer && specialOffer?.[0]?.text && (
         <RichText render={specialOffer} />
       ),
       features: features && <RichText render={features} />,

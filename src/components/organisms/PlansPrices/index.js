@@ -73,8 +73,8 @@ function PlansPrices({
                 {cloneElement(title, {
                   mb: "1rem",
                   sx: {
-                    ...title.props?.sx,
                     ...STYLING.headline,
+                    ...title.props?.sx,
                   },
                 })}
               </motion.aside>
@@ -84,8 +84,8 @@ function PlansPrices({
                 {cloneElement(subtitle, {
                   mb: "1rem",
                   sx: {
-                    ...subtitle.props?.sx,
                     ...STYLING.subtitle,
+                    ...subtitle.props?.sx,
                   },
                 })}
               </motion.aside>

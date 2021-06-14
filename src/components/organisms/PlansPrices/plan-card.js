@@ -67,7 +67,7 @@ export default function PlanCard({
       {specialOffer && (
         <Box sx={{ position: "absolute", top: "-1rem" }}>
           <Tag
-            mr="1rem"
+            mr="1.1667rem"
             bg="gold_300"
             color="blue_500"
             sx={{ fontSize: "14px" }}
