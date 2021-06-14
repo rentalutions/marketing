@@ -345,8 +345,8 @@
                 "config": {
                   "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink",
                   "allowTargetBlank": true,
-                  "label": "Outro",
-                  "placeholder": "Outro"
+                  "label": "Outro Text (after email input)",
+                  "placeholder": "Outro Text (after email input)"
                 }
               }
             },
@@ -693,8 +693,8 @@
                 "config": {
                   "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink",
                   "allowTargetBlank": true,
-                  "label": "Email Capture Outro",
-                  "placeholder": "Email Capture Outro"
+                  "label": "Outro Text (after email input)",
+                  "placeholder": "Outro Text (after email input)"
                 }
               }
             },
