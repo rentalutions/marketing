@@ -83,7 +83,7 @@ const HeroSlice = ({ slice, sliceIndex }) => {
           </Link>
         )
       }
-      outro={<RichText render={outro} />}
+      outro={outro && <RichText render={outro} />}
     />
   )
 }
