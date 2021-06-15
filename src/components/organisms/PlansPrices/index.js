@@ -14,30 +14,12 @@ const PlansGrid = styled(Grid)(
     variants: {
       vertical: {
         gridTemplateColumns: "1fr",
-        maxWidth: ["unset", "unset", "75%", "75%", "54rem"],
+        maxWidth: ["unset", "unset", "100%", "100%", "54rem"],
         mx: "auto",
       },
       horizontal: {
         gridTemplateColumns: "repeat(auto-fit, minmax(24rem, 30rem))",
         justifyContent: "center",
-      },
-    },
-  })
-)
-
-const TextGrid = styled(Grid)(
-  variant({
-    prop: "direction",
-    variants: {
-      vertical: {
-        gridTemplateColumns: "1fr",
-        maxWidth: ["unset", "unset", "75%", "75%", "54rem"],
-        mx: "auto",
-      },
-      horizontal: {
-        gridTemplateColumns: "1fr",
-        maxWidth: ["unset", "unset", "75%", "75%", "61rem"],
-        mx: "auto",
       },
     },
   })
@@ -67,42 +49,43 @@ function PlansPrices({
         py="6rem"
       >
         <Box textAlign="left">
-          <TextGrid direction={direction}>
-            {title && (
+          <PlansGrid direction={direction}>
+            {(title || subtitle) && (
               <motion.aside {...animation?.item}>
-                {cloneElement(title, {
-                  mb: "1rem",
-                  sx: {
-                    ...STYLING.headline,
-                    ...title.props?.sx,
-                  },
-                })}
+                {title &&
+                  cloneElement(title, {
+                    mb: "1rem",
+                    sx: {
+                      ...STYLING.headline,
+                      ...title.props?.sx,
+                    },
+                  })}
+                {subtitle &&
+                  cloneElement(subtitle, {
+                    mb: "1rem",
+                    sx: {
+                      ...STYLING.subtitle,
+                      ...subtitle.props?.sx,
+                    },
+                  })}
               </motion.aside>
             )}
-            {subtitle && (
-              <motion.aside {...animation?.item}>
-                {cloneElement(subtitle, {
-                  mb: "1rem",
-                  sx: {
-                    ...STYLING.subtitle,
-                    ...subtitle.props?.sx,
-                  },
-                })}
-              </motion.aside>
-            )}
-          </TextGrid>
+            <div />
+          </PlansGrid>
           <PlansGrid direction={direction} gap="2rem" my="2rem">
             {plans.map((plan) => (
               <PlanCard
                 direction={direction}
                 animationPreset={animationPreset}
-                shadow={plan.specialOffer}
+                shadow={!!plan.specialOffer}
                 key={plan.title}
                 {...plan}
               />
             ))}
           </PlansGrid>
-          {link && <motion.aside {...animation?.item}>{link}</motion.aside>}
+          <PlansGrid direction={direction}>
+            {link && <motion.aside {...animation?.item}>{link}</motion.aside>}
+          </PlansGrid>
         </Box>
       </Container>
     </SkewBox>

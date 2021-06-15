@@ -67,10 +67,10 @@ export default function PlanCard({
       {specialOffer && (
         <Box sx={{ position: "absolute", top: "-1rem" }}>
           <Tag
-            mr="1.1667rem"
+            mr="1rem"
             bg="gold_300"
             color="blue_500"
-            sx={{ fontSize: "14px" }}
+            sx={{ fontSize: "1.1667rem" }}
           >
             <Award size={12} style={{ marginRight: "0.5rem" }} />
             <Text>{specialOffer}</Text>
