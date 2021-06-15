@@ -57,7 +57,7 @@ function ButtonCTA({
     <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
       <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
         <StyledFlex orientation={orientation}>
-          {title && (
+          {(title || description) && (
             <Box
               as={motion.aside}
               {...animation?.item}
@@ -75,6 +75,13 @@ function ButtonCTA({
                   ...STYLING.headline,
                 },
               })}
+              {description &&
+                cloneElement(description, {
+                  sx: {
+                    ...description.props?.sx,
+                    ...STYLING.body,
+                  },
+                })}
             </Box>
           )}
           {button && (
@@ -90,6 +97,11 @@ function ButtonCTA({
               }}
             >
               {button}
+            </Box>
+          )}
+          {image && (
+            <Box as={motion.aside} {...animation?.item}>
+              {image}
             </Box>
           )}
         </StyledFlex>

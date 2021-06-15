@@ -9,6 +9,7 @@ export function Default() {
   return (
     <ButtonCTA
       title={<Box as="h1">Button CTA Title</Box>}
+      description={<Box as="p">Button CTA Description</Box>}
       button={
         <Button forwardedAs="a" variant="primary" href="https://avail.co">
           Button
@@ -37,6 +38,7 @@ export function Right() {
   return (
     <ButtonCTA
       title={<Box as="h1">Right Button CTA Title</Box>}
+      description={<Box as="p">Right Button CTA Description</Box>}
       button={
         <Button forwardedAs="a" variant="primary" href="https://avail.co">
           Right?
@@ -76,4 +78,20 @@ export function NoTitle() {
 
 export function NoButton() {
   return <ButtonCTA title={<Box as="h1">Lonely Button CTA Title</Box>} />
+}
+
+export function Image() {
+  return (
+    <ButtonCTA
+      title={<Box as="h1">Image Button CTA Title</Box>}
+      image={
+        <img
+          height="160px"
+          width="160px"
+          src="https://avail-design-site.now.sh/images/building.svg"
+          alt=""
+        />
+      }
+    />
+  )
 }
