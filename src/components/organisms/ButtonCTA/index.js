@@ -41,6 +41,8 @@ const StyledFlex = styled(Flex)(
 function ButtonCTA({
   bg,
   title,
+  description,
+  image = null,
   button,
   orientation = "left",
   containerWidth,

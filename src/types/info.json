@@ -208,7 +208,7 @@
           },
           "button_cta" : {
             "type" : "Slice",
-            "fieldset" : "Button/CTA",
+            "fieldset" : "CTA",
             "description" : "A skewable box that displays a button and its title",
             "icon" : "call_to_action",
             "display" : "list",
@@ -244,6 +244,14 @@
                 },
                 "type" : "Text"
               },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description"
+                }
+              },
               "background" : {
                 "type" : "Select",
                 "config" : {
@@ -274,6 +282,14 @@
                   "options" : [ "none", "right", "left" ],
                   "default_value" : "none",
                   "label" : "Skew"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
                 }
               }
             }
