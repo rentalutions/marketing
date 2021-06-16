@@ -78,8 +78,8 @@ function ButtonCTA({
               {description &&
                 cloneElement(description, {
                   sx: {
-                    ...description.props?.sx,
                     ...STYLING.body,
+                    ...description.props?.sx,
                   },
                 })}
             </Box>
@@ -100,7 +100,17 @@ function ButtonCTA({
             </Box>
           )}
           {image && (
-            <Box as={motion.aside} {...animation?.item}>
+            <Box
+              as={motion.aside}
+              {...animation?.item}
+              sx={{
+                flex: "0",
+                margin: "auto",
+                height: "fit-content",
+                width: "fit-content",
+                minWidth: "15rem",
+              }}
+            >
               {image}
             </Box>
           )}
