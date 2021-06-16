@@ -130,7 +130,7 @@ const Page = ({ data, uid }) => {
       ...pageAnalyticsParams,
     }))
   }, [pageAnalyticsParams])
-  console.log(indexable)
+
   return (
     <React.Fragment>
       <BodyStyles bg={background} />
