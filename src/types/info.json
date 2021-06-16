@@ -565,6 +565,15 @@
                   "placeholder" : "ID selector for external tools (eg: features_100003_hero_button_2)"
                 },
                 "type" : "Text"
+              },
+              "outro": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Outro Text (after buttons)",
+                  "placeholder": "Outro Text (after buttons)"
+                }
               }
             },
             "repeat" : { }

@@ -143,6 +143,14 @@ export function WithBgColor() {
           <Button>Learn More</Button>
         </Link>
       }
+      outro={
+        <Text>
+          <em>Already a member?</em>
+          <a href="#" className="link">
+            Sign in here
+          </a>
+        </Text>
+      }
     />
   )
 }
@@ -172,6 +180,14 @@ export function WithSwap() {
         <Link href="https://avail.co/">
           <Button variant="primary">Get Started</Button>
         </Link>
+      }
+      outro={
+        <Text>
+          <em>Already a member?</em>
+          <a href="#" className="link">
+            Sign in here
+          </a>
+        </Text>
       }
     />
   )

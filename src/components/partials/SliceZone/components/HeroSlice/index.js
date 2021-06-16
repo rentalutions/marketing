@@ -27,6 +27,7 @@ const HeroSlice = ({ slice, sliceIndex }) => {
       secondaryButtonText,
       secondaryButtonLink,
       secondaryButtonId,
+      outro,
     },
   } = slice
 
@@ -82,6 +83,7 @@ const HeroSlice = ({ slice, sliceIndex }) => {
           </Link>
         )
       }
+      outro={outro?.[0]?.text && <RichText render={outro} />}
     />
   )
 }
