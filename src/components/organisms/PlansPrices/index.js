@@ -19,7 +19,7 @@ const PlansGrid = styled(Grid)(
       },
       horizontal: {
         gridTemplateColumns: "repeat(auto-fit, minmax(24rem, 30rem))",
-        justifyContent: "center",
+        justifyContent: "flex-start",
       },
     },
   })
@@ -49,29 +49,26 @@ function PlansPrices({
         py="6rem"
       >
         <Box textAlign="left">
-          <PlansGrid direction={direction}>
-            {(title || subtitle) && (
-              <motion.aside {...animation?.item}>
-                {title &&
-                  cloneElement(title, {
-                    mb: "1rem",
-                    sx: {
-                      ...STYLING.headline,
-                      ...title.props?.sx,
-                    },
-                  })}
-                {subtitle &&
-                  cloneElement(subtitle, {
-                    mb: "1rem",
-                    sx: {
-                      ...STYLING.subtitle,
-                      ...subtitle.props?.sx,
-                    },
-                  })}
-              </motion.aside>
-            )}
-            <div />
-          </PlansGrid>
+          {(title || subtitle) && (
+            <motion.aside {...animation?.item}>
+              {title &&
+                cloneElement(title, {
+                  mb: "1rem",
+                  sx: {
+                    ...STYLING.headline,
+                    ...title.props?.sx,
+                  },
+                })}
+              {subtitle &&
+                cloneElement(subtitle, {
+                  mb: "1rem",
+                  sx: {
+                    ...STYLING.subtitle,
+                    ...subtitle.props?.sx,
+                  },
+                })}
+            </motion.aside>
+          )}
           <PlansGrid direction={direction} gap="2rem" my="2rem">
             {plans.map((plan) => (
               <PlanCard
@@ -83,9 +80,7 @@ function PlansPrices({
               />
             ))}
           </PlansGrid>
-          <PlansGrid direction={direction}>
-            {link && <motion.aside {...animation?.item}>{link}</motion.aside>}
-          </PlansGrid>
+          {link && <motion.aside {...animation?.item}>{link}</motion.aside>}
         </Box>
       </Container>
     </SkewBox>
