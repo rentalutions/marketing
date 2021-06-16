@@ -19,6 +19,7 @@ const EmailCaptureSlice = ({ slice }) => {
       buttonText,
       optInCopy,
       optInContext,
+      outro,
     },
   } = slice
 
@@ -59,6 +60,7 @@ const EmailCaptureSlice = ({ slice }) => {
           onSubmit={handleSubmit}
           optInContext={optInContext}
           optInCopy={<RichText render={optInCopy} />}
+          outro={outro?.[0]?.text && <RichText render={outro} />}
         />
       </Container>
     </Container>

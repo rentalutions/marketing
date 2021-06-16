@@ -22,6 +22,7 @@ const EmailCaptureInput = ({
   onSubmit,
   queryParamName,
   optInCopy,
+  outro,
   optInContext,
 }) => {
   const buttonRef = useRef()
@@ -129,6 +130,7 @@ const EmailCaptureInput = ({
           {optInCopy}
         </Checkbox>
       )}
+      {outro}
     </Box>
   )
 }
