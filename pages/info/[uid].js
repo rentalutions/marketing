@@ -75,7 +75,7 @@ const Page = ({ data, uid }) => {
   const {
     meta_title: title,
     meta_description: description,
-    meta_indexable: indexable,
+    meta_indexable: indexable = true,
     meta_keywords: keywords,
     meta_image: image,
     nav_bar_type: navBarType,
