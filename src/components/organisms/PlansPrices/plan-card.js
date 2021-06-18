@@ -1,10 +1,12 @@
 import { Box, Card, Flex } from "@rent_avail/layout"
+import Tag from "@rent_avail/tag"
 import { motion } from "framer-motion"
 import React, { cloneElement } from "react"
 import { Text } from "@rent_avail/typography"
 import { useInViewAnimation } from "utils/animation"
 import styled from "styled-components"
 import { variant } from "styled-system"
+import { Award } from "react-feather"
 
 const PlanContainer = styled(Flex)(
   {
@@ -36,8 +38,10 @@ export default function PlanCard({
   buttonColor,
   buttonBackground,
   background,
+  specialOffer,
   color,
   direction,
+  shadow,
   animationPreset = "fadeIn",
 }) {
   const [presets, intersectionView] = useInViewAnimation({
@@ -45,22 +49,35 @@ export default function PlanCard({
     threshold: 0.25,
   })
   const animation = presets[animationPreset]
-
   return (
     <Card
       as={motion.aside}
       {...animation?.container}
       flex="auto"
       bg={background}
+      sx={{ boxShadow: shadow ? 2 : "none" }}
       color={color}
       border="none"
       ref={intersectionView}
     >
+      {specialOffer && (
+        <Box sx={{ position: "absolute", top: "-1rem" }}>
+          <Tag
+            mr="1rem"
+            bg="gold_300"
+            color="blue_500"
+            sx={{ fontSize: "1.1667rem" }}
+          >
+            <Award size={12} style={{ marginRight: "0.5rem" }} />
+            <Text>{specialOffer}</Text>
+          </Tag>
+        </Box>
+      )}
       <PlanContainer direction={direction}>
         <Flex
           flex="1"
           flexDirection="column"
-          alignItems="center"
+          alignItems="flex-start"
           sx={{
             gap: "1rem",
           }}

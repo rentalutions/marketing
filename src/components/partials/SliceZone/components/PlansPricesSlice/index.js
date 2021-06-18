@@ -27,10 +27,14 @@ const PlansPricesSlice = ({ slice }) => {
       buttonId,
       buttonIsPrimary,
       background: cardBackground,
+      specialOffer,
       ...props
     }) => ({
       ...props,
       background: cardBackground,
+      specialOffer: specialOffer?.[0]?.text && (
+        <RichText render={specialOffer} />
+      ),
       features: features && <RichText render={features} />,
       button: buttonText && (
         <Link link={buttonLink}>
