@@ -50,12 +50,17 @@ function ButtonCTA({
   ...props
 }) {
   const staggerDirection = ["left", "top"].includes(orientation) ? 1 : -1
+  const isVertical = ["top", "bottom"].includes(orientation)
   const [presets, intersectionView] = useInViewAnimation({ staggerDirection })
   const animation = presets[animationPreset]
 
   return (
     <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
-      <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
+      <Container
+        ref={intersectionView}
+        maxWidth={isVertical ? "62rem" : containerWidth}
+        py="6rem"
+      >
         <StyledFlex orientation={orientation}>
           {(title || description) && (
             <Box
@@ -79,6 +84,7 @@ function ButtonCTA({
                 cloneElement(description, {
                   sx: {
                     ...STYLING.body,
+                    py: "2rem",
                     ...description.props?.sx,
                   },
                 })}
@@ -104,11 +110,10 @@ function ButtonCTA({
               as={motion.aside}
               {...animation?.item}
               sx={{
-                flex: "0",
+                flex: "1 0",
                 margin: "auto",
                 height: "fit-content",
                 width: "fit-content",
-                minWidth: "15rem",
               }}
             >
               {image}

@@ -103,8 +103,22 @@ export function RightImage() {
 export function BottomImage() {
   return (
     <ButtonCTA
-      title={<Box as="h1">Bottom Image Top CTA Title</Box>}
-      image={<img src="/logo-wordmark.svg" alt="" width="100%" />}
+      title={
+        <Box as="h1">
+          Why online rental applications protect your investment
+        </Box>
+      }
+      description={
+        <Box as="p">
+          Knowing an applicants financial and rental history can help you make
+          the best decision when choosing your next renter. We’ve crafted an
+          application that gives you all the data you need, while being painless
+          for your tenants to fill out.
+        </Box>
+      }
+      image={
+        <img src="/storybook/science_applications.png" alt="" width="100%" />
+      }
       orientation="top"
     />
   )
