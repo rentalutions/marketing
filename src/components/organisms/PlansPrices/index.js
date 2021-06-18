@@ -14,11 +14,10 @@ const PlansGrid = styled(Grid)(
     variants: {
       vertical: {
         gridTemplateColumns: "1fr",
-        maxWidth: ["unset", "unset", "100%", "100%", "54rem"],
         mx: "auto",
       },
       horizontal: {
-        gridTemplateColumns: "repeat(auto-fit, minmax(24rem, 30rem))",
+        gridTemplateColumns: "repeat(auto-fit, 26rem)",
         justifyContent: "flex-start",
       },
     },
@@ -45,8 +44,11 @@ function PlansPrices({
         as={motion.aside}
         {...animation?.container}
         ref={intersectionView}
-        maxWidth={containerWidth}
-        py="6rem"
+        sx={{
+          py: "6rem",
+          maxWidth: ["unset", "unset", "100%", "100%", "54rem"],
+          boxSizing: "content-box",
+        }}
       >
         <Box textAlign="left">
           {(title || subtitle) && (
