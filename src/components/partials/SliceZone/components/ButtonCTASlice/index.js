@@ -3,12 +3,15 @@ import Button from "components/elements/Button"
 import { ButtonCTA } from "components/organisms/ButtonCTA"
 import Link from "components/partials/SliceZone/components/Link"
 import RichText from "components/partials/SliceZone/components/RichText"
+import Image from "next/image"
 import { CONTAINER_WIDTHS } from "config"
 
 const ButtonCTASlice = ({ slice }) => {
   const {
     primary: {
       title,
+      description,
+      image,
       buttonText,
       buttonLink,
       buttonId,
@@ -27,6 +30,20 @@ const ButtonCTASlice = ({ slice }) => {
       orientation={orientation}
       skew={skew}
       title={title && <RichText render={title} />}
+      description={description && <RichText render={description} />}
+      image={
+        image?.url && (
+          <Image
+            src={image.url}
+            width={image.dimensions.width}
+            height={image.dimensions.height}
+            alt={image.alt}
+            title={image.alt}
+            layout="intrinsic"
+            priority
+          />
+        )
+      }
       button={
         buttonText && (
           <Link link={buttonLink}>
