@@ -4,7 +4,7 @@ import { Box, Container, Flex } from "@rent_avail/layout"
 import { Text, Heading } from "@rent_avail/typography"
 import { Check } from "react-feather"
 import Button from "components/elements/Button"
-import { ButtonCTA } from "components/organisms/ButtonCTA"
+import { CallToAction } from "components/organisms/CallToAction"
 import { PlansPrices } from "components/organisms/PlansPrices"
 import { useInViewAnimation } from "utils/animation"
 import StaticBasePage from "components/static/StaticBasePage"
@@ -269,7 +269,7 @@ const Pricing = () => {
             </span>
           </Box>
         </Box>
-        <ButtonCTA
+        <CallToAction
           title={
             <Box>
               <Box as="h3">Ready to get started?</Box>

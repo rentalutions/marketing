@@ -5,7 +5,9 @@ import { useTheme } from "styled-components"
 import dynamic from "next/dynamic"
 
 const BlockquoteSlice = dynamic(() => import("./components/BlockquoteSlice"))
-const ButtonCTASlice = dynamic(() => import("./components/ButtonCTASlice"))
+const CallToActionSlice = dynamic(() =>
+  import("./components/CallToActionSlice")
+)
 const EmailCaptureSlice = dynamic(() =>
   import("./components/EmailCaptureSlice")
 )
@@ -38,7 +40,7 @@ const SliceZone = ({ slices }) => {
       case "blockquote":
         return <BlockquoteSlice key={key} slice={slice} />
       case "button_cta":
-        return <ButtonCTASlice key={key} slice={slice} sliceIndex={idx} />
+        return <CallToActionSlice key={key} slice={slice} sliceIndex={idx} />
       case "email_capture":
         return <EmailCaptureSlice key={key} slice={slice} sliceIndex={idx} />
       case "faq":

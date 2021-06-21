@@ -1,12 +1,12 @@
 import React from "react"
 import Button from "components/elements/Button"
-import { ButtonCTA } from "components/organisms/ButtonCTA"
+import { CallToAction } from "components/organisms/CallToAction"
 import Link from "components/partials/SliceZone/components/Link"
 import RichText from "components/partials/SliceZone/components/RichText"
 import Image from "next/image"
 import { CONTAINER_WIDTHS } from "config"
 
-const ButtonCTASlice = ({ slice }) => {
+const CallToActionSlice = ({ slice }) => {
   const {
     primary: {
       title,
@@ -23,7 +23,7 @@ const ButtonCTASlice = ({ slice }) => {
   } = slice
 
   return (
-    <ButtonCTA
+    <CallToAction
       containerWidth={CONTAINER_WIDTHS}
       bg={background}
       color={color}
@@ -62,4 +62,4 @@ const ButtonCTASlice = ({ slice }) => {
   )
 }
 
-export default ButtonCTASlice
+export default CallToActionSlice
