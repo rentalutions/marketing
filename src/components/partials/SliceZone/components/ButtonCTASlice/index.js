@@ -44,21 +44,20 @@ const CallToActionSlice = ({ slice }) => {
           />
         )
       }
-      button={
-        buttonText && (
-          <Link link={buttonLink}>
-            <Button
-              forwardedAs="a"
-              variant="primary"
-              background={background}
-              id={buttonId}
-            >
-              {buttonText}
-            </Button>
-          </Link>
-        )
-      }
-    />
+    >
+      {buttonText && (
+        <Link link={buttonLink}>
+          <Button
+            forwardedAs="a"
+            variant="primary"
+            background={background}
+            id={buttonId}
+          >
+            {buttonText}
+          </Button>
+        </Link>
+      )}
+    </CallToAction>
   )
 }
 
