@@ -23,7 +23,7 @@ const StyledFlex = styled(Flex)(
         textAlign: "center",
       },
       right: {
-        flexFlow: "row-reverse",
+        flexFlow: ["column", "row-reverse"],
         textAlign: "right",
       },
       bottom: {
@@ -31,7 +31,7 @@ const StyledFlex = styled(Flex)(
         textAlign: "center",
       },
       left: {
-        flexFlow: "row",
+        flexFlow: ["column", "row"],
         textAlign: "left",
       },
     },
@@ -73,8 +73,8 @@ function CallToAction({
             >
               {cloneElement(title, {
                 sx: {
-                  ...title.props?.sx,
                   ...STYLING.headline,
+                  ...title.props?.sx,
                 },
               })}
               {description &&
