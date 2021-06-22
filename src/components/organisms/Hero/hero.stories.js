@@ -2,9 +2,10 @@ import React from "react"
 import { Text } from "@rent_avail/typography"
 import { Button } from "@rent_avail/controls"
 import Link from "next/link"
-import { Box } from "@rent_avail/layout"
+import { Box, Grid, Col } from "@rent_avail/layout"
 import ResponsiveEmbed from "components/elements/ResponsiveEmbed"
 import { Hero } from "./index"
+import EmailCaptureInput from "../EmailCapture/index"
 
 export default { title: "Components/Hero" }
 
@@ -228,6 +229,41 @@ export function WithEmbed() {
             allowFullScreen
           />
         </ResponsiveEmbed>
+      }
+    />
+  )
+}
+
+export function WithColorCTA() {
+  return (
+    <Hero
+      skew="left"
+      color="ui_100"
+      bg="blue_500"
+      image={
+        <img
+          src="https://avail-design-site.now.sh/images/building.svg"
+          alt=""
+        />
+      }
+      imagePosition="right"
+      title={
+        <Box as="h1">Feel good about the way you manage your rentals.</Box>
+      }
+      description={
+        <Text>
+          Find tenants, view credit history, sign leases, and collect rent — on
+          any device, with tools built specifically for DIY landlords.
+        </Text>
+      }
+      component={
+        <EmailCaptureInput
+            background="green_900"
+            inputLabel="Enter your email"
+            buttonText="Join Today"
+            buttonUrl="https://www.avail.co/users/new"
+            queryParamName="email"
+          />
       }
     />
   )

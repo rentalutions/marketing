@@ -485,6 +485,53 @@
                 },
                 "type" : "Image"
               },
+              "imageBackground": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "No",
+                    "Yes"
+                  ],
+                  "default_value": "No",
+                  "label": "Image Background",
+                  "placeholder": "Image Background"
+                }
+              },
+              "contentSize": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "25%",
+                    "50%",
+                    "75%"
+                  ],
+                  "label": "Content Size",
+                  "placeholder": "Content Size"
+                }
+              },
+              "resizeImage": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "default_value": "Yes",
+                  "label": "Resize Image",
+                  "placeholder": "Resize Image"
+                }
+              },
+              "backgroundEffect": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "label": "Background Effect",
+                  "placeholder": "Background Effect"
+                }
+              },
               "video" : {
                 "type" : "Link",
                 "config" : {
@@ -620,6 +667,53 @@
                 },
                 "type" : "Image"
               },
+              "imageBackground": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "No",
+                    "Yes"
+                  ],
+                  "default_value": "No",
+                  "label": "Image Background",
+                  "placeholder": "Image Background"
+                }
+              },
+              "contentSize": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "25%",
+                    "50%",
+                    "75%"
+                  ],
+                  "label": "Content Size",
+                  "placeholder": "Content Size"
+                }
+              },
+              "resizeImage": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "default_value": "Yes",
+                  "label": "Resize Image",
+                  "placeholder": "Resize Image"
+                }
+              },
+              "backgroundEffect": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "label": "Background Effect",
+                  "placeholder": "Background Effect"
+                }
+              },
               "video" : {
                 "type" : "Link",
                 "config" : {
@@ -677,6 +771,14 @@
                   "label" : "Opt In Copy (required to show opt in)",
                   "placeholder" : "Opt In Copy",
                   "labels" : [ "body__emphasis", "body", "small" ]
+                }
+              },
+              "signintext": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "Sign in text",
+                  "placeholder": "Sign in text"
                 }
               }
             },

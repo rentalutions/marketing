@@ -23,6 +23,7 @@ const EmailCaptureInput = ({
   queryParamName,
   optInCopy,
   optInContext,
+  signintext,
 }) => {
   const buttonRef = useRef()
   const [buttonWidth, setButtonWidth] = useState(0)
@@ -129,6 +130,7 @@ const EmailCaptureInput = ({
           {optInCopy}
         </Checkbox>
       )}
+      {signintext}
     </Box>
   )
 }

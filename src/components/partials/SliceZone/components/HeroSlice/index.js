@@ -27,6 +27,10 @@ const HeroSlice = ({ slice, sliceIndex }) => {
       secondaryButtonText,
       secondaryButtonLink,
       secondaryButtonId,
+      imageBackground,
+      contentSize,
+      resizeImage,
+      backgroundEffect,
     },
   } = slice
 
@@ -53,7 +57,11 @@ const HeroSlice = ({ slice, sliceIndex }) => {
           />
         )
       }
+      imageBackground={imageBackground}
+      contentSize={contentSize}
+      resizeImage={resizeImage}
       imagePosition={imagePosition}
+      backgroundEffect={backgroundEffect}
       color={color}
       containerWidth={CONTAINER_WIDTHS}
       video={video?.url && video}

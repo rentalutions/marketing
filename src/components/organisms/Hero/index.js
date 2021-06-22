@@ -12,6 +12,7 @@ function Hero({
   stretch = true,
   description,
   title,
+  component,
   image = null,
   imagePosition = "right",
   video,
@@ -21,6 +22,10 @@ function Hero({
   containerWidth,
   animationPreset = "fadeIn",
   children,
+  imageBackground = "No",
+  contentSize = '50%',
+  resizeImage = "No",
+  backgroundEffect = "No",
   ...props
 }) {
   const links = primaryLink || secondaryLink
@@ -30,14 +35,31 @@ function Hero({
   const [presets, intersectionView] = useInViewAnimation({ delayChildren: 0 })
   const animation = presets[animationPreset]
 
+  const effect = (backgroundEffect === 'Yes') ? "linear-gradient(to top, #fff 10%, rgba(255,255,255,0)),linear-gradient(to right, #fff 15%, rgba(255,255,255,0))," : ""
+  const isBackground = (image && imageBackground === 'Yes')
+  const resize = (image && resizeImage === 'Yes')
+  let sizeLeft = 6
+  let sizeRight = 6
+
+  switch (contentSize) {
+    case '25%':
+      sizeLeft = 4
+      sizeRight = 8
+    break
+    case '75%':
+      sizeLeft = 8
+      sizeRight = 4
+    break
+  }
+
   const secondCol = (
     <Col
-      span={[12, 12, 12, 6]}
+      span={[12, 12, 12, sizeRight]}
       gridRow={["1", "1", "1", "auto"]}
       order={imagePosition === "left" ? -1 : 1}
       sx={{ textAlign: "center" }}
     >
-      <Box
+      {!isBackground && (<Box
         as={motion.aside}
         {...animation?.item}
         sx={{ display: "flex", justifyContent: "center" }}
@@ -49,7 +71,7 @@ function Hero({
         )}
         {!!video?.url && <Video src={video?.url} />}
         {!!embed && <Box sx={{ flex: "1 0" }}>{embed}</Box>}
-      </Box>
+      </Box>)}
     </Col>
   )
 
@@ -60,6 +82,12 @@ function Hero({
       {...animation?.container}
       bg={bg}
       skew={skew}
+      sx={{
+        backgroundImage: (!!image && isBackground) ? `${effect} url(${image.props.src})` : "none", 
+        backgroundPosition: "top calc((0vh - 2rem) * -0.15) right 0",  
+        backgroundSize: "900px", 
+        backgroundRepeat: "no-repeat"
+      }}
     >
       <Container
         ref={intersectionView}
@@ -71,7 +99,7 @@ function Hero({
         {...(containerWidth ? { maxWidth: containerWidth } : null)}
       >
         {hasTwoCols && imagePosition === "left" && secondCol}
-        <Col span={hasTwoCols ? [12, 12, 12, 6] : [12]}>
+        <Col span={hasTwoCols ? [12, 12, 12, sizeLeft] : [12]}>
           <motion.aside {...animation?.item}>
             {cloneElement(title, {
               sx: {

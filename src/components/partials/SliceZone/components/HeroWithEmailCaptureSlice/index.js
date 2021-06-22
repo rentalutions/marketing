@@ -29,6 +29,11 @@ const HeroWithEmailCaptureSlice = ({ slice, sliceIndex }) => {
       emailCaptureRedirectUrl,
       emailCaptureOptInContext,
       emailCaptureOptInCopy,
+      signintext,
+      imageBackground,
+      contentSize,
+      resizeImage,
+      backgroundEffect,
     },
   } = slice
 
@@ -71,7 +76,11 @@ const HeroWithEmailCaptureSlice = ({ slice, sliceIndex }) => {
           />
         )
       }
+      imageBackground={imageBackground}
+      contentSize={contentSize}
+      resizeImage={resizeImage}
       imagePosition={imagePosition}
+      backgroundEffect={backgroundEffect}
       video={video?.url && video}
       embed={embed?.html && <Embed embed={embed} />}
       color={color}
@@ -90,6 +99,7 @@ const HeroWithEmailCaptureSlice = ({ slice, sliceIndex }) => {
             queryParamName={queryParamName}
             optInContext={emailCaptureOptInContext}
             optInCopy={<RichText render={emailCaptureOptInCopy} />}
+            signintext={<RichText render={signintext} />}
           />
         </Box>
       )}
