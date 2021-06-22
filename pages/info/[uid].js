@@ -75,6 +75,7 @@ const Page = ({ data, uid }) => {
   const {
     meta_title: title,
     meta_description: description,
+    meta_indexable: indexable = true,
     meta_keywords: keywords,
     meta_image: image,
     nav_bar_type: navBarType,
@@ -137,6 +138,8 @@ const Page = ({ data, uid }) => {
         <NextSeo
           title={title}
           description={description}
+          nofollow={!indexable}
+          noindex={!indexable}
           canonical={url}
           openGraph={{
             title,
