@@ -9,40 +9,50 @@ const ArticleListSlice = ({ slice }) => {
   const {
     primary: {
       title,
+      description,
       background,
       color,
       skew,
       readMoreCardBackground,
       readMoreCardColor,
+      readMoreCardTitle,
       readMoreCardContent,
       readMoreCardLink,
-      readMoreCardActionLabel,
+      readMoreCardLinkLabel,
     },
   } = slice
   const articles = slice.items.map(
     (
       {
         background: cardBg,
+        tag,
+        title: cardTitle,
         content,
         image,
         imageBackground,
         link,
-        actionType,
-        actionLabel,
+        linkType,
+        linkLabel,
         ...article
       },
       idx
     ) => ({
-      uid: `${link.id}-${title}-${idx}`,
+      uid: `${link.id}-${tag}-${idx}`,
       bg: cardBg,
+      tag,
+      title: (
+        <Box>
+          <RichText render={cardTitle} />
+        </Box>
+      ),
       content: (
         <Box>
           <RichText render={content} />
         </Box>
       ),
-      action: actionType !== "none" && {
-        type: actionType,
-        label: actionLabel,
+      action: linkType !== "none" && {
+        type: linkType,
+        label: linkLabel,
       },
       image: image?.url && {
         ...image,
@@ -55,6 +65,11 @@ const ArticleListSlice = ({ slice }) => {
   const readMoreCard = {
     bg: readMoreCardBackground,
     color: readMoreCardColor,
+    title: (
+      <Box>
+        <RichText render={readMoreCardTitle} />
+      </Box>
+    ),
     content: (
       <Box>
         <RichText render={readMoreCardContent} />
@@ -62,7 +77,7 @@ const ArticleListSlice = ({ slice }) => {
     ),
     action: {
       type: "button",
-      label: readMoreCardActionLabel,
+      label: readMoreCardLinkLabel,
     },
     link: (props) => <Link link={readMoreCardLink} {...props} />,
   }
@@ -73,6 +88,7 @@ const ArticleListSlice = ({ slice }) => {
       bg={background}
       color={color}
       title={title && <RichText render={title} />}
+      description={description && <RichText render={description} />}
       articles={[...articles, readMoreCard]}
       skew={skew}
     />

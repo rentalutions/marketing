@@ -22,13 +22,17 @@ export function Default() {
               url: "https://picsum.photos/300/400?cache=0",
               alt: "",
             },
-            title: "Lorem ipsum",
+            tag: "Lorem ipsum",
             link: {
               href: "https://avail.co",
             },
+            title: (
+              <Box>
+                <h5>Nam mattis sapien sit amet justo aliquam venenatis.</h5>
+              </Box>
+            ),
             content: (
               <Box>
-                <b>Nam mattis sapien sit amet justo aliquam venenatis.</b>
                 <p>
                   Suspendisse tincidunt nisl vel pellentesque sollicitudin.
                   Donec Donec nec vestibulum orci. Praesent id mauris nisl.
@@ -43,7 +47,7 @@ export function Default() {
             },
           },
           {
-            title: "Dolor sit amet",
+            tag: "Dolor sit amet",
             link: {
               href: "https://avail.co",
             },
@@ -70,7 +74,7 @@ export function Default() {
               url: "https://picsum.photos/300/200?cache=1",
               alt: "",
             },
-            title: "Consectetur adipiscing",
+            tag: "Consectetur adipiscing",
             link: {
               href: "https://avail.co",
             },
@@ -98,7 +102,7 @@ export function Default() {
               url: "https://picsum.photos/300?cache=2",
               alt: "",
             },
-            title: "Ipsum dolor",
+            tag: "Ipsum dolor",
             link: {
               href: "https://avail.co",
             },
@@ -117,7 +121,7 @@ export function Default() {
             },
           },
           {
-            title: "Nam mattis sapien",
+            tag: "Nam mattis sapien",
             link: {
               href: "https://avail.co",
             },
@@ -144,7 +148,7 @@ export function Default() {
               url: "https://picsum.photos/200/400?cache=3",
               alt: "",
             },
-            title: "Ipsum dolor",
+            tag: "Ipsum dolor",
             link: {
               href: "https://avail.co",
             },

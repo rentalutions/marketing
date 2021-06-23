@@ -3,8 +3,18 @@ import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import Card from "components/elements/Card"
 import ArticleLink from "./article-link"
+import Image from "next/image"
 
-function ArticleCard({ bg, link, image, title, content, action, ...props }) {
+function ArticleCard({
+  bg,
+  tag,
+  title,
+  content,
+  action,
+  image,
+  link,
+  ...props
+}) {
   return (
     <Card
       bg={bg}
@@ -19,14 +29,24 @@ function ArticleCard({ bg, link, image, title, content, action, ...props }) {
     >
       {image && (
         <ArticleLink link={link}>
-          <Box as="a" width="100%" height="50%" maxHeight="16rem" {...image}>
-            <Box
-              as="img"
+          <Box
+            as="a"
+            width="100%"
+            height="50%"
+            maxHeight="16rem"
+            {...image}
+            sx={{
+              "& *": {
+                height: "100%",
+              },
+            }}
+          >
+            <Image
               src={image.url}
               alt={image.alt}
               title={image.alt}
-              height="100%"
-              maxWidth="100%"
+              height={image.dimensions.height}
+              width={image.dimensions.width}
             />
           </Box>
         </ArticleLink>
@@ -41,7 +61,7 @@ function ArticleCard({ bg, link, image, title, content, action, ...props }) {
           alignItems: "flex-start",
         }}
       >
-        {title && (
+        {tag && (
           <Box
             bg="green_500"
             width="fit-content"
@@ -49,9 +69,17 @@ function ArticleCard({ bg, link, image, title, content, action, ...props }) {
             px="1rem"
             borderRadius="1rem"
           >
-            {title}
+            {tag}
           </Box>
         )}
+        {title &&
+          cloneElement(title, {
+            mb: "0.667rem",
+            sx: {
+              textAlign: "left",
+              ...title.props?.sx,
+            },
+          })}
         {cloneElement(content, {
           flex: 1,
           mb: "0.667rem",

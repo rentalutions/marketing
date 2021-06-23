@@ -173,6 +173,16 @@
                   "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Description",
+                  "placeholder" : "Description",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
               "background" : {
                 "type" : "Select",
                 "config" : {
@@ -189,6 +199,14 @@
                   "label" : "Text color"
                 }
               },
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "right", "left" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
+                }
+              },
               "readMoreCardBackground" : {
                 "type" : "Select",
                 "config" : {
@@ -203,6 +221,16 @@
                   "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_900",
                   "label" : "Text color for 'Read More' card"
+                }
+              },
+              "readMoreCardTitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "'Read More' card title",
+                  "placeholder" : "Title",
+                  "allowTargetBlank" : true,
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "readMoreCardContent" : {
@@ -222,10 +250,10 @@
                   "label" : "Link to the articles page"
                 }
               },
-              "readMoreCardActionLabel" : {
+              "readMoreCardLinkLabel" : {
                 "type" : "Text",
                 "config" : {
-                  "label" : "Action label for 'Read More' card",
+                  "label" : "Link label for 'Read More' card",
                   "placeholder" : "Read More"
                 }
               }
@@ -236,7 +264,7 @@
                 "config" : {
                   "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
                   "default_value" : "ui_100",
-                  "label" : "Background color"
+                  "label" : "Card background color"
                 }
               },
               "color" : {
@@ -247,17 +275,27 @@
                   "label" : "Text color"
                 }
               },
-              "title" : {
+              "tag" : {
                 "type" : "Text",
                 "config" : {
-                  "label" : "Article title",
+                  "label" : "Article tag",
                   "placeholder" : "Lorem ipsum"
+                }
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "Article title",
+                  "placeholder" : "Title",
+                  "allowTargetBlank" : true,
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
                 }
               },
               "content" : {
                 "type" : "StructuredText",
                 "config" : {
-                  "label" : "Card content",
+                  "label" : "Article description",
                   "placeholder" : "Nam mattis sapien sit amet justo aliquam venenatis.",
                   "allowTargetBlank" : true,
                   "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
@@ -283,23 +321,23 @@
                 "type" : "Select",
                 "config" : {
                   "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "transparent",
-                  "label" : "Background color"
+                  "default_value" : "ui_300",
+                  "label" : "Image background color"
                 }
               },
-              "actionType": {
+              "linkType": {
                 "config" : {
-                  "label" : "Action type",
+                  "label" : "Link type",
                   "placeholder" : "",
                   "default_value" : "link",
                   "options" : [ "none", "link", "button" ]
                 },
                 "type" : "Select"
               },
-              "actionLabel" : {
+              "linkLabel" : {
                 "type" : "Text",
                 "config" : {
-                  "label" : "Action label",
+                  "label" : "Link label",
                   "placeholder" : "Read More"
                 }
               }
