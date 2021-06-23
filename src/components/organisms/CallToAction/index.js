@@ -44,6 +44,7 @@ function CallToAction({
   description,
   image = null,
   children,
+  childrenGrow = false,
   orientation = "left",
   containerWidth,
   animationPreset = "fadeIn",
@@ -92,7 +93,7 @@ function CallToAction({
               as={motion.aside}
               {...animation?.item}
               sx={{
-                flex: "0",
+                flex: childrenGrow ? "1" : "0",
                 margin: "auto",
                 minWidth: "unset",
               }}

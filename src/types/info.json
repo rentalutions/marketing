@@ -143,6 +143,7 @@
         "labels" : {
           "blockquote" : [ ],
           "button_cta" : [ ],
+          "email_capture_cta" : [ ],
           "email_capture" : [ ],
           "faq" : [ ],
           "hero" : [ ],
@@ -290,6 +291,120 @@
                   "constraint": {},
                   "thumbnails": [],
                   "label": "Image"
+                }
+              }
+            }
+          },
+          "email_capture_cta" : {
+            "type" : "Slice",
+            "fieldset" : "CTA With Email Capture",
+            "description" : "A skewable box that displays a email capture and its title",
+            "icon" : "call_to_action",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },             
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description"
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "orientation" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "left", "top", "right", "bottom" ],
+                  "default_value" : "left",
+                  "label" : "Text Orientation"
+                }
+              },
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "right", "left" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              },
+              "label" : {
+                "config" : {
+                  "label" : "Input label",
+                  "placeholder" : "E.g. - Enter your email"
+                },
+                "type" : "Text"
+              },
+              "buttonText" : {
+                "config" : {
+                  "label" : "Button text",
+                  "placeholder" : "E.g. - Get Started"
+                },
+                "type" : "Text"
+              },
+              "redirectUrl" : {
+                "config" : {
+                  "label" : "Redirect URL (optional)",
+                  "placeholder" : "E.g. - https://www.avail.co/users/new"
+                },
+                "type" : "Text"
+              },
+              "optInContext" : {
+                "config" : {
+                  "label" : "Opt In Context (required to show opt in)",
+                  "placeholder" : "Email Capture Opt In, - e.g. The Landing"
+                },
+                "type" : "Text"
+              },
+              "optInCopy" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Opt In Copy (required to show opt in)",
+                  "placeholder" : "Opt In Copy",
+                  "labels" : [ "body__emphasis", "body", "small" ]
+                }
+              },
+              "outro": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Outro Text (after email input)",
+                  "placeholder": "Outro Text (after email input)"
                 }
               }
             }
