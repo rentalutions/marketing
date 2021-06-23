@@ -1,8 +1,8 @@
 import * as React from "react"
 import { Heading } from "@rent_avail/typography"
-import { HowItWorks } from "./index"
+import { HowItWorksSections } from "./how-it-works-sections"
 
-export default { title: "Components/How It Works" }
+export default { title: "Components/How It Works (Sections)" }
 
 const basicSections = [
   {
@@ -41,7 +41,7 @@ const basicSections = [
 
 export function Default() {
   return (
-    <HowItWorks
+    <HowItWorksSections
       mt="4rem"
       eyebrow="Learn more."
       title={
@@ -54,7 +54,7 @@ export function Default() {
 
 export function WithFlip() {
   return (
-    <HowItWorks
+    <HowItWorksSections
       mt="4rem"
       eyebrow="Learn more."
       alternate={(idx) => idx % 2 === 0}

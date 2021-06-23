@@ -4,9 +4,9 @@ import { ChevronLeft, ChevronRight } from "react-feather"
 
 import { Box } from "@rent_avail/layout"
 
+import ControlChevron from "components/elements/ControlChevron"
 import { useInViewAnimation } from "utils/animation"
 
-import ControlChevron from "./control-chevron"
 import useSlider from "./use-slider"
 
 function Slider({
