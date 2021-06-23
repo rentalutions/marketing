@@ -52,7 +52,7 @@ export const CustomLabel = ({ label, children, ...props }) => {
       return <IconLabel icon={Minus}>{children}</IconLabel>
     case "icon__gift":
       return <IconLabel icon={Gift}>{children}</IconLabel>
-    case "tag":
+    case "tag__green":
       return <Tag mr="1rem" bg="green_500" color="ui_900">{children}</Tag>
     default:
       return React.createElement(
