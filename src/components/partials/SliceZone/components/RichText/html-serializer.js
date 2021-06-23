@@ -9,6 +9,7 @@ import Embed from "components/partials/SliceZone/components/Embed"
 import { List, ListItem, OList } from "./components/List"
 import { Text } from "./components/Text"
 import { CustomLabel } from "./components/Label"
+import Image from "next/image"
 
 function createHeading(as, { key, ...props }, children) {
   return children?.[0] ? (
@@ -135,6 +136,20 @@ export default function htmlSerializer(props) {
             }}
           />
         )
+      }
+      case Elements.image: {
+        const { image } = element
+        return (
+          image && (<Image
+            src={image.url}
+            width={image.dimensions.width}
+            height={image.dimensions.height}
+            alt={image.alt}
+            title={image.alt}
+            layout="intrinsic"
+            priority
+          />
+        ))
       }
       default:
         return null
