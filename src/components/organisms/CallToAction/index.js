@@ -19,31 +19,31 @@ const StyledFlex = styled(Flex)(
     prop: "orientation",
     variants: {
       top: {
-        flexFlow: "column wrap",
+        flexFlow: "column",
         textAlign: "center",
       },
       right: {
-        flexFlow: "row-reverse wrap",
+        flexFlow: ["column", "row-reverse"],
         textAlign: "right",
       },
       bottom: {
-        flexFlow: "column-reverse wrap",
+        flexFlow: "column-reverse",
         textAlign: "center",
       },
       left: {
-        flexFlow: "row wrap",
+        flexFlow: ["column", "row"],
         textAlign: "left",
       },
     },
   })
 )
 
-function ButtonCTA({
+function CallToAction({
   bg,
   title,
   description,
   image = null,
-  button,
+  children,
   orientation = "left",
   containerWidth,
   animationPreset = "fadeIn",
@@ -69,15 +69,12 @@ function ButtonCTA({
               sx={{
                 flex: "1",
                 margin: "auto",
-                height: "fit-content",
-                width: "fit-content",
-                minWidth: "fit-content",
               }}
             >
               {cloneElement(title, {
                 sx: {
-                  ...title.props?.sx,
                   ...STYLING.headline,
+                  ...title.props?.sx,
                 },
               })}
               {description &&
@@ -90,19 +87,17 @@ function ButtonCTA({
                 })}
             </Box>
           )}
-          {button && (
+          {children && (
             <Box
               as={motion.aside}
               {...animation?.item}
               sx={{
                 flex: "0",
                 margin: "auto",
-                height: "fit-content",
-                width: "fit-content",
                 minWidth: "unset",
               }}
             >
-              {button}
+              {children}
             </Box>
           )}
           {image && (
@@ -112,8 +107,6 @@ function ButtonCTA({
               sx={{
                 flex: "1 0",
                 margin: "auto",
-                height: "fit-content",
-                width: "fit-content",
               }}
             >
               {image}
@@ -125,4 +118,4 @@ function ButtonCTA({
   )
 }
 
-export { ButtonCTA }
+export { CallToAction }
