@@ -3,7 +3,7 @@ import Anchor from "components/elements/Anchor"
 import { HowItWorksCarousel } from "components/organisms/HowItWorks"
 import { CONTAINER_WIDTHS } from "config"
 import RichText from "../RichText"
-import howItWorksSliceSection from "../HowItWorksSlice/how-it-works-slice-section"
+import howItWorksSliceSection from "../HowItWorksSectionsSlice/how-it-works-slice-section"
 
 const HowItWorksCarouselSlice = ({ slice }) => {
   const {
