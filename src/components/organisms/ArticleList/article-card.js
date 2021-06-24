@@ -3,7 +3,6 @@ import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import Card from "components/elements/Card"
 import ArticleLink from "./article-link"
-import Image from "next/image"
 
 function ArticleCard({
   bg,
@@ -27,27 +26,22 @@ function ArticleCard({
       }}
       {...props}
     >
-      {image && (
+      {image?.element && (
         <ArticleLink link={link}>
           <Box
             as="a"
             width="100%"
             height="50%"
             maxHeight="16rem"
-            {...image}
+            bg={image.bg}
             sx={{
               "& *": {
                 height: "100%",
+                width: "auto",
               },
             }}
           >
-            <Image
-              src={image.url}
-              alt={image.alt}
-              title={image.alt}
-              height={image.dimensions.height}
-              width={image.dimensions.width}
-            />
+            {image.element}
           </Box>
         </ArticleLink>
       )}

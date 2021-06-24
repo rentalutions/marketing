@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 import { Box } from "@rent_avail/layout"
 import { ArticleList } from "components/organisms/ArticleList"
 import RichText from "components/partials/SliceZone/components/RichText"
@@ -55,7 +56,15 @@ const ArticleListSlice = ({ slice }) => {
         label: linkLabel,
       },
       image: image?.url && {
-        ...image,
+        element: (
+          <Image
+            src={image.url}
+            alt={image.alt}
+            title={image.alt}
+            height={image.dimensions.height}
+            width={image.dimensions.width}
+          />
+        ),
         bg: imageBackground !== "transparent" && imageBackground,
       },
       link: (props) => <Link link={link} {...props} />,

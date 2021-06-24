@@ -19,8 +19,14 @@ export function Default() {
           {
             image: {
               bg: "ui_500",
-              url: "https://picsum.photos/300/400?cache=0",
-              alt: "",
+              element: (
+                <img
+                  src="https://picsum.photos/300/400?cache=0"
+                  alt=""
+                  width="300px"
+                  height="400px"
+                />
+              ),
             },
             tag: "Lorem ipsum",
             link: {
@@ -71,8 +77,14 @@ export function Default() {
           {
             image: {
               bg: "ui_500",
-              url: "https://picsum.photos/300/200?cache=1",
-              alt: "",
+              element: (
+                <img
+                  src="https://picsum.photos/300/200?cache=1"
+                  alt=""
+                  width="300px"
+                  height="200px"
+                />
+              ),
             },
             tag: "Consectetur adipiscing",
             link: {
@@ -99,8 +111,14 @@ export function Default() {
           {
             image: {
               bg: "ui_500",
-              url: "https://picsum.photos/300?cache=2",
-              alt: "",
+              element: (
+                <img
+                  src="https://picsum.photos/300?cache=2"
+                  alt=""
+                  width="300px"
+                  height="300px"
+                />
+              ),
             },
             tag: "Ipsum dolor",
             link: {
@@ -145,8 +163,14 @@ export function Default() {
           {
             image: {
               bg: "ui_500",
-              url: "https://picsum.photos/200/400?cache=3",
-              alt: "",
+              element: (
+                <img
+                  src="https://picsum.photos/200/400?cache=3"
+                  alt=""
+                  width="200px"
+                  height="400px"
+                />
+              ),
             },
             tag: "Ipsum dolor",
             link: {

@@ -321,7 +321,7 @@
                 "type" : "Select",
                 "config" : {
                   "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_300",
+                  "default_value" : "ui_500",
                   "label" : "Image background color"
                 }
               },
