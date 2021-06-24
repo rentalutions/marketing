@@ -1,5 +1,5 @@
 import React, { cloneElement, useRef } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
 import { Container, Box, Card } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"

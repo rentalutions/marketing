@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "react-feather"
 
 import { Box } from "@rent_avail/layout"

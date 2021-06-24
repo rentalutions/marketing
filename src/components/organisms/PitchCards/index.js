@@ -4,7 +4,7 @@ import { Col, Container, Grid } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { PitchCard } from "components/molecules/PitchCard"
 import { STYLING } from "config"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 
 function PitchCards({
   span,
