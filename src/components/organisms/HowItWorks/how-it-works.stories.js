@@ -58,8 +58,9 @@ export function WithFlip() {
       mt="4rem"
       eyebrow="Learn more."
       alternate={(idx) => idx % 2 === 0}
-      bg="blue_500"
+      bg="transparent"
       color="blue_100"
+      alternateBackground
       p="0 0 4rem"
       title={
         <Heading as="h3">An explanation of how this feature works</Heading>

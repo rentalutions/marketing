@@ -8,7 +8,7 @@ import RichText from "../RichText"
 
 const HowItWorksSlice = ({ slice }) => {
   const {
-    primary: { title, background, flip, hash },
+    primary: { title, background, flip, hash, alternateBackground },
   } = slice
   const sections = slice.items.map(
     // eslint-disable-next-line no-shadow
@@ -39,11 +39,11 @@ const HowItWorksSlice = ({ slice }) => {
       <HowItWorks
         title={<RichText render={title} />}
         sections={sections}
-        bg={background}
+        background={background}
+        alternateBackground={alternateBackground}
         containerWidth={CONTAINER_WIDTHS}
         py="5rem"
         alternate={flip ? (idx) => idx % 2 === 0 : undefined}
-        color={background === "blue_500" ? "blue_100" : "inherit"}
       />
     </React.Fragment>
   )
