@@ -1435,6 +1435,15 @@
         "label" : "Meta keywords"
       }
     },
+    "meta_indexable": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "noindex/nofollow",
+        "placeholder_true": "index/follow",
+        "default_value": true,
+        "label": "Meta indexable"
+      }
+    },
     "meta_image" : {
       "type" : "Image",
       "config" : {
