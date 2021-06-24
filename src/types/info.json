@@ -775,6 +775,15 @@
                   "default_value" : false,
                   "label" : "First section media position"
                 }
+              },
+              "alternateBackground" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "False",
+                  "placeholder_true" : "True",
+                  "default_value" : false,
+                  "label" : "Alternate background color? (will start with the color set on background color setting)"
+                }
               }
             },
             "repeat" : {

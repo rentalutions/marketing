@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
+import SkewBox from "components/molecules/SkewBox"
 import Video from "components/elements/Video"
 import { STYLING } from "config"
 
@@ -12,6 +13,8 @@ function HowItWorks({
   sections = [],
   alternate = (idx) => idx % 2 !== 0,
   containerWidth,
+  alternateBackground = false,
+  background,
   animationPreset = "fadeIn",
   ...props
 }) {
@@ -25,7 +28,7 @@ function HowItWorks({
       {...props}
       ref={intersectionView}
     >
-      <Container {...(containerWidth && { maxWidth: containerWidth })}>
+      <Container sx={{ maxWidth: "none" }}>
         {eyebrow && (
           <Text
             as={motion.aside}
@@ -46,8 +49,11 @@ function HowItWorks({
         )}
         {sections.map(({ uid, ...section }, idx) => (
           <HowItWorksSection
+            containerWidth={containerWidth}
             key={uid || idx}
             {...section}
+            background={background === "transparent" ? null : background}
+            alternateBackground={alternateBackground ? idx % 2 === 0 : false}
             flip={alternate(idx)}
             animationPreset={animationPreset}
             mb={idx !== sections.length - 1 ? "6rem" : 0}
@@ -63,8 +69,11 @@ function HowItWorksSection({
   image = null,
   video,
   embed,
+  background,
+  alternateBackground,
   flip,
   animationPreset,
+  containerWidth,
   mb,
 }) {
   const copyColumn = ["span 12", flip ? "7 / span 6" : "1 / span 6"]
@@ -75,25 +84,75 @@ function HowItWorksSection({
     threshold: 0.25,
   })
   const animation = presets[animationPreset]
-
+  if (alternateBackground) {
+    return (
+      <SkewBox
+        color={background === "blue_500" ? "inherit" : "blue_100"}
+        skew="left"
+        bg={background === "blue_500" ? "transparent" : "blue_500"}
+        as={motion.aside}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <Grid
+          as={motion.aside}
+          {...animation?.container}
+          sx={{
+            maxWidth: containerWidth,
+          }}
+          alignItems="center"
+          gridAutoFlow="row dense"
+          mb={mb}
+          ref={intersectionView}
+        >
+          <Col as={motion.aside} {...animation?.item} gridColumn={copyColumn}>
+            {copy}
+          </Col>
+          <Col as={motion.aside} {...animation?.item} gridColumn={imageColumn}>
+            {!!image && <Box maxWidth="100%">{image}</Box>}
+            {!!video?.url && <Video src={video.url} width="100%" />}
+            {!!embed && <Box>{embed}</Box>}
+          </Col>
+        </Grid>
+      </SkewBox>
+    )
+  }
   return (
-    <Grid
+    <SkewBox
+      color={background === "blue_500" ? "blue_100" : "inherit"}
+      skew="left"
+      bg={background}
       as={motion.aside}
-      {...animation?.container}
-      alignItems="center"
-      gridAutoFlow="row dense"
-      mb={mb}
-      ref={intersectionView}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+      }}
     >
-      <Col as={motion.aside} {...animation?.item} gridColumn={copyColumn}>
-        {copy}
-      </Col>
-      <Col as={motion.aside} {...animation?.item} gridColumn={imageColumn}>
-        {!!image && <Box maxWidth="100%">{image}</Box>}
-        {!!video?.url && <Video src={video.url} width="100%" />}
-        {!!embed && <Box>{embed}</Box>}
-      </Col>
-    </Grid>
+      <Grid
+        as={motion.aside}
+        {...animation?.container}
+        sx={{
+          maxWidth: containerWidth,
+        }}
+        alignItems="center"
+        gridAutoFlow="row dense"
+        mb={mb}
+        ref={intersectionView}
+      >
+        <Col as={motion.aside} {...animation?.item} gridColumn={copyColumn}>
+          {copy}
+        </Col>
+        <Col as={motion.aside} {...animation?.item} gridColumn={imageColumn}>
+          {!!image && <Box maxWidth="100%">{image}</Box>}
+          {!!video?.url && <Video src={video.url} width="100%" />}
+          {!!embed && <Box>{embed}</Box>}
+        </Col>
+      </Grid>
+    </SkewBox>
   )
 }
 
