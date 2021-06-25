@@ -11,9 +11,6 @@ const CallToActionWithEmailCaptureSlice = dynamic(() =>
 const CallToActionSlice = dynamic(() =>
   import("./components/CallToActionSlice")
 )
-const EmailCaptureSlice = dynamic(() =>
-  import("./components/EmailCaptureSlice")
-)
 const FAQSlice = dynamic(() =>
   import("./components/FrequentlyAskedQuestionsSlice")
 )
@@ -42,7 +39,7 @@ const SliceZone = ({ slices }) => {
     switch (slice.slice_type) {
       case "blockquote":
         return <BlockquoteSlice key={key} slice={slice} />
-      case "email_capture_cta":
+      case "email_capture":
         return (
           <CallToActionWithEmailCaptureSlice
             key={key}
@@ -52,8 +49,6 @@ const SliceZone = ({ slices }) => {
         )
       case "button_cta":
         return <CallToActionSlice key={key} slice={slice} sliceIndex={idx} />
-      case "email_capture":
-        return <EmailCaptureSlice key={key} slice={slice} sliceIndex={idx} />
       case "faq":
         return <FAQSlice key={key} slice={slice} sliceIndex={idx} />
       case "hero":

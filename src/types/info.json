@@ -143,7 +143,6 @@
         "labels" : {
           "blockquote" : [ ],
           "button_cta" : [ ],
-          "email_capture_cta" : [ ],
           "email_capture" : [ ],
           "faq" : [ ],
           "hero" : [ ],
@@ -295,7 +294,7 @@
               }
             }
           },
-          "email_capture_cta" : {
+          "email_capture" : {
             "type" : "Slice",
             "fieldset" : "CTA With Email Capture",
             "description" : "A skewable box that displays a email capture and its title",
@@ -408,80 +407,6 @@
                 }
               }
             }
-          },
-          "email_capture" : {
-            "type" : "Slice",
-            "fieldset" : "Email Capture",
-            "description" : "An email capture block with title",
-            "icon" : "email",
-            "display" : "list",
-            "non-repeat" : {
-              "hash" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Jump link hash",
-                  "placeholder" : "A hash to link to this slice, e.g. - overview"
-                }
-              },
-              "title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Title",
-                  "placeholder" : "Title",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
-                }
-              },
-              "label" : {
-                "config" : {
-                  "label" : "Input label",
-                  "placeholder" : "E.g. - Enter your email"
-                },
-                "type" : "Text"
-              },
-              "buttonText" : {
-                "config" : {
-                  "label" : "Button text",
-                  "placeholder" : "E.g. - Get Started"
-                },
-                "type" : "Text"
-              },
-              "redirectUrl" : {
-                "config" : {
-                  "label" : "Redirect URL (optional)",
-                  "placeholder" : "E.g. - https://www.avail.co/users/new"
-                },
-                "type" : "Text"
-              },
-              "optInContext" : {
-                "config" : {
-                  "label" : "Opt In Context (required to show opt in)",
-                  "placeholder" : "Email Capture Opt In, - e.g. The Landing"
-                },
-                "type" : "Text"
-              },
-              "optInCopy" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "strong, em",
-                  "allowTargetBlank" : true,
-                  "label" : "Opt In Copy (required to show opt in)",
-                  "placeholder" : "Opt In Copy",
-                  "labels" : [ "body__emphasis", "body", "small" ]
-                }
-              },
-              "outro": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink",
-                  "allowTargetBlank": true,
-                  "label": "Outro Text (after email input)",
-                  "placeholder": "Outro Text (after email input)"
-                }
-              }
-            },
-            "repeat" : { }
           },
           "faq" : {
             "type" : "Slice",
