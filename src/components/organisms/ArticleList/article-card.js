@@ -2,6 +2,7 @@ import React, { cloneElement } from "react"
 import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import Card from "components/elements/Card"
+import { STYLING } from "config"
 import ArticleLink from "./article-link"
 
 function ArticleCard({
@@ -71,6 +72,7 @@ function ArticleCard({
             mb: "0.667rem",
             sx: {
               textAlign: "left",
+              ...STYLING.subtitle,
               ...title.props?.sx,
             },
           })}
