@@ -59,6 +59,7 @@ const EmailCaptureSlice = ({ slice }) => {
           onSubmit={handleSubmit}
           optInContext={optInContext}
           optInCopy={<RichText render={optInCopy} />}
+          py={["3rem", "4.5rem"]}
         />
       </Container>
     </Container>

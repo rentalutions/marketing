@@ -53,6 +53,7 @@ const PlansPricesSlice = ({ slice }) => {
       bg={background}
       color={color}
       skew={skew}
+      py={["3rem", "4.5rem"]}
       direction={direction}
       title={title && <RichText render={title} />}
       subtitle={subtitle && <RichText render={subtitle} />}

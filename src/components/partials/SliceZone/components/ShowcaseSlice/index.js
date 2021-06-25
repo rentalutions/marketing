@@ -43,6 +43,7 @@ const ShowcaseSlice = ({ slice }) => {
         caseInterval={4000}
         containerWidth={CONTAINER_WIDTHS}
         flip={flip}
+        py={["3rem", "4.5rem"]}
         mb="10rem"
       />
     </React.Fragment>

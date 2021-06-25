@@ -57,6 +57,7 @@ const HeroSlice = ({ slice, sliceIndex }) => {
       color={color}
       containerWidth={CONTAINER_WIDTHS}
       video={video?.url && video}
+      py={["3rem", "4.5rem"]}
       embed={embed?.html && <Embed embed={embed} />}
       primaryLink={
         primaryButtonText && (

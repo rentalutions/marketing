@@ -65,7 +65,6 @@ function Hero({
         ref={intersectionView}
         as={Grid}
         minHeight={stretch && "calc(90vh - 14rem)"}
-        py={skew === "none" && !stretch && "2rem"}
         alignItems="center"
         gap={["2rem", "2rem", "4rem"]}
         {...(containerWidth ? { maxWidth: containerWidth } : null)}

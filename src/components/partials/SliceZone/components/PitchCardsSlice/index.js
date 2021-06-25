@@ -118,6 +118,7 @@ const PitchCardsSlice = ({ slice }) => {
         sections={sections}
         maxWidth={CONTAINER_WIDTHS}
         m="6rem 0 12rem"
+        py={["3rem", "4.5rem"]}
         span={
           sections.length < 3 ? [12, 12, 12 / sections.length] : [12, 12, 6, 4]
         }

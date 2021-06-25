@@ -16,6 +16,7 @@ const BlockquoteSlice = ({ slice }) => {
       quoteColor={quoteColor}
       textColor={textColor}
       alignment={alignment}
+      py={["3rem", "4.5rem"]}
     />
   )
 }
