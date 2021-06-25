@@ -39,13 +39,37 @@ const ContrastButtonPrimary = styled(AvailButton)(({ scheme = "blue" }) =>
     },
   })
 )
+const ContrastButtonCustom = styled(AvailButton)(({ scheme = "blue", bg }) =>
+  sx({
+    sx: {
+      backgroundColor: bg,
+      borderColor: `${scheme}_100`,
+      color: `${scheme}_100`,
+      "&:hover": {
+        backgroundColor: "ui_100",
+        borderColor: bg,
+        color: `${scheme}_700`,
+      },
+      "&:focus": {
+        backgroundColor: "ui_100",
+        borderColor: bg,
+        color: `${scheme}_700`,
+      },
+    },
+  })
+)
 
 const Button = forwardRef(
-  ({ background, variant, children, ...props }, ref) => {
+  ({ background, buttonBackground, variant, children, ...props }, ref) => {
     const [scheme, isDark] = background ? analyzeColor(background) : []
 
     let buttonElement = <AvailButton />
-    if (isDark) {
+
+    if (buttonBackground) {
+      buttonElement = <ContrastButtonCustom scheme={scheme} bg={background} />
+    }
+
+    if (isDark && !buttonBackground) {
       buttonElement =
         variant === "primary" ? <ContrastButtonPrimary /> : <ContrastButton />
     }

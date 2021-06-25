@@ -30,7 +30,8 @@ const EmailCaptureInput = ({
   const [inputError, setInputError] = useState()
   const [optIn, setOptIn] = useState(true)
 
-  const [, isDark] = background ? analyzeColor(background) : []
+  const [scheme, isDark] = background ? analyzeColor(background) : []
+  const buttonBackground = isDark ? [`${scheme}_100`, background] : background
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -106,6 +107,7 @@ const EmailCaptureInput = ({
         ref={buttonRef}
       >
         <Button
+          buttonBackground={buttonBackground}
           background={background}
           variant="primary"
           type="submit"
