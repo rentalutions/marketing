@@ -816,6 +816,15 @@
                   "label" : "First section media position"
                 }
               },
+              "skew" : {
+                "config" : {
+                  "label" : "Skew",
+                  "placeholder" : "",
+                  "default_value" : "right",
+                  "options" : [ "none", "right", "left" ]
+                },
+                "type" : "Select"
+              },
               "alternateBackground" : {
                 "type" : "Boolean",
                 "config" : {

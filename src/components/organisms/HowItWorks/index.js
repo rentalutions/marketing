@@ -10,6 +10,7 @@ import { STYLING } from "config"
 function HowItWorks({
   title,
   eyebrow,
+  skew,
   sections = [],
   alternate = (idx) => idx % 2 !== 0,
   containerWidth,
@@ -52,6 +53,7 @@ function HowItWorks({
             containerWidth={containerWidth}
             key={uid || idx}
             {...section}
+            skew={skew}
             background={background === "transparent" ? null : background}
             alternateBackground={alternateBackground ? idx % 2 === 0 : false}
             flip={alternate(idx)}
@@ -69,6 +71,7 @@ function HowItWorksSection({
   image = null,
   video,
   embed,
+  skew,
   background,
   alternateBackground,
   flip,
@@ -87,20 +90,7 @@ function HowItWorksSection({
   if (alternateBackground) {
     return (
       <SkewBox
-        color={background === "blue_500" ? "inherit" : "blue_100"}
-        skew="left"
-        bg={background === "blue_500" ? "transparent" : "blue_500"}
-        as={motion.aside}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        <Grid
-          as={motion.aside}
-          {...animation?.container}
-          sx={{
+      skew={skew}
             maxWidth: containerWidth,
           }}
           alignItems="center"
