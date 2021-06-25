@@ -29,7 +29,7 @@ function HowItWorks({
       {...props}
       ref={intersectionView}
     >
-      <Container sx={{ maxWidth: "none" }}>
+      <Box>
         {eyebrow && (
           <Text
             as={motion.aside}
@@ -55,13 +55,13 @@ function HowItWorks({
             {...section}
             skew={skew}
             background={background === "transparent" ? null : background}
-            alternateBackground={alternateBackground ? idx % 2 === 0 : false}
+            alternateBackground={alternateBackground ? !(idx % 2 === 0) : false}
             flip={alternate(idx)}
             animationPreset={animationPreset}
             mb={idx !== sections.length - 1 ? "6rem" : 0}
           />
         ))}
-      </Container>
+      </Box>
     </Box>
   )
 }
@@ -87,35 +87,21 @@ function HowItWorksSection({
     threshold: 0.25,
   })
   const animation = presets[animationPreset]
-  if (alternateBackground) {
-    return (
-      <SkewBox
-      skew={skew}
-            maxWidth: containerWidth,
-          }}
-          alignItems="center"
-          gridAutoFlow="row dense"
-          mb={mb}
-          ref={intersectionView}
-        >
-          <Col as={motion.aside} {...animation?.item} gridColumn={copyColumn}>
-            {copy}
-          </Col>
-          <Col as={motion.aside} {...animation?.item} gridColumn={imageColumn}>
-            {!!image && <Box maxWidth="100%">{image}</Box>}
-            {!!video?.url && <Video src={video.url} width="100%" />}
-            {!!embed && <Box>{embed}</Box>}
-          </Col>
-        </Grid>
-      </SkewBox>
-    )
-  }
   return (
     <SkewBox
-      color={background === "blue_500" ? "blue_100" : "inherit"}
-      skew="left"
-      bg={background}
+      color={
+        background === "blue_500" && alternateBackground
+          ? "inherit"
+          : "blue_100"
+      }
+      skew={skew}
+      bg={
+        background === "blue_500" && alternateBackground
+          ? "transparent"
+          : "blue_500"
+      }
       as={motion.aside}
+      {...animation?.container}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -123,8 +109,6 @@ function HowItWorksSection({
       }}
     >
       <Grid
-        as={motion.aside}
-        {...animation?.container}
         sx={{
           maxWidth: containerWidth,
         }}
