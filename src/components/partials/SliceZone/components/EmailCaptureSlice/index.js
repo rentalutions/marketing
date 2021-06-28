@@ -30,8 +30,8 @@ const EmailCaptureSlice = ({ slice }) => {
     Location: "Email Capture Slice",
   })
 
-  let captureRedirectUrl
   let queryParamName
+  let captureRedirectUrl
 
   if (redirectUrl) {
     captureRedirectUrl = redirectUrl
