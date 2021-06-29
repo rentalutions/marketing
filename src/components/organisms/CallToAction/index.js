@@ -13,7 +13,7 @@ import { STYLING } from "config"
 const StyledFlex = styled(Flex)(
   {
     alignItems: "center",
-    gap: "2rem",
+    gap: "2.5rem",
   },
   variant({
     prop: "orientation",
@@ -59,8 +59,8 @@ function CallToAction({
     <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
       <Container
         ref={intersectionView}
-        maxWidth={isVertical ? "62rem" : containerWidth}
-        py="6rem"
+        maxWidth={isVertical ? "70rem" : containerWidth}
+        py="4rem"
       >
         <StyledFlex orientation={orientation}>
           {(title || description) && (
@@ -74,7 +74,7 @@ function CallToAction({
             >
               {cloneElement(title, {
                 sx: {
-                  ...STYLING.headline,
+                  ...STYLING.title,
                   ...title.props?.sx,
                 },
               })}
@@ -95,6 +95,7 @@ function CallToAction({
               sx={{
                 flex: childrenGrow ? "1" : "0",
                 margin: "auto",
+                width: "100%",
                 minWidth: "unset",
               }}
             >

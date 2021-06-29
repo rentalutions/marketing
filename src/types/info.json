@@ -339,7 +339,7 @@
                 "type" : "Select",
                 "config" : {
                   "options" : [ "left", "top", "right", "bottom" ],
-                  "default_value" : "left",
+                  "default_value" : "top",
                   "label" : "Text Orientation"
                 }
               },
