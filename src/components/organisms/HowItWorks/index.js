@@ -1,7 +1,8 @@
 import React, { cloneElement } from "react"
 import { motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
-import { Box, Container, Grid, Col } from "@rent_avail/layout"
+import { Box, Grid, Col } from "@rent_avail/layout"
+import { analyzeColor } from "utils/color-scheme"
 import { Text } from "@rent_avail/typography"
 import SkewBox from "components/molecules/SkewBox"
 import Video from "components/elements/Video"
@@ -87,19 +88,12 @@ function HowItWorksSection({
     threshold: 0.25,
   })
   const animation = presets[animationPreset]
+  const [, isDark] = alternateBackground ? [] : analyzeColor(background)
   return (
     <SkewBox
-      color={
-        background === "blue_500" && alternateBackground
-          ? "inherit"
-          : "blue_100"
-      }
+      color={isDark ? "blue_100" : "inherit"}
       skew={skew}
-      bg={
-        background === "blue_500" && alternateBackground
-          ? "transparent"
-          : "blue_500"
-      }
+      bg={alternateBackground ? "transparent" : background}
       as={motion.aside}
       {...animation?.container}
       sx={{
