@@ -74,7 +74,7 @@ function CallToAction({
             >
               {cloneElement(title, {
                 sx: {
-                  ...STYLING.title,
+                  ...STYLING.headline,
                   ...title.props?.sx,
                 },
               })}

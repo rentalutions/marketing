@@ -7,6 +7,7 @@ import { useUID } from "react-uid"
 import { useEmailCaptureTracking } from "utils/analytics"
 import { AVAIL_BASE_URL } from "utils/env"
 import RichText from "components/partials/SliceZone/components/RichText"
+import { STYLING } from "config"
 import Image from "next/image"
 import { CONTAINER_WIDTHS } from "config"
 
@@ -60,7 +61,7 @@ const CallToActionWithEmailCaptureSlice = ({ slice }) => {
         skew={skew}
         sx={{ margin: "6rem auto" }}
         childrenGrow
-        title={title && <RichText color={color} render={title} />}
+        title={title && <RichText color={color} render={title} sx={{ ...STYLING.headline }}/>}
         description={description && <RichText render={description} />}
         image={
           image?.url && (
