@@ -1,5 +1,6 @@
 import blockquote from "./blockquote"
 import hero from "./hero"
+import showcase from "./showcase"
 
 export default {
   meta_title:
@@ -8,5 +9,5 @@ export default {
     "Free landlord software to help you manage your rental properties. List your rental, find and screen tenants, draft leases, collect rent online, and more.",
   url: "https://info.avail.co/",
   background: "ui_300",
-  body: [{ ...hero }, { ...blockquote }],
+  body: [{ ...hero }, { ...blockquote }, { ...showcase }],
 }
