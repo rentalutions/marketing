@@ -22,7 +22,7 @@ function HowItWorks({
 }) {
   const [presets, intersectionView] = useInViewAnimation({ threshold: 0.05 })
   const animation = presets[animationPreset]
-
+  const isDark = analyzeColor(background)
   return (
     <Box
       as={motion.aside}
@@ -31,24 +31,37 @@ function HowItWorks({
       ref={intersectionView}
     >
       <Box>
-        {eyebrow && (
-          <Text
-            as={motion.aside}
-            {...animation?.item}
-            color="blue_500"
-            mb="1rem"
-          >
-            {eyebrow}
-          </Text>
-        )}
-        {title && (
-          <motion.aside {...animation?.item}>
-            {cloneElement(title, {
-              mb: "4rem",
-              sx: { ...STYLING.headline, ...title.props?.sx },
-            })}
-          </motion.aside>
-        )}
+        <SkewBox
+          color={isDark ? "blue_100" : "inherit"}
+          skew="none"
+          bg={background}
+          as={motion.aside}
+          {...animation?.container}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            maxWidth: containerWidth,
+          }}
+        >
+          {eyebrow && (
+            <Text
+              as={motion.aside}
+              {...animation?.item}
+              color="blue_500"
+              mb="1rem"
+            >
+              {eyebrow}
+            </Text>
+          )}
+          {title && (
+            <motion.aside {...animation?.item}>
+              {cloneElement(title, {
+                mb: "4rem",
+                sx: { ...STYLING.headline, ...title.props?.sx },
+              })}
+            </motion.aside>
+          )}
+        </SkewBox>
         {sections.map(({ uid, ...section }, idx) => (
           <HowItWorksSection
             containerWidth={containerWidth}
