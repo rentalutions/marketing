@@ -71,7 +71,6 @@ const Page = ({ data, uid }) => {
     process.env.NEXT_PUBLIC_BASE_CANONICAL_URL || "https://info.avail.co"
 
   const url = `${BASE_CANONICAL_URL}/info/${uid}`
-
   const {
     meta_title: title,
     meta_description: description,

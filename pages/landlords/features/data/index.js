@@ -1,0 +1,15 @@
+import hero from "./hero"
+import pitchCards from "./pitch-cards"
+import howItWorks from "./how-it-works"
+import testimonials from "./testimonials"
+import emailCapture from "./email-capture"
+
+export default {
+  meta_title:
+    "Free Landlord Software: Rental Listings, Tenant Screening &amp; More | Avail",
+  meta_description:
+    "Free landlord software to help you manage your rental properties. List your rental, find and screen tenants, draft leases, collect rent online, and more.",
+  url: "https://info.avail.co/",
+  background: "ui_300",
+  body: [{ ...hero }, { ...pitchCards }, { ...howItWorks }, { ...testimonials }, { ...emailCapture }],
+}
