@@ -109,6 +109,7 @@ function HowItWorksSection({
         alignItems="center"
         gridAutoFlow="row dense"
         mb={mb}
+        py="2rem"
         ref={intersectionView}
       >
         <Col as={motion.aside} {...animation?.item} gridColumn={copyColumn}>
