@@ -2,7 +2,7 @@ export default {
     slice_type: "testimonials",
     slice_label: null,
     primary: {
-        background: "gold_300",
+        background: "gold_500",
         color: "ui_900",
         skew: "left",
         testimonialBackground: "ui_100",

@@ -6,10 +6,10 @@ import emailCapture from "./email-capture"
 
 export default {
   meta_title:
-    "Free Landlord Software: Rental Listings, Tenant Screening &amp; More | Avail",
+    "Landlords Features | Avail",
   meta_description:
-    "Free landlord software to help you manage your rental properties. List your rental, find and screen tenants, draft leases, collect rent online, and more.",
-  url: "https://info.avail.co/",
+    "Manage your rental property with free landlord software to simplify the way you find, screen, and manage tenants.",
+  url: "https://www.avail.co/landlords/features?",
   background: "ui_300",
   body: [{ ...hero }, { ...pitchCards }, { ...howItWorks }, { ...testimonials }, { ...emailCapture }],
 }
