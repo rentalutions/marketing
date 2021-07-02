@@ -5,11 +5,11 @@ import { useTheme } from "styled-components"
 import dynamic from "next/dynamic"
 
 const BlockquoteSlice = dynamic(() => import("./components/BlockquoteSlice"))
+const CallToActionWithEmailCaptureSlice = dynamic(() =>
+  import("./components/CallToActionWithEmailCaptureSlice")
+)
 const CallToActionSlice = dynamic(() =>
   import("./components/CallToActionSlice")
-)
-const EmailCaptureSlice = dynamic(() =>
-  import("./components/EmailCaptureSlice")
 )
 const FAQSlice = dynamic(() =>
   import("./components/FrequentlyAskedQuestionsSlice")
@@ -39,10 +39,16 @@ const SliceZone = ({ slices }) => {
     switch (slice.slice_type) {
       case "blockquote":
         return <BlockquoteSlice key={key} slice={slice} />
+      case "email_capture":
+        return (
+          <CallToActionWithEmailCaptureSlice
+            key={key}
+            slice={slice}
+            sliceIndex={idx}
+          />
+        )
       case "button_cta":
         return <CallToActionSlice key={key} slice={slice} sliceIndex={idx} />
-      case "email_capture":
-        return <EmailCaptureSlice key={key} slice={slice} sliceIndex={idx} />
       case "faq":
         return <FAQSlice key={key} slice={slice} sliceIndex={idx} />
       case "hero":

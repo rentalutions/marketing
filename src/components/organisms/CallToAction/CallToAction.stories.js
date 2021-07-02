@@ -2,6 +2,7 @@
 import React from "react"
 import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
+import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { CallToAction } from "./index"
 
 export default { title: "Components/CallToAction" }
@@ -142,5 +143,20 @@ export function TopImage() {
       image={<img src="/logo-wordmark.svg" alt="" width="100%" />}
       orientation="bottom"
     />
+  )
+}
+
+export function WithEmailCapture() {
+  return (
+    <CallToAction
+      title={<Box as="h3">Manage Unlimited Units!</Box>}
+      orientation="top"
+      childrenGrow
+    >
+      <EmailCaptureInput
+        inputLabel="Enter your email"
+        buttonText="Start today"
+      />
+    </CallToAction>
   )
 }

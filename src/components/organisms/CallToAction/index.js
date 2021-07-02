@@ -13,7 +13,7 @@ import { STYLING } from "config"
 const StyledFlex = styled(Flex)(
   {
     alignItems: "center",
-    gap: "2rem",
+    gap: "2.5rem",
   },
   variant({
     prop: "orientation",
@@ -44,6 +44,7 @@ function CallToAction({
   description,
   image = null,
   children,
+  childrenGrow = false,
   orientation = "left",
   containerWidth,
   animationPreset = "fadeIn",
@@ -58,8 +59,8 @@ function CallToAction({
     <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
       <Container
         ref={intersectionView}
-        maxWidth={isVertical ? "62rem" : containerWidth}
-        py="6rem"
+        maxWidth={isVertical ? "70rem" : containerWidth}
+        py="4rem"
       >
         <StyledFlex orientation={orientation}>
           {(title || description) && (
@@ -92,8 +93,9 @@ function CallToAction({
               as={motion.aside}
               {...animation?.item}
               sx={{
-                flex: "0",
+                flex: childrenGrow ? "1" : "0",
                 margin: "auto",
+                width: childrenGrow ? "100%" : "auto",
                 minWidth: "unset",
               }}
             >
