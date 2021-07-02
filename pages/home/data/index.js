@@ -1,6 +1,7 @@
 import blockquote from "./blockquote"
 import hero from "./hero"
 import showcase from "./showcase"
+import testimonials from "./testimonials"
 
 export default {
   meta_title:
@@ -14,7 +15,7 @@ export default {
     // timeline,
     { ...blockquote },
     // howitworks,
-    // testimonials,
+    { ...testimonials },
     { ...showcase },
     // landlord guides (?),
     // emailcapture
