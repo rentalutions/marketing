@@ -1,51 +1,36 @@
-# Creating the slice definitions and components on the source code
+# What is a Slice?
+Before moving on to the part were we actually create a new Slice, is important to understand what is a Slice, why they are important for us and how they fit on `Primsic Content Modeling` concepts.
+
+
+> Slices allow you to create a structured group of fields. They allow you to define reusable content component templates for rich page layouts. This gives writers the freedom to compose documents by arranging and ordering Slices as they want.
+
+We use Slices in order to define templates for the content we want to display on different CMS pages. When a content creator adds a Slice to their page, and fill the fields defined for its template, they expect to see a component on that page that displays the corresponding content using the layout proposed by the Slice.
+
+Reach out to Prismic documentation for more details: https://prismic.io/docs/core-concepts/slices
+
+# Creating slice definitions on Prismic Custom Types
 > *This page will explain how to create a new slice on a pre-existing Prismic Custom Type. If you need to create a new Custom Type, follow [these instructions](/wiki/Creating-a-new-custom-type.md) first.*
 
-## Editing the current `.json` file for the custom type that will support the new slice
+> *The Prismic URL's included on this page are linking to Avail Marketing Staging repository. If you're working on a different repository, make sure to adapt the URL base path when following a link from here.*
 
-**There will probably exist a Figma layout for the new slice. Take a look on it first, in order to identify the properties for the slice and its fields. They have to be defined on the JSON file you'll be editing on this step.**
+If you prefer not to use the Prismic UI. You can also [define a new slice directly on the source code](/wiki/defining-a-new-slice-directly-on-the-source-code.md)
 
-The file to be edited should be a `.json` file at `src/types` directory. The name of the file is the same name of the content type on which the slice will be created.
+## Opening the Custom Type page
+By clicking the *Custom Types* item on the left menu (or by directly following [/masks](https://avail-marketing.prismic.io/masks/)), it is possible to enter the Custom Types page on Prismic UI.
 
-Example: `src/types/info.json` (This is the source file for the content type named `info`)
+At the grid displayed at the center of the page, locate the custom type on which you want to add the slice on, and click on it. This should open the page for viewing and editing the custom type.
+> You can also open it directly from the URL [/masks/{content-type-name}.json](https://avail-marketing.prismic.io/masks/info.json/)
 
-### Add a new entry (alphabetically) for `Page.body.config.labels`
-```json
-"{new_slice_name}": [ ],
-```
+### Editing the Custom Type with Prismic UI
+On this page you can use the UI to create and edit slices of the Custom Type, by using the `Build Mode` section of the right menu and/or by editing fields using their settings.
+ 
+#### Creating a new slice
+To add a new slice, click the `Add a slice` item on the `Slice zone` stack, after the page settings fields.
 
-### Add a new entry (alphabetically) for `Page.body.config.choices`
-```json
-"{new_slice_name}": {
-  "type" : "Slice",
-  "fieldset" : "{Slice Name}",
-  "description" : "{Slice Description}",
-  "icon" : "",
-  "display" : "{list|grid}",
-  "non-repeat" : { },
-  "repeat" : { }
-},
-```
-> `icon`: The exact string for the icon name. See icon list in Prismic UI.
-> 
-> `display`: This property defines how the repeatable items will be displayed **on Prismic UI**. ***This does not affect how the slice will be rendered on the application.*** Possible options are:
-> > `list`: there will be one item per row and each one of them will fill all the width available
-> >
-> > `grid`: the maximum amount of items that fits the screen will be displayed on the same row
-> 
-> `non-repeat`: Fields that should appear once and directly on the slice 
-> 
-> `repeat`: Fields that should compose together a single repeatable card/item 
-> 
-**To learn how to create both repeatable and non repeatable fields, follow the instructions of [this page](/wiki/Creating-fields.md).**
+#### Adding new fields to the slice
+To add fields to existing slices, first select the slice you want to edit on the `Slice zone` stack, and then drag the field type from the `Build Mode` section of the right menu to the slice. This can be done both for regular fields and repeatable zone items.
 
-<img width="1749" alt="New slice JSON diff example" src="https://user-images.githubusercontent.com/22528445/112215039-e6c34900-8bed-11eb-9acc-02744c07b1cd.png">
-
-### Syncing Prismic with the source code
-> **If you update custom type definitions directly on the JSON file of the source code, make sure to also update it on Prismic.**
-
-The instructions on how to do it can be find on [this wiki page](/wiki/Syncing-Prismic-with-the-source-code.md).
-
+# Creating the slice implementation on the application
 ## Creating the slice partial
 The higher level component for the slice.
 > Should be created at `src/components/partials/SliceZone/components/{SliceName}/`
@@ -175,8 +160,3 @@ The case condition should be the slice name, as defined on the custom type JSON 
 The case return should be the slice partial. Make sure to pass the `key` and `slice` variables to it as props.
 
 <img width="959" alt="New slice mapped in SliceZone" src="https://user-images.githubusercontent.com/22528445/112867388-7e0e1d80-9080-11eb-9fe3-852c748f0b2c.png">
-
-
-# See also
-## Creating a new slice on Prismic
-In order to make a slice fully attend to our expectations on the CMS, its definitions also have to be created on Prismic. You can check how to do it by reading [this wiki page](/wiki/Creating-a-new-slice-on-prismic.md).
