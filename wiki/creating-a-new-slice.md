@@ -49,6 +49,8 @@ The slice partial should receive as prop an object called `slice`. On this objec
 An organism component that should handle the rendering of the slice.
 > Should be created at `src/components/organisms/{OrganismName}/`
 
+> The desing of our graphic elements is oriented by a `elements` > `molecules` > `organisms` > `partials` structure. If you aren't familiar with atomic design concepts, [this article](https://bradfrost.com/blog/post/atomic-web-design/) might help you to understand how it works.
+
 ### Creating the storybook
 The organism should be created with its stories for the storybook. The storybook is a library that should render every organism component (and their possible variants) without running the application.
 
