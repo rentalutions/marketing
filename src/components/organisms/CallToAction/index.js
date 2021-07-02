@@ -95,7 +95,7 @@ function CallToAction({
               sx={{
                 flex: childrenGrow ? "1" : "0",
                 margin: "auto",
-                width: "100%",
+                width: childrenGrow ? "100%" : "auto",
                 minWidth: "unset",
               }}
             >

@@ -24,6 +24,7 @@ const EmailCaptureInput = ({
   optInCopy,
   outro,
   optInContext,
+  ...props
 }) => {
   const buttonRef = useRef()
   const [buttonWidth, setButtonWidth] = useState(0)
@@ -70,7 +71,13 @@ const EmailCaptureInput = ({
   }, [buttonRef.current])
 
   return (
-    <Box as="form" position="relative" onSubmit={handleSubmit}>
+    <Box
+      as="form"
+      position="relative"
+      textAlign="left"
+      onSubmit={handleSubmit}
+      {...props}
+    >
       <Input
         type="email"
         label={inputLabel}

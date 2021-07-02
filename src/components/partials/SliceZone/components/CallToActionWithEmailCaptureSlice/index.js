@@ -61,7 +61,11 @@ const CallToActionWithEmailCaptureSlice = ({ slice }) => {
         skew={skew}
         sx={{ margin: "6rem auto" }}
         childrenGrow
-        title={title && <RichText color={color} render={title} sx={{ ...STYLING.headline }}/>}
+        title={
+          title?.[0]?.text && (
+            <RichText color={color} render={title} sx={{ ...STYLING.title }} />
+          )
+        }
         description={description && <RichText render={description} />}
         image={
           image?.url && (
