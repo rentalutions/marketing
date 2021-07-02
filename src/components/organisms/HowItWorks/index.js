@@ -22,7 +22,7 @@ function HowItWorks({
 }) {
   const [presets, intersectionView] = useInViewAnimation({ threshold: 0.05 })
   const animation = presets[animationPreset]
-  const isDark = analyzeColor(background)
+  const isDark = background ? analyzeColor(background) : false
   return (
     <Box
       as={motion.aside}
@@ -37,9 +37,11 @@ function HowItWorks({
           bg={background}
           as={motion.aside}
           {...animation?.container}
+          px="2rem"
           sx={{
             display: "flex",
             justifyContent: "center",
+            flexDirection: "column",
             maxWidth: containerWidth,
           }}
         >
