@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 
 function useCarousel(
   items,
-  { visibleItemsLenght = 5, interval = 3, disableIntervalOnSelect = true } = {}
+  { visibleItemsLength = 5, interval = 3, disableIntervalOnSelect = true } = {}
 ) {
   const [currentInterval, setCurrentInterval] = useState(interval)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -49,14 +49,14 @@ function useCarousel(
     [getSafeIndex, activeIndex, setActiveIndex, setCurrentInterval]
   )
 
-  const { activeItem, visibleItems } = useMemo(
-    () =>
-      Array(visibleItemsLenght)
-        .fill(activeIndex - Math.floor(visibleItemsLenght / 2)) // -2 -2 -2 -2 -2
+  const reduceVisibleItems = useCallback(
+    (_activeIndex, _getVisibleItem) =>
+      Array(visibleItemsLength)
+        .fill(_activeIndex - Math.floor(visibleItemsLength / 2)) // -2 -2 -2 -2 -2
         .reduce(
           (returnObj, lowerVisibleIdx, fromLowerIdx) => {
             const fromActiveIndex = lowerVisibleIdx + fromLowerIdx // -2 -1 0 1 2
-            const currentItem = getVisibleItem(fromActiveIndex)
+            const currentItem = _getVisibleItem(fromActiveIndex)
             returnObj.visibleItems.push(currentItem)
             return currentItem.level !== 0
               ? returnObj
@@ -67,7 +67,12 @@ function useCarousel(
           },
           { activeItem: undefined, visibleItems: [] }
         ),
-    [visibleItemsLenght, activeIndex, getVisibleItem]
+    [visibleItemsLength]
+  )
+
+  const { activeItem, visibleItems } = useMemo(
+    () => reduceVisibleItems(activeIndex, getVisibleItem),
+    [activeIndex, getVisibleItem, reduceVisibleItems]
   )
 
   const navigateToItem = useCallback(
