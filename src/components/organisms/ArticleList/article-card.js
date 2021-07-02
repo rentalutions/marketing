@@ -6,13 +6,14 @@ import { STYLING } from "config"
 import ArticleLink from "./article-link"
 
 function ArticleCard({
-  bg,
+  bg = "ui_100",
   tag,
   title,
   content,
-  action,
   image,
   link,
+  linkType,
+  linkLabel,
   ...props
 }) {
   return (
@@ -84,14 +85,14 @@ function ArticleCard({
             ...content.props?.sx,
           },
         })}
-        {action && (
+        {linkType && linkLabel && (
           <ArticleLink link={link}>
-            {action.type === "button" ? (
+            {linkType === "button" ? (
               <Button background={bg} forwardAs="Box" as="a">
-                {action.label}
+                {linkLabel}
               </Button>
             ) : (
-              <a className="link">{action.label}</a>
+              <a className="link">{linkLabel}</a>
             )}
           </ArticleLink>
         )}

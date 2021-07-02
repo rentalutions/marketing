@@ -51,10 +51,6 @@ const ArticleListSlice = ({ slice }) => {
           <RichText render={content} />
         </Box>
       ),
-      action: linkType !== "none" && {
-        type: linkType,
-        label: linkLabel,
-      },
       image: image?.url && {
         element: (
           <Image
@@ -68,6 +64,8 @@ const ArticleListSlice = ({ slice }) => {
         bg: imageBackground !== "transparent" && imageBackground,
       },
       link: (props) => <Link link={link} {...props} />,
+      linkType,
+      linkLabel,
       ...article,
     })
   )

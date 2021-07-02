@@ -6,7 +6,7 @@ export default { title: "Components/ArticleList" }
 
 export function Default() {
   return (
-    <Box width="100%" py="4rem" background="#F9F9F9">
+    <Box width="100%" py="4rem" bg="ui_300">
       <ArticleList
         title={<Box as="h2">Recent Articles</Box>}
         description={

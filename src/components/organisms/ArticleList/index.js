@@ -34,8 +34,8 @@ function ArticleList({
             as: motion.aside,
             ...animation?.item,
             sx: {
-              ...title.props?.sx,
               ...STYLING.title,
+              ...title.props?.sx,
             },
           })}
         {description &&
@@ -43,8 +43,8 @@ function ArticleList({
             as: motion.aside,
             ...animation?.item,
             sx: {
-              ...description.props?.sx,
               ...STYLING.subtitle,
+              ...description.props?.sx,
             },
           })}
         <Slider containerRef={containerIntersectionView} mt={2}>
