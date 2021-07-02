@@ -26,7 +26,7 @@ A Custom Types is a structured group of definitions and possible content types, 
 
 > Single Types are for elements that only need one document like a homepage, and Repeatable Types for content that requires more than one, such as articles, products, places, and authors. [Read more](https://prismic.io/docs/core-concepts/custom-types)
 
-On the `next.js` application, custom types are being handled as pages, and each one of them can result in a different page structure/implementation.
+On the application, custom types are being handled as pages, and each one of them can result in a different page structure/implementation.
 
 ### Slices
 A Slice is a structured group of fields. Each Slice may define different kinds of fields, and use each one of them for different purposes. Creating a Slice consists in defining reusable templates for the content we should handle on the CMS.
