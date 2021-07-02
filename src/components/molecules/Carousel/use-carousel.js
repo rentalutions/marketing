@@ -32,7 +32,7 @@ function useCarousel(
     }
   }, [currentInterval, items, activeIndex])
 
-  const visibleItem = useCallback(
+  const getVisibleItem = useCallback(
     (index = activeIndex) => {
       const safeIndex = getSafeIndex(index)
       return {
@@ -56,9 +56,8 @@ function useCarousel(
         .reduce(
           (returnObj, lowerVisibleIdx, fromLowerIdx) => {
             const fromActiveIndex = lowerVisibleIdx + fromLowerIdx // -2 -1 0 1 2
-            const currentItem = visibleItem(fromActiveIndex)
+            const currentItem = getVisibleItem(fromActiveIndex)
             returnObj.visibleItems.push(currentItem)
-            console.log(currentItem.level !== 0, currentItem)
             return currentItem.level !== 0
               ? returnObj
               : {
@@ -68,7 +67,7 @@ function useCarousel(
           },
           { activeItem: undefined, visibleItems: [] }
         ),
-    [visibleItemsLenght, activeIndex, visibleItem]
+    [visibleItemsLenght, activeIndex, getVisibleItem]
   )
 
   const navigateToItem = useCallback(

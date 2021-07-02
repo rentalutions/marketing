@@ -1,16 +1,18 @@
-import React from "react"
+import React, { useMemo } from "react"
 import Anchor from "components/elements/Anchor"
 import { HowItWorksCarousel } from "components/organisms/HowItWorks"
 import { CONTAINER_WIDTHS } from "config"
 import RichText from "../RichText"
-import howItWorksSliceSection from "../HowItWorksSectionsSlice/how-it-works-slice-section"
+import { transformSliceToSection } from "../HowItWorksSectionsSlice"
 
 const HowItWorksCarouselSlice = ({ slice }) => {
   const {
     primary: { title, background, color, flip, hash, stepInterval, skew },
+    items,
   } = slice
-  const sections = slice.items.map((props, idx) =>
-    howItWorksSliceSection({ idx, ...props })
+  const sections = useMemo(
+    () => items.map((props, idx) => transformSliceToSection({ idx, ...props })),
+    [items]
   )
   return (
     <React.Fragment>
