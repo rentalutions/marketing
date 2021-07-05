@@ -44,6 +44,7 @@ export function Default() {
     <HowItWorks
       mt="4rem"
       eyebrow="Learn more."
+      containerWidth={["62rem", "62rem", "62rem", "80rem", "96rem"]}
       title={
         <Heading as="h3">An explanation of how this feature works</Heading>
       }
@@ -58,10 +59,26 @@ export function WithFlip() {
       mt="4rem"
       eyebrow="Learn more."
       alternate={(idx) => idx % 2 === 0}
-      bg="transparent"
-      color="blue_100"
-      alternateBackground
+      containerWidth={["62rem", "62rem", "62rem", "80rem", "96rem"]}
+      background="transparent"
+      color="blue_500"
       p="0 0 4rem"
+      title={
+        <Heading as="h3">An explanation of how this feature works</Heading>
+      }
+      sections={basicSections}
+    />
+  )
+}
+
+export function AlternateBackground() {
+  return (
+    <HowItWorks
+      mt="4rem"
+      eyebrow="Learn more."
+      alternateBackground
+      background="blue_500"
+      containerWidth={["62rem", "62rem", "62rem", "80rem", "96rem"]}
       title={
         <Heading as="h3">An explanation of how this feature works</Heading>
       }
