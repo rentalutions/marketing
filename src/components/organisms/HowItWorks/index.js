@@ -22,7 +22,7 @@ function HowItWorks({
 }) {
   const [presets, intersectionView] = useInViewAnimation({ threshold: 0.05 })
   const animation = presets[animationPreset]
-  const isDark = background ? analyzeColor(background) : false
+  const [, isDark] = background ? analyzeColor(background) : []
   return (
     <Box
       as={motion.aside}
@@ -31,39 +31,43 @@ function HowItWorks({
       ref={intersectionView}
     >
       <Box>
-        <SkewBox
-          color={isDark ? "blue_100" : "inherit"}
-          skew="none"
+        <Box
+          color={isDark ? "ui_100" : "inherit"}
           bg={background}
           as={motion.aside}
           {...animation?.container}
-          px="2rem"
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            maxWidth: containerWidth,
+            width: "100%",
           }}
         >
-          {eyebrow && (
-            <Text
-              as={motion.aside}
-              {...animation?.item}
-              color="blue_500"
-              mb="1rem"
-            >
-              {eyebrow}
-            </Text>
-          )}
-          {title && (
-            <motion.aside {...animation?.item}>
-              {cloneElement(title, {
-                mb: "4rem",
-                sx: { ...STYLING.headline, ...title.props?.sx },
-              })}
-            </motion.aside>
-          )}
-        </SkewBox>
+          <Box
+            sx={{
+              display: "grid",
+              justifyContent: "center",
+              flexDirection: "column",
+              maxWidth: containerWidth,
+            }}
+          >
+            {eyebrow && (
+              <Text
+                as={motion.aside}
+                {...animation?.item}
+                color="blue_500"
+                mb="1rem"
+              >
+                {eyebrow}
+              </Text>
+            )}
+            {title && (
+              <motion.aside {...animation?.item}>
+                {cloneElement(title, {
+                  mb: "4rem",
+                  sx: { ...STYLING.headline, ...title.props?.sx },
+                })}
+              </motion.aside>
+            )}
+          </Box>
+        </Box>
         {sections.map(({ uid, ...section }, idx) => (
           <HowItWorksSection
             containerWidth={containerWidth}
