@@ -510,11 +510,11 @@
               "description" : {
                 "type" : "StructuredText",
                 "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, list-item, o-list-item",
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small", "tag_green" ]
                 }
               },
               "background" : {
@@ -654,11 +654,11 @@
               "description" : {
                 "type" : "StructuredText",
                 "config" : {
-                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, list-item, o-list-item",
                   "allowTargetBlank" : true,
                   "label" : "Description",
                   "placeholder" : "Description",
-                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small", "tag_green" ]
                 }
               },
               "background" : {

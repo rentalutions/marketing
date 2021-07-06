@@ -11,6 +11,7 @@ import {
 } from "react-feather"
 import { STYLING } from "config"
 import { Text } from "../Text"
+import Tag from "@rent_avail/tag"
 
 function getLabelProps(label) {
   return STYLING[label] && { sx: { ...STYLING[label] } }
@@ -51,6 +52,8 @@ export const CustomLabel = ({ label, children, ...props }) => {
       return <IconLabel icon={Minus}>{children}</IconLabel>
     case "icon__gift":
       return <IconLabel icon={Gift}>{children}</IconLabel>
+    case "tag__green":
+      return <Tag mr="1rem" bg="green_500" color="ui_900">{children}</Tag>
     default:
       return React.createElement(
         Text,
