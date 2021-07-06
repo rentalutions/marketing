@@ -45,5 +45,20 @@ export default {
       "https://www.avail.co/users/new?utf8=%E2%9C%93&commit=Join+Today",
     emailCaptureOptInContext: null,
     emailCaptureOptInCopy: [],
+    emailCaptureOutro: [
+      {
+        type: "paragraph",
+        text: "Already a member? Sign in here.",
+        spans: [
+          { start: 18, end: 31, type: "strong" },
+          {
+            start: 18,
+            end: 31,
+            type: "hyperlink",
+            data: { link_type: "Web", url: "https://www.avail.co/login" },
+          },
+        ],
+      },
+    ],
   },
 }

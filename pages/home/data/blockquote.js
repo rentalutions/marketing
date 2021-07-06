@@ -28,7 +28,7 @@ export default {
       },
     ],
     background: "transparent",
-    quoteColor: "blue_500",
+    quoteColor: "green_100",
     textColor: "blue_500",
     textAlign: null,
   },

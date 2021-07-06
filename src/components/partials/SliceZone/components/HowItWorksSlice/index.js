@@ -39,7 +39,6 @@ const HowItWorksSlice = ({ slice }) => {
       <HowItWorks
         title={<RichText render={title} />}
         sections={sections}
-        bg={background}
         background={background}
         skew={skew}
         alternateBackground={alternateBackground}

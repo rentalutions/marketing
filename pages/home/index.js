@@ -24,10 +24,6 @@ const TenantFeatures = () => {
       background={background}
     >
       <SliceZone slices={slices} />
-      <HomeHowItWorks id="use-cases" />
-      <HomeTestimonials />
-      <HomeShowcase my={6} />
-      <HomeEmailCapture my={6} />
     </StaticBasePage>
   )
 }
