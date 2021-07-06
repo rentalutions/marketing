@@ -45,7 +45,7 @@ function HowItWorks({
               display: "grid",
               justifyContent: "center",
               flexDirection: "column",
-              maxWidth: containerWidth,
+              maxWidth: ["62rem", "62rem", "62rem", "80rem", "100rem"],
             }}
           >
             {eyebrow && (
