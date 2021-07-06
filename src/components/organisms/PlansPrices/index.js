@@ -14,12 +14,11 @@ const PlansGrid = styled(Grid)(
     variants: {
       vertical: {
         gridTemplateColumns: "1fr",
-        maxWidth: ["unset", "unset", "75%", "75%", "54rem"],
         mx: "auto",
       },
       horizontal: {
-        gridTemplateColumns: "repeat(auto-fit, minmax(24rem, 30rem))",
-        justifyContent: "center",
+        gridTemplateColumns: "repeat(auto-fit, 26rem)",
+        justifyContent: "flex-start",
       },
     },
   })
@@ -45,30 +44,31 @@ function PlansPrices({
         as={motion.aside}
         {...animation?.container}
         ref={intersectionView}
-        maxWidth={containerWidth}
-        py="6rem"
+        sx={{
+          py: "6rem",
+          maxWidth: ["unset", "unset", "100%", "100%", "54rem"],
+          boxSizing: "content-box",
+        }}
       >
-        <Box textAlign="center">
-          {title && (
+        <Box textAlign="left">
+          {(title || subtitle) && (
             <motion.aside {...animation?.item}>
-              {cloneElement(title, {
-                mb: "1rem",
-                sx: {
-                  ...title.props?.sx,
-                  ...STYLING.headline,
-                },
-              })}
-            </motion.aside>
-          )}
-          {subtitle && (
-            <motion.aside {...animation?.item}>
-              {cloneElement(subtitle, {
-                mb: "1rem",
-                sx: {
-                  ...subtitle.props?.sx,
-                  ...STYLING.subtitle,
-                },
-              })}
+              {title &&
+                cloneElement(title, {
+                  mb: "1rem",
+                  sx: {
+                    ...STYLING.headline,
+                    ...title.props?.sx,
+                  },
+                })}
+              {subtitle &&
+                cloneElement(subtitle, {
+                  mb: "1rem",
+                  sx: {
+                    ...STYLING.subtitle,
+                    ...subtitle.props?.sx,
+                  },
+                })}
             </motion.aside>
           )}
           <PlansGrid direction={direction} gap="2rem" my="2rem">
@@ -76,6 +76,7 @@ function PlansPrices({
               <PlanCard
                 direction={direction}
                 animationPreset={animationPreset}
+                shadow={!!plan.specialOffer}
                 key={plan.title}
                 {...plan}
               />

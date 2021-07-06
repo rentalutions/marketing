@@ -43,6 +43,7 @@ const plans = [
     subtext: "Subtext",
     description: "Description",
     features: Features,
+    specialOffer: "Special Offer",
   },
   {
     title: "Unlimited",

@@ -29,6 +29,7 @@ const HeroWithEmailCaptureSlice = ({ slice, sliceIndex }) => {
       emailCaptureRedirectUrl,
       emailCaptureOptInContext,
       emailCaptureOptInCopy,
+      emailCaptureOutro,
     },
   } = slice
 
@@ -90,6 +91,11 @@ const HeroWithEmailCaptureSlice = ({ slice, sliceIndex }) => {
             queryParamName={queryParamName}
             optInContext={emailCaptureOptInContext}
             optInCopy={<RichText render={emailCaptureOptInCopy} />}
+            outro={
+              emailCaptureOutro?.[0]?.text && (
+                <RichText render={emailCaptureOutro} />
+              )
+            }
           />
         </Box>
       )}

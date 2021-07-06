@@ -3,7 +3,7 @@ import { Box } from "@rent_avail/layout"
 import { useInViewAnimation } from "utils/animation"
 import EmailCaptureInput from "components/molecules/EmailCaptureInput"
 import { STYLING } from "config"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 
 function EmailCapture({
   containerBg,

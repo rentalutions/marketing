@@ -13,81 +13,105 @@ import { STYLING } from "config"
 const StyledFlex = styled(Flex)(
   {
     alignItems: "center",
-    gap: "2rem",
+    gap: "2.5rem",
   },
   variant({
     prop: "orientation",
     variants: {
       top: {
-        flexFlow: "column wrap",
+        flexFlow: "column",
         textAlign: "center",
       },
       right: {
-        flexFlow: "row-reverse wrap",
+        flexFlow: ["column", "row-reverse"],
         textAlign: "right",
       },
       bottom: {
-        flexFlow: "column-reverse wrap",
+        flexFlow: "column-reverse",
         textAlign: "center",
       },
       left: {
-        flexFlow: "row wrap",
+        flexFlow: ["column", "row"],
         textAlign: "left",
       },
     },
   })
 )
 
-function ButtonCTA({
+function CallToAction({
   bg,
   title,
-  button,
+  description,
+  image = null,
+  children,
+  childrenGrow = false,
   orientation = "left",
   containerWidth,
   animationPreset = "fadeIn",
   ...props
 }) {
   const staggerDirection = ["left", "top"].includes(orientation) ? 1 : -1
+  const isVertical = ["top", "bottom"].includes(orientation)
   const [presets, intersectionView] = useInViewAnimation({ staggerDirection })
   const animation = presets[animationPreset]
 
   return (
     <SkewBox as={motion.aside} {...animation?.container} bg={bg} {...props}>
-      <Container ref={intersectionView} maxWidth={containerWidth} py="6rem">
+      <Container
+        ref={intersectionView}
+        maxWidth={isVertical ? "70rem" : containerWidth}
+        py="4rem"
+      >
         <StyledFlex orientation={orientation}>
-          {title && (
+          {(title || description) && (
             <Box
               as={motion.aside}
               {...animation?.item}
               sx={{
                 flex: "1",
                 margin: "auto",
-                height: "fit-content",
-                width: "fit-content",
-                minWidth: "fit-content",
               }}
             >
               {cloneElement(title, {
                 sx: {
-                  ...title.props?.sx,
                   ...STYLING.headline,
+                  ...title.props?.sx,
                 },
               })}
+              {description &&
+                cloneElement(description, {
+                  sx: {
+                    ...STYLING.body,
+                    py: "2rem",
+                    ...description.props?.sx,
+                  },
+                })}
             </Box>
           )}
-          {button && (
+          {children && (
             <Box
               as={motion.aside}
               {...animation?.item}
               sx={{
-                flex: "0",
+                flex: childrenGrow ? "1" : "0",
                 margin: "auto",
-                height: "fit-content",
-                width: "fit-content",
+                width: childrenGrow ? "100%" : "auto",
                 minWidth: "unset",
               }}
             >
-              {button}
+              {children}
+            </Box>
+          )}
+          {image && (
+            <Box
+              as={motion.aside}
+              {...animation?.item}
+              sx={{
+                flex: "1 0",
+                margin: "auto",
+              }}
+            >
+              {image}
             </Box>
           )}
         </StyledFlex>
@@ -96,4 +120,4 @@ function ButtonCTA({
   )
 }
 
-export { ButtonCTA }
+export { CallToAction }

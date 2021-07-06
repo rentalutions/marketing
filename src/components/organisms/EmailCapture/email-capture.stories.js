@@ -2,9 +2,9 @@ import React from "react"
 import { Container, Box } from "@rent_avail/layout"
 import EmailCapture from "./index"
 
-export default {
-  title: "Components/EmailCapture",
-}
+// export default {
+//   title: "Components/EmailCapture",
+// }
 
 export function Default() {
   return (

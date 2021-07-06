@@ -22,6 +22,7 @@ const EmailCaptureInput = ({
   onSubmit,
   queryParamName,
   optInCopy,
+  outro,
   optInContext,
   sx,
   ...props
@@ -75,7 +76,11 @@ const EmailCaptureInput = ({
       as="form"
       position="relative"
       onSubmit={handleSubmit}
-      sx={{ maxWidth: ["none", "none", "none", "40rem", "60rem"], ...sx }}
+      sx={{
+        maxWidth: ["none", "none", "none", "40rem", "60rem"],
+        textAlign: "left",
+        ...sx,
+      }}
       {...props}
     >
       <Input
@@ -137,6 +142,7 @@ const EmailCaptureInput = ({
           {optInCopy}
         </Checkbox>
       )}
+      {outro}
     </Box>
   )
 }

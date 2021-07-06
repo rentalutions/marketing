@@ -19,6 +19,7 @@ function Hero({
   embed,
   primaryLink,
   secondaryLink,
+  outro,
   containerWidth,
   animationPreset = "fadeIn",
   children,
@@ -113,6 +114,7 @@ function Hero({
               {secondaryLink}
             </Stack>
           )}
+          {outro}
           <motion.aside {...animation?.item}>{children}</motion.aside>
         </Col>
         {hasTwoCols && imagePosition !== "left" && secondCol}
