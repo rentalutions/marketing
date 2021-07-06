@@ -802,8 +802,8 @@
                 "config" : {
                   "label" : "Background color",
                   "placeholder" : "",
-                  "default_value" : "transparent",
-                  "options" : [ "transparent", "blue_500" ]
+                  "default_value" : "ui_100",
+                  "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ]
                 },
                 "type" : "Select"
               },
@@ -814,6 +814,24 @@
                   "placeholder_true" : "Left",
                   "default_value" : false,
                   "label" : "First section media position"
+                }
+              },
+              "skew" : {
+                "config" : {
+                  "label" : "Skew",
+                  "placeholder" : "",
+                  "default_value" : "right",
+                  "options" : [ "none", "right", "left" ]
+                },
+                "type" : "Select"
+              },
+              "alternateBackground" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "False",
+                  "placeholder_true" : "True",
+                  "default_value" : false,
+                  "label" : "Alternate background color? (will start with the color set on background color setting)"
                 }
               }
             },
