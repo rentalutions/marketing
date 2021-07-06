@@ -76,6 +76,7 @@ export function AlternateBackground() {
     <HowItWorks
       mt="4rem"
       eyebrow="Learn more."
+      eyebrow="Learn more."
       alternateBackground
       background="blue_500"
       containerWidth={["62rem", "62rem", "62rem", "80rem", "96rem"]}

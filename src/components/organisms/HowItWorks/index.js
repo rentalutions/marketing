@@ -1,7 +1,7 @@
 import React, { cloneElement } from "react"
 import { motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
-import { Box, Grid, Col } from "@rent_avail/layout"
+import { Box, Grid, Col, Container } from "@rent_avail/layout"
 import { analyzeColor } from "utils/color-scheme"
 import { Text } from "@rent_avail/typography"
 import SkewBox from "components/molecules/SkewBox"
@@ -36,23 +36,13 @@ function HowItWorks({
           bg={background}
           as={motion.aside}
           {...animation?.container}
-          sx={{
-            width: "100%",
-          }}
-        >
-          <Box
-            sx={{
-              display: "grid",
-              justifyContent: "center",
-              flexDirection: "column",
-              maxWidth: ["62rem", "62rem", "62rem", "80rem", "100rem"],
-            }}
-          >
+        > 
+          <Container maxWidth={containerWidth}>
             {eyebrow && (
               <Text
                 as={motion.aside}
                 {...animation?.item}
-                color="blue_500"
+                color={isDark ? "ui_100" : "inherit"}
                 mb="1rem"
               >
                 {eyebrow}
@@ -61,12 +51,12 @@ function HowItWorks({
             {title && (
               <motion.aside {...animation?.item}>
                 {cloneElement(title, {
-                  mb: "4rem",
+                  pb: "4rem",
                   sx: { ...STYLING.headline, ...title.props?.sx },
                 })}
               </motion.aside>
             )}
-          </Box>
+            </Container>
         </Box>
         {sections.map(({ uid, ...section }, idx) => (
           <HowItWorksSection
