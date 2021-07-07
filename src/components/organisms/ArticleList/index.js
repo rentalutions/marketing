@@ -2,7 +2,7 @@ import React, { cloneElement } from "react"
 import { motion } from "framer-motion"
 
 import { useInViewAnimation } from "utils/animation"
-import { Container } from "@rent_avail/layout"
+import { Box, Container } from "@rent_avail/layout"
 
 import SkewBox from "components/molecules/SkewBox"
 import Slider from "components/molecules/Slider"
@@ -29,27 +29,33 @@ function ArticleList({
         maxWidth={containerWidth}
         py="6rem"
       >
-        {title &&
-          cloneElement(title, {
-            as: motion.aside,
-            ...animation?.item,
-            sx: {
-              ...STYLING.title,
-              ...title.props?.sx,
-            },
-          })}
-        {description &&
-          cloneElement(description, {
-            as: motion.aside,
-            ...animation?.item,
-            sx: {
-              ...STYLING.subtitle,
-              ...description.props?.sx,
-            },
-          })}
-        <Slider containerRef={containerIntersectionView} mt={2}>
-          {articles.map(({ uid, ...article }) => (
-            <ArticleCard key={uid} {...article} />
+        {title && (
+          <Box mb="2rem">
+            {cloneElement(title, {
+              as: motion.aside,
+              ...animation?.item,
+              sx: {
+                ...STYLING.headline,
+                ...title.props?.sx,
+              },
+            })}
+          </Box>
+        )}
+        {description && (
+          <Box mb="2rem">
+            {cloneElement(description, {
+              as: motion.aside,
+              ...animation?.item,
+              sx: {
+                ...STYLING.title,
+                ...description.props?.sx,
+              },
+            })}
+          </Box>
+        )}
+        <Slider containerRef={containerIntersectionView}>
+          {articles.map(({ uid, ...article }, index) => (
+            <ArticleCard key={uid || index} {...article} />
           ))}
         </Slider>
       </Container>

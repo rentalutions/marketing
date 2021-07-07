@@ -1,9 +1,8 @@
 import React from "react"
 import Image from "next/image"
-import { Box } from "@rent_avail/layout"
 import { ArticleList } from "components/organisms/ArticleList"
 import RichText from "components/partials/SliceZone/components/RichText"
-import { CONTAINER_WIDTHS } from "config"
+import { CONTAINER_WIDTHS, STYLING } from "config"
 import Link from "../Link"
 
 const ArticleListSlice = ({ slice }) => {
@@ -41,16 +40,9 @@ const ArticleListSlice = ({ slice }) => {
       uid: `${link.id}-${tag}-${idx}`,
       bg: cardBg,
       tag,
-      title: (
-        <Box>
-          <RichText render={cardTitle} />
-        </Box>
-      ),
-      content: (
-        <Box>
-          <RichText render={content} />
-        </Box>
-      ),
+      title: <RichText render={cardTitle} />,
+      content: <RichText render={content} />,
+      width: ["26rem", "26rem", "26rem", "24rem", "28rem"],
       image: image?.url && {
         element: (
           <Image
@@ -69,24 +61,22 @@ const ArticleListSlice = ({ slice }) => {
       ...article,
     })
   )
-  const readMoreCard = {
-    bg: readMoreCardBackground,
+
+  const renderReadMoreCard =
+    readMoreCardTitle?.[0]?.text ||
+    readMoreCardTitle?.[0]?.text ||
+    (readMoreCardLinkLabel && readMoreCardLink?.url)
+
+  const readMoreCard = renderReadMoreCard && {
+    uid: "read-more-card",
+    bg: readMoreCardBackground || "blue_100",
     color: readMoreCardColor,
-    title: (
-      <Box>
-        <RichText render={readMoreCardTitle} />
-      </Box>
-    ),
-    content: (
-      <Box>
-        <RichText render={readMoreCardContent} />
-      </Box>
-    ),
-    action: {
-      type: "button",
-      label: readMoreCardLinkLabel,
-    },
+    title: <RichText sx={{ ...STYLING.subtitle }} render={readMoreCardTitle} />,
+    content: <RichText render={readMoreCardContent} />,
     link: (props) => <Link link={readMoreCardLink} {...props} />,
+    linkType: "button",
+    linkLabel: readMoreCardLinkLabel,
+    sx: { boxShadow: "none" },
   }
 
   return (
@@ -96,7 +86,7 @@ const ArticleListSlice = ({ slice }) => {
       color={color}
       title={title && <RichText render={title} />}
       description={description && <RichText render={description} />}
-      articles={[...articles, readMoreCard]}
+      articles={[...articles, ...(renderReadMoreCard ? [readMoreCard] : [])]}
       skew={skew}
     />
   )

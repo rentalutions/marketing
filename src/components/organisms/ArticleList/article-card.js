@@ -1,9 +1,14 @@
-import React, { cloneElement } from "react"
+import React, { cloneElement, forwardRef } from "react"
 import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import Card from "components/elements/Card"
 import { STYLING } from "config"
+import Tag from "@rent_avail/tag"
 import ArticleLink from "./article-link"
+
+const ButtonLink = forwardRef((props, ref) => (
+  <Button as="a" ref={ref} {...props} />
+))
 
 function ArticleCard({
   bg = "ui_100",
@@ -14,6 +19,7 @@ function ArticleCard({
   link,
   linkType,
   linkLabel,
+  sx,
   ...props
 }) {
   return (
@@ -23,29 +29,26 @@ function ArticleCard({
         overflow: "auto",
         padding: "0",
         border: "none",
-        boxShadow: "none",
         gap: "0",
+        ...sx,
       }}
       {...props}
     >
       {image?.element && (
-        <ArticleLink link={link}>
-          <Box
-            as="a"
-            width="100%"
-            height="50%"
-            maxHeight="16rem"
-            bg={image.bg}
-            sx={{
-              "& *": {
-                height: "100%",
-                width: "auto",
-              },
-            }}
-          >
+        <Box
+          sx={{
+            bg: image.bg || "blue_100",
+            maxHeight: "18rem",
+            width: "100%",
+            "& img": {
+              maxHeight: "18rem",
+            },
+          }}
+        >
+          <ArticleLink link={link} display="block">
             {image.element}
-          </Box>
-        </ArticleLink>
+          </ArticleLink>
+        </Box>
       )}
       <Box
         height="100%"
@@ -58,13 +61,7 @@ function ArticleCard({
         }}
       >
         {tag && (
-          <Box
-            bg="green_500"
-            width="fit-content"
-            mb="0.667rem"
-            px="1rem"
-            borderRadius="1rem"
-          >
+          <Box as={Tag} bg="green_500" sx={{ mb: "0.667rem" }}>
             {tag}
           </Box>
         )}
@@ -73,7 +70,7 @@ function ArticleCard({
             mb: "0.667rem",
             sx: {
               textAlign: "left",
-              ...STYLING.subtitle,
+              ...STYLING.body__emphasis,
               ...title.props?.sx,
             },
           })}
@@ -86,15 +83,17 @@ function ArticleCard({
           },
         })}
         {linkType && linkLabel && (
-          <ArticleLink link={link}>
+          <React.Fragment>
             {linkType === "button" ? (
-              <Button background={bg} forwardAs="Box" as="a">
+              <ArticleLink link={link} background={bg} as={ButtonLink}>
                 {linkLabel}
-              </Button>
+              </ArticleLink>
             ) : (
-              <a className="link">{linkLabel}</a>
+              <ArticleLink link={link} className="link">
+                {linkLabel}
+              </ArticleLink>
             )}
-          </ArticleLink>
+          </React.Fragment>
         )}
       </Box>
     </Card>

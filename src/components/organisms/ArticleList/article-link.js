@@ -1,12 +1,18 @@
 import React from "react"
 import { Box } from "@rent_avail/layout"
 
-function HandledLink({ link: Link, ...props }) {
+function ArticleLink({ link: Link, children, ...props }) {
   return typeof Link === "function" ? (
-    <Link {...props} />
+    <Link>
+      <Box as="a" {...props}>
+        {children}
+      </Box>
+    </Link>
   ) : (
-    <Box as="a" href={Link.href} {...props} />
+    <Box as="a" href={Link.href} {...props}>
+      {children}
+    </Box>
   )
 }
 
-export default HandledLink
+export default ArticleLink

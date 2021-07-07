@@ -314,7 +314,7 @@
                 "type" : "Select",
                 "config" : {
                   "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
-                  "default_value" : "ui_500",
+                  "default_value" : "blue_100",
                   "label" : "Image background color"
                 }
               },
@@ -330,7 +330,7 @@
                   "label" : "Link type",
                   "placeholder" : "",
                   "default_value" : "link",
-                  "options" : [ "none", "link", "button" ]
+                  "options" : [ "link", "button" ]
                 },
                 "type" : "Select"
               },
