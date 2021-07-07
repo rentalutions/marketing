@@ -63,7 +63,7 @@ const ArticleListSlice = ({ slice }) => {
   )
 
   const renderReadMoreCard =
-    readMoreCardTitle?.[0]?.text ||
+    readMoreCardTitle?.[0]?.title ||
     readMoreCardTitle?.[0]?.text ||
     (readMoreCardLinkLabel && readMoreCardLink?.url)
 
