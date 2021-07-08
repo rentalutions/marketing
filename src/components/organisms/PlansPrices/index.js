@@ -1,5 +1,5 @@
 import React, { cloneElement } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 import styled from "styled-components"
 import { variant } from "styled-system"
 import { useInViewAnimation } from "utils/animation"

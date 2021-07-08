@@ -1,5 +1,5 @@
 import React, { cloneElement } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
 import { Box, Grid, Col, Container } from "@rent_avail/layout"
 import { analyzeColor } from "utils/color-scheme"
@@ -36,7 +36,7 @@ function HowItWorks({
           bg={background}
           as={motion.aside}
           {...animation?.container}
-        > 
+        >
           <Container maxWidth={containerWidth}>
             {eyebrow && (
               <Text
@@ -56,7 +56,7 @@ function HowItWorks({
                 })}
               </motion.aside>
             )}
-            </Container>
+          </Container>
         </Box>
         {sections.map(({ uid, ...section }, idx) => (
           <HowItWorksSection

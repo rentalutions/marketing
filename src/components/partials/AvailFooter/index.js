@@ -12,8 +12,6 @@ import { Heading, Text } from "@rent_avail/typography"
 import styled from "styled-components"
 import { CONTAINER_WIDTHS } from "config"
 import { useUrlResolver } from "components/partials/UrlResolver"
-import { useInViewAnimation } from "utils/animation"
-import { motion } from "framer-motion"
 import Image from "next/image"
 
 const FooterLinks = styled(Box)`
@@ -50,19 +48,12 @@ const FooterIcon = styled(Box).attrs({
   }
 `
 
-const AvailFooter = ({ animationPreset = "fadeIn" }) => {
+const AvailFooter = () => {
   const currentYear = new Date().getFullYear()
   const urlResolver = useUrlResolver()
-  const [presets, intersectionView] = useInViewAnimation()
-  const animation = presets[animationPreset]
 
   return (
-    <Box
-      as={motion.div}
-      {...animation?.container}
-      bg="blue_100"
-      ref={intersectionView}
-    >
+    <Box bg="blue_100">
       <Container maxWidth={CONTAINER_WIDTHS} p="2rem 2rem 3rem">
         <Flex justifyContent="center">
           <Flex
@@ -79,12 +70,7 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
           </Flex>
         </Flex>
         <Grid gap={["2rem", "2rem", "4rem"]} justifyContent="space-between">
-          <Col
-            as={motion.div}
-            {...animation?.item}
-            span={[12, 12, 12, 3]}
-            order={[1, 1, 1, 0]}
-          >
+          <Col span={[12, 12, 12, 3]} order={[1, 1, 1, 0]}>
             <Flex>
               <Stack
                 direction={["row", "row", "row", "column"]}
@@ -155,7 +141,7 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
               </Stack>
             </Flex>
           </Col>
-          <Col as={motion.div} {...animation?.item} span={[12, 6, 4, 3]}>
+          <Col span={[12, 6, 4, 3]}>
             <FooterLinks>
               <FooterLinksHeading as="h5">Get Started</FooterLinksHeading>
               <FooterText
@@ -205,7 +191,7 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
               </FooterText>
             </FooterLinks>
           </Col>
-          <Col as={motion.div} {...animation?.item} span={[12, 6, 4, 3]}>
+          <Col span={[12, 6, 4, 3]}>
             <FooterLinks>
               <FooterLinksHeading as="h5">How It Works</FooterLinksHeading>
               <FooterText
@@ -274,7 +260,7 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
               </FooterText>
             </FooterLinks>
           </Col>
-          <Col as={motion.div} {...animation?.item} span={[12, 6, 4, 3]}>
+          <Col span={[12, 6, 4, 3]}>
             <Flex
               flexDirection="column"
               alignItems={[
@@ -359,8 +345,7 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
             }}
           >
             <Box
-              as={motion.a}
-              {...animation?.item}
+              as="a"
               target="_blank"
               rel="noreferrer"
               href="https://www.houselogic.com/?cid=eo_rl_rcom_ftr"
@@ -374,8 +359,7 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
               />
             </Box>
             <Box
-              as={motion.a}
-              {...animation?.item}
+              as="a"
               target="_blank"
               rel="noreferrer"
               href="https://www.realtor.com/"
@@ -390,12 +374,7 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
             </Box>
           </Box>
           <Box>
-            <Box
-              mb="1rem"
-              as={motion.div}
-              {...animation?.item}
-              sx={{ "a,p": { display: "inline-block" } }}
-            >
+            <Box mb="1rem" sx={{ "a,p": { display: "inline-block" } }}>
               <Text
                 color="blue_100"
                 as="a"
@@ -412,9 +391,7 @@ const AvailFooter = ({ animationPreset = "fadeIn" }) => {
                 Terms
               </Text>
             </Box>
-            <Box as={motion.div} {...animation?.item}>
-              © 2011—{currentYear} Avail, All Rights Reserved.
-            </Box>
+            <Box>© 2011—{currentYear} Avail, All Rights Reserved.</Box>
           </Box>
         </Box>
       </Box>
