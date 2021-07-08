@@ -4,6 +4,7 @@ import { Text } from "@rent_avail/typography"
 import { useTheme } from "styled-components"
 import dynamic from "next/dynamic"
 
+const ArticleListSlice = dynamic(() => import("./components/ArticleListSlice"))
 const BlockquoteSlice = dynamic(() => import("./components/BlockquoteSlice"))
 const ButtonCTASlice = dynamic(() => import("./components/ButtonCTASlice"))
 const EmailCaptureSlice = dynamic(() =>
@@ -35,6 +36,8 @@ const SliceZone = ({ slices }) => {
   return slices.map((slice, idx) => {
     const key = `${slice.slice_type}-${slice.version}-${idx}`
     switch (slice.slice_type) {
+      case "article_list":
+        return <ArticleListSlice key={key} slice={slice} />
       case "blockquote":
         return <BlockquoteSlice key={key} slice={slice} />
       case "button_cta":

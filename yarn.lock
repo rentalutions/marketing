@@ -1871,6 +1871,15 @@
     "@rent_avail/utils" "^0.5.0"
     dequal "^2.0.2"
 
+"@rent_avail/tag@^0.1.20":
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/@rent_avail/tag/-/tag-0.1.20.tgz#fd10dca97d666b35a633173f99cc46e3387c90c2"
+  integrity sha512-hNL9xARle/8Oev+8DWAPYMzcE9OQmJ63eEAWJmI+iYDp72s34MT6mu6cYsV/MDbXCQWCo4wTZor+kh4rz0MUKw==
+  dependencies:
+    "@rent_avail/base" "^0.5.0"
+    "@rent_avail/utils" "^0.5.0"
+    styled-system "^5.1.5"
+
 "@rent_avail/typography@^0.1.20":
   version "0.1.20"
   resolved "https://registry.yarnpkg.com/@rent_avail/typography/-/typography-0.1.20.tgz#9e000337a0b6d1b497cb11eff763017a3b62528f"
