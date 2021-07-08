@@ -1,5 +1,5 @@
 import React, { useState, cloneElement } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { m as motion, AnimatePresence } from "framer-motion"
 import styled from "styled-components"
 import { variant } from "styled-system"
 import { useInViewAnimation } from "utils/animation"

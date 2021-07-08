@@ -1,5 +1,5 @@
 import React, { cloneElement } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 import { useInViewAnimation } from "utils/animation"
 import { Container, Box, Grid, Col, Stack } from "@rent_avail/layout"
 import SkewBox from "components/molecules/SkewBox"

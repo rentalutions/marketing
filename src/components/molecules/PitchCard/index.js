@@ -3,7 +3,7 @@ import { Box, Col, Flex } from "@rent_avail/layout"
 import Video from "components/elements/Video"
 import { STYLING } from "config"
 import { useInViewAnimation } from "utils/animation"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 
 export function PitchCard({
   title,

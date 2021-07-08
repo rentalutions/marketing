@@ -1,6 +1,6 @@
 import { Box, Card, Flex } from "@rent_avail/layout"
 import Tag from "@rent_avail/tag"
-import { motion } from "framer-motion"
+import { m as motion } from "framer-motion"
 import React, { cloneElement } from "react"
 import { Text } from "@rent_avail/typography"
 import { useInViewAnimation } from "utils/animation"

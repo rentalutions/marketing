@@ -3,8 +3,6 @@ import { Box, Container, Flex } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
 import styled, { createGlobalStyle } from "styled-components"
 import { getTargetProps } from "utils/link"
-import { useInViewAnimation } from "utils/animation"
-import { motion } from "framer-motion"
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -26,21 +24,14 @@ function AvailNavBar({
   containerWidth = "96rem",
   sticky,
   availLogo,
-  animationPreset = "fadeIn",
   ...props
 }) {
-  const [presets, intersectionTarget] = useInViewAnimation({ delayChildren: 0 })
-  const animation = presets[animationPreset]
-
   return (
     <Box
-      as={motion.aside}
-      {...animation?.container}
       bg={background}
       position={sticky ? "sticky" : "static"}
       top="0"
       zIndex="1"
-      ref={intersectionTarget}
       {...props}
     >
       <GlobalStyle sticky />
@@ -51,8 +42,7 @@ function AvailNavBar({
       >
         <Flex flexDirection="row" width="100%">
           <Box
-            as={motion.a}
-            {...animation?.item}
+            as="a"
             href="https://avail.co"
             sx={{
               display: "block",
@@ -82,9 +72,8 @@ function AvailNavBar({
             }}
           >
             {defaultLinks.map(({ href, text, id, target }, idx) => (
-              <motion.div
+              <div
                 key={`${id}-${href}-${text}`}
-                {...animation?.item}
                 style={{
                   marginLeft: idx === 0 ? "0" : "2rem",
                   flex: "none",
@@ -98,13 +87,11 @@ function AvailNavBar({
                 >
                   {text}
                 </NavBarButton>
-              </motion.div>
+              </div>
             ))}
           </Flex>
           {secondaryLink && (
             <Box
-              as={motion.div}
-              {...animation?.item}
               sx={{
                 visibility: primaryLink ? ["hidden", "visible"] : "visible",
               }}
@@ -122,19 +109,17 @@ function AvailNavBar({
             </Box>
           )}
           {primaryLink && (
-            <motion.div {...animation?.item}>
-              <NavBarButton
-                variant="primary"
-                href={primaryLink.href}
-                {...getTargetProps(primaryLink.target)}
-                id={primaryLink.id}
-                forwardedAs="a"
-                flex="0 0 auto"
-                ml="2rem"
-              >
-                {primaryLink.text}
-              </NavBarButton>
-            </motion.div>
+            <NavBarButton
+              variant="primary"
+              href={primaryLink.href}
+              {...getTargetProps(primaryLink.target)}
+              id={primaryLink.id}
+              forwardedAs="a"
+              flex="0 0 auto"
+              ml="2rem"
+            >
+              {primaryLink.text}
+            </NavBarButton>
           )}
         </Flex>
       </Container>
