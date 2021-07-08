@@ -13,7 +13,7 @@ as its’ data source.
 - Run `yarn` to install dependencies
 - Copy `.env.template` as `.env` to ensure that environment variables are set
 - Launch the app in development mode: `yarn dev`
-- Navigate to the `http://localhost:3000`
+- Navigate to the `http://localhost:4000`
 - Optionally start Storybook with `yarn storybook`
 
 ## Project structure

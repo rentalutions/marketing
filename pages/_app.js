@@ -1,20 +1,23 @@
 import React from "react"
-import { createGlobalStyle, ThemeProvider } from "styled-components"
+import { ThemeProvider } from "styled-components"
 import { theme, Base as Reset } from "@rent_avail/base"
-import PreviewWarning from "components/partials/PreviewWarning"
 import { DefaultSeo } from "next-seo"
 import { BREAKPOINTS, DEFAULT_SEO } from "config"
 import { UIDReset } from "react-uid"
 import { AnalyticsProvider } from "utils/analytics/context"
+import { LazyMotion } from "framer-motion"
+import dynamic from "next/dynamic"
+
+const motionFeatures = () =>
+  import("utils/animation/features").then((res) => res.default)
+const PreviewWarning = dynamic(() =>
+  import("components/partials/PreviewWarning")
+)
 
 const marketingTheme = {
   ...theme,
   breakpoints: [...BREAKPOINTS],
 }
-
-const GlobalStyles = createGlobalStyle`
- .async-hide { opacity: 0 !important}
-`
 
 export default function App({ Component, pageProps }) {
   const { preview } = pageProps
@@ -23,10 +26,11 @@ export default function App({ Component, pageProps }) {
       <AnalyticsProvider>
         <DefaultSeo {...DEFAULT_SEO} />
         <Reset />
-        <GlobalStyles />
         {preview && <PreviewWarning />}
         <UIDReset prefix="uid_">
-          <Component {...pageProps} />
+          <LazyMotion features={motionFeatures}>
+            <Component {...pageProps} />
+          </LazyMotion>
         </UIDReset>
       </AnalyticsProvider>
     </ThemeProvider>

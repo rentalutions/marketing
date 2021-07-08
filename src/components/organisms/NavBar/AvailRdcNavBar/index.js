@@ -1,10 +1,8 @@
-import React, { useMemo } from "react"
-import { motion } from "framer-motion"
+import React, { useMemo, useRef } from "react"
 import { Button } from "@rent_avail/controls"
 import { Box, Col, Container, Grid } from "@rent_avail/layout"
 
 import { getTargetProps } from "utils/link"
-import { useInViewAnimation } from "utils/animation"
 import { createGlobalStyle } from "styled-components"
 import Menu from "./menu"
 
@@ -20,13 +18,11 @@ function AvailRdcNavBar({
   primaryLink,
   secondaryLink,
   sticky,
-  animationPreset = "fadeIn",
   availLogo,
   rdcLogo,
   ...props
 }) {
-  const [presets, intersectionTarget] = useInViewAnimation({ delayChildren: 0 })
-  const animation = presets[animationPreset]
+  const menuParentRef = useRef()
 
   const primaryLinkProps = useMemo(
     () =>
@@ -54,9 +50,8 @@ function AvailRdcNavBar({
 
   return (
     <Box
-      as={motion.header}
-      {...animation?.container}
-      ref={intersectionTarget}
+      as="header"
+      ref={menuParentRef}
       sx={{
         bg: background,
         display: "flex",
@@ -81,11 +76,7 @@ function AvailRdcNavBar({
             clipPath: `polygon(0 0, calc(100% - 2rem) 0, 100% 100%, 0% 100%)`,
           }}
         >
-          <Box
-            as={motion.aside}
-            {...animation?.item}
-            sx={{ width: ["87px", "131px"], height: ["2rem", "3rem"] }}
-          >
+          <Box sx={{ width: ["87px", "131px"], height: ["2rem", "3rem"] }}>
             {rdcLogo}
           </Box>
         </Col>
@@ -99,8 +90,6 @@ function AvailRdcNavBar({
           }}
         >
           <Box
-            as={motion.a}
-            {...animation?.item}
             href="https://avail.co"
             sx={{
               display: "block",
@@ -127,11 +116,7 @@ function AvailRdcNavBar({
               }}
             >
               {secondaryLink && (
-                <Box
-                  as={motion.li}
-                  {...animation?.item}
-                  sx={{ display: ["none", "none", "initial"] }}
-                >
+                <Box as="li" sx={{ display: ["none", "none", "initial"] }}>
                   <Button
                     {...secondaryLinkProps}
                     sx={{
@@ -142,11 +127,7 @@ function AvailRdcNavBar({
                 </Box>
               )}
               {primaryLink && (
-                <Box
-                  as={motion.li}
-                  {...animation?.item}
-                  sx={{ display: ["none", "none", "initial"] }}
-                >
+                <Box as="li" sx={{ display: ["none", "none", "initial"] }}>
                   <Button
                     variant="primary"
                     {...primaryLinkProps}
@@ -161,7 +142,7 @@ function AvailRdcNavBar({
                 menuEntries={menuEntries}
                 primaryLinkProps={primaryLinkProps}
                 secondaryLinkProps={secondaryLinkProps}
-                parentRef={intersectionTarget}
+                parentRef={menuParentRef}
               />
             </Box>
           </Box>

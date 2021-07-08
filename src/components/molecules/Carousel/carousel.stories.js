@@ -1,6 +1,11 @@
 import React, { useState, useReducer, useEffect } from "react"
 import { Box, Container, Grid, Col } from "@rent_avail/layout"
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion"
+import {
+  m as motion,
+  useMotionValue,
+  useTransform,
+  useSpring,
+} from "framer-motion"
 import {
   Unsafe_CarouselContainer,
   Unsafe_CarouselItem,

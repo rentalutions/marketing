@@ -141,6 +141,7 @@
       "fieldset" : "Slice zone",
       "config" : {
         "labels" : {
+          "article_list" : [ ],
           "blockquote" : [ ],
           "button_cta" : [ ],
           "email_capture" : [ ],
@@ -155,6 +156,193 @@
           "testimonials_carousel" : [ ]
         },
         "choices" : {
+          "article_list" : {
+            "type" : "Slice",
+            "fieldset" : "Article List",
+            "description" : "An article list section is used to display articles or a list of documents (guides)",
+            "icon" : "library_books",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "allowTargetBlank" : true,
+                  "label" : "Title",
+                  "placeholder" : "Title",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Description",
+                  "placeholder" : "Description",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_100",
+                  "label" : "Background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "skew" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "right", "left" ],
+                  "default_value" : "none",
+                  "label" : "Skew"
+                }
+              },
+              "readMoreCardBackground" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "blue_100",
+                  "label" : "Background color for 'Read More' card"
+                }
+              },
+              "readMoreCardColor" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color for 'Read More' card"
+                }
+              },
+              "readMoreCardTitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "'Read More' card title",
+                  "placeholder" : "Title",
+                  "allowTargetBlank" : true,
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "readMoreCardContent" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "'Read More' card content",
+                  "placeholder" : "Nam mattis sapien sit amet justo aliquam venenatis.",
+                  "allowTargetBlank" : true,
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "readMoreCardLink" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Link to the articles page"
+                }
+              },
+              "readMoreCardLinkLabel" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Link label for 'Read More' card",
+                  "placeholder" : "Read More"
+                }
+              }
+            },
+            "repeat" : {
+              "background" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_100",
+                  "label" : "Card background color"
+                }
+              },
+              "color" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "ui_900",
+                  "label" : "Text color"
+                }
+              },
+              "tag" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Article tag",
+                  "placeholder" : "Lorem ipsum"
+                }
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "Article title",
+                  "placeholder" : "Title",
+                  "allowTargetBlank" : true,
+                  "single" : "heading3, heading4, heading5, heading6, strong, em, hyperlink",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "content" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "label" : "Article description",
+                  "placeholder" : "Nam mattis sapien sit amet justo aliquam venenatis.",
+                  "allowTargetBlank" : true,
+                  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, embed",
+                  "labels" : [ "hero", "headline", "title", "subtitle", "body__emphasis", "body", "small" ]
+                }
+              },
+              "image" : {
+                "config" : {
+                  "label" : "Article thumbnail",
+                  "constraint" : { },
+                  "thumbnails" : [ ]
+                },
+                "type" : "Image"
+              },
+              "imageBackground" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "transparent", "ui_100", "ui_300", "ui_500", "ui_700", "ui_900", "blue_100", "blue_300", "blue_500", "blue_700", "blue_900" ],
+                  "default_value" : "blue_100",
+                  "label" : "Image background color"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Link to the full article"
+                }
+              },
+              "linkType": {
+                "config" : {
+                  "label" : "Link type",
+                  "placeholder" : "",
+                  "default_value" : "link",
+                  "options" : [ "link", "button" ]
+                },
+                "type" : "Select"
+              },
+              "linkLabel" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Link label",
+                  "placeholder" : "Read More"
+                }
+              }
+            }
+          },
           "blockquote": {
             "type" : "Slice",
             "fieldset" : "Blockquote",
@@ -1373,6 +1561,15 @@
       "type" : "Text",
       "config" : {
         "label" : "Meta keywords"
+      }
+    },
+    "meta_indexable": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "noindex/nofollow",
+        "placeholder_true": "index/follow",
+        "default_value": true,
+        "label": "Meta indexable"
       }
     },
     "meta_image" : {
