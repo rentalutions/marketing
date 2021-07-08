@@ -4,6 +4,7 @@ import showcase from "./showcase"
 import testimonials from "./testimonials"
 import emailcapture from "./emailcapture"
 import howitworks from "./howitworks"
+import articlelist from "./articlelist"
 
 export default {
   meta_title:
@@ -19,7 +20,7 @@ export default {
     { ...howitworks },
     { ...testimonials },
     { ...showcase },
-    // landlord guides (?),
+    { ...articlelist },
     { ...emailcapture },
   ],
 }
