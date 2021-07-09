@@ -12,13 +12,13 @@ const TextContentSlice = ({ slice }) => {
     <Container maxWidth={CONTAINER_WIDTHS} my="2rem">
       {title && (
         <RichText
-          color="blue_500"
+          color="blue_900"
           render={title}
           mb="2rem"
           sx={{ ...STYLING.title }}
         />
       )}
-      {content && <RichText color="blue_500" render={content} />}
+      {content && <RichText color="blue_900" render={content} />}
     </Container>
   )
 }

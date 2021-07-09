@@ -11,7 +11,7 @@ export default {
       features: [
         { type: "list-item", text: "Syndicated Listings", spans: [] },
         { type: "list-item", text: "Credit and Criminal Screening", spans: [] },
-        { type: "list-item", text: "StateSpecific Leases", spans: [] },
+        { type: "list-item", text: "State-Specific Leases", spans: [] },
         { type: "list-item", text: "Online Rent Payments", spans: [] },
         { type: "list-item", text: "Maintenance Tracking", spans: [] },
       ],
@@ -44,7 +44,7 @@ export default {
           ],
         },
 
-        { type: "list-item", text: "NextDay Rent Payments", spans: [] },
+        { type: "list-item", text: "Next-Day Rent Payments", spans: [] },
         { type: "list-item", text: "Waived ACH Fees", spans: [] },
         {
           type: "list-item",
@@ -67,7 +67,7 @@ export default {
       buttonId: null,
       buttonIsPrimary: false,
       background: "blue_100",
-      color: "blue_500",
+      color: "ui_900",
       specialOffer: [],
     },
   ],
