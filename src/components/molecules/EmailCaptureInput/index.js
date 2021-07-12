@@ -5,10 +5,10 @@ import Button from "components/elements/Button"
 import { analyzeColor } from "utils/color-scheme"
 import styled from "styled-components"
 import { Checkbox as AvailCheckbox } from "@rent_avail/controls"
-import { sx } from "@rent_avail/base"
+import { sx as makeSx } from "@rent_avail/base"
 
 const Checkbox = styled(AvailCheckbox)`
-  ${sx}
+  ${makeSx}
 `
 
 const INPUT_ERROR_MESSAGE = "Please enter valid email."
@@ -24,6 +24,7 @@ const EmailCaptureInput = ({
   optInCopy,
   outro,
   optInContext,
+  sx,
   ...props
 }) => {
   const buttonRef = useRef()
@@ -74,8 +75,12 @@ const EmailCaptureInput = ({
     <Box
       as="form"
       position="relative"
-      textAlign="left"
       onSubmit={handleSubmit}
+      sx={{
+        maxWidth: ["none", "none", "none", "40rem", "60rem"],
+        textAlign: "left",
+        ...sx,
+      }}
       {...props}
     >
       <Input

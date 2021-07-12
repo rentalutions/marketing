@@ -36,7 +36,7 @@ function HowItWorks({
           bg={background}
           as={motion.aside}
           {...animation?.container}
-        > 
+        >
           <Container maxWidth={containerWidth}>
             {eyebrow && (
               <Text
@@ -56,7 +56,7 @@ function HowItWorks({
                 })}
               </motion.aside>
             )}
-            </Container>
+          </Container>
         </Box>
         {sections.map(({ uid, ...section }, idx) => (
           <HowItWorksSection
