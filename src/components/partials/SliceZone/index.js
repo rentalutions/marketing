@@ -30,6 +30,8 @@ const TestimonialsCarouselSlice = dynamic(() =>
   import("./components/TestimonialsCarouselSlice")
 )
 
+const TextContentSlice = dynamic(() => import("./components/TextContentSlice"))
+
 const SliceZone = ({ slices }) => {
   if (!slices) {
     return null
@@ -78,6 +80,8 @@ const SliceZone = ({ slices }) => {
         return (
           <TestimonialsCarouselSlice key={key} slice={slice} sliceIndex={idx} />
         )
+      case "text_content":
+        return <TextContentSlice key={key} slice={slice} sliceIndex={idx} />
       default:
         return (
           <Flex

@@ -153,7 +153,8 @@
           "plans_and_prices" : [ ],
           "show_case" : [ ],
           "testimonials" : [ ],
-          "testimonials_carousel" : [ ]
+          "testimonials_carousel" : [ ],
+          "text_content" : [ ]
         },
         "choices" : {
           "article_list" : {
@@ -1655,6 +1656,33 @@
                 }
               }
             }
+          },
+          "text_content": {
+            "type": "Slice",
+            "fieldset": "Text Content",
+            "description": "A simple container with title and text content",
+            "icon": "short_text",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "title",
+                  "placeholder": "Title"
+                }
+              },
+              "content": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "allowTargetBlank": true,
+                  "label": "content",
+                  "placeholder": "Content"
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }
