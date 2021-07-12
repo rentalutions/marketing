@@ -34,7 +34,7 @@ export default function FrequentlyAskedQuestionsSlice({ slice }) {
       containerWidth={CONTAINER_WIDTHS}
       bg={background}
       color={color}
-      py="6rem"
+      py={["3rem", "4.5rem"]}
     />
   )
 }

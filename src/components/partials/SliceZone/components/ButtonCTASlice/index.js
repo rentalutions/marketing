@@ -26,6 +26,7 @@ const ButtonCTASlice = ({ slice }) => {
       color={color}
       orientation={orientation}
       skew={skew}
+      py={["3rem", "4.5rem"]}
       title={title && <RichText render={title} />}
       button={
         buttonText && (

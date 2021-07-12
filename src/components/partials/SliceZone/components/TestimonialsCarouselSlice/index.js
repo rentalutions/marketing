@@ -46,6 +46,7 @@ const TestimonialsCarouselSlice = ({ slice }) => {
       containerWidth={CONTAINER_WIDTHS}
       bg={background}
       color={color}
+      py={["3rem", "4.5rem"]}
       testimonialBg={testimonialBackground}
       testimonialColor={testimonialColor}
       titleBackground={titleBackground}

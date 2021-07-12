@@ -41,7 +41,7 @@ const HowItWorksSlice = ({ slice }) => {
         sections={sections}
         bg={background}
         containerWidth={CONTAINER_WIDTHS}
-        py="5rem"
+        py={["3rem", "4.5rem"]}
         alternate={flip ? (idx) => idx % 2 === 0 : undefined}
         color={background === "blue_500" ? "blue_100" : "inherit"}
       />
