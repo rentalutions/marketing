@@ -1,5 +1,6 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { AnalyticsContext } from "utils/analytics/context"
+import { getSearchParams } from "utils/analytics/traits"
 
 async function queryAnalytics() {
   try {
@@ -14,11 +15,28 @@ const AVAIL_BASE_URL =
   process.env.NEXT_PUBLIC_AVAIL_BASE_URL || "https://www.avail.co"
 
 export function useAnalyticsScript() {
-  const { setAnalytics, scriptAppended } = useContext(AnalyticsContext)
+  const locationRef = useRef()
+  const { analytics: pageAnalytics, setAnalytics, scriptAppended } = useContext(
+    AnalyticsContext
+  )
   useEffect(() => {
-    if (!scriptAppended.current) {
+    locationRef.current = window?.location
+
+    if (!scriptAppended.current && pageAnalytics) {
+      const scriptUrl = new URL(
+        `${AVAIL_BASE_URL}/api/v2/public/analytics/noop.js`
+      )
+      const scriptUrlParams = {
+        ...pageAnalytics,
+        ...getSearchParams(locationRef.current),
+      }
+      Object.entries(scriptUrlParams).forEach(([key, value]) => {
+        if (value) {
+          scriptUrl.searchParams.set(key, value)
+        }
+      })
       const script = document.createElement("script")
-      script.src = `${AVAIL_BASE_URL}/api/v2/public/analytics/noop.js`
+      script.src = scriptUrl.toString()
       script.async = true
       script.onload = async () => {
         const analytics = await queryAnalytics()
@@ -28,5 +46,5 @@ export function useAnalyticsScript() {
       document.body.append(script)
       scriptAppended.current = true
     }
-  }, [])
+  }, [pageAnalytics])
 }
