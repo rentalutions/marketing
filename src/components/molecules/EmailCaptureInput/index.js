@@ -80,17 +80,6 @@ const EmailCaptureInput = ({
         labelId={inputLabelId}
         sx={{
           "& > label": {
-            color:  "ui_700",
-            "&.error": {
-              color: "ui_700",
-            },
-            "&:focus-within": {
-              borderColor: "ui_700",
-              color: "ui_700",
-            },
-            "&.filled:not(:focus-within):not(.error) .input__label-row": {
-              color: "ui_700",
-            },
             "& > input": {
               backgroundColor: "ui_100",
               height: "calc(6.5rem - 2px)",
