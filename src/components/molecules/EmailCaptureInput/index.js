@@ -4,8 +4,10 @@ import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import { analyzeColor } from "utils/color-scheme"
 import styled from "styled-components"
+import { useTheme } from "styled-components"
 import { Checkbox as AvailCheckbox } from "@rent_avail/controls"
 import { sx } from "@rent_avail/base"
+import { useMediaQuery } from "@rent_avail/utils"
 
 const Checkbox = styled(AvailCheckbox)`
   ${sx}
@@ -30,8 +32,9 @@ const EmailCaptureInput = ({
   const [inputError, setInputError] = useState()
   const [optIn, setOptIn] = useState(true)
 
-  const [scheme, isDark] = background ? analyzeColor(background) : []
-  const buttonBackground = isDark ? [`${scheme}_100`, background] : background
+  const [, isDark] = background ? analyzeColor(background) : []
+  const { breakpoints } = useTheme()
+  const isFirstBreakpoint = useMediaQuery({ max: breakpoints[0] })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -107,8 +110,7 @@ const EmailCaptureInput = ({
         ref={buttonRef}
       >
         <Button
-          buttonBackground={buttonBackground}
-          background={background}
+          background={ isFirstBreakpoint ? background : "ui_100" }
           variant="primary"
           type="submit"
           display="block"
