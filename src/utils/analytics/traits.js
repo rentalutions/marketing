@@ -34,8 +34,7 @@ export function extractTraits(params) {
   }, {})
 }
 
-export function extractTraitsFromLocation(location) {
+export function getSearchParams(location) {
   if (!location?.href) return {}
-  const url = new URL(location.href)
-  return extractTraits(fromEntries(url.searchParams))
+  return fromEntries(new URL(location.href).searchParams)
 }
