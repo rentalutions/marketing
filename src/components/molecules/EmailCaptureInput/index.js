@@ -80,6 +80,9 @@ const EmailCaptureInput = ({
         labelId={inputLabelId}
         sx={{
           "& > label": {
+            "&:focus-within": {
+              borderColor: isDark && "ui_500",
+            },
             "& > input": {
               backgroundColor: "ui_100",
               height: "calc(6.5rem - 2px)",
