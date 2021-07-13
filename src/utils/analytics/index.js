@@ -1,8 +1,5 @@
 import { useCallback, useContext, useEffect, useRef } from "react"
-import {
-  extractTraits,
-  extractTraitsFromLocation,
-} from "utils/analytics/traits"
+import { extractTraits, getSearchParams } from "utils/analytics/traits"
 import { AnalyticsContext } from "utils/analytics/context"
 import { useAnalyticsScript } from "utils/analytics/script"
 
@@ -25,7 +22,7 @@ export function useAnalytics(defaultParams) {
                 ...traits,
                 ...extractTraits({ channel: "direct", ...defaultParams }),
                 ...extractTraits(params),
-                ...extractTraitsFromLocation(locationRef.current),
+                ...extractTraits(getSearchParams(locationRef.current)),
               },
               resolve
             )
