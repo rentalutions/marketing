@@ -4,8 +4,10 @@ import { Box } from "@rent_avail/layout"
 import Button from "components/elements/Button"
 import { analyzeColor } from "utils/color-scheme"
 import styled from "styled-components"
+import { useTheme } from "styled-components"
 import { Checkbox as AvailCheckbox } from "@rent_avail/controls"
 import { sx } from "@rent_avail/base"
+import { useMediaQuery } from "@rent_avail/utils"
 
 const Checkbox = styled(AvailCheckbox)`
   ${sx}
@@ -31,6 +33,8 @@ const EmailCaptureInput = ({
   const [optIn, setOptIn] = useState(true)
 
   const [, isDark] = background ? analyzeColor(background) : []
+  const { breakpoints } = useTheme()
+  const isFirstBreakpoint = useMediaQuery({ max: breakpoints[0] })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -76,18 +80,11 @@ const EmailCaptureInput = ({
         labelId={inputLabelId}
         sx={{
           "& > label": {
-            color: isDark ? "ui_300" : "ui_900",
-            "&.error": {
-              color: isDark ? "ui_300" : "ui_900",
-            },
             "&:focus-within": {
-              borderColor: isDark ? "ui_100" : "blue_500",
-              color: isDark ? "ui_100" : "blue_500",
-            },
-            "&.filled:not(:focus-within):not(.error) .input__label-row": {
-              color: isDark ? "ui_300" : "ui_700",
+              borderColor: isDark && "ui_500",
             },
             "& > input": {
+              backgroundColor: "ui_100",
               height: "calc(6.5rem - 2px)",
               paddingRight: ["2rem", `calc(2rem + ${buttonWidth}px)`],
             },
@@ -105,7 +102,7 @@ const EmailCaptureInput = ({
         ref={buttonRef}
       >
         <Button
-          background={background}
+          background={ isFirstBreakpoint ? background : "ui_100" }
           variant="primary"
           type="submit"
           display="block"
