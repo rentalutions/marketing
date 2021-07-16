@@ -3,6 +3,8 @@ import { Box, Container, Flex } from "@rent_avail/layout"
 import { Button } from "@rent_avail/controls"
 import styled, { createGlobalStyle } from "styled-components"
 import { getTargetProps } from "utils/link"
+import { ChevronDown } from "react-feather"
+import { Menu, MenuTarget, MenuList, MenuItem } from "@rent_avail/menu"
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -71,7 +73,7 @@ function AvailNavBar({
               overflow: "hidden",
             }}
           >
-            {defaultLinks.map(({ href, text, id, target }, idx) => (
+            {defaultLinks.map(({ href, text, id, target, children }, idx) => (
               <div
                 key={`${id}-${href}-${text}`}
                 style={{
@@ -79,14 +81,57 @@ function AvailNavBar({
                   flex: "none",
                 }}
               >
-                <NavBarButton
-                  href={href}
-                  id={id}
-                  {...getTargetProps(target)}
-                  forwardedAs="a"
-                >
-                  {text}
-                </NavBarButton>
+                {children ? (
+                  <Menu id="dropdown-menu-1">
+                    <MenuTarget>
+                      <NavBarButton
+                        href={href}
+                        id={id}
+                        {...getTargetProps(target)}
+                      >
+                        {text}
+                        <ChevronDown
+                          style={{
+                            height: "1em",
+                            width: "1em",
+                            verticalAlign: "sub",
+                          }}
+                        />
+                      </NavBarButton>
+                    </MenuTarget>
+                    <MenuList>
+                      {children.map(
+                        ({
+                          href: chHref,
+                          text: chText,
+                          id: chId,
+                          target: chTarget,
+                        }) => (
+                          <Box key={`${chId}-${chHref}-${chText}`}>
+                            <MenuItem
+                              closeOnClick
+                              href={chHref}
+                              id={chId}
+                              {...getTargetProps(target)}
+                              as="a"
+                            >
+                              {chText}
+                            </MenuItem>
+                          </Box>
+                        )
+                      )}
+                    </MenuList>
+                  </Menu>
+                ) : (
+                  <NavBarButton
+                    href={href}
+                    id={id}
+                    {...getTargetProps(target)}
+                    forwardedAs="a"
+                  >
+                    {text}
+                  </NavBarButton>
+                )}
               </div>
             ))}
           </Flex>

@@ -11,7 +11,15 @@ export function Default() {
   const links = [
     { text: "Overview", href: "#overview" },
     { text: "Pricing", href: "#pricing", push: true },
-    { text: "Icing", href: "#icing", push: true },
+    {
+      text: "Icing",
+      href: "#",
+      push: true,
+      children: [
+        { text: "Overview", href: "#overview" },
+        { text: "Overview", href: "#overview" },
+      ],
+    },
     { text: "Features", href: "#features" },
     {
       text: "Try For Free",
@@ -87,7 +95,15 @@ export function AvailRDC() {
   const links = [
     { text: "Overview", href: "#overview" },
     { text: "Pricing", href: "#pricing", push: true },
-    { text: "Icing", href: "#icing", push: true },
+    {
+      text: "Icing",
+      href: "#",
+      push: true,
+      children: [
+        { text: "Overview", href: "#overview" },
+        { text: "Overview", href: "#overview" },
+      ],
+    },
     { text: "Features", href: "#features" },
     {
       text: "Try For Free",
